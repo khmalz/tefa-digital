@@ -5,10 +5,9 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template" />
-    <meta name="author" content="Łukasz Holeczek" />
-    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard" />
-    <title>CoreUI Free Bootstrap Admin Template</title>
+    <meta name="description" content="Tefa Digital - Dashboard to manage service orders" />
+    <meta name="keyword" content="Tefa Digital, Service, Design, Printing, Videoghraphy, Fotoghraphy" />
+    <title>Dashboard | {{ config('app.name') }}</title>
     <meta name="theme-color" content="#ffffff" />
     <!-- Vendors styles-->
     <link rel="stylesheet" href="{{ asset('assets/admin/vendors/simplebar/css/simplebar.css') }}" />
