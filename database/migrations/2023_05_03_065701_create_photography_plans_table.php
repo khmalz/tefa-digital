@@ -10,10 +10,11 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('photography_features', function (Blueprint $table) {
+        Schema::create('photography_plans', function (Blueprint $table) {
             $table->id();
-            $table->string('text');
-            $table->foreignId('photography_plan_id')->constrained('photography_plans')->onDelete('cascade');
+            $table->string('title');
+            $table->integer('price');
+            $table->text('description');
             $table->timestamps();
         });
     }
@@ -23,6 +24,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('photography_features');
+        Schema::dropIfExists('photography_plans');
     }
 };

@@ -11,7 +11,8 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('designs', function (Blueprint $table) {
-            $table->ulid('id')->primary();
+            $table->id();
+            $table->ulid()->unique();
             $table->foreignId('design_category_id')->constrained('design_categories')->onDelete('cascade');
             $table->string('name_customer');
             $table->string('number_customer');

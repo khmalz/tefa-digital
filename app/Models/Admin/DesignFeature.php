@@ -16,6 +16,6 @@ class DesignFeature extends Model
 
     public function category()
     {
-        return $this->belongsTo(DesignCategory::class);
+        return $this->belongsTo(DesignCategory::class, 'design_category_id');
     }
 }

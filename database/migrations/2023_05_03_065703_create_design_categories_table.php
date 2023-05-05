@@ -13,8 +13,8 @@ return new class extends Migration {
         Schema::create('design_categories', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->integer('price');
-            $table->text('description');
+            $table->text('body');
+            $table->string('image');
             $table->timestamps();
         });
     }

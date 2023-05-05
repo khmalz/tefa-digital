@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('videography_features', function (Blueprint $table) {
             $table->id();
             $table->string('text');
-            $table->foreignId('videography_category_id')->constrained('videography_categories')->onDelete('cascade');
+            $table->foreignId('videography_plan_id')->constrained('videography_plans')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -2,8 +2,8 @@
 
 namespace App\Models\Admin;
 
+use App\Models\Admin\PhotographyPlan;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Admin\PhotographyCategory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class PhotographyFeature extends Model
@@ -12,11 +12,11 @@ class PhotographyFeature extends Model
 
     protected $fillable = [
         'text',
-        'photography_category_id'
+        'photography_plan_id'
     ];
 
-    public function category()
+    public function plan()
     {
-        return $this->belongsTo(PhotographyCategory::class);
+        return $this->belongsTo(PhotographyPlan::class, 'photography_plan_id');
     }
 }

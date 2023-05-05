@@ -11,8 +11,9 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('photographies', function (Blueprint $table) {
-            $table->ulid('id')->primary();
-            $table->foreignId('photography_category_id')->constrained('photography_categories')->onDelete('cascade');
+            $table->id();
+            $table->ulid()->unique();
+            $table->foreignId('photography_plan_id')->constrained('photography_plans')->onDelete('cascade');
             $table->string('name_customer');
             $table->string('number_customer');
             $table->string('email_customer');

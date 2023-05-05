@@ -11,7 +11,8 @@ return new class extends Migration {
     public function up(): void
     {
         Schema::create('printings', function (Blueprint $table) {
-            $table->ulid('id')->primary();
+            $table->id();
+            $table->ulid()->unique();
             $table->string('name_customer');
             $table->string('number_customer');
             $table->string('material');

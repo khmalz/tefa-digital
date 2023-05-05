@@ -10,8 +10,9 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('videography_categories', function (Blueprint $table) {
+        Schema::create('design_plans', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('design_category_id')->constrained('design_categories')->onDelete('cascade');
             $table->string('title');
             $table->integer('price');
             $table->text('description');
@@ -24,6 +25,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('videography_categories');
+        Schema::dropIfExists('design_plans');
     }
 };

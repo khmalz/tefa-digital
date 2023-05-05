@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Admin\PhotographyFeature;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class PhotographyCategory extends Model
+class PhotographyPlan extends Model
 {
     use HasFactory;
 
@@ -19,11 +19,11 @@ class PhotographyCategory extends Model
 
     public function features()
     {
-        return $this->hasMany(PhotographyFeature::class);
+        return $this->hasMany(PhotographyFeature::class, 'photography_plan_id');
     }
 
     public function photographies()
     {
-        return $this->hasMany(Photography::class);
+        return $this->hasMany(Photography::class, 'photography_plan_id');
     }
 }

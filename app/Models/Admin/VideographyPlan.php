@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\Admin\VideographyFeature;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class VideographyCategory extends Model
+class VideographyPlan extends Model
 {
     use HasFactory;
 
@@ -19,11 +19,11 @@ class VideographyCategory extends Model
 
     public function features()
     {
-        return $this->hasMany(VideographyFeature::class, 'videography_category_id');
+        return $this->hasMany(VideographyFeature::class, 'videography_plan_id');
     }
 
     public function videographies()
     {
-        return $this->hasMany(Videography::class, 'videography_category_id');
+        return $this->hasMany(Videography::class, 'videography_plan_id');
     }
 }

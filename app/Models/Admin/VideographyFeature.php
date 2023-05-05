@@ -3,7 +3,7 @@
 namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Admin\VideographyCategory;
+use App\Models\Admin\VideographyPlan;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class VideographyFeature extends Model
@@ -12,11 +12,11 @@ class VideographyFeature extends Model
 
     protected $fillable = [
         'text',
-        'videography_category_id'
+        'videography_plan_id'
     ];
 
-    public function category()
+    public function plan()
     {
-        return $this->belongsTo(VideographyCategory::class, 'videography_category_id');
+        return $this->belongsTo(VideographyPlan::class, 'videography_plan_id');
     }
 }
