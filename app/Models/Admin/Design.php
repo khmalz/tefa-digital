@@ -2,7 +2,7 @@
 
 namespace App\Models\Admin;
 
-use Illuminate\Support\Str;
+use App\Helpers\MixCaseULID;
 use App\Models\Admin\DesignImage;
 use App\Models\Admin\DesignCategory;
 use Illuminate\Database\Eloquent\Model;
@@ -20,19 +20,8 @@ class Design extends Model
         parent::boot();
 
         self::creating(function ($model) {
-            $model->ulid = self::generateMixCaseULID();
+            $model->ulid = MixCaseULID::generate();
         });
-    }
-
-    /**
-     * Summary of generateMixCaseULID
-     * @return string
-     */
-    public static function generateMixCaseULID(): string
-    {
-        $ulid = (string) Str::ulid();
-        $mixcase = implode("", array_map(fn($c) => rand(0, 1) ? strtolower($c) : strtoupper($c), str_split($ulid)));
-        return $mixcase;
     }
 
     protected $fillable = [
