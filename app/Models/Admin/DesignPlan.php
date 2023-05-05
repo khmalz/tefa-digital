@@ -23,7 +23,7 @@ class DesignPlan extends Model
         return $this->hasMany(DesignFeature::class, 'design_plan_id');
     }
 
-    public function categories()
+    public function category()
     {
         return $this->belongsTo(DesignCategory::class, 'design_category_id');
     }
