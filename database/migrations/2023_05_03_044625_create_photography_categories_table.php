@@ -10,12 +10,11 @@ return new class extends Migration {
      */
     public function up(): void
     {
-        Schema::create('videography_plans', function (Blueprint $table) {
+        Schema::create('photography_categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('videography_category_id')->constrained('videography_categories')->onDelete('cascade');
             $table->string('title');
-            $table->integer('price');
-            $table->text('description');
+            $table->text('body');
+            $table->string('image');
             $table->timestamps();
         });
     }
@@ -25,6 +24,6 @@ return new class extends Migration {
      */
     public function down(): void
     {
-        Schema::dropIfExists('videography_plans');
+        Schema::dropIfExists('photography_categories');
     }
 };

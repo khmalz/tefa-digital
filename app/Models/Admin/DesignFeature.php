@@ -2,8 +2,9 @@
 
 namespace App\Models\Admin;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Admin\DesignPlan;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class DesignFeature extends Model
 {
@@ -11,11 +12,11 @@ class DesignFeature extends Model
 
     protected $fillable = [
         'text',
-        'design_category_id'
+        'design_plan_id'
     ];
 
-    public function category()
+    public function plan()
     {
-        return $this->belongsTo(DesignCategory::class, 'design_category_id');
+        return $this->belongsTo(DesignPlan::class, 'design_plan_id');
     }
 }
