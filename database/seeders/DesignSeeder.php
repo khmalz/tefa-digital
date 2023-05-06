@@ -42,13 +42,13 @@ class DesignSeeder extends Seeder
         $des_plans = [
             [
                 'design_category_id' => 1,
-                'title' => 'ekonomis',
+                'title' => 'Ekonomis',
                 'price' => 200000,
                 'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
             ],
             [
                 'design_category_id' => 1,
-                'title' => 'populer',
+                'title' => 'Populer',
                 'price' => 250000,
                 'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
             ],
@@ -60,13 +60,13 @@ class DesignSeeder extends Seeder
             ],
             [
                 'design_category_id' => 2,
-                'title' => 'ekonomis',
+                'title' => 'Ekonomis',
                 'price' => 100000,
                 'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
             ],
             [
                 'design_category_id' => 2,
-                'title' => 'populer',
+                'title' => 'Populer',
                 'price' => 270000,
                 'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
             ],
@@ -78,13 +78,13 @@ class DesignSeeder extends Seeder
             ],
             [
                 'design_category_id' => 3,
-                'title' => 'ekonomis',
+                'title' => 'Ekonomis',
                 'price' => 100000,
                 'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
             ],
             [
                 'design_category_id' => 3,
-                'title' => 'populer',
+                'title' => 'Populer',
                 'price' => 270000,
                 'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
             ],

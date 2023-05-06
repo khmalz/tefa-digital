@@ -35,25 +35,25 @@ class VideographySeeder extends Seeder
         $video_plans = [
             [
                 'videography_category_id' => 1,
-                'title' => 'Ekonomis',
+                'title' => 'Basic',
                 'price' => 250000,
                 'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
             ],
             [
                 'videography_category_id' => 1,
-                'title' => 'Terlaris',
+                'title' => 'Plus',
                 'price' => 500000,
                 'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
             ],
             [
                 'videography_category_id' => 2,
-                'title' => 'Ekonomis',
+                'title' => 'Basic',
                 'price' => 250000,
                 'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
             ],
             [
                 'videography_category_id' => 2,
-                'title' => 'Terlaris',
+                'title' => 'Plus',
                 'price' => 500000,
                 'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
             ],
