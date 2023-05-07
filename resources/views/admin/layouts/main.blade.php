@@ -17,7 +17,22 @@
         href="https://cdn.datatables.net/v/bs5/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/cr-1.6.2/date-1.4.1/fc-4.2.2/fh-3.3.2/kt-2.9.0/r-2.4.1/rg-1.3.1/rr-1.3.3/sc-2.1.1/sb-1.4.2/sp-2.1.2/sl-1.6.2/sr-1.2.2/datatables.min.css"
         rel="stylesheet" />
     <!-- Main styles for this application-->
-    <link href="{{ asset('assets/admin/css/style.css') }}" rel="stylesheet" />
+    <link href="{{ asset('assets/admin/css/style.min.css') }}" rel="stylesheet" />
+    <style>
+        .navstabs {
+            color: #3c4b64ac !important;
+            border-radius: 0 !important;
+        }
+
+        .navstabs.active {
+            background-color: transparent !important;
+            border: none !important;
+            border-bottom: 2.5px solid #3c4b64 !important;
+            padding-bottom: 0.5rem !important;
+            color: #3c4b64 !important;
+            font-weight: 600 !important;
+        }
+    </style>
     @stack('styles')
 </head>
 

@@ -21,4 +21,8 @@ Route::prefix('admin')->group(function () {
     Route::get('dashboard', function () {
         return view('admin.dashboard.index');
     })->name('admin.dashboard');
+
+    Route::get('order-list', function () {
+        return view('admin.order.index');
+    })->name('order.index');
 });

@@ -8,20 +8,9 @@
                 Dashboard</a>
         </li>
         <li class="nav-title">Orderan</li>
-        <li class="nav-group">
-            <a class="nav-link nav-group-toggle" href="#">
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('order.index') }}">
                 List</a>
-            <ul class="nav-group-items">
-                <li class="nav-item">
-                    <a class="nav-link" href="base/tooltips.html"><span class="nav-icon"></span>Baru Dipesan</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="base/tooltips.html"><span class="nav-icon"></span>Sedang Dikerjakan</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="base/tooltips.html"><span class="nav-icon"></span>Sudah Selesai</a>
-                </li>
-            </ul>
         </li>
         <li class="nav-title">Tampilan</li>
         <li class="nav-item">
