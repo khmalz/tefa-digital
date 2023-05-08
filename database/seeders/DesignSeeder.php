@@ -2,10 +2,8 @@
 
 namespace Database\Seeders;
 
-use App\Models\Admin\Design;
 use Illuminate\Database\Seeder;
 use App\Models\Admin\DesignPlan;
-use App\Models\Admin\DesignImage;
 use App\Models\Admin\DesignFeature;
 use App\Models\Admin\DesignCategory;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -25,12 +23,12 @@ class DesignSeeder extends Seeder
             ],
             [
                 'title' => 'Promosi Digital',
-                'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore voluptate cum iste, nobis est consequatur enim ad aliquid magni rerum animi facilis beatae culpa placeat. Voluptas, eum quo!',
+                'body' => 'Yuk, promosikan bisnismu dengan desain promosi digital yang menarik dan profesional! Kami menawarkan jasa desain promosi digital dengan harga mulai dari Rp 100 ribu saja.',
                 'image' => fake()->filePath()
             ],
             [
                 'title' => '3D',
-                'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, suscipit veritatis harum fugit, aut quo, esse pariatur enim facere necessitatibus obcaecati at. Eligendi dolorum nisi commodi quam aut laboriosam ab, odit accusantium adipisci nam!',
+                'body' => 'Anda mencari jasa desain 3D yang terjangkau dan berkualitas? Kami menawarkan jasa desain 3D dengan harga mulai dari Rp 150 ribu saja. ',
                 'image' => fake()->filePath()
             ],
         ];
@@ -54,44 +52,20 @@ class DesignSeeder extends Seeder
             ],
             [
                 'design_category_id' => 1,
-                'title' => 'lengkap',
+                'title' => 'Lengkap',
                 'price' => 300000,
                 'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
             ],
             [
                 'design_category_id' => 2,
-                'title' => 'Ekonomis',
-                'price' => 100000,
-                'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
-            ],
-            [
-                'design_category_id' => 2,
-                'title' => 'Populer',
-                'price' => 270000,
-                'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
-            ],
-            [
-                'design_category_id' => 2,
-                'title' => 'lengkap',
-                'price' => 450000,
-                'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
-            ],
-            [
-                'design_category_id' => 3,
-                'title' => 'Ekonomis',
+                'title' => 'Basic',
                 'price' => 100000,
                 'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
             ],
             [
                 'design_category_id' => 3,
-                'title' => 'Populer',
-                'price' => 270000,
-                'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
-            ],
-            [
-                'design_category_id' => 3,
-                'title' => 'lengkap',
-                'price' => 450000,
+                'title' => 'Basic',
+                'price' => 150000,
                 'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
             ],
         ];
@@ -182,52 +156,29 @@ class DesignSeeder extends Seeder
                 'design_plan_id' => 3
             ],
             [
-                'text' => 'feature 1.4',
+                'text' => 'Design Unik',
+                'description' => 'Kami menawarkan desain yang unik dan kreatif yang akan membantu bisnis para klien tampil berbeda dari pesaing. Kami memahami bahwa desain yang menarik dan berbeda adalah kunci untuk menarik perhatian pelanggan potensial dan meningkatkan penjualan.',
                 'design_plan_id' => 4
             ],
             [
-                'text' => 'feature 2.4',
+                'text' => 'Konsultasi Gratis',
+                'description' => 'Kami juga menawarkan konsultasi gratis untuk membantu klien memilih desain yang paling sesuai dengan bisnis dan visi mereka untuk kampanye promosi. Kami akan membantu mengidentifikasi kebutuhan dan tujuan bisnis, serta menyampaikan ide dan saran untuk mendapatkan hasil yang terbaik.',
                 'design_plan_id' => 4
             ],
             [
-                'text' => 'feature 1.5',
+                'text' => 'Pengerjaan Profesional',
+                'description' => 'Kami juga menawarkan pengerjaan profesional dengan kualitas terbaik. Tim kami mengutamakan sebuah kualitas dan kami akan memastikan desain yang akurat, rapi, dan sesuai dengan kebutuhan klien.',
+                'design_plan_id' => 4
+            ],
+            [
+                'text' => 'Konsultasi Gratis',
+                'description' => 'Kami menawarkan konsultasi gratis untuk membantu Anda memahami bagaimana desain 3D dapat membantu meningkatkan proyek Anda. Tim kami siap memberikan saran dan ide kreatif tentang desain 3D yang dapat membuat proyek Anda terlihat lebih realistis dan memukau. Hubungi kami sekarang untuk menjadwalkan konsultasi gratis dengan tim kami!',
                 'design_plan_id' => 5
             ],
             [
-                'text' => 'feature 2.5',
+                'text' => 'Harga yang Sesuai',
+                'description' => 'Kami memberikan penawaran harga yang sesuai dengan tingkat kerumitan dari detail pemesanan design dan tentunya berdasarkan hasil diskusi dengan klien. Juga, kami berkomitmen untuk memberikan hasil yang memuaskan bagi klien kami dengan harga yang sesuai dengan anggaran proyek.',
                 'design_plan_id' => 5
-            ],
-            [
-                'text' => 'feature 1.6',
-                'design_plan_id' => 6
-            ],
-            [
-                'text' => 'feature 2.6',
-                'design_plan_id' => 6
-            ],
-            [
-                'text' => 'feature 1.7',
-                'design_plan_id' => 7
-            ],
-            [
-                'text' => 'feature 2.7',
-                'design_plan_id' => 7
-            ],
-            [
-                'text' => 'feature 1.8',
-                'design_plan_id' => 8
-            ],
-            [
-                'text' => 'feature 2.8',
-                'design_plan_id' => 8
-            ],
-            [
-                'text' => 'feature 1.9',
-                'design_plan_id' => 9
-            ],
-            [
-                'text' => 'feature 2.9',
-                'design_plan_id' => 9
             ],
         ];
 
