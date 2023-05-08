@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Admin\DesignImage;
 use App\Models\User;
 use App\Models\Admin\Design;
 use App\Models\Admin\Photography;
@@ -32,5 +33,7 @@ class DatabaseSeeder extends Seeder
         Photography::factory(5)->create();
         Videography::factory(5)->create();
         Printing::factory(5)->create();
+
+        DesignImage::factory(10)->create();
     }
 }
