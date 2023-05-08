@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->ulid()->unique();
             $table->string('name_customer');
             $table->string('number_customer');
+            $table->string('email_customer');
             $table->string('material');
             $table->string('scale');
             $table->string('file');

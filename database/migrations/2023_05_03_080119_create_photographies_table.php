@@ -18,6 +18,7 @@ return new class extends Migration {
             $table->string('number_customer');
             $table->string('email_customer');
             $table->text('description');
+            $table->timestamps();
         });
     }
 

@@ -25,6 +25,7 @@ class Printing extends Model
     protected $fillable = [
         'name_customer',
         'number_customer',
+        'email_customer',
         'material',
         'scale',
         'file',
