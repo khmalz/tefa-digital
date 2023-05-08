@@ -15,7 +15,7 @@ return new class extends Migration {
             $table->foreignId('design_category_id')->constrained('design_categories')->onDelete('cascade');
             $table->string('title');
             $table->integer('price');
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

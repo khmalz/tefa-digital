@@ -18,7 +18,7 @@ class DesignSeeder extends Seeder
         $des_categories = [
             [
                 'title' => 'Logo',
-                'body' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. A dolorem reprehenderit hic accusantium harum, fugiat eum atque ea provident in consequuntur deleniti aperiam, sunt earum',
+                'body' => 'Buat merek Anda terlihat profesional dan menonjol dengan jasa desain logo kami. Tim ahli kami akan menciptakan logo yang sesuai dengan keinginan Anda. Kami menawarkan revisi logo dan format file logo yang sesuai dengan kebutuhan Anda. Dapatkan logo merek yang kuat dengan penawaran terbaik dari kami. Hubungi kami sekarang!',
                 'image' => fake()->filePath()
             ],
             [
@@ -28,7 +28,7 @@ class DesignSeeder extends Seeder
             ],
             [
                 'title' => '3D',
-                'body' => 'Anda mencari jasa desain 3D yang terjangkau dan berkualitas? Kami menawarkan jasa desain 3D dengan harga mulai dari Rp 150 ribu saja. ',
+                'body' => 'Anda mencari jasa desain 3D yang terjangkau dan berkualitas? Kami menawarkan jasa desain 3D dengan harga mulai dari Rp 150 ribu saja.',
                 'image' => fake()->filePath()
             ],
         ];
@@ -42,31 +42,26 @@ class DesignSeeder extends Seeder
                 'design_category_id' => 1,
                 'title' => 'Ekonomis',
                 'price' => 200000,
-                'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
             ],
             [
                 'design_category_id' => 1,
                 'title' => 'Populer',
                 'price' => 250000,
-                'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
             ],
             [
                 'design_category_id' => 1,
                 'title' => 'Lengkap',
                 'price' => 300000,
-                'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
             ],
             [
                 'design_category_id' => 2,
                 'title' => 'Basic',
                 'price' => 100000,
-                'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
             ],
             [
                 'design_category_id' => 3,
                 'title' => 'Basic',
                 'price' => 150000,
-                'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
             ],
         ];
 

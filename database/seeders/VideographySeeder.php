@@ -18,12 +18,12 @@ class VideographySeeder extends Seeder
         $video_categories = [
             [
                 'title' => 'Layanan Pembuatan Video Syuting',
-                'body' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. A dolorem reprehenderit hic accusantium harum, fugiat eum atque ea provident in consequuntur deleniti aperiam, sunt earum',
+                'body' => 'Ciptakan video yang memukau dengan jasa pembuatan video syuting kami. Tim kami akan mengambil video syuting secara profesional dan menghasilkan video yang sesuai keinginan Anda. Hubungi kami sekarang untuk penawaran terbaik.',
                 'image' => fake()->filePath()
             ],
             [
                 'title' => 'Layanan Pembuatan Video Dokumentasi',
-                'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore voluptate cum iste, nobis est consequatur enim ad aliquid magni rerum animi facilis beatae culpa placeat. Voluptas, eum quo!',
+                'body' => 'Buat momen penting dan spesial Anda terabadikan dengan jasa pembuatan video dokumentasi kami. Kami menawarkan jasa pembuatan video dokumentasi untuk acara, proyek, atau keperluan bisnis Anda. Kami akan bekerja sama dengan Anda untuk memahami kebutuhan Anda dan menghasilkan video yang sesuai dengan visi Anda. Dapatkan video dokumentasi yang berkualitas tinggi untuk memenuhi kebutuhan Anda. Hubungi kami sekarang untuk mendapatkan penawaran terbaik untuk jasa pembuatan video dokumentasi kami.',
                 'image' => fake()->filePath()
             ],
         ];
@@ -37,25 +37,21 @@ class VideographySeeder extends Seeder
                 'videography_category_id' => 1,
                 'title' => 'Basic',
                 'price' => 250000,
-                'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
             ],
             [
                 'videography_category_id' => 1,
                 'title' => 'Plus',
                 'price' => 500000,
-                'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
             ],
             [
                 'videography_category_id' => 2,
                 'title' => 'Basic',
                 'price' => 250000,
-                'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
             ],
             [
                 'videography_category_id' => 2,
                 'title' => 'Plus',
                 'price' => 500000,
-                'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
             ],
         ];
 

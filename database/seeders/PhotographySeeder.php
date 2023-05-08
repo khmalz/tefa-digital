@@ -18,17 +18,17 @@ class PhotographySeeder extends Seeder
         $photo_categories = [
             [
                 'title' => 'Produk',
-                'body' => 'Lorem, ipsum dolor sit amet consectetur adipisicing elit. A dolorem reprehenderit hic accusantium harum, fugiat eum atque ea provident in consequuntur deleniti aperiam, sunt earum',
+                'body' => 'Buat produk Anda terlihat lebih menarik dengan jasa foto produk kami. Tim ahli kami akan mengambil gambar produk Anda dengan menggunakan peralatan fotografi terbaik dan mengedit foto untuk hasil yang lebih baik. Dapatkan foto produk yang memukau dengan penawaran terbaik dari kami. Hubungi kami sekarang!',
                 'image' => fake()->filePath()
             ],
             [
                 'title' => 'Pernikahan',
-                'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore voluptate cum iste, nobis est consequatur enim ad aliquid magni rerum animi facilis beatae culpa placeat. Voluptas, eum quo!',
+                'body' => 'Abadikan momen spesial pernikahan Anda dengan jasa foto pernikahan kami. Dapatkan kenangan pernikahan yang abadi dengan penawaran terbaik dari kami. Hubungi kami sekarang!',
                 'image' => fake()->filePath()
             ],
             [
                 'title' => 'Acara',
-                'body' => 'Lorem ipsum dolor sit amet consectetur adipisicing elit. A, suscipit veritatis harum fugit, aut quo, esse pariatur enim facere necessitatibus obcaecati at. Eligendi dolorum nisi commodi quam aut laboriosam ab, odit accusantium adipisci nam!',
+                'body' => 'Kami menawarkan jasa fotografi acara untuk mengabadikan momen penting Anda. Tim kami akan mengambil gambar acara Anda dengan baik dan menghasilkan gambar yang memukau. Dapatkan gambar acara Anda yang paling berkesan dengan jasa fotografi acara kami. Hubungi kami sekarang untuk mendapatkan penawaran terbaik.',
                 'image' => fake()->filePath()
             ],
         ];
@@ -42,37 +42,31 @@ class PhotographySeeder extends Seeder
                 'photography_category_id' => 1,
                 'title' => 'Basic',
                 'price' => 25000,
-                'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
             ],
             [
                 'photography_category_id' => 1,
                 'title' => 'Plus',
                 'price' => 50000,
-                'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
             ],
             [
                 'photography_category_id' => 2,
                 'title' => 'Basic',
                 'price' => 25000,
-                'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
             ],
             [
                 'photography_category_id' => 2,
                 'title' => 'Plus',
                 'price' => 50000,
-                'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
             ],
             [
                 'photography_category_id' => 3,
                 'title' => 'Basic',
                 'price' => 25000,
-                'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
             ],
             [
                 'photography_category_id' => 3,
                 'title' => 'Plus',
                 'price' => 50000,
-                'description' => 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Aliquam consectetur eius ex, cum placeat totam natus necessitatibus minus veritatis iure fuga nam illum aperiam tempore enim dolore! Error, dolor.'
             ],
         ];
 
