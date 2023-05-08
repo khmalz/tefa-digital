@@ -22,15 +22,10 @@
                 Contact Us</a>
         </li>
         <li class="nav-title">Jasa</li>
-        <li class="nav-item">
-            <a class="nav-link" href="charts.html">
-                Printing</a>
-        </li>
         <li class="nav-group">
             <a class="nav-link nav-group-toggle" href="#">
                 Design</a>
             <ul class="nav-group-items">
-                <li class="nav-item"><a class="nav-link" href="forms/form-control.html">Description</a></li>
                 <li class="nav-item"><a class="nav-link" href="forms/form-control.html">Category</a></li>
                 <li class="nav-item"><a class="nav-link" href="forms/form-control.html">Plan</a></li>
                 <li class="nav-item"><a class="nav-link" href="forms/form-control.html">Feature</a></li>
@@ -40,7 +35,6 @@
             <a class="nav-link nav-group-toggle" href="#">
                 Photography</a>
             <ul class="nav-group-items">
-                <li class="nav-item"><a class="nav-link" href="forms/form-control.html">Description</a></li>
                 <li class="nav-item"><a class="nav-link" href="forms/form-control.html">Category</a></li>
                 <li class="nav-item"><a class="nav-link" href="forms/form-control.html">Plan</a></li>
                 <li class="nav-item"><a class="nav-link" href="forms/form-control.html">Feature</a></li>
@@ -50,7 +44,6 @@
             <a class="nav-link nav-group-toggle" href="#">
                 Videography</a>
             <ul class="nav-group-items">
-                <li class="nav-item"><a class="nav-link" href="forms/form-control.html">Description</a></li>
                 <li class="nav-item"><a class="nav-link" href="forms/form-control.html">Category</a></li>
                 <li class="nav-item"><a class="nav-link" href="forms/form-control.html">Plan</a></li>
                 <li class="nav-item"><a class="nav-link" href="forms/form-control.html">Feature</a></li>
