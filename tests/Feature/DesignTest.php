@@ -23,77 +23,83 @@ class DesignTest extends TestCase
     }
 
     /** @test */
-    public function a_design_belongs_to_a_category()
+    public function test_design_belongs_to_a_plan()
     {
-        // Assert that the design belongs to a category
-        $this->assertNotNull($this->design->category);
-        $this->assertInstanceOf(DesignCategory::class, $this->design->category);
+        // Assert that the design belongs to a plan
+        $this->assertNotNull($this->design->plan);
+        $this->assertInstanceOf(DesignPlan::class, $this->design->plan);
     }
 
     /** @test */
-    public function a_design_category_has_many_designs()
+    public function test_design_plan_has_many_designs()
     {
-        // Assert that the category has many designs
-        $this->assertNotNull($this->design->category->designs);
-        $this->assertInstanceOf(Collection::class, $this->design->category->designs);
-        $this->assertInstanceOf(Design::class, $this->design->category->designs->first());
+        // Assert that the plan has many designs
+        $this->assertNotNull($this->design->plan->designs);
+        $this->assertInstanceOf(Collection::class, $this->design->plan->designs);
+        $this->assertInstanceOf(Design::class, $this->design->plan->designs->first());
+    }
+
+    public function test_design_category_has_many_plans()
+    {
+        $category = $this->design->plan->category;
+
+        $this->assertNotNull($category->plans);
+        $this->assertInstanceOf(Collection::class, $category->plans);
+        $this->assertInstanceOf(DesignPlan::class, $category->plans->first());
+    }
+
+    public function test_design_plan_belongs_to_one_design_category()
+    {
+        $category = $this->design->plan->category;
+
+        $this->assertNotNull($category);
+        $this->assertInstanceOf(DesignCategory::class, $category);
     }
 
     /** @test */
-    public function a_design_category_has_many_plans()
-    {
-        // Assert that the category has many plans
-        $this->assertNotNull($this->design->category->plans);
-        $this->assertInstanceOf(Collection::class, $this->design->category->plans);
-        $this->assertInstanceOf(DesignPlan::class, $this->design->category->plans->first());
-    }
-
-    /** @test */
-    public function a_design_plan_has_many_features()
+    public function test_design_plan_has_many_features()
     {
         // Assert that the plan has many features
-        $features = $this->design->category->plans->flatMap(function ($plan) {
-            return $plan->features;
-        });
+        $this->assertNotNull($this->design->plan->features);
+        $this->assertInstanceOf(Collection::class, $this->design->plan->features);
+        $this->assertInstanceOf(DesignFeature::class, $this->design->plan->features->first());
 
-        $this->assertNotNull($features);
-        $this->assertInstanceOf(Collection::class, $features);
-        $this->assertInstanceOf(DesignFeature::class, $features->first());
+        // Assert that each feature belongs to the plan
+        foreach ($this->design->plan->features as $feature) {
+            $this->assertEquals($this->design->plan->id, $feature->design_plan_id);
+        }
+    }
+
+
+    /** @test */
+    public function test_design_feature_belongs_to_a_design_plan()
+    {
+        // Assert that the feature belongs to a plan
+        $this->assertNotNull($this->design->plan->features->first()->plan);
+        $this->assertInstanceOf(DesignPlan::class, $this->design->plan->features->first()->plan);
     }
 
     /** @test */
-    public function a_design_feature_has_many_plans()
+    public function test_design_has_many_images()
     {
-        // Retrieve all features for the design's category plans
-        $features = $this->design->category->plans->flatMap(function ($plan) {
-            return $plan->features;
-        });
-
-        // Assert that the design feature has many plans
-        $this->assertNotNull($features->first()->plan);
-        $this->assertInstanceOf(DesignPlan::class, $features->first()->plan);
-        $this->assertInstanceOf(Collection::class, $features->first()->plan->features);
-        $this->assertInstanceOf(DesignFeature::class, $features->first()->plan->features->first());
-    }
-
-    /** @test */
-    public function a_design_has_many_images()
-    {
-        // assert that the design has at least one image
+        // Assert that the design has many images
         $this->assertNotNull($this->design->images);
         $this->assertInstanceOf(Collection::class, $this->design->images);
         $this->assertInstanceOf(DesignImage::class, $this->design->images->first());
+
+        // Assert that each image belongs to the design
+        foreach ($this->design->images as $image) {
+            $this->assertEquals($this->design->id, $image->design_id);
+        }
     }
 
     /** @test */
-    public function a_design_image_belongs_to_a_design()
+    public function test_design_image_belongs_to_a_design()
     {
-        // Retrieve an image from the database
-        $image = $this->design->images->first();
-
-        // Assert that the image belongs to a design
-        $this->assertNotNull($image->design);
-        $this->assertInstanceOf(Design::class, $image->design);
+        // Assert that each image belongs to the design
+        foreach ($this->design->images as $image) {
+            $this->assertEquals($this->design->id, $image->design_id);
+            $this->assertInstanceOf(Design::class, $image->design);
+        }
     }
-
 }

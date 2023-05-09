@@ -4,7 +4,7 @@ namespace App\Models\Admin;
 
 use App\Helpers\MixCaseULID;
 use App\Models\Admin\DesignImage;
-use App\Models\Admin\DesignCategory;
+use App\Models\Admin\DesignPlan;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -25,7 +25,7 @@ class Design extends Model
     }
 
     protected $fillable = [
-        'design_category_id',
+        'design_plan_id',
         'name_customer',
         'number_customer',
         'email_customer',
@@ -34,9 +34,9 @@ class Design extends Model
         'description'
     ];
 
-    public function category()
+    public function plan()
     {
-        return $this->belongsTo(DesignCategory::class, 'design_category_id');
+        return $this->belongsTo(DesignPlan::class, 'design_plan_id');
     }
 
     public function images()

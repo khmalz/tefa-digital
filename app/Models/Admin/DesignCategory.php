@@ -17,11 +17,6 @@ class DesignCategory extends Model
         'image'
     ];
 
-    public function designs()
-    {
-        return $this->hasMany(Design::class, 'design_category_id');
-    }
-
     public function plans()
     {
         return $this->hasMany(DesignPlan::class, 'design_category_id');
