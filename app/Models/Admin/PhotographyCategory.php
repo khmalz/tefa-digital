@@ -2,7 +2,6 @@
 
 namespace App\Models\Admin;
 
-use App\Models\Admin\Photography;
 use App\Models\Admin\PhotographyPlan;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

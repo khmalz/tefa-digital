@@ -4,7 +4,7 @@ namespace App\Models\Admin;
 
 use App\Helpers\MixCaseULID;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Admin\VideographyCategory;
+use App\Models\Admin\VideographyPlan;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Videography extends Model
@@ -24,15 +24,15 @@ class Videography extends Model
     }
 
     protected $fillable = [
-        'videography_category_id',
+        'videography_plan_id',
         'name_customer',
         'number_customer',
         'email_customer',
         'description'
     ];
 
-    public function category()
+    public function plan()
     {
-        return $this->belongsTo(VideographyCategory::class, 'videography_category_id');
+        return $this->belongsTo(VideographyPlan::class, 'videography_plan_id');
     }
 }
