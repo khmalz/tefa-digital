@@ -17,11 +17,6 @@ class PhotographyCategory extends Model
         'image'
     ];
 
-    public function photographies()
-    {
-        return $this->hasMany(Photography::class, 'photography_category_id');
-    }
-
     public function plans()
     {
         return $this->hasMany(PhotographyPlan::class, 'photography_category_id');

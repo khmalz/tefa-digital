@@ -4,7 +4,7 @@ namespace App\Models\Admin;
 
 use App\Helpers\MixCaseULID;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Admin\PhotographyCategory;
+use App\Models\Admin\PhotographyPlan;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Photography extends Model
@@ -24,15 +24,15 @@ class Photography extends Model
     }
 
     protected $fillable = [
-        'photography_category_id',
+        'photography_plan_id',
         'name_customer',
         'number_customer',
         'email_customer',
         'description'
     ];
 
-    public function category()
+    public function plan()
     {
-        return $this->belongsTo(PhotographyCategory::class, 'photography_category_id');
+        return $this->belongsTo(PhotographyPlan::class, 'photography_plan_id');
     }
 }
