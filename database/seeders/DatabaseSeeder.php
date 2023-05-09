@@ -29,11 +29,16 @@ class DatabaseSeeder extends Seeder
             VideographySeeder::class
         ]);
 
-        Design::factory(5)->create();
         Photography::factory(5)->create();
         Videography::factory(5)->create();
         Printing::factory(5)->create();
 
-        DesignImage::factory(10)->create();
+        $designs = Design::factory(5)->create();
+
+        $designs->each(function ($design) {
+            DesignImage::factory()->create(['design_id' => $design->id]);
+        });
+
+        DesignImage::factory(7)->create();
     }
 }
