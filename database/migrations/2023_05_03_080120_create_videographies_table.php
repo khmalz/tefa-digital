@@ -17,7 +17,8 @@ return new class extends Migration {
             $table->string('name_customer');
             $table->string('number_customer');
             $table->string('email_customer');
-            $table->text('description');
+            $table->text('description')->nullable();
+            $table->enum('status', ['pending', 'progress', 'completed'])->default('pending');
             $table->timestamps();
         });
     }

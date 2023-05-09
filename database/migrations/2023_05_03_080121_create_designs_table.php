@@ -19,7 +19,8 @@ return new class extends Migration {
             $table->string('email_customer');
             $table->string('slogan')->nullable();
             $table->string('color');
-            $table->text('description');
+            $table->text('description')->nullable();
+            $table->enum('status', ['pending', 'progress', 'completed'])->default('pending');
             $table->timestamps();
         });
     }

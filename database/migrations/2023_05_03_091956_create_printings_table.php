@@ -20,6 +20,7 @@ return new class extends Migration {
             $table->string('scale');
             $table->string('file');
             $table->text('description')->nullable();
+            $table->enum('status', ['pending', 'progress', 'completed'])->default('pending');
             $table->timestamps();
         });
     }
