@@ -2,7 +2,7 @@
 
 namespace Database\Factories\Admin;
 
-use App\Models\Admin\PhotographyCategory;
+use App\Models\Admin\PhotographyPlan;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +18,7 @@ class PhotographyFactory extends Factory
     public function definition(): array
     {
         return [
-            'photography_category_id' => PhotographyCategory::inRandomOrder()->value('id'),
+            'photography_plan_id' => PhotographyPlan::inRandomOrder()->value('id'),
             'name_customer' => fake('id_ID')->name(),
             'number_customer' => fake('id_ID')->phoneNumber(),
             'email_customer' => fake('id_ID')->safeEmail(),
