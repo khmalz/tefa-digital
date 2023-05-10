@@ -1,7 +1,10 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Api\DesignController;
+use App\Http\Controllers\Api\PrintingController;
+use App\Http\Controllers\Api\PhotographyController;
+use App\Http\Controllers\Api\VideographyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
+Route::resource('design', DesignController::class);
+Route::resource('photography', PhotographyController::class);
+Route::resource('videography', VideographyController::class);
+Route::resource('printing', PrintingController::class);

@@ -34,6 +34,9 @@ class Photography extends Model
         'description'
     ];
 
+    protected $with = ['plan', 'category:photography_categories.title'];
+    protected $appends = ['price'];
+
     public function plan(): BelongsTo
     {
         return $this->belongsTo(PhotographyPlan::class, 'photography_plan_id');
@@ -53,5 +56,10 @@ class Photography extends Model
             // local key pada model Photography
             'photography_category_id' // local key pada model PhotographyPlan
         );
+    }
+
+    public function getPriceAttribute()
+    {
+        return $this->plan->price;
     }
 }
