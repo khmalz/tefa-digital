@@ -13,7 +13,7 @@ return new class extends Migration {
         Schema::create('designs', function (Blueprint $table) {
             $table->id();
             $table->ulid()->unique();
-            $table->foreignId('design_category_id')->constrained('design_categories')->onDelete('cascade');
+            $table->foreignId('design_plan_id')->constrained('design_plans')->onDelete('cascade');
             $table->string('name_customer');
             $table->string('number_customer');
             $table->string('email_customer');

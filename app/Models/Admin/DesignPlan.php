@@ -18,6 +18,12 @@ class DesignPlan extends Model
         'description'
     ];
 
+    public function designs()
+    {
+        return $this->hasMany(Design::class, 'design_plan_id');
+
+    }
+
     public function features()
     {
         return $this->hasMany(DesignFeature::class, 'design_plan_id');

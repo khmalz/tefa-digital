@@ -18,6 +18,11 @@ class PhotographyPlan extends Model
         'description'
     ];
 
+    public function photographies()
+    {
+        return $this->hasMany(Photography::class, 'photography_plan_id');
+    }
+
     public function features()
     {
         return $this->hasMany(PhotographyFeature::class, 'photography_plan_id');

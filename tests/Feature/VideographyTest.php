@@ -22,56 +22,76 @@ class VideographyTest extends TestCase
    }
 
    /** @test */
-   public function a_videography_belongs_to_a_category()
+   public function test_videography_belongs_to_a_plan()
    {
-      // Assert that the videography belongs to a category
-      $this->assertNotNull($this->videography->category);
+      // Assert that the videography belongs to a plan
+      $this->assertNotNull($this->videography->plan);
+      $this->assertInstanceOf(VideographyPlan::class, $this->videography->plan);
+   }
+
+   /** @test */
+   public function test_videography_plan_has_many_videographies()
+   {
+      // Assert that the plan has many videographies
+      $this->assertNotNull($this->videography->plan->videographies);
+      $this->assertInstanceOf(Collection::class, $this->videography->plan->videographies);
+      $this->assertInstanceOf(Videography::class, $this->videography->plan->videographies->first());
+   }
+
+   public function test_videography_category_has_many_plans()
+   {
+      $category = $this->videography->plan->category;
+
+      $this->assertNotNull($category->plans);
+      $this->assertInstanceOf(Collection::class, $category->plans);
+      $this->assertInstanceOf(VideographyPlan::class, $category->plans->first());
+   }
+
+   public function test_videography_plan_belongs_to_one_videography_category()
+   {
+      $category = $this->videography->plan->category;
+
+      $this->assertNotNull($category);
+      $this->assertInstanceOf(VideographyCategory::class, $category);
+   }
+
+   /** @test */
+   public function test_videography_plan_has_many_features()
+   {
+      // Assert that the plan has many features
+      $this->assertNotNull($this->videography->plan->features);
+      $this->assertInstanceOf(Collection::class, $this->videography->plan->features);
+      $this->assertInstanceOf(VideographyFeature::class, $this->videography->plan->features->first());
+
+      // Assert that each feature belongs to the plan
+      foreach ($this->videography->plan->features as $feature) {
+         $this->assertEquals($this->videography->plan->id, $feature->videography_plan_id);
+      }
+   }
+
+
+   /** @test */
+   public function test_videography_feature_belongs_to_a_videography_plan()
+   {
+      // Assert that the feature belongs to a plan
+      $this->assertNotNull($this->videography->plan->features->first()->plan);
+      $this->assertInstanceOf(VideographyPlan::class, $this->videography->plan->features->first()->plan);
+   }
+
+   /** @test */
+   public function test_videography_can_access_category()
+   {
+      // Menguji apakah desain dapat mengakses kategori yang terhubung dengan rencana desain yang terhubung dengannya
       $this->assertInstanceOf(VideographyCategory::class, $this->videography->category);
    }
 
-   /** @test */
-   public function a_videography_category_has_many_videographies()
+   public function test_category_can_access_videographies()
    {
-      // Assert that the category has many videographies
-      $this->assertNotNull($this->videography->category->videographies);
-      $this->assertInstanceOf(Collection::class, $this->videography->category->videographies);
-      $this->assertInstanceOf(Videography::class, $this->videography->category->videographies->first());
-   }
+      // Pastikan ada minimal satu kategori videography dan satu videography terkait di database
+      $category = $this->videography->category;
 
-   /** @test */
-   public function a_videography_category_has_many_plans()
-   {
-      // Assert that the category has many plans
-      $this->assertNotNull($this->videography->category->plans);
-      $this->assertInstanceOf(Collection::class, $this->videography->category->plans);
-      $this->assertInstanceOf(VideographyPlan::class, $this->videography->category->plans->first());
-   }
-
-   /** @test */
-   public function a_videography_plan_has_many_features()
-   {
-      // Assert that the plan has many features
-      $features = $this->videography->category->plans->flatMap(function ($plan) {
-         return $plan->features;
-      });
-
-      $this->assertNotNull($features);
-      $this->assertInstanceOf(Collection::class, $features);
-      $this->assertInstanceOf(VideographyFeature::class, $features->first());
-   }
-
-   /** @test */
-   public function a_videography_feature_has_many_plans()
-   {
-      // Retrieve all features for the videography's category plans
-      $features = $this->videography->category->plans->flatMap(function ($plan) {
-         return $plan->features;
-      });
-
-      // Assert that the videography feature has many plans
-      $this->assertNotNull($features->first()->plan);
-      $this->assertInstanceOf(VideographyPlan::class, $features->first()->plan);
-      $this->assertInstanceOf(Collection::class, $features->first()->plan->features);
-      $this->assertInstanceOf(VideographyFeature::class, $features->first()->plan->features->first());
+      // Cek bahwa method videographies() pada model videographyCategory mengembalikan collection yang berisi model videography yang terkait dengan kategori ini
+      $this->assertInstanceOf(Collection::class, $category->videographies);
+      $this->assertInstanceOf(videography::class, $category->videographies->first());
    }
 }
