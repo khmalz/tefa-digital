@@ -18,7 +18,7 @@ class PhotographyTest extends TestCase
     {
         parent::setUp();
 
-        $this->photography = Photography::first();
+        $this->photography = Photography::find(2);
     }
 
     /** @test */
@@ -83,5 +83,15 @@ class PhotographyTest extends TestCase
     {
         // Menguji apakah desain dapat mengakses kategori yang terhubung dengan rencana desain yang terhubung dengannya
         $this->assertInstanceOf(PhotographyCategory::class, $this->photography->category);
+    }
+
+    public function test_category_can_access_photographies()
+    {
+        // Pastikan ada minimal satu kategori photography dan satu photography terkait di database
+        $category = $this->photography->category;
+
+        // Cek bahwa method photographies() pada model PhotographyCategory mengembalikan collection yang berisi model Photography yang terkait dengan kategori ini
+        $this->assertInstanceOf(Collection::class, $category->photographies);
+        $this->assertInstanceOf(Photography::class, $category->photographies->first());
     }
 }

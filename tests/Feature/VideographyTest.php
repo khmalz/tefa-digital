@@ -84,4 +84,14 @@ class VideographyTest extends TestCase
       // Menguji apakah desain dapat mengakses kategori yang terhubung dengan rencana desain yang terhubung dengannya
       $this->assertInstanceOf(VideographyCategory::class, $this->videography->category);
    }
+
+   public function test_category_can_access_videographies()
+   {
+      // Pastikan ada minimal satu kategori videography dan satu videography terkait di database
+      $category = $this->videography->category;
+
+      // Cek bahwa method videographies() pada model videographyCategory mengembalikan collection yang berisi model videography yang terkait dengan kategori ini
+      $this->assertInstanceOf(Collection::class, $category->videographies);
+      $this->assertInstanceOf(videography::class, $category->videographies->first());
+   }
 }
