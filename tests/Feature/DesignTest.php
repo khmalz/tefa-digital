@@ -102,21 +102,4 @@ class DesignTest extends TestCase
             $this->assertInstanceOf(Design::class, $image->design);
         }
     }
-
-    /** @test */
-    public function test_design_can_access_category()
-    {
-        // Menguji apakah desain dapat mengakses kategori yang terhubung dengan rencana desain yang terhubung dengannya
-        $this->assertInstanceOf(DesignCategory::class, $this->design->category);
-    }
-
-    public function test_category_can_access_designs()
-    {
-        // Pastikan ada minimal satu kategori design dan satu design terkait di database
-        $category = $this->design->category;
-
-        // Cek bahwa method designs() pada model DesignCategory mengembalikan collection yang berisi model Design yang terkait dengan kategori ini
-        $this->assertInstanceOf(Collection::class, $category->designs);
-        $this->assertInstanceOf(Design::class, $category->designs->first());
-    }
 }

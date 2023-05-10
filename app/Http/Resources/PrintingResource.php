@@ -17,12 +17,10 @@ class PrintingResource extends JsonResource
         return [
             'order_id' => $this->ulid,
             'nama' => $this->name_customer,
-            'nomor' => $this->number_customer,
-            'email' => $this->email_customer,
+            'date' => $this->created_at->format('d F Y'),
             'material' => $this->material,
             'scale' => $this->scale,
-            'keterangan' => $this->description,
-            'status' => $this->status,
+            'status' => $this->status
         ];
     }
 
