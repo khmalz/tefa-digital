@@ -18,6 +18,12 @@ class VideographyPlan extends Model
         'description'
     ];
 
+    public function videographies()
+    {
+        return $this->hasMany(Videography::class, 'videography_plan_id');
+
+    }
+
     public function features()
     {
         return $this->hasMany(VideographyFeature::class, 'videography_plan_id');

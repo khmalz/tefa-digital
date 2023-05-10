@@ -18,60 +18,80 @@ class PhotographyTest extends TestCase
     {
         parent::setUp();
 
-        $this->photography = Photography::first();
+        $this->photography = Photography::find(2);
     }
 
     /** @test */
-    public function a_photography_belongs_to_a_category()
+    public function test_photography_belongs_to_a_plan()
     {
-        // Assert that the photography belongs to a category
-        $this->assertNotNull($this->photography->category);
+        // Assert that the photography belongs to a plan
+        $this->assertNotNull($this->photography->plan);
+        $this->assertInstanceOf(PhotographyPlan::class, $this->photography->plan);
+    }
+
+    /** @test */
+    public function test_photography_plan_has_many_photographies()
+    {
+        // Assert that the plan has many photographies
+        $this->assertNotNull($this->photography->plan->photographies);
+        $this->assertInstanceOf(Collection::class, $this->photography->plan->photographies);
+        $this->assertInstanceOf(Photography::class, $this->photography->plan->photographies->first());
+    }
+
+    public function test_photography_category_has_many_plans()
+    {
+        $category = $this->photography->plan->category;
+
+        $this->assertNotNull($category->plans);
+        $this->assertInstanceOf(Collection::class, $category->plans);
+        $this->assertInstanceOf(PhotographyPlan::class, $category->plans->first());
+    }
+
+    public function test_photography_plan_belongs_to_one_photography_category()
+    {
+        $category = $this->photography->plan->category;
+
+        $this->assertNotNull($category);
+        $this->assertInstanceOf(PhotographyCategory::class, $category);
+    }
+
+    /** @test */
+    public function test_photography_plan_has_many_features()
+    {
+        // Assert that the plan has many features
+        $this->assertNotNull($this->photography->plan->features);
+        $this->assertInstanceOf(Collection::class, $this->photography->plan->features);
+        $this->assertInstanceOf(PhotographyFeature::class, $this->photography->plan->features->first());
+
+        // Assert that each feature belongs to the plan
+        foreach ($this->photography->plan->features as $feature) {
+            $this->assertEquals($this->photography->plan->id, $feature->photography_plan_id);
+        }
+    }
+
+
+    /** @test */
+    public function test_photography_feature_belongs_to_a_photography_plan()
+    {
+        // Assert that the feature belongs to a plan
+        $this->assertNotNull($this->photography->plan->features->first()->plan);
+        $this->assertInstanceOf(PhotographyPlan::class, $this->photography->plan->features->first()->plan);
+    }
+
+    /** @test */
+    public function test_photography_can_access_category()
+    {
+        // Menguji apakah desain dapat mengakses kategori yang terhubung dengan rencana desain yang terhubung dengannya
         $this->assertInstanceOf(PhotographyCategory::class, $this->photography->category);
     }
 
-    /** @test */
-    public function a_photography_category_has_many_photographies()
+    public function test_category_can_access_photographies()
     {
-        // Assert that the category has many photographies
-        $this->assertNotNull($this->photography->category->photographies);
-        $this->assertInstanceOf(Collection::class, $this->photography->category->photographies);
-        $this->assertInstanceOf(Photography::class, $this->photography->category->photographies->first());
+        // Pastikan ada minimal satu kategori photography dan satu photography terkait di database
+        $category = $this->photography->category;
+
+        // Cek bahwa method photographies() pada model PhotographyCategory mengembalikan collection yang berisi model Photography yang terkait dengan kategori ini
+        $this->assertInstanceOf(Collection::class, $category->photographies);
+        $this->assertInstanceOf(Photography::class, $category->photographies->first());
     }
-
-    /** @test */
-    public function a_photography_category_has_many_plans()
-    {
-        // Assert that the category has many plans
-        $this->assertNotNull($this->photography->category->plans);
-        $this->assertInstanceOf(Collection::class, $this->photography->category->plans);
-        $this->assertInstanceOf(PhotographyPlan::class, $this->photography->category->plans->first());
-    }
-
-    /** @test */
-    public function a_photography_plan_has_many_features()
-    {
-        // Assert that the plan has many features
-        $features = $this->photography->category->plans->flatMap(function ($plan) {
-            return $plan->features;
-        });
-
-        $this->assertNotNull($features);
-        $this->assertInstanceOf(Collection::class, $features);
-        $this->assertInstanceOf(PhotographyFeature::class, $features->first());
-    }
-
-    /** @test */
-    public function a_photography_feature_has_plan()
-    {
-        // Retrieve all features for the photography's category plans
-        $features = $this->photography->category->plans->flatMap(function ($plan) {
-            return $plan->features;
-        });
-
-        // Assert that the photography feature has a plan
-        $this->assertNotNull($features->first()->plan);
-        $this->assertInstanceOf(PhotographyPlan::class, $features->first()->plan);
-        $this->assertInstanceOf(PhotographyFeature::class, $features->first()->plan->features->first());
-    }
-
 }

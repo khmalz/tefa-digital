@@ -2,7 +2,7 @@
 
 namespace Database\Factories\Admin;
 
-use App\Models\Admin\VideographyCategory;
+use App\Models\Admin\VideographyPlan;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +18,7 @@ class VideographyFactory extends Factory
     public function definition(): array
     {
         return [
-            'videography_category_id' => VideographyCategory::inRandomOrder()->value('id'),
+            'videography_plan_id' => VideographyPlan::inRandomOrder()->value('id'),
             'name_customer' => fake('id_ID')->name(),
             'number_customer' => fake('id_ID')->phoneNumber(),
             'email_customer' => fake('id_ID')->safeEmail(),
