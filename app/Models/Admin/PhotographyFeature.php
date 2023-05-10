@@ -12,6 +12,7 @@ class PhotographyFeature extends Model
 
     protected $fillable = [
         'text',
+        'description',
         'photography_plan_id'
     ];
 
