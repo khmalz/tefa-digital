@@ -34,6 +34,9 @@ class Videography extends Model
         'description'
     ];
 
+    protected $with = ['plan', 'category:videography_categories.title'];
+    protected $appends = ['price'];
+
     public function plan(): BelongsTo
     {
         return $this->belongsTo(VideographyPlan::class, 'videography_plan_id');
@@ -53,5 +56,10 @@ class Videography extends Model
             // local key pada model Videography
             'videography_category_id' // local key pada model VideographyPlan
         );
+    }
+
+    public function getPriceAttribute()
+    {
+        return $this->plan->price;
     }
 }

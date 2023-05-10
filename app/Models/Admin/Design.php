@@ -38,6 +38,9 @@ class Design extends Model
         'description'
     ];
 
+    protected $with = ['plan', 'category:design_categories.title'];
+    protected $appends = ['price'];
+
     public function plan(): BelongsTo
     {
         return $this->belongsTo(DesignPlan::class, 'design_plan_id');
@@ -62,5 +65,10 @@ class Design extends Model
             // local key pada model Design
             'design_category_id' // local key pada model DesignPlan
         );
+    }
+
+    public function getPriceAttribute()
+    {
+        return $this->plan->price;
     }
 }
