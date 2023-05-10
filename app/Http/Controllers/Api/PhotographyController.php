@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Admin\Design;
 use App\Models\Admin\Photography;
 use App\Http\Controllers\Controller;
 use App\Http\Resources\PhotographyResource;
@@ -15,7 +14,7 @@ class PhotographyController extends Controller
      */
     public function index(): PhotographyCollection
     {
-        return new PhotographyCollection(Design::all());
+        return new PhotographyCollection(Photography::all());
     }
 
     /**

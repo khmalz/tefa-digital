@@ -16,12 +16,11 @@ class VideographyResource extends JsonResource
     {
         return [
             'order_id' => $this->ulid,
+            'order' => $this->order,
             'nama' => $this->name_customer,
-            'nomor' => $this->number_customer,
-            'email' => $this->email_customer,
-            'keterangan' => $this->description,
-            'status' => $this->status,
-            'price' => $this->price
+            'date' => $this->created_at->format('d F Y'),
+            'price' => $this->price,
+            'status' => $this->status
         ];
     }
 
