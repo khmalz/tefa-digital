@@ -77,4 +77,11 @@ class VideographyTest extends TestCase
       $this->assertNotNull($this->videography->plan->features->first()->plan);
       $this->assertInstanceOf(VideographyPlan::class, $this->videography->plan->features->first()->plan);
    }
+
+   /** @test */
+   public function test_videography_can_access_category()
+   {
+      // Menguji apakah desain dapat mengakses kategori yang terhubung dengan rencana desain yang terhubung dengannya
+      $this->assertInstanceOf(VideographyCategory::class, $this->videography->category);
+   }
 }

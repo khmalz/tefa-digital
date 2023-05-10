@@ -77,4 +77,11 @@ class PhotographyTest extends TestCase
         $this->assertNotNull($this->photography->plan->features->first()->plan);
         $this->assertInstanceOf(PhotographyPlan::class, $this->photography->plan->features->first()->plan);
     }
+
+    /** @test */
+    public function test_photography_can_access_category()
+    {
+        // Menguji apakah desain dapat mengakses kategori yang terhubung dengan rencana desain yang terhubung dengannya
+        $this->assertInstanceOf(PhotographyCategory::class, $this->photography->category);
+    }
 }
