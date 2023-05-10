@@ -2,7 +2,7 @@
 
 namespace Database\Factories\Admin;
 
-use App\Models\Admin\DesignCategory;
+use App\Models\Admin\DesignPlan;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,7 +19,7 @@ class DesignFactory extends Factory
     public function definition(): array
     {
         return [
-            'design_category_id' => DesignCategory::inRandomOrder()->value('id'),
+            'design_plan_id' => DesignPlan::inRandomOrder()->value('id'),
             'name_customer' => fake('id_ID')->name(),
             'number_customer' => fake('id_ID')->phoneNumber(),
             'email_customer' => fake('id_ID')->safeEmail(),
