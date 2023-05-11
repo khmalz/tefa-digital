@@ -37,69 +37,79 @@
                                         <table class="mb-0 table border" id="data-table-design">
                                             <thead class="table-light fw-semibold">
                                                 <tr class="align-middle">
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
-                                                    <th></th>
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
                                                 </tr>
                                             </thead>
-                                            <tbody>
+                                            <tbody class="text-center">
                                             </tbody>
                                         </table>
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="pills-photography" role="tabpanel"
                                     aria-labelledby="pills-photography-tab" tabindex="0">
-                                    <table class="mb-0 table border" id="data-table-photography">
-                                        <thead class="table-light fw-semibold">
-                                            <tr class="align-middle">
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
-                                    </table>
+                                    <div class="table-responsive mt-4">
+                                        <table class="mb-0 table border" id="data-table-photography">
+                                            <thead class="table-light fw-semibold">
+                                                <tr class="align-middle">
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="text-center">
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                                 <div class="tab-pane fade" id="pills-videography" role="tabpanel"
                                     aria-labelledby="pills-videography-tab" tabindex="0">
-                                    <table class="mb-0 table border" id="data-table-videography">
-                                        <thead class="table-light fw-semibold">
-                                            <tr class="align-middle">
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
-                                    </table>
+                                    <div class="table-responsive mt-4">
+                                        <table class="mb-0 table border" id="data-table-videography">
+                                            <thead class="table-light fw-semibold">
+                                                <tr class="align-middle">
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="text-center">
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                                 <div class="tab-pane fade" id="pills-printing" role="tabpanel"
                                     aria-labelledby="pills-printing-tab" tabindex="0">
-                                    <table class="mb-0 table border" id="data-table-printing">
-                                        <thead class="table-light fw-semibold">
-                                            <tr class="align-middle">
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                                <th></th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                        </tbody>
-                                    </table>
+                                    <div class="table-responsive mt-4">
+                                        <table class="mb-0 table border" id="data-table-printing">
+                                            <thead class="table-light fw-semibold">
+                                                <tr class="align-middle">
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                    <th class="text-center"></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody class="text-center">
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -112,7 +122,22 @@
 
 @push('scripts')
     <script>
-        let api = {
+        const generateDropdownHtml = (orderId) => {
+            return `
+                <div class="dropdown">
+                    <button class="btn btn-transparent p-0" type="button" data-coreui-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <svg class="icon">
+                        <use xlink:href="{{ asset('assets/admin/vendors/@coreui/icons/svg/free.svg#cil-options') }}"></use>
+                        </svg>
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-end">
+                        <a class="dropdown-item" href="detail/${orderId}">Detail</a>
+                    </div>
+                </div>
+            `;
+        }
+
+        const api = {
             design: "http://tefa-digital.test/api/design",
             photography: "http://tefa-digital.test/api/photography",
             videography: "http://tefa-digital.test/api/videography",
@@ -143,6 +168,15 @@
                 "data": "price",
                 "title": "Price"
             },
+            {
+                "data": null,
+                "title": "Action",
+                "searchable": false,
+                "orderable": false,
+                "render": function(data, type, row, meta) {
+                    return generateDropdownHtml(row.order_id);
+                }
+            }
         ];
 
         let columnsPR = [{
@@ -169,8 +203,18 @@
                 "data": "status",
                 "title": "Status"
             },
+            {
+                "data": null,
+                "title": "Action",
+                "searchable": false,
+                "orderable": false,
+                "render": function(data, type, row, meta) {
+                    return generateDropdownHtml(row.order_id);
+                }
+            }
         ];
-
+    </script>
+    <script>
         function createDataTable(tabId, url, columns) {
             $(tabId).DataTable({
                 ajax: {
@@ -199,7 +243,7 @@
         }
 
         $(document).ready(function() {
-            // Membuat data table untuk tab Design
+            // Membuat data table untuk tab Design sebagai inisialisasi
             createDataTable('#data-table-design', api.design, columns);
 
             const tabs = [{
