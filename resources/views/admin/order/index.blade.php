@@ -10,14 +10,9 @@
                             <h4>List Order</h4>
                             <ul class="nav nav-pills mb-3 gap-1" id="pills-tab" role="tablist">
                                 <li class="nav-item" role="presentation">
-                                    <button class="nav-link active navstabs" id="pills-all-tab" data-coreui-toggle="pill"
-                                        data-coreui-target="#pills-all" type="button" role="tab"
-                                        aria-controls="pills-all" aria-selected="true">All</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                    <button class="nav-link navstabs" id="pills-design-tab" data-coreui-toggle="pill"
+                                    <button class="nav-link active navstabs" id="pills-design-tab" data-coreui-toggle="pill"
                                         data-coreui-target="#pills-design" type="button" role="tab"
-                                        aria-controls="pills-design" aria-selected="false">Design</button>
+                                        aria-controls="pills-design" aria-selected="true">Design</button>
                                 </li>
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link navstabs" id="pills-photography-tab" data-coreui-toggle="pill"
@@ -36,513 +31,77 @@
                                 </li>
                             </ul>
                             <div class="tab-content" id="pills-tabContent">
-                                <div class="tab-pane fade show active" id="pills-all" role="tabpanel"
-                                    aria-labelledby="pills-all-tab" tabindex="0">all</div>
-                                <div class="tab-pane fade" id="pills-design" role="tabpanel"
-                                    aria-labelledby="pills-design-tab" tabindex="0">design</div>
+                                <div class="tab-pane fade show active" id="pills-design" role="tabpanel"
+                                    aria-labelledby="pills-design-tab" tabindex="0">
+                                    <div class="table-responsive mt-4">
+                                        <table class="mb-0 table border" id="data-table-design">
+                                            <thead class="table-light fw-semibold">
+                                                <tr class="align-middle">
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
                                 <div class="tab-pane fade" id="pills-photography" role="tabpanel"
-                                    aria-labelledby="pills-photography-tab" tabindex="0">photography</div>
+                                    aria-labelledby="pills-photography-tab" tabindex="0">
+                                    <table class="mb-0 table border" id="data-table-photography">
+                                        <thead class="table-light fw-semibold">
+                                            <tr class="align-middle">
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <div class="tab-pane fade" id="pills-videography" role="tabpanel"
-                                    aria-labelledby="pills-videography-tab" tabindex="0">videography</div>
+                                    aria-labelledby="pills-videography-tab" tabindex="0">
+                                    <table class="mb-0 table border" id="data-table-videography">
+                                        <thead class="table-light fw-semibold">
+                                            <tr class="align-middle">
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
                                 <div class="tab-pane fade" id="pills-printing" role="tabpanel"
-                                    aria-labelledby="pills-printing-tab" tabindex="0">printing</div>
+                                    aria-labelledby="pills-printing-tab" tabindex="0">
+                                    <table class="mb-0 table border" id="data-table-printing">
+                                        <thead class="table-light fw-semibold">
+                                            <tr class="align-middle">
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                                <th></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                        </tbody>
+                                    </table>
+                                </div>
                             </div>
-                            {{-- <div class="table-responsive mt-4">
-                                <table class="mb-0 table border" id="data-table">
-                                    <thead class="table-light fw-semibold">
-                                        <tr class="align-middle">
-                                            <th>User</th>
-                                            <th class="text-center">Country</th>
-                                            <th>Usage</th>
-                                            <th class="text-center">Payment Method</th>
-                                            <th>Activity</th>
-                                            <th></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr class="align-middle">
-                                            <td>
-                                                <div>Yiorgos Avraamu</div>
-                                                <div class="small text-medium-emphasis"><span>New</span> | Registered: Jan
-                                                    1, 2020</div>
-                                            </td>
-                                            <td class="text-center">
-                                                <svg class="icon icon-xl">
-                                                    <use xlink:href="vendors/@coreui/icons/svg/flag.svg#cif-us"></use>
-                                                </svg>
-                                            </td>
-                                            <td>
-                                                <div class="clearfix">
-                                                    <div class="float-start">
-                                                        <div class="fw-semibold">50%</div>
-                                                    </div>
-                                                    <div class="float-end"><small class="text-medium-emphasis">Jun 11,
-                                                            2020
-                                                            - Jul 10, 2020</small></div>
-                                                </div>
-                                                <div class="progress progress-thin">
-                                                    <div class="progress-bar bg-success" role="progressbar"
-                                                        style="width: 50%" aria-valuenow="50" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
-                                                </div>
-                                            </td>
-                                            <td class="text-center">
-                                                <svg class="icon icon-xl">
-                                                    <use
-                                                        xlink:href="{{ asset('assets/admin/vendors/@coreui/icons/svg/brand.svg#cib-cc-mastercard') }}">
-                                                    </use>
-                                                </svg>
-                                            </td>
-                                            <td>
-                                                <div class="small text-medium-emphasis">Last login</div>
-                                                <div class="fw-semibold">10 sec ago</div>
-                                            </td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button class="btn btn-transparent p-0" type="button"
-                                                        data-coreui-toggle="dropdown" aria-haspopup="true"
-                                                        aria-expanded="false">
-                                                        <svg class="icon">
-                                                            <use
-                                                                xlink:href="{{ asset('assets/admin/vendors/@coreui/icons/svg/free.svg#cil-options') }}">
-                                                            </use>
-                                                        </svg>
-                                                    </button>
-                                                    <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item"
-                                                            href="#">Info</a><a class="dropdown-item"
-                                                            href="#">Edit</a><a class="dropdown-item text-danger"
-                                                            href="#">Delete</a></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="align-middle">
-                                            <td>
-                                                <div>Avram Tarasios</div>
-                                                <div class="small text-medium-emphasis"><span>Recurring</span> |
-                                                    Registered:
-                                                    Jan 1, 2020</div>
-                                            </td>
-                                            <td class="text-center">
-                                                <svg class="icon icon-xl">
-                                                    <use xlink:href="vendors/@coreui/icons/svg/flag.svg#cif-br"></use>
-                                                </svg>
-                                            </td>
-                                            <td>
-                                                <div class="clearfix">
-                                                    <div class="float-start">
-                                                        <div class="fw-semibold">10%</div>
-                                                    </div>
-                                                    <div class="float-end"><small class="text-medium-emphasis">Jun 11,
-                                                            2020
-                                                            - Jul 10, 2020</small></div>
-                                                </div>
-                                                <div class="progress progress-thin">
-                                                    <div class="progress-bar bg-info" role="progressbar" style="width: 10%"
-                                                        aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                                                </div>
-                                            </td>
-                                            <td class="text-center">
-                                                <svg class="icon icon-xl">
-                                                    <use xlink:href="vendors/@coreui/icons/svg/brand.svg#cib-cc-visa">
-                                                    </use>
-                                                </svg>
-                                            </td>
-                                            <td>
-                                                <div class="small text-medium-emphasis">Last login</div>
-                                                <div class="fw-semibold">5 minutes ago</div>
-                                            </td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button class="btn btn-transparent p-0" type="button"
-                                                        data-coreui-toggle="dropdown" aria-haspopup="true"
-                                                        aria-expanded="false">
-                                                        <svg class="icon">
-                                                            <use
-                                                                xlink:href="{{ asset('assets/admin/vendors/@coreui/icons/svg/free.svg#cil-options') }}">
-                                                            </use>
-                                                        </svg>
-                                                    </button>
-                                                    <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item"
-                                                            href="#">Info</a><a class="dropdown-item"
-                                                            href="#">Edit</a><a class="dropdown-item text-danger"
-                                                            href="#">Delete</a></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="align-middle">
-                                            <td>
-                                                <div>Quintin Ed</div>
-                                                <div class="small text-medium-emphasis"><span>New</span> | Registered: Jan
-                                                    1, 2020</div>
-                                            </td>
-                                            <td class="text-center">
-                                                <svg class="icon icon-xl">
-                                                    <use xlink:href="vendors/@coreui/icons/svg/flag.svg#cif-in"></use>
-                                                </svg>
-                                            </td>
-                                            <td>
-                                                <div class="clearfix">
-                                                    <div class="float-start">
-                                                        <div class="fw-semibold">74%</div>
-                                                    </div>
-                                                    <div class="float-end"><small class="text-medium-emphasis">Jun 11,
-                                                            2020 - Jul 10, 2020</small></div>
-                                                </div>
-                                                <div class="progress progress-thin">
-                                                    <div class="progress-bar bg-warning" role="progressbar"
-                                                        style="width: 74%" aria-valuenow="74" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
-                                                </div>
-                                            </td>
-                                            <td class="text-center">
-                                                <svg class="icon icon-xl">
-                                                    <use xlink:href="vendors/@coreui/icons/svg/brand.svg#cib-cc-stripe">
-                                                    </use>
-                                                </svg>
-                                            </td>
-                                            <td>
-                                                <div class="small text-medium-emphasis">Last login</div>
-                                                <div class="fw-semibold">1 hour ago</div>
-                                            </td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button class="btn btn-transparent p-0" type="button"
-                                                        data-coreui-toggle="dropdown" aria-haspopup="true"
-                                                        aria-expanded="false">
-                                                        <svg class="icon">
-                                                            <use
-                                                                xlink:href="{{ asset('assets/admin/vendors/@coreui/icons/svg/free.svg#cil-options') }}">
-                                                            </use>
-                                                        </svg>
-                                                    </button>
-                                                    <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item"
-                                                            href="#">Info</a><a class="dropdown-item"
-                                                            href="#">Edit</a><a class="dropdown-item text-danger"
-                                                            href="#">Delete</a></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="align-middle">
-                                            <td>
-                                                <div>Enéas Kwadwo</div>
-                                                <div class="small text-medium-emphasis"><span>New</span> | Registered: Jan
-                                                    1, 2020</div>
-                                            </td>
-                                            <td class="text-center">
-                                                <svg class="icon icon-xl">
-                                                    <use xlink:href="vendors/@coreui/icons/svg/flag.svg#cif-fr"></use>
-                                                </svg>
-                                            </td>
-                                            <td>
-                                                <div class="clearfix">
-                                                    <div class="float-start">
-                                                        <div class="fw-semibold">98%</div>
-                                                    </div>
-                                                    <div class="float-end"><small class="text-medium-emphasis">Jun 11,
-                                                            2020 - Jul 10, 2020</small></div>
-                                                </div>
-                                                <div class="progress progress-thin">
-                                                    <div class="progress-bar bg-danger" role="progressbar"
-                                                        style="width: 98%" aria-valuenow="98" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
-                                                </div>
-                                            </td>
-                                            <td class="text-center">
-                                                <svg class="icon icon-xl">
-                                                    <use xlink:href="vendors/@coreui/icons/svg/brand.svg#cib-cc-paypal">
-                                                    </use>
-                                                </svg>
-                                            </td>
-                                            <td>
-                                                <div class="small text-medium-emphasis">Last login</div>
-                                                <div class="fw-semibold">Last month</div>
-                                            </td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button class="btn btn-transparent p-0" type="button"
-                                                        data-coreui-toggle="dropdown" aria-haspopup="true"
-                                                        aria-expanded="false">
-                                                        <svg class="icon">
-                                                            <use
-                                                                xlink:href="{{ asset('assets/admin/vendors/@coreui/icons/svg/free.svg#cil-options') }}">
-                                                            </use>
-                                                        </svg>
-                                                    </button>
-                                                    <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item"
-                                                            href="#">Info</a><a class="dropdown-item"
-                                                            href="#">Edit</a><a class="dropdown-item text-danger"
-                                                            href="#">Delete</a></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="align-middle">
-                                            <td>
-                                                <div>Agapetus Tadeáš</div>
-                                                <div class="small text-medium-emphasis"><span>New</span> | Registered: Jan
-                                                    1, 2020</div>
-                                            </td>
-                                            <td class="text-center">
-                                                <svg class="icon icon-xl">
-                                                    <use xlink:href="vendors/@coreui/icons/svg/flag.svg#cif-es"></use>
-                                                </svg>
-                                            </td>
-                                            <td>
-                                                <div class="clearfix">
-                                                    <div class="float-start">
-                                                        <div class="fw-semibold">22%</div>
-                                                    </div>
-                                                    <div class="float-end"><small class="text-medium-emphasis">Jun 11,
-                                                            2020 - Jul 10, 2020</small></div>
-                                                </div>
-                                                <div class="progress progress-thin">
-                                                    <div class="progress-bar bg-info" role="progressbar"
-                                                        style="width: 22%" aria-valuenow="22" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
-                                                </div>
-                                            </td>
-                                            <td class="text-center">
-                                                <svg class="icon icon-xl">
-                                                    <use xlink:href="vendors/@coreui/icons/svg/brand.svg#cib-cc-apple-pay">
-                                                    </use>
-                                                </svg>
-                                            </td>
-                                            <td>
-                                                <div class="small text-medium-emphasis">Last login</div>
-                                                <div class="fw-semibold">Last week</div>
-                                            </td>
-                                            <td>
-                                                <div class="dropdown dropup">
-                                                    <button class="btn btn-transparent p-0" type="button"
-                                                        data-coreui-toggle="dropdown" aria-haspopup="true"
-                                                        aria-expanded="false">
-                                                        <svg class="icon">
-                                                            <use
-                                                                xlink:href="{{ asset('assets/admin/vendors/@coreui/icons/svg/free.svg#cil-options') }}">
-                                                            </use>
-                                                        </svg>
-                                                    </button>
-                                                    <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item"
-                                                            href="#">Info</a><a class="dropdown-item"
-                                                            href="#">Edit</a><a class="dropdown-item text-danger"
-                                                            href="#">Delete</a></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="align-middle">
-                                            <td>
-                                                <div>Friderik Dávid</div>
-                                                <div class="small text-medium-emphasis"><span>New</span> | Registered: Jan
-                                                    1, 2020</div>
-                                            </td>
-                                            <td class="text-center">
-                                                <svg class="icon icon-xl">
-                                                    <use xlink:href="vendors/@coreui/icons/svg/flag.svg#cif-pl"></use>
-                                                </svg>
-                                            </td>
-                                            <td>
-                                                <div class="clearfix">
-                                                    <div class="float-start">
-                                                        <div class="fw-semibold">43%</div>
-                                                    </div>
-                                                    <div class="float-end"><small class="text-medium-emphasis">Jun 11,
-                                                            2020 - Jul 10, 2020</small></div>
-                                                </div>
-                                                <div class="progress progress-thin">
-                                                    <div class="progress-bar bg-success" role="progressbar"
-                                                        style="width: 43%" aria-valuenow="43" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
-                                                </div>
-                                            </td>
-                                            <td class="text-center">
-                                                <svg class="icon icon-xl">
-                                                    <use xlink:href="vendors/@coreui/icons/svg/brand.svg#cib-cc-amex">
-                                                    </use>
-                                                </svg>
-                                            </td>
-                                            <td>
-                                                <div class="small text-medium-emphasis">Last login</div>
-                                                <div class="fw-semibold">Yesterday</div>
-                                            </td>
-                                            <td>
-                                                <div class="dropdown dropup">
-                                                    <button class="btn btn-transparent p-0" type="button"
-                                                        data-coreui-toggle="dropdown" aria-haspopup="true"
-                                                        aria-expanded="false">
-                                                        <svg class="icon">
-                                                            <use
-                                                                xlink:href="{{ asset('assets/admin/vendors/@coreui/icons/svg/free.svg#cil-options') }}">
-                                                            </use>
-                                                        </svg>
-                                                    </button>
-                                                    <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item"
-                                                            href="#">Info</a><a class="dropdown-item"
-                                                            href="#">Edit</a><a class="dropdown-item text-danger"
-                                                            href="#">Delete</a></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="align-middle">
-                                            <td>
-                                                <div>Enéas Kwadwo</div>
-                                                <div class="small text-medium-emphasis"><span>New</span> | Registered: Jan
-                                                    1, 2020</div>
-                                            </td>
-                                            <td class="text-center">
-                                                <svg class="icon icon-xl">
-                                                    <use xlink:href="vendors/@coreui/icons/svg/flag.svg#cif-fr"></use>
-                                                </svg>
-                                            </td>
-                                            <td>
-                                                <div class="clearfix">
-                                                    <div class="float-start">
-                                                        <div class="fw-semibold">98%</div>
-                                                    </div>
-                                                    <div class="float-end"><small class="text-medium-emphasis">Jun 11,
-                                                            2020 - Jul 10, 2020</small></div>
-                                                </div>
-                                                <div class="progress progress-thin">
-                                                    <div class="progress-bar bg-danger" role="progressbar"
-                                                        style="width: 98%" aria-valuenow="98" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
-                                                </div>
-                                            </td>
-                                            <td class="text-center">
-                                                <svg class="icon icon-xl">
-                                                    <use xlink:href="vendors/@coreui/icons/svg/brand.svg#cib-cc-paypal">
-                                                    </use>
-                                                </svg>
-                                            </td>
-                                            <td>
-                                                <div class="small text-medium-emphasis">Last login</div>
-                                                <div class="fw-semibold">Last month</div>
-                                            </td>
-                                            <td>
-                                                <div class="dropdown">
-                                                    <button class="btn btn-transparent p-0" type="button"
-                                                        data-coreui-toggle="dropdown" aria-haspopup="true"
-                                                        aria-expanded="false">
-                                                        <svg class="icon">
-                                                            <use
-                                                                xlink:href="{{ asset('assets/admin/vendors/@coreui/icons/svg/free.svg#cil-options') }}">
-                                                            </use>
-                                                        </svg>
-                                                    </button>
-                                                    <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item"
-                                                            href="#">Info</a><a class="dropdown-item"
-                                                            href="#">Edit</a><a class="dropdown-item text-danger"
-                                                            href="#">Delete</a></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="align-middle">
-                                            <td>
-                                                <div>Agapetus Tadeáš</div>
-                                                <div class="small text-medium-emphasis"><span>New</span> | Registered: Jan
-                                                    1, 2020</div>
-                                            </td>
-                                            <td class="text-center">
-                                                <svg class="icon icon-xl">
-                                                    <use xlink:href="vendors/@coreui/icons/svg/flag.svg#cif-es"></use>
-                                                </svg>
-                                            </td>
-                                            <td>
-                                                <div class="clearfix">
-                                                    <div class="float-start">
-                                                        <div class="fw-semibold">22%</div>
-                                                    </div>
-                                                    <div class="float-end"><small class="text-medium-emphasis">Jun 11,
-                                                            2020 - Jul 10, 2020</small></div>
-                                                </div>
-                                                <div class="progress progress-thin">
-                                                    <div class="progress-bar bg-info" role="progressbar"
-                                                        style="width: 22%" aria-valuenow="22" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
-                                                </div>
-                                            </td>
-                                            <td class="text-center">
-                                                <svg class="icon icon-xl">
-                                                    <use xlink:href="vendors/@coreui/icons/svg/brand.svg#cib-cc-apple-pay">
-                                                    </use>
-                                                </svg>
-                                            </td>
-                                            <td>
-                                                <div class="small text-medium-emphasis">Last login</div>
-                                                <div class="fw-semibold">Last week</div>
-                                            </td>
-                                            <td>
-                                                <div class="dropdown dropup">
-                                                    <button class="btn btn-transparent p-0" type="button"
-                                                        data-coreui-toggle="dropdown" aria-haspopup="true"
-                                                        aria-expanded="false">
-                                                        <svg class="icon">
-                                                            <use
-                                                                xlink:href="{{ asset('assets/admin/vendors/@coreui/icons/svg/free.svg#cil-options') }}">
-                                                            </use>
-                                                        </svg>
-                                                    </button>
-                                                    <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item"
-                                                            href="#">Info</a><a class="dropdown-item"
-                                                            href="#">Edit</a><a class="dropdown-item text-danger"
-                                                            href="#">Delete</a></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr class="align-middle">
-                                            <td>
-                                                <div>Friderik Dávid</div>
-                                                <div class="small text-medium-emphasis"><span>New</span> | Registered: Jan
-                                                    1, 2020</div>
-                                            </td>
-                                            <td class="text-center">
-                                                <svg class="icon icon-xl">
-                                                    <use xlink:href="vendors/@coreui/icons/svg/flag.svg#cif-pl"></use>
-                                                </svg>
-                                            </td>
-                                            <td>
-                                                <div class="clearfix">
-                                                    <div class="float-start">
-                                                        <div class="fw-semibold">43%</div>
-                                                    </div>
-                                                    <div class="float-end"><small class="text-medium-emphasis">Jun 11,
-                                                            2020 - Jul 10, 2020</small></div>
-                                                </div>
-                                                <div class="progress progress-thin">
-                                                    <div class="progress-bar bg-success" role="progressbar"
-                                                        style="width: 43%" aria-valuenow="43" aria-valuemin="0"
-                                                        aria-valuemax="100"></div>
-                                                </div>
-                                            </td>
-                                            <td class="text-center">
-                                                <svg class="icon icon-xl">
-                                                    <use xlink:href="vendors/@coreui/icons/svg/brand.svg#cib-cc-amex">
-                                                    </use>
-                                                </svg>
-                                            </td>
-                                            <td>
-                                                <div class="small text-medium-emphasis">Last login</div>
-                                                <div class="fw-semibold">Yesterday</div>
-                                            </td>
-                                            <td>
-                                                <div class="dropdown dropup">
-                                                    <button class="btn btn-transparent p-0" type="button"
-                                                        data-coreui-toggle="dropdown" aria-haspopup="true"
-                                                        aria-expanded="false">
-                                                        <svg class="icon">
-                                                            <use
-                                                                xlink:href="{{ asset('assets/admin/vendors/@coreui/icons/svg/free.svg#cil-options') }}">
-                                                            </use>
-                                                        </svg>
-                                                    </button>
-                                                    <div class="dropdown-menu dropdown-menu-end"><a class="dropdown-item"
-                                                            href="#">Info</a><a class="dropdown-item"
-                                                            href="#">Edit</a><a class="dropdown-item text-danger"
-                                                            href="#">Delete</a></div>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div> --}}
                         </div>
                     </div>
                 </div>
@@ -550,3 +109,142 @@
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        let api = {
+            design: "http://tefa-digital.test/api/design",
+            photography: "http://tefa-digital.test/api/photography",
+            videography: "http://tefa-digital.test/api/videography",
+            printing: "http://tefa-digital.test/api/printing"
+        }
+
+        let columns = [{
+                "data": "order_id",
+                "title": "Order ID"
+            },
+            {
+                "data": "order",
+                "title": "Order"
+            },
+            {
+                "data": "nama",
+                "title": "Nama Customer"
+            },
+            {
+                "data": "date",
+                "title": "Tanggal"
+            },
+            {
+                "data": "status",
+                "title": "Status"
+            },
+            {
+                "data": "price",
+                "title": "Price"
+            },
+        ];
+
+        let columnsPR = [{
+                "data": "order_id",
+                "title": "Order ID"
+            },
+            {
+                "data": "nama",
+                "title": "Nama Customer"
+            },
+            {
+                "data": "date",
+                "title": "Tanggal"
+            },
+            {
+                "data": "material",
+                "title": "Material"
+            },
+            {
+                "data": "scale",
+                "title": "Scale"
+            },
+            {
+                "data": "status",
+                "title": "Status"
+            },
+        ];
+
+        function createDataTable(tabId, url, columns) {
+            $(tabId).DataTable({
+                ajax: {
+                    url: url,
+                    dataSrc: "data",
+                },
+                paging: true,
+                pageLength: 10,
+                stateSave: true,
+                stateDuration: 60 * 5,
+                columns,
+                order: [
+                    tabId === "#data-table-printing" ? [2, "asc"] : [3, "asc"]
+                ],
+                language: {
+                    infoEmpty: "No entries to show",
+                    search: "_INPUT_",
+                    searchPlaceholder: "Search...",
+                },
+            });
+        }
+
+        // Fungsi untuk menghancurkan data table
+        function destroyDataTable(tabId) {
+            $(tabId).DataTable().destroy();
+        }
+
+        $(document).ready(function() {
+            // Membuat data table untuk tab Design
+            createDataTable('#data-table-design', api.design, columns);
+
+            const tabs = [{
+                    id: "#pills-design-tab",
+                    tableId: "#data-table-design",
+                    url: api.design,
+                    columns,
+                },
+                {
+                    id: "#pills-photography-tab",
+                    tableId: "#data-table-photography",
+                    url: api.photography,
+                    columns,
+                },
+                {
+                    id: "#pills-videography-tab",
+                    tableId: "#data-table-videography",
+                    url: api.videography,
+                    columns,
+                },
+                {
+                    id: "#pills-printing-tab",
+                    tableId: "#data-table-printing",
+                    url: api.printing,
+                    columns: columnsPR,
+                },
+            ];
+
+            // Menggunakan forEach untuk menambahkan event listener ke setiap tab
+            tabs.forEach(({
+                id,
+                tableId,
+                url,
+                columns
+            }) => {
+                $(id).on("click", function(e) {
+                    // Membuat data table untuk tab yang aktif
+                    createDataTable(tableId, url, columns);
+
+                    // Menghancurkan data table pada tab yang tidak aktif
+                    tabs.filter((tab) => tab.id !== id).forEach(({
+                        tableId
+                    }) => destroyDataTable(tableId));
+                });
+            });
+        });
+    </script>
+@endpush
