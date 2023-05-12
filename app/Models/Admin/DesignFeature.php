@@ -12,6 +12,7 @@ class DesignFeature extends Model
 
     protected $fillable = [
         'text',
+        'description',
         'design_plan_id'
     ];
 
