@@ -4,6 +4,7 @@ namespace App\Models\Admin;
 
 use App\Helpers\MixCaseULID;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Printing extends Model
@@ -31,4 +32,9 @@ class Printing extends Model
         'file',
         'description'
     ];
+
+    public function scopeByStatus($query, $status): Builder
+    {
+        return $query->where('status', $status);
+    }
 }

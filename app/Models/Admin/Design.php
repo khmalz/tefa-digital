@@ -6,6 +6,7 @@ use App\Helpers\MixCaseULID;
 use App\Models\Admin\DesignPlan;
 use App\Models\Admin\DesignImage;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -47,6 +48,11 @@ class Design extends Model
     public function getOrderAttribute()
     {
         return $this->plan->category->title;
+    }
+
+    public function scopeByStatus($query, $status): Builder
+    {
+        return $query->where('status', $status);
     }
 
     public function plan(): BelongsTo

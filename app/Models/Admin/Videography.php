@@ -5,6 +5,7 @@ namespace App\Models\Admin;
 use App\Helpers\MixCaseULID;
 use App\Models\Admin\VideographyPlan;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Contracts\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -43,6 +44,11 @@ class Videography extends Model
     public function getOrderAttribute()
     {
         return $this->plan->category->title;
+    }
+
+    public function scopeByStatus($query, $status): Builder
+    {
+        return $query->where('status', $status);
     }
 
     public function plan(): BelongsTo

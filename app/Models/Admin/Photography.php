@@ -4,6 +4,7 @@ namespace App\Models\Admin;
 
 use App\Helpers\MixCaseULID;
 use App\Models\Admin\PhotographyPlan;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -43,6 +44,11 @@ class Photography extends Model
     public function getOrderAttribute()
     {
         return $this->plan->category->title;
+    }
+
+    public function scopeByStatus($query, $status): Builder
+    {
+        return $query->where('status', $status);
     }
 
     public function plan(): BelongsTo
