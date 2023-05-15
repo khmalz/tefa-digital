@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: mschilde/auto-label-merge-conflicts@master
         with:
-          CONFLICT_LABEL_NAME: "has potential conflicts"
+          CONFLICT_LABEL_NAME: "potential conflict"
           GITHUB_TOKEN: ${{ secrets.MY_ACTION_GITHUB }}
           MAX_RETRIES: 5
           WAIT_MS: 5000
