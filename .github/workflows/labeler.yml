@@ -9,8 +9,7 @@ jobs:
       pull-requests: write
     runs-on: ubuntu-latest
     steps:
-      - name: Labeler
-        uses: actions/labeler@v4
+      - uses: actions/labeler@v4
         with:
           repo-token: ${{ secrets.MY_ACTION_GITHUB }}
           configuration-path: .github/labels.yml
