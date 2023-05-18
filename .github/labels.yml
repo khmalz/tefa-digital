@@ -2,52 +2,51 @@
 # based on the contents of the commit messages.
 # See: https://github.com/marketplace/actions/labeler
 
-labels:
-  add:
-    name: "add"
-    pattern: "(?i)^add/"
-  feat:
-    name: "feature"
-    pattern: "(?i)^feat/"
-  fix:
-    name: "bug fix"
-    pattern: "(?i)^fix/"
-  refactor:
-    name: "refactor"
-    pattern: "(?i)^refactor/"
-  build:
-    name: "build"
-    pattern: "(?i)^build/"
-  chore:
-    name: "chore"
-    pattern: "(?i)^chore/"
-  style:
-    name: "style"
-    pattern: "(?i)^style/"
-  model:
-    - any: ["app/Models/*"]
-      all: ["*.php"]
-  provider:
-    - any: ["app/Providers/*"]
-      all: ["*.php"]
-  controller:
-    - any: ["app/Http/Controllers/*"]
-      all: ["*.php"]
-  repository:
-    - any: ["app/Repositories/*"]
-      all: ["*.php"]
-  service:
-    - any: ["app/Services/*"]
-      all: ["*.php"]
-  config:
-    - any: ["config/*"]
-      all: ["*.php"]
-  public:
-    - any: ["public/*"]
-      all: ["*"]
-  view:
-    - any: ["resources/views/*"]
-      all: ["*"]
-  route:
-    - any: ["routes/*"]
-      all: ["*.php"]
+add:
+  name: "add"
+  pattern: "(?i)^add/"
+feat:
+  name: "feature"
+  pattern: "(?i)^feat/"
+fix:
+  name: "bug fix"
+  pattern: "(?i)^fix/"
+refactor:
+  name: "refactor"
+  pattern: "(?i)^refactor/"
+build:
+  name: "build"
+  pattern: "(?i)^build/"
+chore:
+  name: "chore"
+  pattern: "(?i)^chore/"
+style:
+  name: "style"
+  pattern: "(?i)^style/"
+model:
+  - any: ["app/Models/*"]
+    all: ["*.php"]
+provider:
+  - any: ["app/Providers/*"]
+    all: ["*.php"]
+controller:
+  - any: ["app/Http/Controllers/*"]
+    all: ["*.php"]
+repository:
+  - any: ["app/Repositories/*"]
+    all: ["*.php"]
+service:
+  - any: ["app/Services/*"]
+    all: ["*.php"]
+config:
+  - any: ["config/*"]
+    all: ["*.php"]
+public:
+  - any: ["public/*"]
+    all: ["*"]
+view:
+  - any: ["resources/views/*"]
+    all: ["*"]
+route:
+  - any: ["routes/*"]
+    all: ["*.php"]
