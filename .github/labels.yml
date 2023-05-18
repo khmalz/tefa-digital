@@ -2,27 +2,6 @@
 # based on the contents of the commit messages.
 # See: https://github.com/marketplace/actions/labeler
 
-add:
-  name: "add"
-  pattern: "(?i)^add/"
-feat:
-  name: "feature"
-  pattern: "(?i)^feat/"
-fix:
-  name: "bug fix"
-  pattern: "(?i)^fix/"
-refactor:
-  name: "refactor"
-  pattern: "(?i)^refactor/"
-build:
-  name: "build"
-  pattern: "(?i)^build/"
-chore:
-  name: "chore"
-  pattern: "(?i)^chore/"
-style:
-  name: "style"
-  pattern: "(?i)^style/"
 model:
   - any: ["app/Models/*"]
     all: ["*.php"]
