@@ -132,6 +132,7 @@
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <a class="dropdown-item" href="detail/${orderId}">Detail</a>
+                        <a class="dropdown-item" href="detail/${orderId}">Ganti Status</a>
                     </div>
                 </div>
             `;
@@ -213,8 +214,7 @@
                 }
             }
         ];
-    </script>
-    <script>
+
         function createDataTable(tabId, url, columns) {
             $(tabId).DataTable({
                 ajax: {
@@ -243,8 +243,10 @@
         }
 
         $(document).ready(function() {
-            // Membuat data table untuk tab Design sebagai inisialisasi
-            createDataTable('#data-table-design', api.design, columns);
+            // Mendapatkan session active_tab
+            const activeTab = sessionStorage.getItem("active_tab");
+
+            activeTab ? $(activeTab).click() : createDataTable('#data-table-design', api.design, columns);
 
             const tabs = [{
                     id: "#pills-design-tab",
@@ -272,7 +274,19 @@
                 },
             ];
 
-            // Menggunakan forEach untuk menambahkan event listener ke setiap tab
+            const clickTab = (id, tableId, url, columns) => {
+                // Menyimpan session active_tab pada saat tab diklik
+                sessionStorage.setItem('active_tab', id);
+
+                // Membuat data table untuk tab yang aktif
+                createDataTable(tableId, url, columns);
+
+                // Menghancurkan data table pada tab yang tidak aktif
+                tabs.filter((tab) => tab.id !== id).forEach(({
+                    tableId
+                }) => destroyDataTable(tableId));
+            };
+
             tabs.forEach(({
                 id,
                 tableId,
@@ -280,14 +294,10 @@
                 columns
             }) => {
                 $(id).on("click", function(e) {
-                    // Membuat data table untuk tab yang aktif
-                    createDataTable(tableId, url, columns);
-
-                    // Menghancurkan data table pada tab yang tidak aktif
-                    tabs.filter((tab) => tab.id !== id).forEach(({
-                        tableId
-                    }) => destroyDataTable(tableId));
+                    clickTab(id, tableId, url, columns);
                 });
+
+                activeTab === id ? clickTab(id, tableId, url, columns) : destroyDataTable(tableId);
             });
         });
     </script>
