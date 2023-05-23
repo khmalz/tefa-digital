@@ -82,34 +82,30 @@
 
                 <div class="section-title" data-aos="zoom-out">
                     <h2>About</h2>
-                    <p>Who we are</p>
+                    <p>Apa itu tefa digital?</p>
                 </div>
 
                 <div class="row content" data-aos="fade-up">
                     <div class="col-lg-6">
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore
-                            magna aliqua.
+                            Tefa digital adalah website inovatif yang berdedikasi untuk meningkatkan pendidikan dan membantu siswa mencapai potensi terbaik mereka. Kami hadir dengan visi untuk menjadi prasarana pendidikan yang relevan dan mendukung kegiatan pembelajaran siswa sesuai kurikulum yang berlaku. 
                         </p>
-                        <ul>
+                        <p>
+                            Website ini bertujuan untuk memperjualbelikan hasil karya siswa SMK Negeri 46 Jakarta, yang diharapkan mampu merepresentasikan fungsi teaching factory sebagai model pembelajaran berbasis industri. Dengan layanan-layanan pada website ini juga diharapkan dapat membantu siswa dalam memperoleh pengalaman kewirausahaan dengan cara yang lebih mudah dan praktis.
+                        </p>
+                        {{-- <ul>
                             <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo
                                 consequat</li>
                             <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in
                                 voluptate velit</li>
                             <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo
                                 consequat</li>
-                        </ul>
+                        </ul> --}}
                     </div>
                     <div class="col-lg-6 pt-4 pt-lg-0">
-                        <p>
-                            Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
-                            reprehenderit in voluptate
-                            velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                            proident, sunt in
-                            culpa qui officia deserunt mollit anim id est laborum.
-                        </p>
-                        <a href="#" class="btn-learn-more">Learn More</a>
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" 
+                        alt="" style="width: 75%;">
+                        {{-- <a href="#" class="btn-learn-more">Learn More</a> --}}
                     </div>
                 </div>
 
