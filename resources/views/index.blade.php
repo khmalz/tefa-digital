@@ -274,7 +274,7 @@
             </div>
         </section><!-- End Features Section -->
 
-        <!-- ======= Cta Section ======= -->
+        {{-- <!-- ======= Cta Section ======= -->
         <section id="cta" class="cta">
             <div class="container">
 
@@ -291,9 +291,9 @@
                 </div>
 
             </div>
-        </section><!-- End Cta Section -->
+        </section><!-- End Cta Section --> --}}
 
-        <!-- ======= Services Section ======= -->
+        {{-- <!-- ======= Services Section ======= -->
         <section id="services" class="services">
             <div class="container">
 
@@ -356,9 +356,9 @@
                 </div>
 
             </div>
-        </section><!-- End Services Section -->
+        </section><!-- End Services Section --> --}}
 
-        <!-- ======= Portfolio Section ======= -->
+        {{-- <!-- ======= Portfolio Section ======= -->
         <section id="portfolio" class="portfolio">
             <div class="container">
 
@@ -496,9 +496,9 @@
                 </div>
 
             </div>
-        </section><!-- End Portfolio Section -->
+        </section><!-- End Portfolio Section --> --}}
 
-        <!-- ======= Testimonials Section ======= -->
+        {{-- <!-- ======= Testimonials Section ======= -->
         <section id="testimonials" class="testimonials">
             <div class="container">
 
@@ -595,9 +595,9 @@
                 </div>
 
             </div>
-        </section><!-- End Testimonials Section -->
+        </section><!-- End Testimonials Section --> --}}
 
-        <!-- ======= Pricing Section ======= -->
+        {{-- <!-- ======= Pricing Section ======= -->
         <section id="pricing" class="pricing">
             <div class="container">
 
@@ -680,9 +680,9 @@
                 </div>
 
             </div>
-        </section><!-- End Pricing Section -->
+        </section><!-- End Pricing Section --> --}}
 
-        <!-- ======= F.A.Q Section ======= -->
+        {{-- <!-- ======= F.A.Q Section ======= -->
         <section id="faq" class="faq">
             <div class="container">
 
@@ -783,9 +783,9 @@
                 </ul>
 
             </div>
-        </section><!-- End F.A.Q Section -->
+        </section><!-- End F.A.Q Section --> --}}
 
-        <!-- ======= Team Section ======= -->
+        {{-- <!-- ======= Team Section ======= -->
         <section id="team" class="team">
             <div class="container">
 
@@ -871,9 +871,9 @@
                 </div>
 
             </div>
-        </section><!-- End Team Section -->
+        </section><!-- End Team Section --> --}}
 
-        <!-- ======= Contact Section ======= -->
+        {{-- <!-- ======= Contact Section ======= -->
         <section id="contact" class="contact">
             <div class="container">
 
@@ -941,7 +941,7 @@
                 </div>
 
             </div>
-        </section><!-- End Contact Section -->
+        </section><!-- End Contact Section --> --}}
 
     </main><!-- End #main -->
 @endsection
