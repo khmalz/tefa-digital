@@ -18,11 +18,12 @@ Route::get('/', function () {
 });
 
 Route::prefix('admin')->group(function () {
-    Route::get('dashboard', function () {
-        return view('admin.dashboard.index');
-    })->name('admin.dashboard');
-
-    Route::get('order-list', function () {
-        return view('admin.order.index');
-    })->name('order.index');
+    Route::view('dashboard', 'admin.dashboard.index')->name('admin.dashboard');
+    Route::view('order-list', 'admin.order.index')->name('order.index');
+    Route::view('design-category', 'admin.design.categories')->name('design.categories');
+    Route::view('design-category-edit', 'admin.design.categories-edit')->name('design.categories-edit');
+    Route::view('design-feature-edit', 'admin.design.feature-edit')->name('design.feature-edit');
+    Route::view('design-plans-create', 'admin.design.plans-create')->name('design.plans-create');
+    Route::view('design-plans-edit', 'admin.design.plans-edit')->name('design.plans-edit');
+    Route::view('design-plans', 'admin.design.plans')->name('design.plans');
 });

@@ -26,9 +26,8 @@
             <a class="nav-link nav-group-toggle" href="#">
                 Design</a>
             <ul class="nav-group-items">
-                <li class="nav-item"><a class="nav-link" href="forms/form-control.html">Category</a></li>
-                <li class="nav-item"><a class="nav-link" href="forms/form-control.html">Plan</a></li>
-                <li class="nav-item"><a class="nav-link" href="forms/form-control.html">Feature</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('design.categories') }}">Category</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('design.plans') }}">Plan</a></li>
             </ul>
         </li>
         <li class="nav-group">
@@ -37,7 +36,6 @@
             <ul class="nav-group-items">
                 <li class="nav-item"><a class="nav-link" href="forms/form-control.html">Category</a></li>
                 <li class="nav-item"><a class="nav-link" href="forms/form-control.html">Plan</a></li>
-                <li class="nav-item"><a class="nav-link" href="forms/form-control.html">Feature</a></li>
             </ul>
         </li>
         <li class="nav-group">
@@ -46,7 +44,6 @@
             <ul class="nav-group-items">
                 <li class="nav-item"><a class="nav-link" href="forms/form-control.html">Category</a></li>
                 <li class="nav-item"><a class="nav-link" href="forms/form-control.html">Plan</a></li>
-                <li class="nav-item"><a class="nav-link" href="forms/form-control.html">Feature</a></li>
             </ul>
         </li>
         {{-- <button class="sidebar-toggler" type="button" data-coreui-toggle="unfoldable"></button> --}}
