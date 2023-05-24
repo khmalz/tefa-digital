@@ -118,11 +118,97 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal Design -->
+    <div class="modal fade" id="designModal" tabindex="-1" aria-labelledby="designModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form id="designForm" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="modal-header justify-content-center">
+                        <h5 class="modal-title" id="designModalLabel">Ganti Status</h5>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Konten form yang akan diisi oleh JavaScript -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Photography -->
+    <div class="modal fade" id="photographyModal" tabindex="-1" aria-labelledby="photographyModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form id="photographyForm" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="modal-header justify-content-center">
+                        <h5 class="modal-title" id="photographyModalLabel">Ganti Status</h5>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Konten form yang akan diisi oleh JavaScript -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Videography -->
+    <div class="modal fade" id="videographyModal" tabindex="-1" aria-labelledby="videographyModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form id="videographyForm" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="modal-header justify-content-center">
+                        <h5 class="modal-title" id="videographyModalLabel">Ganti Status</h5>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Konten form yang akan diisi oleh JavaScript -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Printing -->
+    <div class="modal fade" id="printingModal" tabindex="-1" aria-labelledby="printingModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form id="printingForm" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="modal-header justify-content-center">
+                        <h5 class="modal-title" id="printingModalLabel">Ganti Status</h5>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Konten form yang akan diisi oleh JavaScript -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @push('scripts')
     <script>
-        const generateDropdownHtml = (orderId) => {
+        const generateDropdownHtml = (orderId, targetID, orderType) => {
             return `
                 <div class="dropdown">
                     <button class="btn btn-transparent p-0" type="button" data-coreui-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -132,10 +218,11 @@
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <a class="dropdown-item" href="detail/${orderId}">Detail</a>
+                        <button class="dropdown-item" type="button" data-coreui-toggle="modal" data-coreui-target="${targetID}" data-order-id="${orderId}" data-order-type="${orderType}" id="changeStatus">Ganti Status</button>
                     </div>
                 </div>
             `;
-        }
+        };
 
         const api = {
             design: "http://tefa-digital.test/api/design",
@@ -144,7 +231,7 @@
             printing: "http://tefa-digital.test/api/printing"
         }
 
-        let columns = [{
+        const generateColumns = (targetID, orderType) => [{
                 "data": "order_id",
                 "title": "Order ID"
             },
@@ -174,7 +261,7 @@
                 "searchable": false,
                 "orderable": false,
                 "render": function(data, type, row, meta) {
-                    return generateDropdownHtml(row.order_id);
+                    return generateDropdownHtml(row.order_id, targetID, orderType);
                 }
             }
         ];
@@ -209,12 +296,11 @@
                 "searchable": false,
                 "orderable": false,
                 "render": function(data, type, row, meta) {
-                    return generateDropdownHtml(row.order_id);
+                    return generateDropdownHtml(row.order_id, "#printingModal", "printing");
                 }
             }
         ];
-    </script>
-    <script>
+
         function createDataTable(tabId, url, columns) {
             $(tabId).DataTable({
                 ajax: {
@@ -227,7 +313,9 @@
                 stateDuration: 60 * 5,
                 columns,
                 order: [
-                    tabId === "#data-table-printing" ? [2, "asc"] : [3, "asc"]
+                    tabId === "#data-table-printing" ? ([2, "asc"],
+                        [5, 'asc']) : ([3, "asc"],
+                        [4, 'asc'])
                 ],
                 language: {
                     infoEmpty: "No entries to show",
@@ -243,26 +331,28 @@
         }
 
         $(document).ready(function() {
-            // Membuat data table untuk tab Design sebagai inisialisasi
-            createDataTable('#data-table-design', api.design, columns);
+            // Mendapatkan session active_tab
+            const activeTab = sessionStorage.getItem("active_tab");
+
+            activeTab ? $(activeTab).click() : createDataTable('#data-table-design', api.design, columns);
 
             const tabs = [{
                     id: "#pills-design-tab",
                     tableId: "#data-table-design",
                     url: api.design,
-                    columns,
+                    columns: generateColumns("#designModal", "design"),
                 },
                 {
                     id: "#pills-photography-tab",
                     tableId: "#data-table-photography",
                     url: api.photography,
-                    columns,
+                    columns: generateColumns("#photographyModal", "photography"),
                 },
                 {
                     id: "#pills-videography-tab",
                     tableId: "#data-table-videography",
                     url: api.videography,
-                    columns,
+                    columns: generateColumns("#videographyModal", "videography"),
                 },
                 {
                     id: "#pills-printing-tab",
@@ -272,7 +362,19 @@
                 },
             ];
 
-            // Menggunakan forEach untuk menambahkan event listener ke setiap tab
+            const clickTab = (id, tableId, url, columns) => {
+                // Menyimpan session active_tab pada saat tab diklik
+                sessionStorage.setItem('active_tab', id);
+
+                // Menghancurkan data table pada tab yang tidak aktif
+                tabs.forEach(({
+                    tableId
+                }) => destroyDataTable(tableId));
+
+                // Membuat data table untuk tab yang aktif
+                createDataTable(tableId, url, columns);
+            };
+
             tabs.forEach(({
                 id,
                 tableId,
@@ -280,15 +382,82 @@
                 columns
             }) => {
                 $(id).on("click", function(e) {
-                    // Membuat data table untuk tab yang aktif
-                    createDataTable(tableId, url, columns);
+                    clickTab(id, tableId, url, columns);
+                });
 
-                    // Menghancurkan data table pada tab yang tidak aktif
-                    tabs.filter((tab) => tab.id !== id).forEach(({
-                        tableId
-                    }) => destroyDataTable(tableId));
+                activeTab === id ? clickTab(id, tableId, url, columns) : destroyDataTable(tableId);
+            });
+
+            // Event listener untuk elemen dropdown-item "Ganti Status"
+            $(document).on("click", "#changeStatus", function(e) {
+                e.preventDefault();
+
+                // Mendapatkan ID order dari atribut data-order-id
+                const orderId = $(this).data("order-id");
+
+                // Mendapatkan informasi order melalui API
+                const orderType = $(this).data("order-type");
+                const apiUrl =
+                    `http://tefa-digital.test/api/${orderType}/${orderId}`; // Menggunakan orderType yang diterima dari atribut data-order-type
+                $.ajax({
+                    url: apiUrl,
+                    method: "GET",
+                    success: function(response) {
+                        // Mendapatkan informasi yang diperlukan dari response
+                        const orderInfo = response.data;
+                        const orderName = orderInfo.nama;
+                        const orderTitle = orderInfo.order;
+
+                        // Mengisi modal dengan informasi order
+                        const modalTitle = `Ganti Status - ${orderType}`;
+                        const modalBody = `
+                                    <p>ID: ${orderId}</p>
+                                    <p class="text-capitalize">Jenis Order: ${orderTitle || orderType}</p>
+                                    <p>Nama: ${orderName}</p>
+                                    <form>
+                                       <div class="form-group">
+                                             <label for="statusSelect">Status:</label>
+                                             <select class="form-control" id="statusSelect" name="status">
+                                                <option value="pending">Pending</option>
+                                                <option value="progress">Progress</option>
+                                                <option value="completed">Completed</option>
+                                             </select>
+                                       </div>
+                                    </form>
+                                 `;
+
+                        // Menampilkan modal dengan informasi yang diisi
+                        const modalId =
+                            `#${orderType}Modal`; // Menggunakan orderType untuk mendapatkan ID modal yang sesuai
+                        $(`${modalId} .modal-title`).text(modalTitle);
+                        $(`${modalId} .modal-body`).html(modalBody);
+                        $(modalId).modal("show");
+
+                        // Set action form dengan menggunakan route Laravel
+                        if (orderType == "design") {
+                            const editRoute = "{{ route('design.update', ':order_id') }}";
+                            const actionUrl = editRoute.replace(':order_id', orderId);
+                            $(`#${orderType}Form`).attr("action", actionUrl);
+                        } else if (orderType == "photography") {
+                            const editRoute = "{{ route('photography.update', ':order_id') }}";
+                            const actionUrl = editRoute.replace(':order_id', orderId);
+                            $(`#${orderType}Form`).attr("action", actionUrl);
+                        } else if (orderType == "videography") {
+                            const editRoute = "{{ route('videography.update', ':order_id') }}";
+                            const actionUrl = editRoute.replace(':order_id', orderId);
+                            $(`#${orderType}Form`).attr("action", actionUrl);
+                        } else if (orderType == "printing") {
+                            const editRoute = "{{ route('printing.update', ':order_id') }}";
+                            const actionUrl = editRoute.replace(':order_id', orderId);
+                            $(`#${orderType}Form`).attr("action", actionUrl);
+                        }
+                    },
+                    error: function(error) {
+                        console.error("Error:", error);
+                    }
                 });
             });
+
         });
     </script>
 @endpush

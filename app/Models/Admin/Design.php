@@ -6,13 +6,15 @@ use App\Helpers\MixCaseULID;
 use App\Models\Admin\DesignPlan;
 use App\Models\Admin\DesignImage;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
+use Znck\Eloquent\Traits\BelongsToThrough;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Design extends Model
 {
-    use HasFactory;
+    use HasFactory, BelongsToThrough;
 
     /**
      *  Setup model event hooks
@@ -33,11 +35,38 @@ class Design extends Model
         'email_customer',
         'slogan',
         'color',
+        'status',
         'description'
     ];
 
-    protected $with = ['plan.category'];
+    protected $with = ['plan', 'category'];
     protected $appends = ['price', 'order'];
+
+    public function getRouteKeyName()
+    {
+        return 'ulid';
+    }
+
+    public function plan(): BelongsTo
+    {
+        return $this->belongsTo(DesignPlan::class, 'design_plan_id');
+    }
+
+    public function category()
+    {
+        return $this->belongsToThrough(
+            DesignCategory::class,
+            DesignPlan::class,
+            'design_plan_id',
+            null,
+            [DesignCategory::class => 'design_category_id']
+        );
+    }
+
+    public function images(): HasMany
+    {
+        return $this->hasMany(DesignImage::class, 'design_id');
+    }
 
     public function getPriceAttribute()
     {
@@ -46,16 +75,11 @@ class Design extends Model
 
     public function getOrderAttribute()
     {
-        return $this->plan->category->title;
+        return $this->category->title;
     }
 
-    public function plan(): BelongsTo
+    public function scopeByStatus($query, $status): Builder
     {
-        return $this->belongsTo(DesignPlan::class, 'design_plan_id');
-    }
-
-    public function images(): HasMany
-    {
-        return $this->hasMany(DesignImage::class, 'design_id');
+        return $query->where('status', $status);
     }
 }
