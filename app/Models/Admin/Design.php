@@ -34,11 +34,17 @@ class Design extends Model
         'email_customer',
         'slogan',
         'color',
+        'status',
         'description'
     ];
 
     protected $with = ['plan.category'];
     protected $appends = ['price', 'order'];
+
+    public function getRouteKeyName()
+    {
+        return 'ulid';
+    }
 
     public function getPriceAttribute()
     {

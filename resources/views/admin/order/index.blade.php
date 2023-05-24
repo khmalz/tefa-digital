@@ -118,6 +118,27 @@
             </div>
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="designModal" tabindex="-1" aria-labelledby="designModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <form id="designForm" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <div class="modal-header justify-content-center">
+                        <h5 class="modal-title" id="designModalLabel">Ganti Status</h5>
+                    </div>
+                    <div class="modal-body">
+                        <!-- Konten form yang akan diisi oleh JavaScript -->
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @push('scripts')
@@ -132,7 +153,7 @@
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <a class="dropdown-item" href="detail/${orderId}">Detail</a>
-                        <a class="dropdown-item" href="detail/${orderId}">Ganti Status</a>
+                        <button class="dropdown-item" type="button" data-coreui-toggle="modal" data-coreui-target="#designModal" data-order-id="${orderId}" id="changeStatus">Ganti Status</button>
                     </div>
                 </div>
             `;
@@ -227,7 +248,9 @@
                 stateDuration: 60 * 5,
                 columns,
                 order: [
-                    tabId === "#data-table-printing" ? [2, "asc"] : [3, "asc"]
+                    tabId === "#data-table-printing" ? ([2, "asc"],
+                        [5, 'asc']) : ([3, "asc"],
+                        [4, 'asc'])
                 ],
                 language: {
                     infoEmpty: "No entries to show",
@@ -298,6 +321,59 @@
                 });
 
                 activeTab === id ? clickTab(id, tableId, url, columns) : destroyDataTable(tableId);
+            });
+
+            // Event listener untuk elemen dropdown-item "Ganti Status"
+            $(document).on("click", "#changeStatus", function(e) {
+                e.preventDefault();
+
+                // Mendapatkan ID order dari atribut data-order-id
+                const orderId = $(this).data("order-id");
+
+                // Mendapatkan informasi order melalui API
+                const apiUrl =
+                    `http://tefa-digital.test/api/design/${orderId}`; // Ganti dengan URL API yang sesuai
+                $.ajax({
+                    url: apiUrl,
+                    method: "GET",
+                    success: function(response) {
+                        // Mendapatkan informasi yang diperlukan dari response
+                        const orderInfo = response.data;
+                        const orderType = orderInfo.order;
+                        const orderName = orderInfo.nama;
+
+                        // Mengisi modal dengan informasi order
+                        const modalTitle = `Ganti Status - ${orderType}`;
+                        const modalBody = `
+                                            <p>ID: ${orderId}</p>
+                                            <p>Jenis Order: ${orderType}</p>
+                                            <p>Nama: ${orderName}</p>
+                                            <form>
+                                                <div class="form-group">
+                                                    <label for="statusSelect">Status:</label>
+                                                    <select class="form-control" id="statusSelect" name="status">
+                                                        <option value="pending">Pending</option>
+                                                        <option value="progress">Progress</option>
+                                                        <option value="completed">Completed</option>
+                                                    </select>
+                                                </div>
+                                            </form>
+                                        `;
+
+                        // Menampilkan modal dengan informasi yang diisi
+                        $("#designModal .modal-title").text(modalTitle);
+                        $("#designModal .modal-body").html(modalBody);
+                        $("#designModal").modal("show");
+
+                        // Set action form dengan menggunakan route Laravel
+                        const editRoute = "{{ route('design.update', ':order_id') }}";
+                        const actionUrl = editRoute.replace(':order_id', orderId);
+                        $("#designForm").attr("action", actionUrl);
+                    },
+                    error: function(error) {
+                        console.error("Error:", error);
+                    }
+                });
             });
         });
     </script>

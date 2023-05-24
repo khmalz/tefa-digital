@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\Admin\DashboardController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Admin\DesignController;
+use App\Http\Controllers\Admin\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,4 +23,6 @@ Route::prefix('admin')->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
     Route::view('order-list', 'admin.order.index')->name('order.index');
+
+    Route::resource('design', DesignController::class);
 });
