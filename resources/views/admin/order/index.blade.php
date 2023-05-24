@@ -366,13 +366,13 @@
                 // Menyimpan session active_tab pada saat tab diklik
                 sessionStorage.setItem('active_tab', id);
 
-                // Membuat data table untuk tab yang aktif
-                createDataTable(tableId, url, columns);
-
                 // Menghancurkan data table pada tab yang tidak aktif
-                tabs.filter((tab) => tab.id !== id).forEach(({
+                tabs.forEach(({
                     tableId
                 }) => destroyDataTable(tableId));
+
+                // Membuat data table untuk tab yang aktif
+                createDataTable(tableId, url, columns);
             };
 
             tabs.forEach(({
@@ -389,58 +389,6 @@
             });
 
             // Event listener untuk elemen dropdown-item "Ganti Status"
-            // $(document).on("click", "#changeStatus", function(e) {
-            //     e.preventDefault();
-
-            //     // Mendapatkan ID order dari atribut data-order-id
-            //     const orderId = $(this).data("order-id");
-
-            //     // Mendapatkan informasi order melalui API
-            //     const apiUrl =
-            //         `http://tefa-digital.test/api/design/${orderId}`; // Ganti dengan URL API yang sesuai
-            //     $.ajax({
-            //         url: apiUrl,
-            //         method: "GET",
-            //         success: function(response) {
-            //             // Mendapatkan informasi yang diperlukan dari response
-            //             const orderInfo = response.data;
-            //             const orderType = orderInfo.order;
-            //             const orderName = orderInfo.nama;
-
-            //             // Mengisi modal dengan informasi order
-            //             const modalTitle = `Ganti Status - ${orderType}`;
-            //             const modalBody = `
-        //                             <p>ID: ${orderId}</p>
-        //                             <p>Jenis Order: ${orderType}</p>
-        //                             <p>Nama: ${orderName}</p>
-        //                             <form>
-        //                                 <div class="form-group">
-        //                                     <label for="statusSelect">Status:</label>
-        //                                     <select class="form-control" id="statusSelect" name="status">
-        //                                         <option value="pending">Pending</option>
-        //                                         <option value="progress">Progress</option>
-        //                                         <option value="completed">Completed</option>
-        //                                     </select>
-        //                                 </div>
-        //                             </form>
-        //                         `;
-
-            //             // Menampilkan modal dengan informasi yang diisi
-            //             $("#designModal .modal-title").text(modalTitle);
-            //             $("#designModal .modal-body").html(modalBody);
-            //             $("#designModal").modal("show");
-
-            //             // Set action form dengan menggunakan route Laravel
-            //             const editRoute = "{{ route('design.update', ':order_id') }}";
-            //             const actionUrl = editRoute.replace(':order_id', orderId);
-            //             $("#designForm").attr("action", actionUrl);
-            //         },
-            //         error: function(error) {
-            //             console.error("Error:", error);
-            //         }
-            //     });
-            // });
-
             $(document).on("click", "#changeStatus", function(e) {
                 e.preventDefault();
 
