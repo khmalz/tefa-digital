@@ -31,6 +31,7 @@ class Photography extends Model
         'name_customer',
         'number_customer',
         'email_customer',
+        'status',
         'description'
     ];
 
@@ -51,6 +52,11 @@ class Photography extends Model
             null,
             [PhotographyCategory::class => 'photography_category_id']
         );
+    }
+
+    public function getRouteKeyName()
+    {
+        return 'ulid';
     }
 
     public function getPriceAttribute()

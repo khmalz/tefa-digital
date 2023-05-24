@@ -1,9 +1,12 @@
 <?php
 
-use App\Http\Controllers\SendMailController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\Admin\DesignController;
+use App\Http\Controllers\Admin\PrintingController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\PhotographyController;
+use App\Http\Controllers\Admin\VideographyController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +31,7 @@ Route::prefix('admin')->group(function () {
     Route::view('order-list', 'admin.order.index')->name('order.index');
 
     Route::resource('design', DesignController::class);
+    Route::resource('photography', PhotographyController::class);
+    Route::resource('videography', VideographyController::class);
+    Route::resource('printing', PrintingController::class);
 });

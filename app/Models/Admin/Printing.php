@@ -30,8 +30,14 @@ class Printing extends Model
         'material',
         'scale',
         'file',
+        'status',
         'description'
     ];
+
+    public function getRouteKeyName()
+    {
+        return 'ulid';
+    }
 
     public function scopeByStatus($query, $status): Builder
     {
