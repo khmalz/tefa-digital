@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SendMailController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DesignController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -18,6 +19,8 @@ use App\Http\Controllers\Admin\DashboardController;
 Route::get('/', function () {
     return view('index');
 });
+
+Route::post('/contact-send', [SendMailController::class, 'sendMail'])->name('contact.send');
 
 Route::prefix('admin')->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');

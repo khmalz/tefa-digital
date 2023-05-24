@@ -6,12 +6,13 @@ use App\Helpers\MixCaseULID;
 use App\Models\Admin\PhotographyPlan;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
+use Znck\Eloquent\Traits\BelongsToThrough;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Photography extends Model
 {
-    use HasFactory;
+    use HasFactory, BelongsToThrough;
 
     /**
      *  Setup model event hooks
@@ -33,8 +34,24 @@ class Photography extends Model
         'description'
     ];
 
-    protected $with = ['plan.category'];
+    protected $with = ['plan', 'category'];
     protected $appends = ['price', 'order'];
+
+    public function plan(): BelongsTo
+    {
+        return $this->belongsTo(PhotographyPlan::class, 'photography_plan_id');
+    }
+
+    public function category()
+    {
+        return $this->belongsToThrough(
+            PhotographyCategory::class,
+            PhotographyPlan::class,
+            'photography_plan_id',
+            null,
+            [PhotographyCategory::class => 'photography_category_id']
+        );
+    }
 
     public function getPriceAttribute()
     {
@@ -43,16 +60,11 @@ class Photography extends Model
 
     public function getOrderAttribute()
     {
-        return $this->plan->category->title;
+        return $this->category->title;
     }
 
     public function scopeByStatus($query, $status): Builder
     {
         return $query->where('status', $status);
-    }
-
-    public function plan(): BelongsTo
-    {
-        return $this->belongsTo(PhotographyPlan::class, 'photography_plan_id');
     }
 }
