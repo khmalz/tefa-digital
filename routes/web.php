@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/category', function () {
+    return view('layouts.category');
+});
+
 Route::prefix('admin')->group(function () {
     Route::get('dashboard', function () {
         return view('admin.dashboard.index');
