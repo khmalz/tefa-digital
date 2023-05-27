@@ -5,7 +5,8 @@
             <div class="col-6">
                 @forelse ($categories as $category)
                     <div class="card-mantap">
-                        <div class="darken"><span class="centering"><a href="{{ route('design-category.edit', 'null') }}"
+                        <div class="darken"><span class="centering"><a
+                                    href="{{ route('design-category.edit', $category->id) }}"
                                     class="text-decoration-none edit-text">EDIT</a></span>
                         </div>
                         <img class="category-img"

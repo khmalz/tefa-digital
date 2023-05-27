@@ -36,7 +36,7 @@ Route::prefix('admin')->group(function () {
     Route::resource('videography', VideographyController::class);
     Route::resource('printing', PrintingController::class);
 
-    Route::resource('design-category', DesignCategoryController::class);
+    Route::resource('design-category', DesignCategoryController::class)->except('create', 'store', 'show', 'destroy');
 
     Route::view('design-feature-edit', 'admin.design.feature-edit')->name('design.feature-edit');
     Route::view('design-plans-create', 'admin.design.plans-create')->name('design.plans-create');
