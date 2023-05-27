@@ -6,7 +6,7 @@
         <div id="heroCarousel" data-bs-interval="5000" class="carousel carousel-fade" data-bs-ride="carousel">
 
             <img src="https://images.unsplash.com/photo-1603380353725-f8a4d39cc41e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                alt="" style="width: 100%; filter: brightness(70%)">
+                alt="" style="width: 100%; filter: brightness(55%)">
 
             <!-- Slide 1 -->
             <div class="carousel-item active">
@@ -50,5 +50,26 @@
 @endsection
 
 @section('main')
-    
+<div class="row">
+    <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+        <h3>Abadikan momen berharga dengan keindahan yang abadi.</h3>
+        <p class="fst-italic"> 
+            Apakah Anda ingin mengabadikan momen-momen berharga dalam hidup Anda dengan cara yang istimewa? 
+            Kami hadir dengan jasa fotografi yang menghadirkan keahlian profesional dan sentuhan kreatif 
+            untuk menciptakan gambar-gambar yang tak terlupakan. Kami memiliki 3 jenis jasa fotografi yang 
+            dapat membantu anda dalam menemukan style fotografi yang cocok untuk momen berharga anda :
+        </p>
+        <ul>
+            <li><i class="ri-check-double-line"></i> Jasa Foto Produk</li>
+            <li><i class="ri-check-double-line"></i> Jasa Foto Pernikahan</li>
+            <li><i class="ri-check-double-line"></i> Jasa Foto Acara</li>
+        </ul>
+        <button type="button" class="btn btn-color" style="color: #f06404">
+            <a href="">Selengkapnya</a>
+        </button>
+    </div>
+    <div class="col-lg-6 order-1 order-lg-2 text-center">
+        <img src="assets/img/features-1.png" alt="" class="img-fluid">
+    </div>
+</div>
 @endsection
