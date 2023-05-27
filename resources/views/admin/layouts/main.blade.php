@@ -53,8 +53,6 @@
             height: 100%;
             width: 33%;
             object-fit: cover;
-
-
         }
 
         .card-mantap {

@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\PrintingController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PhotographyController;
 use App\Http\Controllers\Admin\VideographyController;
+use App\Http\Controllers\Admin\DesignCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,8 +36,8 @@ Route::prefix('admin')->group(function () {
     Route::resource('videography', VideographyController::class);
     Route::resource('printing', PrintingController::class);
 
-    Route::view('design-category', 'admin.design.categories')->name('design.categories');
-    Route::view('design-category-edit', 'admin.design.categories-edit')->name('design.categories-edit');
+    Route::resource('design-category', DesignCategoryController::class);
+
     Route::view('design-feature-edit', 'admin.design.feature-edit')->name('design.feature-edit');
     Route::view('design-plans-create', 'admin.design.plans-create')->name('design.plans-create');
     Route::view('design-plans-edit', 'admin.design.plans-edit')->name('design.plans-edit');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Admin\DesignCategory;
 use Illuminate\Http\Request;
 
 class DesignCategoryController extends Controller
@@ -12,7 +13,8 @@ class DesignCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $categories = DesignCategory::all();
+        return view('admin.design.categories', compact('categories'));
     }
 
     /**
@@ -34,7 +36,7 @@ class DesignCategoryController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(DesignCategory $designCategory)
     {
         //
     }
@@ -42,15 +44,15 @@ class DesignCategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(DesignCategory $designCategory)
     {
-        //
+        return view('admin.design.categories-edit');
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, DesignCategory $designCategory)
     {
         //
     }
@@ -58,7 +60,7 @@ class DesignCategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(DesignCategory $designCategory)
     {
         //
     }
