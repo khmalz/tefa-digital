@@ -12,7 +12,7 @@
                 <input class="form-control" type="file" id="category-image-input">
             </div>
             <div class="mt-4">
-                <a href="" class="btn-submit ">Save</a>
+                <a href="" class="btn-submit">Save</a>
             </div>
         </form>
 

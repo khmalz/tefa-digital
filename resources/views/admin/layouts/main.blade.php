@@ -43,11 +43,7 @@
             float: right;
             padding: 15px;
             overflow: hidden;
-
-
         }
-
-        .category-text {}
 
         .word-break {
             overflow-wrap: break-word;
@@ -73,7 +69,6 @@
             position: relative;
         }
 
-
         .darken {
             height: 100%;
             background-color: rgb(0, 0, 0, 0.9);
@@ -82,20 +77,12 @@
             height: 100%;
             -webkit-filter: blur(50%);
             filter: blur(50%);
-            transition: 200ms ease;
+            transition: 450ms ease;
             opacity: 0
         }
 
         .darken:hover {
-            height: 100%;
-            background-color: rgb(0, 0, 0, 0.9);
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            -webkit-filter: blur(50%);
-            filter: blur(50%);
             opacity: 100;
-            transition: 200ms ease
         }
 
         .centering {
@@ -107,20 +94,14 @@
         }
 
         .edit-text {
-
             font-family: 'Montserrat', sans-serif;
             font-size: 100px;
             color: white !important;
-            transition: 200ms ease
+            transition: 300ms ease;
         }
 
         .edit-text:hover {
-
-            font-family: 'Montserrat', sans-serif;
-            font-size: 100px;
-            color: white !important;
-            text-shadow: 0px 0px 20px #fff;
-            transition: 200ms ease
+            text-shadow: 0px 0px 25px #fff;
         }
 
         .btn-submit {
@@ -130,26 +111,16 @@
             text-decoration: none;
             padding-top: 6px;
             padding-bottom: 6px;
-            color: white;
+            color: white !important;
             border-radius: 5px;
-            transition: 200ms ease
+            transition: 200ms ease;
         }
 
         .btn-submit:hover {
-            background-color: rgb(60, 75, 100);
-            padding-left: 30px;
-            padding-right: 30px;
-            text-decoration: none;
-            padding-top: 6px;
-            padding-bottom: 6px;
-            color: white;
-            border-radius: 5px;
             text-shadow: 0px 0px 20px #fff;
-            transition: 200ms ease
         }
 
         .left-line {
-
             border: 0.1px thin rgb(86, 86, 86);
             border-radius: 200px;
             width: 6vw;
@@ -158,7 +129,6 @@
         }
 
         .right-line {
-
             border: 0.1px thin rgb(86, 86, 86);
             border-radius: 200px;
             width: 66vw;
@@ -167,7 +137,6 @@
         }
 
         .header-cat {
-
             width: 100%;
             /* background-color: red; */
         }
@@ -206,20 +175,16 @@
             padding-right: 10px;
             border: 0.1px solid rgb(0, 158, 0);
             color: rgb(0, 158, 0);
-            transition: 200ms ease
+            transition: 300ms ease;
         }
 
         .big-plus:hover {
-            font-size: 80px;
-            font-family: 'Montserrat', sans-serif;
             border-radius: 50px 0px 50px 0px;
             padding-left: 20px;
             padding-right: 20px;
             border: 0.1px solid rgb(0, 158, 0, 0.5);
             background-color: rgb(0, 158, 0, 0.5);
-            transition: 200ms ease;
             color: white;
-
         }
     </style>
     @stack('styles')
