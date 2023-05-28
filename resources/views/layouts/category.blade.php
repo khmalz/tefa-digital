@@ -6,17 +6,14 @@
         <div id="heroCarousel" data-bs-interval="5000" class="carousel carousel-fade" data-bs-ride="carousel">
 
             <img src="https://images.unsplash.com/photo-1603380353725-f8a4d39cc41e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                alt="" style="width: 100%; filter: brightness(55%)">
+                alt="" style="width:100vw; filter: brightness(55%)">
 
             <!-- Slide 1 -->
             <div class="carousel-item active">
                 <div class="carousel-container">
-                    <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Selecao</span></h2>
-                    <p class="animate__animated fanimate__adeInUp">Ut velit est quam dolor ad a aliquid qui aliquid.
-                        Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut.
-                        Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore
-                        modi architecto.</p>
-                    {{-- <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a> --}}
+                    <h2 class="animate__animated animate__fadeInDown">Photography</span></h2>
+                    <p class="animate__animated fanimate__adeInUp">Abadikan momen berharga dengan keindahan yang abadi.</p>
+                    <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
                 </div>
             </div>
 
@@ -50,26 +47,90 @@
 @endsection
 
 @section('main')
-<div class="row">
-    <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
-        <h3>Abadikan momen berharga dengan keindahan yang abadi.</h3>
-        <p class="fst-italic"> 
-            Apakah Anda ingin mengabadikan momen-momen berharga dalam hidup Anda dengan cara yang istimewa? 
-            Kami hadir dengan jasa fotografi yang menghadirkan keahlian profesional dan sentuhan kreatif 
-            untuk menciptakan gambar-gambar yang tak terlupakan. Kami memiliki 3 jenis jasa fotografi yang 
-            dapat membantu anda dalam menemukan style fotografi yang cocok untuk momen berharga anda :
-        </p>
-        <ul>
-            <li><i class="ri-check-double-line"></i> Jasa Foto Produk</li>
-            <li><i class="ri-check-double-line"></i> Jasa Foto Pernikahan</li>
-            <li><i class="ri-check-double-line"></i> Jasa Foto Acara</li>
-        </ul>
-        <button type="button" class="btn btn-color" style="color: #f06404">
-            <a href="">Selengkapnya</a>
-        </button>
-    </div>
-    <div class="col-lg-6 order-1 order-lg-2 text-center">
-        <img src="assets/img/features-1.png" alt="" class="img-fluid">
-    </div>
-</div>
+    <main id="main">
+        <!-- ======= About Section ======= -->
+        <section id="about" class="about">
+            <div class="container">
+
+                <div class="section-title" data-aos="zoom-out">
+                    <h2>Photography</h2>
+                    <p>Seberapa penting photography?</p>
+                </div>
+
+                <div class="row content" data-aos="fade-up">
+                    <div class="col-lg-6">
+                        <p style="margin-bottom: 40px">
+                            Photography merupakan salah satu layanan yang kami sediakan untuk membantu menemukan fotografer yang cocok untuk menghasilkan gambar-gambar sesuai dengan kebutuhan Anda. 
+                            <ul>
+                                <li><i class="ri-check-double-line"></i> Meningkatkan citra dan profesionalisme</li>
+                                <li><i class="ri-check-double-line"></i> Memperkuat branding</li>
+                                <li><i class="ri-check-double-line"></i> Dokumentasi yang lengkap</li>
+                            </ul>
+                        {{-- <ul>
+                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat</li>
+                            <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in
+                                voluptate velit</li>
+                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo
+                                consequat</li>
+                        </ul> --}}
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" 
+                        alt="" style="width: 75%;">
+                        {{-- <a href="#" class="btn-learn-more">Learn More</a> --}}
+                    </div>
+                </div>
+            </div>
+        </section><!-- End About Section -->
+
+        <!-- ======= Services Section ======= -->
+        <section id="services" class="services">
+            <div class="container">
+
+                <div class="section-title" data-aos="zoom-out">
+                    <h2>Ragam layanan</h2>
+                    <p>Photography</p>
+                    <span> Kami menyediakan layanan jasa fotografi yang dapat anda pilih untuk berbagai macam  acara dan event, seperti:</span>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="icon-box" data-aos="zoom-in-left">
+                            <div class="icon"><i class="bi bi-briefcase" style="color: #ff689b;"></i></div>
+                            <h4 class="title"><a href="">Jasa Foto Produk</a></h4>
+                            <p class="description">Buat produk Anda terlihat lebih menarik dengan jasa foto produk kami. Dapatkan foto produk yang memukau dengan penawaran terbaik dari kami sekarang juga!
+                            </p>
+                            <button type="button" class="btn btn-color" style="color: #f06404">
+                                <a href="">Selengkapnya</a>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mt-5 mt-md-0">
+                        <div class="icon-box" data-aos="zoom-in-left" data-aos-delay="100">
+                            <div class="icon"><i class="bi bi-book" style="color: #e9bf06;"></i></div>
+                            <h4 class="title"><a href="">Jasa Foto Pernikahan</a></h4>
+                            <p class="description">Abadikan momen spesial pernikahan Anda dengan jasa foto pernikahan kami. Dapatkan kenangan pernikahan yang abadi dengan penawaran terbaik dari kami. Hubungi kami sekarang!
+                            </p>
+                            <button type="button" class="btn btn-color" style="color: #f06404">
+                                <a href="">Selengkapnya</a>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 mt-5 mt-lg-0 ">
+                        <div class="icon-box" data-aos="zoom-in-left" data-aos-delay="200">
+                            <div class="icon"><i class="bi bi-card-checklist" style="color: #3fcdc7;"></i></div>
+                            <h4 class="title"><a href="">Jasa Foto Acara</a></h4>
+                            <p class="description">Kami menawarkan jasa fotografi acara untuk mengabadikan momen penting Anda. Dapatkan gambar acara yang berkesan dengan jasa fotografi acara kami. Hubungi kami sekarang!</p>
+                            <button type="button" class="btn btn-color" style="color: #f06404;">
+                                <a href="">Selengkapnya</a>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section><!-- End Services Section -->
+    </main>
 @endsection

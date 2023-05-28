@@ -6,7 +6,7 @@
         <div id="heroCarousel" data-bs-interval="5000" class="carousel carousel-fade" data-bs-ride="carousel">
 
             <img src="https://images.unsplash.com/photo-1603380353725-f8a4d39cc41e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                alt="" style="width: 100%; filter: brightness(70%)">
+                alt="" style="width: 100%; filter: brightness(55%)">
 
             <!-- Slide 1 -->
             <div class="carousel-item active">
