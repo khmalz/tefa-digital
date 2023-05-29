@@ -13,7 +13,7 @@
                 <div class="carousel-container">
                     <h2 class="animate__animated animate__fadeInDown">Photography</span></h2>
                     <p class="animate__animated fanimate__adeInUp">Abadikan momen berharga dengan keindahan yang abadi.</p>
-                    <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
+                    <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
                 </div>
             </div>
 

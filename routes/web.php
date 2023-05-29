@@ -17,6 +17,10 @@ Route::get('/', function () {
     return view('index');
 });
 
+Route::get('/subcategory', function () {
+    return view('layouts.sub-category');
+});
+
 Route::get('/category', function () {
     return view('layouts.category');
 });
