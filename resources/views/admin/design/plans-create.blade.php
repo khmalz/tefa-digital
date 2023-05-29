@@ -1,7 +1,6 @@
 @extends('admin.layouts.main')
 @section('content')
     <div class="container">
-
         @if (session('success'))
             <div class="alert alert-success" role="alert">
                 {{ session('success') }}
@@ -14,7 +13,7 @@
             </div>
         @endif
 
-        <form action="{{ route('design.plans-create') }}" method="post">
+        <form action="{{ route('design-plan.create') }}" method="post">
             @csrf
             <div class="row mb-5">
                 <div class="col-md-10">

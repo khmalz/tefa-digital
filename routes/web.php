@@ -5,6 +5,7 @@ use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\Admin\DesignController;
 use App\Http\Controllers\Admin\PrintingController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DesignPlanController;
 use App\Http\Controllers\Admin\PhotographyController;
 use App\Http\Controllers\Admin\VideographyController;
 use App\Http\Controllers\Admin\DesignCategoryController;
@@ -37,9 +38,5 @@ Route::prefix('admin')->group(function () {
     Route::resource('printing', PrintingController::class);
 
     Route::resource('design-category', DesignCategoryController::class)->except('create', 'store', 'show', 'destroy');
-
-    Route::view('design-feature-edit', 'admin.design.feature-edit')->name('design.feature-edit');
-    Route::view('design-plans-create', 'admin.design.plans-create')->name('design.plans-create');
-    Route::view('design-plans-edit', 'admin.design.plans-edit')->name('design.plans-edit');
-    Route::view('design-plans', 'admin.design.plans')->name('design.plans');
+    Route::resource('design-plan', DesignPlanController::class);
 });

@@ -27,7 +27,7 @@
                 Design</a>
             <ul class="nav-group-items">
                 <li class="nav-item"><a class="nav-link" href="{{ route('design-category.index') }}">Category</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('design.plans') }}">Plan</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('design-plan.index') }}">Plan</a></li>
             </ul>
         </li>
         <li class="nav-group">

@@ -23,7 +23,7 @@
             </div>
         @endif
 
-        <form action="{{ route('plans.save_change', $plan) }}" method="post">
+        <form action="{{ route('design-plan.update', $plan->id) }}" method="post">
             @csrf
             @method('PUT')
             <div class="row mb-5">
