@@ -30,6 +30,14 @@ class DesignCategoryController extends Controller
      */
     public function update(Request $request, DesignCategory $designCategory)
     {
-        //
+        $data = [
+            'title' => $request->title,
+            'description' => $request->description,
+            'image' => $request->image ?? fake()->filePath(),
+        ];
+
+        $designCategory->update($data);
+
+        return to_route('design-category.index')->with('success', "You're successfully updated the data");
     }
 }
