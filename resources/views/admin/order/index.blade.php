@@ -313,9 +313,9 @@
                 stateDuration: 60 * 5,
                 columns,
                 order: [
-                    tabId === "#data-table-printing" ? ([2, "asc"],
-                        [5, 'asc']) : ([3, "asc"],
-                        [4, 'asc'])
+                    tabId === "#data-table-printing" ? (
+                        [5, 'asc'], [2, "asc"]) : ([4, "asc"],
+                        [3, 'asc'])
                 ],
                 language: {
                     infoEmpty: "No entries to show",
@@ -334,7 +334,8 @@
             // Mendapatkan session active_tab
             const activeTab = sessionStorage.getItem("active_tab");
 
-            activeTab ? $(activeTab).click() : createDataTable('#data-table-design', api.design, columns);
+            activeTab ? $(activeTab).click() : createDataTable('#data-table-design', api.design, generateColumns(
+                "#designModal", "design"));
 
             const tabs = [{
                     id: "#pills-design-tab",
@@ -407,6 +408,7 @@
                         const orderInfo = response.data;
                         const orderName = orderInfo.nama;
                         const orderTitle = orderInfo.order;
+                        const orderStatus = orderInfo.status;
 
                         // Mengisi modal dengan informasi order
                         const modalTitle = `Ganti Status - ${orderType}`;
@@ -418,9 +420,9 @@
                                        <div class="form-group">
                                              <label for="statusSelect">Status:</label>
                                              <select class="form-control" id="statusSelect" name="status">
-                                                <option value="pending">Pending</option>
-                                                <option value="progress">Progress</option>
-                                                <option value="completed">Completed</option>
+                                                <option ${orderStatus == 'pending' && 'selected'} value="pending">Pending</option>
+                                                <option ${orderStatus == 'progress' && 'selected'} value="progress">Progress</option>
+                                                <option ${orderStatus == 'completed' && 'selected'} value="completed">Completed</option>
                                              </select>
                                        </div>
                                     </form>
@@ -457,7 +459,6 @@
                     }
                 });
             });
-
         });
     </script>
 @endpush
