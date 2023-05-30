@@ -4,8 +4,10 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Models\Admin\DesignPlan;
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\DesignCategory;
+use App\Models\Admin\DesignFeature;
 
 class DesignPlanController extends Controller
 {
@@ -64,7 +66,59 @@ class DesignPlanController extends Controller
      */
     public function update(Request $request, DesignPlan $designPlan)
     {
-        //
+        // Mulai database transaksi
+        DB::beginTransaction();
+
+        try {
+            // Proses edit Plan
+            $data = [
+                'title' => request('title_plan'),
+                'price' => request('price'),
+                'description' => request('description_plan'),
+            ];
+
+            $designPlan->update($data);
+
+            // Proses data input dari form
+            $plan_ids = $request->id;
+            $edits = $request->edit;
+            $deletes = $request->delete;
+            $texts = $request->text;
+            $descriptions = $request->description;
+
+            // Proses operasi update
+            foreach ($edits ?? [] as $id => $data) {
+                DesignFeature::where('id', $id)->update(['text' => $data['text'], 'description' => $data['description']]);
+            };
+
+            // Proses operasi create
+            if ($texts) {
+                $dataToInsert = array_map(function ($plan_id, $text, $description) {
+                    return [
+                        'design_plan_id' => $plan_id,
+                        'text' => $text,
+                        'description' => $description ?? null
+                    ];
+                }, $plan_ids, $texts, $descriptions);
+
+                DesignFeature::insert($dataToInsert);
+            }
+
+            // Proses operasi delete
+            if ($deletes) {
+                DesignFeature::destroy($deletes);
+            }
+
+            // Commit database transaksi
+            DB::commit();
+
+            return to_route('design-plan.index')->with('success', 'Changes have been saved successfully');
+        } catch (\Exception $e) {
+            // Rollback database transaksi jika terjadi error
+            DB::rollback();
+
+            return back()->with('error', 'Failed to save changes: ' . $e->getMessage());
+        }
     }
 
     /**
