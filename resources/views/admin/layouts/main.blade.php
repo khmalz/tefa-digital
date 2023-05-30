@@ -37,19 +37,56 @@
             font-weight: 600 !important;
         }
 
-        .category-text-container {
+        /* .category-text-container {
             width: 67%;
             height: 95%;
             float: right;
             padding: 15px;
             overflow: hidden;
+        } */
+
+        .category-text {
+            text-align: justify !important;
+            font-size: clamp(12px, 2vw, 15px);
         }
 
         .word-break {
             overflow-wrap: break-word;
         }
 
+        .category-text-container {
+            width: 100%;
+            height: 95%;
+            padding-left: 15px;
+            padding-right: 15px;
+            overflow: hidden;
+        }
+
         .category-img {
+            height: 50%;
+            width: 100%;
+            object-fit: cover;
+
+        }
+
+        .category-title {
+            font-size: clamp(25px, 2vw, 40px);
+            padding: 0
+        }
+
+        .card-mantap {
+            margin-top: 20px;
+            width: clamp(250px, 100%, 100%);
+            height: 52vh;
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 10px 10px 10px #a7a7a7;
+            transition: 200ms ease;
+            position: relative;
+        }
+
+        /* .category-img {
             height: 100%;
             width: 33%;
             object-fit: cover;
@@ -65,7 +102,7 @@
             box-shadow: 10px 10px 10px #a7a7a7;
             transition: 200ms ease;
             position: relative;
-        }
+        } */
 
         .darken {
             height: 100%;
@@ -184,6 +221,34 @@
             background-color: rgb(0, 158, 0, 0.5);
             color: white;
         }
+
+        /* @media only screen and (max-width: 1920px) {
+            .category-text-container {
+                width: 100%;
+                height: 95%;
+                padding: 15px;
+                overflow: hidden;
+            }
+
+            .category-img {
+                height: 50%;
+                width: 100%;
+                object-fit: cover;
+
+            }
+
+            .card-mantap {
+                margin-top: 20px;
+                width: 100%;
+                height: 45vh;
+                background-color: white;
+                border-radius: 15px;
+                overflow: hidden;
+                box-shadow: 10px 10px 10px #a7a7a7;
+                transition: 200ms ease;
+                position: relative;
+            }
+        } */
     </style>
     @stack('styles')
 </head>

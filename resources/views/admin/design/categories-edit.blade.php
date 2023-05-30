@@ -1,6 +1,6 @@
 @extends('admin.layouts.main')
 @section('content')
-    <div class="container" style="height: 86vh">
+    <div class="container" style="height: 100%">
         <form action="{{ route('design-category.update', $designCategory->id) }}" method="POST">
             @csrf
             @method('PUT')
