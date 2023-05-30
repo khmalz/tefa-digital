@@ -6,11 +6,11 @@
                 <div class="col-md-6">
                     <div class="card-mantap">
                         <div class="darken"><span class="centering"><a
-                                    href="{{ route('design-category.edit', $category->id) }}"
+                                    href="{{ route('photography-category.edit', $category->id) }}"
                                     class="text-decoration-none edit-text">EDIT</a></span>
                         </div>
                         <img class="category-img"
-                            src="https://source.unsplash.com/random/900×700/?design&{{ $loop->iteration }}"
+                            src="https://source.unsplash.com/random/900×700/?photography&{{ $loop->iteration }}"
                             alt="{{ $category->title }}">
                         <div class="category-text-container">
                             <span class="category-title text-center">{{ $category->title }}</span><br>

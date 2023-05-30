@@ -9,6 +9,8 @@ use App\Http\Controllers\Admin\DesignPlanController;
 use App\Http\Controllers\Admin\PhotographyController;
 use App\Http\Controllers\Admin\VideographyController;
 use App\Http\Controllers\Admin\DesignCategoryController;
+use App\Http\Controllers\Admin\PhotographyPlanController;
+use App\Http\Controllers\Admin\PhotographyCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,4 +41,7 @@ Route::prefix('admin')->group(function () {
 
     Route::resource('design-category', DesignCategoryController::class)->except('create', 'store', 'show', 'destroy');
     Route::resource('design-plan', DesignPlanController::class);
+
+    Route::resource('photography-category', PhotographyCategoryController::class)->except('create', 'store', 'show', 'destroy');
+    Route::resource('photography-plan', PhotographyPlanController::class);
 });

@@ -13,7 +13,7 @@
             </div>
         @endif
 
-        <form action="{{ route('photography-plan.create') }}" method="post">
+        <form action="{{ route('design-plan.create') }}" method="post">
             @csrf
             <div class="row mb-5">
                 <div class="col-md-10">

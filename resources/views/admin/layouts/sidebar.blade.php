@@ -34,8 +34,9 @@
             <a class="nav-link nav-group-toggle" href="#">
                 Photography</a>
             <ul class="nav-group-items">
-                <li class="nav-item"><a class="nav-link" href="forms/form-control.html">Category</a></li>
-                <li class="nav-item"><a class="nav-link" href="forms/form-control.html">Plan</a></li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('photography-category.index') }}">Category</a>
+                </li>
+                <li class="nav-item"><a class="nav-link" href="{{ route('photography-plan.index') }}">Plan</a></li>
             </ul>
         </li>
         <li class="nav-group">
