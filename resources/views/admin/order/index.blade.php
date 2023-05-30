@@ -225,11 +225,11 @@
         };
 
         const api = {
-            design: "http://tefa-digital.test/api/design",
-            photography: "http://tefa-digital.test/api/photography",
-            videography: "http://tefa-digital.test/api/videography",
-            printing: "http://tefa-digital.test/api/printing"
-        }
+            design: "{{ route('api.design.index') }}",
+            photography: "{{ route('api.photography.index') }}",
+            videography: "{{ route('api.videography.index') }}",
+            printing: "{{ route('api.printing.index') }}"
+        };
 
         const generateColumns = (targetID, orderType) => [{
                 "data": "order_id",
@@ -398,8 +398,9 @@
 
                 // Mendapatkan informasi order melalui API
                 const orderType = $(this).data("order-type");
+                const domain = window.location.hostname;
                 const apiUrl =
-                    `http://tefa-digital.test/api/${orderType}/${orderId}`; // Menggunakan orderType yang diterima dari atribut data-order-type
+                    `http://${domain}/api/${orderType}/${orderId}`; // Menggunakan orderType yang diterima dari atribut data-order-type
                 $.ajax({
                     url: apiUrl,
                     method: "GET",
