@@ -188,7 +188,16 @@
         .plan-card {
             background-color: #fff;
             border-radius: 12px;
-            width: 100%;
+            width: clamp(200px, 100%, 100vw);
+            height: 400px;
+            text-align: center;
+            overflow: hidden
+        }
+
+        .plan-card-invis {
+            background-color: transparent;
+            border-radius: 12px;
+            width: clamp(150px, 100%, 100vw);
             height: 400px;
             text-align: center;
             overflow: hidden

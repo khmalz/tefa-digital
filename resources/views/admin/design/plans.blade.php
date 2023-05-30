@@ -3,7 +3,7 @@
     <div class="container" style="height: auto">
         @foreach ($categoriesOutput as $category)
             <div class="row mb-5">
-                <div class="row">
+                <div class="row mt-3">
                     <div class="header-cat d-flex">
                         <hr class="left-line">
                         <h4>{{ $category['title'] }}</h4>
@@ -11,9 +11,9 @@
                     </div>
                 </div>
                 <div class="row mt-3" style="padding-left: 30px;position: relative">
-                    <div class="col-3">
-                        @forelse ($category['plans'] as $plan)
-                            <div class="plan-card position-relative overflow-hidden">
+                    @forelse ($category['plans'] as $plan)
+                        <div class="col-md-6 col-lg-4 col-xl-3">
+                            <div class="plan-card mt-3 position-relative overflow-hidden">
                                 <div class="darken"><a href="{{ route('design-plan.edit', $plan->id) }}"
                                         class="centering text-decoration-none edit-text">Edit</a>
                                 </div>
@@ -21,22 +21,24 @@
                                     <div>
                                         <h5 class="plan-card-title">{{ $plan->title }}</h5>
                                         <h4 class="">{{ $plan->price }}</h4>
+                                        <span>{{ $plan->description ?? '' }}</span>
                                     </div>
                                     <hr>
                                     <div class="plan-card-feature mt-4">
                                         @foreach ($plan->features as $feature)
                                             <div>
                                                 <h6>{{ $feature->text }}</h6>
-                                                <span>{{ \Illuminate\Support\Str::words($feature->description, 12, '...') }}</span>
+                                                <span>{{ \Illuminate\Support\Str::words($feature->description, 6, '...') }}</span>
                                             </div>
                                         @endforeach
                                     </div>
                                 </div>
                             </div>
-                        @empty
-                        @endforelse
-                    </div>
-                    <div class="col-3 position-relative">
+                        </div>
+
+                    @empty
+                    @endforelse
+                    <div class="col plan-card-invis position-relative">
                         <a href="{{ route('design-plan.create') }}" class="centering big-plus text-decoration-none">+</a>
                     </div>
                 </div>
