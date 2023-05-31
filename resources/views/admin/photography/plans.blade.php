@@ -33,9 +33,10 @@
                                         @endforeach
                                     </div>
                                 </div>
+                                <div class="show-more"></div>
+                                <div class="show-less"></div>
                             </div>
                         </div>
-
                     @empty
                     @endforelse
                     <div class="col plan-card-invis position-relative">

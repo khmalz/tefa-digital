@@ -297,13 +297,53 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"
         integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
     <script src="{{ asset('assets/admin/vendors/@coreui/utils/js/coreui-utils.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/main.js') }}"></script>
 
     <!-- Datatables and necessary plugins -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
     <script
         src="https://cdn.datatables.net/v/bs5/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/cr-1.6.2/date-1.4.1/fc-4.2.2/fh-3.3.2/kt-2.9.0/r-2.4.1/rg-1.3.1/rr-1.3.3/sc-2.1.1/sb-1.4.2/sp-2.1.2/sl-1.6.2/sr-1.2.2/datatables.min.js">
+    </script>
+    <script src="{{ asset('assets/admin/js/main.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.plan-card').each(function() {
+                let planCard = $(this);
+                let showMoreDiv = planCard.find('.show-more');
+                let showLessDiv = planCard.find('.show-less');
+                if (planCard.height() > 400) {
+                    planCard.css('height', '400px');
+                    showMoreDiv.show().html(
+                        '<button onclick="showMore(this)" class="btn btn-primary">Show More</button>');
+                }
+
+                showMoreDiv.on('click', 'button', function() {
+                    planCard.css('height', 'auto');
+                    showMoreDiv.hide();
+                    showLessDiv.show();
+                });
+
+                showLessDiv.on('click', 'button', function() {
+                    planCard.css('height', '400px');
+                    showLessDiv.hide();
+                    showMoreDiv.show();
+                });
+            });
+        });
+
+        function showMore(button) {
+            let planCard = $(button).closest('.plan-card');
+            planCard.css('height', 'auto');
+            $(button).parent().html('<button onclick="showLess(this)" class="btn btn-primary">Show Less</button>');
+            planCard.addClass('card-container');
+        }
+
+        function showLess(button) {
+            let planCard = $(button).closest('.plan-card');
+            planCard.css('height', '400px');
+            $(button).parent().html('<button onclick="showMore(this)" class="btn btn-primary">Show More</button>');
+            planCard.removeClass('card-container');
+        }
     </script>
     @stack('scripts')
 </body>
