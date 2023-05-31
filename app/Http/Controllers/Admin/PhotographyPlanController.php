@@ -31,9 +31,12 @@ class PhotographyPlanController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('admin.photography.plans-create');
+        $categoryValue = $request->category;
+        $categories = PhotographyCategory::get(['id', 'title']);
+
+        return view('admin.photography.plans-create', compact('categories', 'categoryValue'));
     }
 
     /**
@@ -41,7 +44,32 @@ class PhotographyPlanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $planData = [
+            'photography_category_id' => $request->photography_category_id,
+            'title' => $request->title_plan,
+            'price' => $request->price,
+            'description' => $request->description_plan
+        ];
+
+        // create new plan and associate features
+        $plan = PhotographyPlan::create($planData);
+
+        $featuresData = [];
+
+        // loop through the text inputs
+        foreach ($request->text as $key => $value) {
+            $featuresData[] = [
+                'plan_id' => $plan->id,
+                'text' => $value,
+                'description' => $request->description[$key] ?? null
+            ];
+        }
+
+        // create features associated with the plan
+        $plan->features()->createMany($featuresData);
+
+        // redirect back with success message
+        return to_route('photography-plan.index')->with('success', 'Plan and features have been created successfully.');
     }
 
     /**

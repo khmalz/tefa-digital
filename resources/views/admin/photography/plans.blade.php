@@ -40,7 +40,7 @@
                     @empty
                     @endforelse
                     <div class="col plan-card-invis position-relative">
-                        <a href="{{ route('photography-plan.create') }}"
+                        <a href="{{ route('photography-plan.create', ['category' => $category['title']]) }}"
                             class="centering big-plus text-decoration-none">+</a>
                     </div>
                 </div>

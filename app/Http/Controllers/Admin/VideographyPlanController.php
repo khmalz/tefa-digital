@@ -31,9 +31,12 @@ class VideographyPlanController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('admin.videography.plans-create');
+        $categoryValue = $request->category;
+        $categories = VideographyCategory::get(['id', 'title']);
+
+        return view('admin.videography.plans-create', compact('categories', 'categoryValue'));
     }
 
     /**
@@ -41,7 +44,32 @@ class VideographyPlanController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $planData = [
+            'videography_category_id' => $request->videography_category_id,
+            'title' => $request->title_plan,
+            'price' => $request->price,
+            'description' => $request->description_plan
+        ];
+
+        // create new plan and associate features
+        $plan = VideographyPlan::create($planData);
+
+        $featuresData = [];
+
+        // loop through the text inputs
+        foreach ($request->text as $key => $value) {
+            $featuresData[] = [
+                'plan_id' => $plan->id,
+                'text' => $value,
+                'description' => $request->description[$key] ?? null
+            ];
+        }
+
+        // create features associated with the plan
+        $plan->features()->createMany($featuresData);
+
+        // redirect back with success message
+        return to_route('videography-plan.index')->with('success', 'Plan and features have been created successfully.');
     }
 
     /**

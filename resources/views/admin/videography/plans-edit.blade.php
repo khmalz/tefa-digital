@@ -23,7 +23,7 @@
             </div>
         @endif
 
-        <form action="{{ route('photography-plan.update', $plan->id) }}" method="post">
+        <form action="{{ route('videography-plan.update', $plan->id) }}" method="post">
             @csrf
             @method('PUT')
             <div class="row mb-5">

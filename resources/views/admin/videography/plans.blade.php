@@ -14,7 +14,7 @@
                     @forelse ($category['plans'] as $plan)
                         <div class="col-md-6 col-lg-4 col-xl-3">
                             <div class="plan-card position-relative mt-3 overflow-hidden">
-                                <div class="darken"><a href="{{ route('photography-plan.edit', $plan->id) }}"
+                                <div class="darken"><a href="{{ route('videography-plan.edit', $plan->id) }}"
                                         class="centering text-decoration-none edit-text">Edit</a>
                                 </div>
                                 <div class="plan-card-content p-3">
@@ -40,7 +40,7 @@
                     @empty
                     @endforelse
                     <div class="col plan-card-invis position-relative">
-                        <a href="{{ route('photography-plan.create') }}"
+                        <a href="{{ route('videography-plan.create', ['category' => $category['title']]) }}"
                             class="centering big-plus text-decoration-none">+</a>
                     </div>
                 </div>
