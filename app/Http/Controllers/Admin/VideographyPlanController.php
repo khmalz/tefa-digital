@@ -34,7 +34,7 @@ class VideographyPlanController extends Controller
     public function create(Request $request)
     {
         $categoryValue = $request->category;
-        $categories = VideographyCategory::get(['id', 'title']);
+        $categories = VideographyCategory::withCount('plans')->get(['id', 'title']);
 
         return view('admin.videography.plans-create', compact('categories', 'categoryValue'));
     }

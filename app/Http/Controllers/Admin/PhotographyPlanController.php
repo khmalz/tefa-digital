@@ -34,7 +34,7 @@ class PhotographyPlanController extends Controller
     public function create(Request $request)
     {
         $categoryValue = $request->category;
-        $categories = PhotographyCategory::get(['id', 'title']);
+        $categories = PhotographyCategory::withCount('plans')->get(['id', 'title']);
 
         return view('admin.photography.plans-create', compact('categories', 'categoryValue'));
     }

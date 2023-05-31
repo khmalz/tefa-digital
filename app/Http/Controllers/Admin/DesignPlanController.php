@@ -34,7 +34,7 @@ class DesignPlanController extends Controller
     public function create(Request $request)
     {
         $categoryValue = $request->category;
-        $categories = DesignCategory::get(['id', 'title']);
+        $categories = DesignCategory::withCount('plans')->get(['id', 'title']);
 
         return view('admin.design.plans-create', compact('categories', 'categoryValue'));
     }

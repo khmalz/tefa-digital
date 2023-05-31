@@ -39,10 +39,12 @@
                         </div>
                     @empty
                     @endforelse
-                    <div class="col plan-card-invis position-relative">
-                        <a href="{{ route('photography-plan.create', ['category' => $category['title']]) }}"
-                            class="centering big-plus text-decoration-none">+</a>
-                    </div>
+                    @if ($category['plans']->count() < 4)
+                        <div class="col plan-card-invis position-relative">
+                            <a href="{{ route('photography-plan.create', ['category' => $category['title']]) }}"
+                                class="centering big-plus text-decoration-none">+</a>
+                        </div>
+                    @endif
                 </div>
             </div>
         @endforeach

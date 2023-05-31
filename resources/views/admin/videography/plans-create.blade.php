@@ -13,6 +13,10 @@
             </div>
         @endif
 
+        <div class="alert alert-danger" role="alert" id="maks-alert" style="display: none;">
+            Maximum plan is 4, you can't add more
+        </div>
+
         <form action="{{ route('videography-plan.store') }}" method="post">
             @csrf
             <div class="row mb-5">
@@ -22,11 +26,12 @@
                             <label for="category" class="col-sm-2 col-form-label">Category</label>
                             <div class="col-sm-10">
                                 <select class="form-select" aria-label="Default select example"
-                                    name="videography_category_id" required>
+                                    id="photography-category-select" name="videography_category_id" required>
                                     <option selected disabled>Select Category</option>
                                     @foreach ($categories as $category)
                                         <option {{ $categoryValue == $category->title ? 'selected' : '' }}
-                                            value="{{ $category->id }}">{{ $category->title }}</option>
+                                            value="{{ $category->id }}" data-plans-count="{{ $category->plans_count }}">
+                                            {{ $category->title }}</option>
                                     @endforeach
                                 </select>
                             </div>
@@ -88,28 +93,41 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
+            let initialPlansCount = $('#photography-category-select :selected').data('plans-count');
+            updateUiByCount(initialPlansCount);
+
+            $('#photography-category-select').change(function() {
+                let selectedPlansCount = $(this).find(':selected').data('plans-count');
+                updateUiByCount(selectedPlansCount);
+            });
+
+            function updateUiByCount(plansCount) {
+                $('#maks-alert').toggle(plansCount >= 4);
+                $('.save-changes').prop('disabled', plansCount >= 4);
+            }
+
             $('.create-feature').click(function() {
-                var newFormGroup = `
-            <div class="form-group d-flex align-items-center gap-3">
-                <div class="d-flex flex-column w-100 mt-3 flex-wrap gap-3">
-                    <div class="row gap-3">
-                        <label for="text" class="col-sm-2 col-form-label">Text</label>
-                        <div class="col">
-                            <input type="text" name="text[]" class="form-control" id="text">
+                let newFormGroup = `
+                    <div class="form-group d-flex align-items-center gap-3">
+                        <div class="d-flex flex-column w-100 mt-3 flex-wrap gap-3">
+                            <div class="row gap-3">
+                                <label for="text" class="col-sm-2 col-form-label">Text</label>
+                                <div class="col">
+                                    <input type="text" name="text[]" class="form-control" id="text">
+                                </div>
+                            </div>
+                            <div class="row gap-3">
+                                <label for="description" class="col-sm-2 col-form-label">Description</label>
+                                <div class="col">
+                                    <textarea class="form-control" name="description[]" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button type="button" class="btn btn-danger delete-feature-new">Delete</button>
                         </div>
                     </div>
-                    <div class="row gap-3">
-                        <label for="description" class="col-sm-2 col-form-label">Description</label>
-                        <div class="col">
-                            <textarea class="form-control" name="description[]" rows="3"></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <button type="button" class="btn btn-danger delete-feature-new">Delete</button>
-                </div>
-            </div>
-        `;
+                `;
                 $(newFormGroup).insertBefore('#button-bottom');
 
                 // Set focus to the newly created text input
