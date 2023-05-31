@@ -13,7 +13,7 @@
                 <div class="row mt-3" style="padding-left: 30px;position: relative">
                     @forelse ($category['plans'] as $plan)
                         <div class="col-md-6 col-lg-4 col-xl-3">
-                            <div class="plan-card mt-3 position-relative overflow-hidden">
+                            <div class="plan-card position-relative mt-3 overflow-hidden" id="plan-card">
                                 <div class="darken"><a href="{{ route('design-plan.edit', $plan->id) }}"
                                         class="centering text-decoration-none edit-text">Edit</a>
                                 </div>
@@ -33,9 +33,10 @@
                                         @endforeach
                                     </div>
                                 </div>
+                                <div class="show-more"></div>
+                                <div class="show-less"></div>
                             </div>
                         </div>
-
                     @empty
                     @endforelse
                     <div class="col plan-card-invis position-relative">
@@ -46,3 +47,46 @@
         @endforeach
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            $('.plan-card').each(function() {
+                let planCard = $(this);
+                let showMoreDiv = planCard.find('.show-more');
+                let showLessDiv = planCard.find('.show-less');
+                if (planCard.height() > 400) {
+                    planCard.css('height', '400px');
+                    showMoreDiv.show().html(
+                        '<button onclick="showMore(this)" class="btn btn-primary">Show More</button>');
+                }
+
+                showMoreDiv.on('click', 'button', function() {
+                    planCard.css('height', 'auto');
+                    showMoreDiv.hide();
+                    showLessDiv.show();
+                });
+
+                showLessDiv.on('click', 'button', function() {
+                    planCard.css('height', '400px');
+                    showLessDiv.hide();
+                    showMoreDiv.show();
+                });
+            });
+        });
+
+        function showMore(button) {
+            let planCard = $(button).closest('.plan-card');
+            planCard.css('height', 'auto');
+            $(button).parent().html('<button onclick="showLess(this)" class="btn btn-primary">Show Less</button>');
+            planCard.addClass('card-container');
+        }
+
+        function showLess(button) {
+            let planCard = $(button).closest('.plan-card');
+            planCard.css('height', '400px');
+            $(button).parent().html('<button onclick="showMore(this)" class="btn btn-primary">Show More</button>');
+            planCard.removeClass('card-container');
+        }
+    </script>
+@endpush

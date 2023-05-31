@@ -113,7 +113,7 @@
             -webkit-filter: blur(50%);
             filter: blur(50%);
             transition: 450ms ease;
-            opacity: 0
+            opacity: 0;
         }
 
         .darken:hover {
@@ -186,12 +186,13 @@
         }
 
         .plan-card {
+            position: relative;
             background-color: #fff;
             border-radius: 12px;
             width: clamp(200px, 100%, 100vw);
-            height: 400px;
+            height: auto;
             text-align: center;
-            overflow: hidden
+            overflow: hidden;
         }
 
         .plan-card-invis {
@@ -229,6 +230,21 @@
             border: 0.1px solid rgb(0, 158, 0, 0.5);
             background-color: rgb(0, 158, 0, 0.5);
             color: white;
+        }
+
+        .show-more,
+        .show-less {
+            display: none;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .card-container {
+            padding-bottom: 50px !important;
         }
 
         /* @media only screen and (max-width: 1920px) {
