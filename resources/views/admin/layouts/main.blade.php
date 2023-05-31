@@ -190,6 +190,7 @@
             background-color: #fff;
             border-radius: 12px;
             width: clamp(200px, 100%, 100vw);
+            min-height: 390px !important;
             height: auto;
             text-align: center;
             overflow: hidden;
