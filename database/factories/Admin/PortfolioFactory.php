@@ -19,8 +19,8 @@ class PortfolioFactory extends Factory
         $categories = ['design', 'photography', 'videography', 'printing'];
 
         return [
-            'title' => fake()->words(2, true),
             'category' => fake()->randomElement($categories),
+            'title' => fake()->words(2, true),
             'path' => fake()->filePath(),
         ];
     }
