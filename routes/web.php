@@ -5,13 +5,14 @@ use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\Admin\DesignController;
 use App\Http\Controllers\Admin\PrintingController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\Admin\DesignPlanController;
 use App\Http\Controllers\Admin\PhotographyController;
 use App\Http\Controllers\Admin\VideographyController;
 use App\Http\Controllers\Admin\DesignCategoryController;
 use App\Http\Controllers\Admin\PhotographyPlanController;
-use App\Http\Controllers\Admin\PhotographyCategoryController;
 use App\Http\Controllers\Admin\VideographyPlanController;
+use App\Http\Controllers\Admin\PhotographyCategoryController;
 use App\Http\Controllers\Admin\VideographyCategoryController;
 
 /*
@@ -35,6 +36,7 @@ Route::prefix('admin')->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
     Route::view('order-list', 'admin.order.index')->name('order.index');
+    Route::resource('portfolio', PortfolioController::class);
 
     Route::resource('design', DesignController::class);
     Route::resource('photography', PhotographyController::class);

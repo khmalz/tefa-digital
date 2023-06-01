@@ -1,9 +1,10 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Models\Admin\Portfolio;
 use Illuminate\Http\Request;
+use App\Models\Admin\Portfolio;
+use App\Http\Controllers\Controller;
 
 class PortfolioController extends Controller
 {
@@ -12,7 +13,23 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-        //
+        $categories = Portfolio::pluck('category')->unique()->sortBy(function ($category) {
+            switch ($category) {
+                case 'design':
+                    return 1;
+                case 'photography':
+                    return 2;
+                case 'videography':
+                    return 3;
+                case 'printing':
+                    return 4;
+                default:
+                    return 5;
+            }
+        })->values();
+        $portfolios = Portfolio::all();
+
+        return view('admin.portfolio.index', compact('categories', 'portfolios'));
     }
 
     /**

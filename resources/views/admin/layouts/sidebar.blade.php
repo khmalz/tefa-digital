@@ -16,7 +16,7 @@
         <li class="nav-item">
             <a class="nav-link" href="widgets.html">
                 About</a>
-            <a class="nav-link" href="widgets.html">
+            <a class="nav-link" href="{{ route('portfolio.index') }}">
                 Portfolio</a>
             <a class="nav-link" href="widgets.html">
                 Contact Us</a>
