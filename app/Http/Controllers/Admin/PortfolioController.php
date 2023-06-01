@@ -50,7 +50,9 @@ class PortfolioController extends Controller
      */
     public function edit(Portfolio $portfolio)
     {
-        //
+        $categories = Portfolio::getSortedCategories();
+
+        return view('admin.portfolio.edit', compact('categories', 'portfolio'));
     }
 
     /**
