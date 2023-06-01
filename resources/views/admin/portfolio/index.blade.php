@@ -7,7 +7,10 @@
                 <div class="col-md-12">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <h4>Portfolio Image</h4>
+                            <div class="d-flex justify-content-between">
+                                <h4>Portfolio Image</h4>
+                                <a href="{{ route('portfolio.create') }}" class="btn btn-success text-light">Create</a>
+                            </div>
                             <ul class="nav nav-pills mb-3 gap-1" id="pills-tab" role="tablist">
                                 <li class="nav-item" role="presentation">
                                     <button class="nav-link active navstabs" id="pills-design-tab" data-coreui-toggle="pill"

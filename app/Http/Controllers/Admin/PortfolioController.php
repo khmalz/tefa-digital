@@ -13,20 +13,7 @@ class PortfolioController extends Controller
      */
     public function index()
     {
-        $categories = Portfolio::pluck('category')->unique()->sortBy(function ($category) {
-            switch ($category) {
-                case 'design':
-                    return 1;
-                case 'photography':
-                    return 2;
-                case 'videography':
-                    return 3;
-                case 'printing':
-                    return 4;
-                default:
-                    return 5;
-            }
-        })->values();
+        $categories = Portfolio::getSortedCategories();
         $portfolios = Portfolio::all();
 
         return view('admin.portfolio.index', compact('categories', 'portfolios'));
@@ -37,7 +24,9 @@ class PortfolioController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Portfolio::getSortedCategories();
+
+        return view('admin.portfolio.create', compact('categories'));
     }
 
     /**
@@ -45,7 +34,7 @@ class PortfolioController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request;
     }
 
     /**
