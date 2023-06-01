@@ -7,6 +7,7 @@ use App\Models\Admin\DesignImage;
 use App\Models\User;
 use App\Models\Admin\Design;
 use App\Models\Admin\Photography;
+use App\Models\Admin\Portfolio;
 use App\Models\Admin\Printing;
 use App\Models\Admin\Videography;
 use Illuminate\Database\Seeder;
@@ -40,5 +41,7 @@ class DatabaseSeeder extends Seeder
         });
 
         DesignImage::factory(8)->create();
+
+        Portfolio::factory(35)->create();
     }
 }
