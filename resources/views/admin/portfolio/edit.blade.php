@@ -18,7 +18,8 @@
                                         name="category">
                                         <option selected disabled>Select Category</option>
                                         @foreach ($categories as $category)
-                                            <option {{ old('category', $category) == $category ? 'selected' : '' }}
+                                            <option
+                                                {{ old('category', $portfolio->category) == $category ? 'selected' : '' }}
                                                 value="{{ $category }}">{{ $category }}
                                             </option>
                                         @endforeach
@@ -34,7 +35,7 @@
                                     <input type="file" class="form-control" id="Image" name="path"
                                         aria-describedby="image">
                                 </div>
-                                <button type="submit" class="btn btn-primary">Add</button>
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
                             </form>
                         </div>
                     </div>

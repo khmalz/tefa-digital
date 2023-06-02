@@ -34,15 +34,15 @@ class PortfolioController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
-    }
+        $datas = [
+            'title' => $request->title,
+            'category' => $request->category,
+            'path' => $request->path ?? fake()->filePath(),
+        ];
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Portfolio $portfolio)
-    {
-        //
+        Portfolio::create($datas);
+
+        return to_route('portfolio.index')->with('success', 'Data have been created successfully.');
     }
 
     /**
@@ -60,7 +60,15 @@ class PortfolioController extends Controller
      */
     public function update(Request $request, Portfolio $portfolio)
     {
-        //
+        $datas = [
+            'title' => $request->title,
+            'category' => $request->category,
+            'path' => $request->path ?? fake()->filePath(),
+        ];
+
+        $portfolio->update($datas);
+
+        return to_route('portfolio.index')->with('success', 'Changes have been saved successfully');
     }
 
     /**
@@ -68,6 +76,8 @@ class PortfolioController extends Controller
      */
     public function destroy(Portfolio $portfolio)
     {
-        //
+        $portfolio->delete();
+
+        return to_route('portfolio.index')->with('success', 'Data have been deleted');
     }
 }
