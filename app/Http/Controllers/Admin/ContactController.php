@@ -18,18 +18,18 @@ class ContactController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Contact $contact)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Contact $contact)
     {
-        //
+        $datas = [
+            'location' => $request->location,
+            'email' => $request->email,
+            'phone_number' => $request->phone_number,
+        ];
+
+        $contact->update($datas);
+
+        return to_route('contact.index');
     }
 }

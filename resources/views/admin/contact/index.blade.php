@@ -63,14 +63,15 @@
                                                 <label for="phoneNumber" class="form-label">Phone Number</label>
                                                 <input type="text" class="form-control"
                                                     value="{{ old('phone_number', $contact->phone_number) }}"
-                                                    id="phoneNumber" aria-describedby="phoneNumber" name="phoneNumber"
+                                                    id="phoneNumber" aria-describedby="phoneNumber" name="phone_number"
                                                     pattern="[+0-9]+"
                                                     oninput="this.value = this.value.replace(/[^+0-9]/g, '');">
                                             </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-info text-white">Save Changes</button>
+                                        </div>
                                     </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="submit" class="btn btn-info text-white">Save Changes</button>
                                 </div>
                             </div>
                         </div>
@@ -78,6 +79,5 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
 @endsection
