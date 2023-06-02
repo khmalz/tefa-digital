@@ -275,6 +275,36 @@
                 position: relative;
             }
         } */
+
+        .delete-tombol {
+            background-color: rgb(255, 0, 0, 0.5);
+            padding-left: 12%;
+            padding-right: 12%;
+            padding-top: 20px;
+            padding-bottom: 10px;
+            border-radius: 15px;
+            color: white;
+
+            transition: 250ms ease;
+        }
+
+        .delete-tombol:hover {
+            background-color: rgb(255, 0, 0);
+            padding-left: 30%;
+            padding-right: 30%;
+            font-weight: bold;
+            color: black;
+            transition: 250ms ease;
+
+        }
+
+        .show-more-tombol {
+            background-color: transparent;
+        }
+
+        .show-more-tombol:hover {
+            font-weight: bold;
+        }
     </style>
     @stack('styles')
 </head>

@@ -16,6 +16,8 @@
                             <div class="plan-card position-relative mt-3 overflow-hidden" id="plan-card">
                                 <div class="darken"><a href="{{ route('design-plan.edit', $plan->id) }}"
                                         class="centering text-decoration-none edit-text">Edit</a>
+                                    <a class="delete-tombol text-decoration-none"
+                                        href="{{ route('design-plan.destroy') }} "><span class="">DELETE</span></a>
                                 </div>
                                 <div class="plan-card-content p-3">
                                     <div>
