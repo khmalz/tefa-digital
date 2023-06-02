@@ -14,11 +14,9 @@
         </li>
         <li class="nav-title">Tampilan</li>
         <li class="nav-item">
-            <a class="nav-link" href="widgets.html">
-                About</a>
             <a class="nav-link" href="{{ route('portfolio.index') }}">
                 Portfolio</a>
-            <a class="nav-link" href="widgets.html">
+            <a class="nav-link" href="{{ route('contact.index') }}">
                 Contact Us</a>
         </li>
         <li class="nav-title">Jasa</li>
