@@ -28,6 +28,17 @@
             @method('PUT')
             <div class="row mb-5">
                 <div class="col-md-10">
+                    <div class="form-group mb-5">
+                        <div class="row">
+                            <label for="category" class="col-sm-2 col-form-label">Category</label>
+                            <div class="col-sm-10">
+                                <select class="form-select" aria-label="Default select example" id="design-category-select"
+                                    required>
+                                    <option selected disabled>{{ $plan->category->title }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                     <div class="form-group d-flex flex-column mt-3 w-full gap-3">
                         <div class="row">
                             <label for="title" class="col-sm-2 col-form-label">Title</label>
