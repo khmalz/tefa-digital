@@ -16,8 +16,16 @@
                             <div class="plan-card position-relative mt-3 overflow-hidden" id="plan-card">
                                 <div class="darken"><a href="{{ route('design-plan.edit', $plan->id) }}"
                                         class="centering text-decoration-none edit-text">Edit</a>
-                                    <a class="delete-tombol text-decoration-none"
-                                        href="{{ route('design-plan.destroy') }} "><span class="">DELETE</span></a>
+                                    <form id="delete-form-{{ $plan->id }}"
+                                        action="{{ route('design-plan.destroy', $plan->id) }}" method="POST">
+                                        @csrf
+                                        @method('delete')
+                                        <button type="submit" class="d-none"
+                                            onclick="return confirm('Yakin untuk menghapusnya?')"><span>DELETE</span></button>
+                                    </form>
+                                    <a class="delete-tombol text-decoration-none" href="#"
+                                        onclick="event.preventDefault(); confirm('Yakin untuk menghapusnya?') && document.getElementById('delete-form-{{ $plan->id }}').submit();"><span
+                                            class="">DELETE</span></a>
                                 </div>
                                 <div class="plan-card-content p-3">
                                     <div>
