@@ -21,7 +21,6 @@ class DesignPlan extends Model
     public function designs()
     {
         return $this->hasMany(Design::class, 'design_plan_id');
-
     }
 
     public function features()

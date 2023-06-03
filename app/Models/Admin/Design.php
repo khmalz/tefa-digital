@@ -5,16 +5,15 @@ namespace App\Models\Admin;
 use App\Helpers\MixCaseULID;
 use App\Models\Admin\DesignPlan;
 use App\Models\Admin\DesignImage;
-use App\Models\Admin\DesignCategory;
 use Illuminate\Database\Eloquent\Model;
+use Znck\Eloquent\Traits\BelongsToThrough;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 
 class Design extends Model
 {
-    use HasFactory;
+    use HasFactory, BelongsToThrough;
 
     /**
      *  Setup model event hooks
@@ -38,9 +37,23 @@ class Design extends Model
         'description'
     ];
 
+    protected $with = ['plan', 'category'];
+    protected $appends = ['price', 'order'];
+
     public function plan(): BelongsTo
     {
         return $this->belongsTo(DesignPlan::class, 'design_plan_id');
+    }
+
+    public function category()
+    {
+        return $this->belongsToThrough(
+            DesignCategory::class,
+            DesignPlan::class,
+            'design_plan_id',
+            null,
+            [DesignCategory::class => 'design_category_id']
+        );
     }
 
     public function images(): HasMany
@@ -48,19 +61,13 @@ class Design extends Model
         return $this->hasMany(DesignImage::class, 'design_id');
     }
 
-    public function category(): HasOneThrough
+    public function getPriceAttribute()
     {
-        return $this->hasOneThrough(
-            DesignCategory::class, // Model target
-            DesignPlan::class,
-            // Model perantara
-            'design_category_id',
-            // foreign key pada model DesignPlan
-            'id',
-            // foreign key pada model DesignCategory
-            'id',
-            // local key pada model Design
-            'design_category_id' // local key pada model DesignPlan
-        );
+        return $this->plan->price;
+    }
+
+    public function getOrderAttribute()
+    {
+        return $this->category->title;
     }
 }
