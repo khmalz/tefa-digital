@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Admin\PhotographyCategory;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Admin\PhotographyCategory;
 
 class PhotographyCategoryController extends Controller
 {
@@ -30,10 +31,16 @@ class PhotographyCategoryController extends Controller
      */
     public function update(Request $request, PhotographyCategory $photographyCategory)
     {
+        if ($request->has('image')) {
+            Storage::delete($photographyCategory->image);
+
+            $image = $request->file('image')->store('photographyCategories');
+        }
+
         $data = [
             'title' => $request->title,
             'description' => $request->description,
-            'image' => $request->image ?? fake()->filePath(),
+            'image' => $image ?? null,
         ];
 
         $photographyCategory->update($data);

@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\DesignCategory;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DesignCategoryController extends Controller
 {
@@ -30,10 +31,16 @@ class DesignCategoryController extends Controller
      */
     public function update(Request $request, DesignCategory $designCategory)
     {
+        if ($request->has('image')) {
+            Storage::delete($designCategory->image);
+
+            $image = $request->file('image')->store('designCategories');
+        }
+
         $data = [
             'title' => $request->title,
             'description' => $request->description,
-            'image' => $request->image ?? fake()->filePath(),
+            'image' => $image ?? null,
         ];
 
         $designCategory->update($data);
