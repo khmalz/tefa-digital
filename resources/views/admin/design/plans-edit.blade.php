@@ -88,14 +88,21 @@
                                 <div class="row gap-3">
                                     <label for="text" class="col-sm-2 col-form-label">Text</label>
                                     <div class="col">
-                                        <input type="text" class="form-control" id="text"
+                                        <input type="text"
+                                            class="form-control @error('edit.*.text') is-invalid @enderror" id="text"
                                             value="{{ $feature->text }}" readonly>
+                                        @error('edit.*.text')
+                                            is-invalid
+                                        @enderror
                                     </div>
                                 </div>
                                 <div class="row gap-3">
                                     <label for="description" class="col-sm-2 col-form-label">Description</label>
                                     <div class="col">
-                                        <textarea class="form-control" rows="3">{{ $feature->description }}</textarea>
+                                        <textarea class="form-control @error('edit.*.description') is-invalid @enderror" rows="3">{{ $feature->description }}</textarea>
+                                        @error('edit.*.description')
+                                            is-invalid
+                                        @enderror
                                     </div>
                                 </div>
                             </div>
@@ -165,13 +172,23 @@
                             <div class="row gap-3">
                                 <label for="text" class="col-sm-2 col-form-label">Text</label>
                                 <div class="col">
-                                    <input type="text" name="text[]" class="form-control" id="text">
+                                    <input type="text" name="text[]" class="form-control @error('text.*') is-invalid @enderror" id="text">
+                                    @error('text.*')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                             </div>
                             <div class="row gap-3">
                                 <label for="description" class="col-sm-2 col-form-label">Description</label>
                                 <div class="col">
-                                    <textarea class="form-control" name="description[]" rows="3"></textarea>
+                                    <textarea class="form-control" name="description[] @error('description.*') is-invalid @enderror" rows="3"></textarea>
+                                    @error('description.*')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
                                 </div>
                             </div>
                         </div>
