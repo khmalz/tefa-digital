@@ -115,8 +115,8 @@
                     </div>
 
                     <div class="d-flex align-items-center justify-content-between mt-3" id="button-bottom">
-                        <button type="button" class="btn btn-success create-feature">Add</button>
-                        <button type="submit" class="btn btn-info save-changes">Save Changes</button>
+                        <button type="button" class="btn btn-success text-white create-feature">Add</button>
+                        <button type="submit" class="btn btn-info text-white save-changes">Save Changes</button>
                     </div>
                 </div>
             </div>
@@ -169,7 +169,7 @@
                             </div>
                         </div>
                         <div>
-                            <button type="button" class="btn btn-danger delete-feature-new">Delete</button>
+                            <button type="button" class="btn btn-danger text-white delete-feature-new">Delete</button>
                         </div>
                     </div>
                 `;

@@ -109,7 +109,8 @@
                             <div class="d-flex align-items-center flex-column gap-2">
                                 <div>
                                     <input type="checkbox" hidden id="deleted-{{ $feature->id }}" class="delete-feature">
-                                    <label for="deleted-{{ $feature->id }}" class="btn btn-danger">Delete</label>
+                                    <label for="deleted-{{ $feature->id }}"
+                                        class="btn btn-danger text-white">Delete</label>
                                 </div>
                                 <div><button type="button" class="btn btn-primary edit-feature"
                                         data-feature-id="{{ $feature->id }}">Edit</button>
@@ -119,8 +120,8 @@
                     @endforeach
 
                     <div class="d-flex align-items-center justify-content-between mt-3" id="button-bottom">
-                        <button type="button" class="btn btn-success create-feature">Add</button>
-                        <button type="submit" class="btn btn-info save-changes">Save Changes</button>
+                        <button type="button" class="btn btn-success create-feature text-white">Add</button>
+                        <button type="submit" class="btn btn-info save-changes text-white">Save Changes</button>
                     </div>
                 </div>
             </div>
@@ -193,7 +194,7 @@
                             </div>
                         </div>
                         <div class="">
-                            <button type="button" class="btn btn-danger delete-feature-new">Delete</button>
+                            <button type="button" class="btn btn-danger text-white delete-feature-new">Delete</button>
                         </div>
                     </div>
                 `;
