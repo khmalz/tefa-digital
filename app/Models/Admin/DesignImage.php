@@ -12,7 +12,7 @@ class DesignImage extends Model
 
     protected $fillable = [
         'design_id',
-        'path'
+        'image'
     ];
 
     public function design()

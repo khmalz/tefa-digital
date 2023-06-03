@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->enum('category', ['design', 'photography', 'videography', 'printing']);
             $table->string('title');
-            $table->string('path');
+            $table->string('image')->default('placeholder.jpg');
             $table->timestamps();
         });
     }

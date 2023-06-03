@@ -12,7 +12,7 @@ class Portfolio extends Model
     protected $fillable = [
         'title',
         'category',
-        'path',
+        'image',
     ];
 
     public function scopeGetSortedCategories($query)

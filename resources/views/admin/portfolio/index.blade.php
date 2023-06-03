@@ -55,7 +55,9 @@
                                                 <tbody class="text-center">
                                                     @forelse ($portfolios->where('category', $category) as $portfolio)
                                                         <tr>
-                                                            <td>{{ $portfolio->path }}</td>
+                                                            @if ($portfolio->image)
+                                                            @endif
+                                                            <td>{{ $portfolio->image }}</td>
                                                             <td>{{ $portfolio->title }}</td>
                                                             <td>
                                                                 <div class="dropdown">

@@ -43,9 +43,9 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="Image" class="form-label">Image</label>
-                                    <input type="file" class="form-control @error('path') is-invalid @enderror"
-                                        id="Image" name="path" aria-describedby="image">
-                                    @error('path')
+                                    <input type="file" class="form-control @error('image') is-invalid @enderror"
+                                        id="Image" name="image" aria-describedby="image">
+                                    @error('image')
                                         <div class="invalid-feedback">
                                             {{ $message }}
                                         </div>
