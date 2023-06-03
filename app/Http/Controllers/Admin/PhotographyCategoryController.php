@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
-use App\Models\Admin\PhotographyCategory;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\CategoryRequest;
+use Illuminate\Support\Facades\Storage;
+use App\Models\Admin\PhotographyCategory;
 
 class PhotographyCategoryController extends Controller
 {
@@ -28,14 +30,17 @@ class PhotographyCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, PhotographyCategory $photographyCategory)
+    public function update(CategoryRequest $request, PhotographyCategory $photographyCategory)
     {
-        $data = [
-            'title' => $request->title,
-            'description' => $request->description,
-            'image' => $request->image ?? fake()->filePath(),
-        ];
+        $data = $request->validated();
 
+        if ($request->has('image')) {
+            Storage::delete($photographyCategory->image);
+
+            $image = $request->file('image')->store('photographyCategories');
+        }
+
+        $data['image'] = $image ?? $photographyCategory->image;
         $photographyCategory->update($data);
 
         return to_route('photography-category.index')->with('success', "You're successfully updated the data");

@@ -392,6 +392,12 @@
         .blurrer:hover {
             display: none
         }
+
+        .portfolio-img {
+            width: 40% !important;
+            height: 100px !important;
+            object-fit: cover;
+        }
     </style>
     @stack('styles')
 </head>

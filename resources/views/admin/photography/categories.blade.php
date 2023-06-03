@@ -9,9 +9,14 @@
                                     href="{{ route('photography-category.edit', $category->id) }}"
                                     class="text-decoration-none edit-text">EDIT</a></span>
                         </div>
-                        <img class="category-img"
-                            src="https://source.unsplash.com/random/900×700/?photography&{{ $loop->iteration }}"
-                            alt="{{ $category->title }}">
+                        @if ($category->image !== 'placeholder.jpg')
+                            <img class="category-img" src="{{ \Illuminate\Support\Facades\Storage::url($category->image) }}"
+                                alt="{{ $category->title }}">
+                        @else
+                            <img class="category-img"
+                                src="https://source.unsplash.com/random/900×700/?photography&{{ $loop->iteration }}"
+                                alt="{{ $category->title }}">
+                        @endif
                         <div class="category-text-container">
                             <span class="category-title text-center">{{ $category->title }}</span><br>
                             <span

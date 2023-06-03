@@ -55,7 +55,19 @@
                                                 <tbody class="text-center">
                                                     @forelse ($portfolios->where('category', $category) as $portfolio)
                                                         <tr>
-                                                            <td>{{ $portfolio->path }}</td>
+                                                            @if ($portfolio->image !== 'placeholder.jpg')
+                                                                <td>
+                                                                    <img class="portfolio-img"
+                                                                        src="{{ \Illuminate\Support\Facades\Storage::url($portfolio->image) }}"
+                                                                        alt="{{ $portfolio->title }}">
+                                                                </td>
+                                                            @else
+                                                                <td>
+                                                                    <img class="portfolio-img"
+                                                                        src="https://source.unsplash.com/random/500×500/?{{ $category . '&' . $loop->iteration }}"
+                                                                        alt="{{ $portfolio->title }}">
+                                                                </td>
+                                                            @endif
                                                             <td>{{ $portfolio->title }}</td>
                                                             <td>
                                                                 <div class="dropdown">

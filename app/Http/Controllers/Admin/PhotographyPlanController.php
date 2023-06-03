@@ -154,6 +154,8 @@ class PhotographyPlanController extends Controller
      */
     public function destroy(PhotographyPlan $photographyPlan)
     {
-        //
+        $photographyPlan->delete();
+
+        return to_route('photography-plan.index')->with('success', 'Successfully to Deleted the Data');
     }
 }

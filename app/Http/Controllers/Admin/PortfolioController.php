@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Models\Admin\Portfolio;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class PortfolioController extends Controller
 {
@@ -34,15 +35,17 @@ class PortfolioController extends Controller
      */
     public function store(Request $request)
     {
-        return $request;
-    }
+        $image = $request->file('image')->store('portfolios');
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Portfolio $portfolio)
-    {
-        //
+        $datas = [
+            'title' => $request->title,
+            'category' => $request->category,
+            'image' => $image ?? null,
+        ];
+
+        Portfolio::create($datas);
+
+        return to_route('portfolio.index')->with('success', 'Data have been created successfully.');
     }
 
     /**
@@ -60,7 +63,21 @@ class PortfolioController extends Controller
      */
     public function update(Request $request, Portfolio $portfolio)
     {
-        //
+        if ($request->has('image')) {
+            Storage::delete($portfolio->image);
+
+            $image = $request->file('image')->store('portfolios');
+        }
+
+        $datas = [
+            'title' => $request->title,
+            'category' => $request->category,
+            'image' => $image ?? $portfolio->image,
+        ];
+
+        $portfolio->update($datas);
+
+        return to_route('portfolio.index')->with('success', 'Changes have been saved successfully');
     }
 
     /**
@@ -68,6 +85,8 @@ class PortfolioController extends Controller
      */
     public function destroy(Portfolio $portfolio)
     {
-        //
+        $portfolio->delete();
+
+        return to_route('portfolio.index')->with('success', 'Data have been deleted');
     }
 }

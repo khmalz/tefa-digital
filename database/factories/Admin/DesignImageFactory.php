@@ -19,7 +19,6 @@ class DesignImageFactory extends Factory
     {
         return [
             'design_id' => Design::inRandomOrder()->value('id'),
-            'path' => fake()->filePath(),
         ];
     }
 }

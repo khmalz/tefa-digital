@@ -154,6 +154,8 @@ class VideographyPlanController extends Controller
      */
     public function destroy(VideographyPlan $videographyPlan)
     {
-        //
+        $videographyPlan->delete();
+
+        return to_route('videography-plan.index')->with('success', 'Successfully to Deleted the Data');
     }
 }

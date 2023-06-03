@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\Admin\DesignController;
+use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\PrintingController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PortfolioController;
@@ -36,7 +37,8 @@ Route::prefix('admin')->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
     Route::view('order-list', 'admin.order.index')->name('order.index');
-    Route::resource('portfolio', PortfolioController::class);
+    Route::resource('portfolio', PortfolioController::class)->except('show');
+    Route::resource('contact', ContactController::class)->except('create', 'store', 'show', 'destroy');
 
     Route::resource('design', DesignController::class);
     Route::resource('photography', PhotographyController::class);

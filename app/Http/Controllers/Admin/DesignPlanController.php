@@ -154,6 +154,8 @@ class DesignPlanController extends Controller
      */
     public function destroy(DesignPlan $designPlan)
     {
-        //
+        $designPlan->delete();
+
+        return to_route('design-plan.index')->with('success', 'Successfully to Deleted the Data');
     }
 }

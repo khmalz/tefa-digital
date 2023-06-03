@@ -21,7 +21,6 @@ class PortfolioFactory extends Factory
         return [
             'category' => fake()->randomElement($categories),
             'title' => fake()->words(2, true),
-            'path' => fake()->filePath(),
         ];
     }
 }
