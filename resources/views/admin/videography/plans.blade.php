@@ -14,6 +14,7 @@
                     @forelse ($category['plans'] as $plan)
                         <div class="col-md-6 col-lg-4 col-xl-3">
                             <div class="plan-card position-relative mt-3 overflow-hidden">
+                                <div class="blurrer">Show More</div>
                                 <div class="darken"><a href="{{ route('videography-plan.edit', $plan->id) }}"
                                         class="centering text-decoration-none edit-text">Edit</a>
                                     <form id="delete-form-{{ $plan->id }}"

@@ -44,7 +44,7 @@
                                         @endforeach
                                     </div>
                                 </div>
-                                <div class="show-more "></div>
+                                <div class="show-more"></div>
                                 <div class="show-less"></div>
                             </div>
                         </div>

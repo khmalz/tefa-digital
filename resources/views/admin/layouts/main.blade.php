@@ -194,11 +194,11 @@
             background-color: #fff;
             border-radius: 12px;
             width: clamp(200px, 100%, 100vw);
-            min-height: 390px !important;
+            min-height: 398px !important;
             height: auto;
             text-align: center;
             overflow: hidden;
-            transition: 250ms ease-in-out;
+            transition: 250ms ease;
         }
 
         .plan-card-invis {
@@ -249,8 +249,6 @@
             overflow: hidden
         }
 
-
-
         .card-container {
             padding-bottom: 50px !important;
         }
@@ -291,7 +289,6 @@
             padding-bottom: 10px;
             border-radius: 15px;
             color: white;
-
             transition: 250ms ease;
         }
 
@@ -302,15 +299,9 @@
             font-weight: bold;
             color: black;
             transition: 250ms ease;
-
         }
 
-
-
         .show-more-button {
-            /* background: rgb(255, 255, 255);
-            background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(57, 37, 37, 0) 250%); */
-
             height: 12.5%;
             transition: 250ms ease;
             width: 100%;
@@ -321,17 +312,14 @@
         }
 
         .show-more-button:hover span {
-            display: none
+            display: none;
         }
 
         .show-more-button:hover::before {
-
             content: 'Show More';
         }
 
         .show-more-button:hover {
-            background: rgb(255, 255, 255);
-            background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(57, 37, 37, 0) 250%);
             font-weight: 900;
             font-size: 18px;
             width: 100%;
@@ -343,9 +331,6 @@
         }
 
         .show-less-button {
-            /* background: rgb(255, 255, 255);
-            background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(57, 37, 37, 0) 250%); */
-
             height: 12.5%;
             transition: 250ms ease;
             width: 100%;
@@ -353,35 +338,30 @@
             font-size: 15px;
             border: 0;
             border-radius: 0;
+            transition: 250ms ease;
         }
 
         .show-less-button:hover span {
-            display: none
+            display: none;
         }
 
         .show-less-button:hover::before {
-
             content: 'Show Less';
         }
 
         .show-less-button:hover {
-            background: rgb(255, 255, 255);
-            background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(57, 37, 37, 0) 250%);
             font-weight: 900;
             font-size: 18px;
             width: 100%;
             color: black;
             border-color: transparent;
             border: 0;
-            transition: 250ms ease;
             border-radius: 0;
         }
 
         .blurrer {
-            background: rgb(255, 255, 255);
             background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(57, 37, 37, 0) 250%);
             width: 100%;
-
             position: absolute;
             height: 10%;
             color: transparent;
@@ -390,7 +370,7 @@
         }
 
         .blurrer:hover {
-            display: none
+            display: none;
         }
 
         .portfolio-img {
@@ -433,43 +413,44 @@
             $('.plan-card').each(function() {
                 let planCard = $(this);
                 let showMoreDiv = planCard.find('.show-more');
-                let showLessDiv = planCard.find('.show-less');
+                let scrollOffset = planCard.offset().top + planCard.outerHeight() - $(window).height() +
+                    100;
+
                 if (planCard.height() > 400) {
                     planCard.css('height', '400px');
-                    showMoreDiv.show().html(
-                        '<button onclick="showMore(this)" class="btn show-more-button"><span>V</span></button>'
-                    );
+                    showMoreDiv.show().html(createButton('&darr;', showMore));
                 }
 
-                showMoreDiv.on('click', 'button', function() {
+                function showMore(button) {
                     planCard.css('height', 'auto');
-                    showMoreDiv.hide();
-                    showLessDiv.show();
-                });
+                    $(button).parent().html(createButton('&uarr;', showLess));
+                    planCard.addClass('card-container');
+                    scrollAnimation();
+                }
 
-                showLessDiv.on('click', 'button', function() {
+                function showLess(button) {
                     planCard.css('height', '400px');
-                    showLessDiv.hide();
-                    showMoreDiv.show();
-                });
+                    $(button).parent().html(createButton('&darr;', showMore));
+                    planCard.removeClass('card-container');
+                    scrollAnimation();
+                }
+
+                function scrollAnimation() {
+                    if (scrollOffset > $(window).scrollTop()) {
+                        $("html, body").animate({
+                            scrollTop: scrollOffset
+                        }, 400);
+                    }
+                }
+
+                function createButton(text, clickHandler) {
+                    return $('<button class="btn show-more-button"><span>' + text + '</span></button>')
+                        .click(function() {
+                            clickHandler(this);
+                        });
+                }
             });
         });
-
-        function showMore(button) {
-            let planCard = $(button).closest('.plan-card');
-            planCard.css('height', 'auto');
-            $(button).parent().html(
-                '<button onclick="showLess(this)" class="btn show-less-button"><span>^</span></button>');
-            planCard.addClass('card-container');
-        }
-
-        function showLess(button) {
-            let planCard = $(button).closest('.plan-card');
-            planCard.css('height', '400px');
-            $(button).parent().html(
-                '<button onclick="showMore(this)" class="btn show-more-button"><span>V</span></button>');
-            planCard.removeClass('card-container');
-        }
     </script>
     @stack('scripts')
 </body>
