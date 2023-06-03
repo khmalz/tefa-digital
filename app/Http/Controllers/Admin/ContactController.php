@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\Admin\ContactRequest;
 use App\Models\Admin\Contact;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -20,15 +21,9 @@ class ContactController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Contact $contact)
+    public function update(ContactRequest $request, Contact $contact)
     {
-        $datas = [
-            'location' => $request->location,
-            'email' => $request->email,
-            'phone_number' => $request->phone_number,
-        ];
-
-        $contact->update($datas);
+        $contact->update($request->validated());
 
         return to_route('contact.index');
     }

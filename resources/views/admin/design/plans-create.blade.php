@@ -49,7 +49,7 @@
                             <div class="col-sm-10">
                                 <input type="text" class="form-control @error('title_plan') is-invalid @enderror"
                                     name="title_plan">
-                                @error('text')
+                                @error('title_plan')
                                     <div class="invalid-feedback">
                                         {{ $message }}
                                     </div>

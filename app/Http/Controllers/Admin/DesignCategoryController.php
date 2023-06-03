@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\DesignCategory;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\Admin\CategoryRequest;
 
 class DesignCategoryController extends Controller
 {
@@ -29,20 +29,17 @@ class DesignCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, DesignCategory $designCategory)
+    public function update(CategoryRequest $request, DesignCategory $designCategory)
     {
+        $data = $request->validated();
+
         if ($request->has('image')) {
             Storage::delete($designCategory->image);
 
             $image = $request->file('image')->store('designCategories');
         }
 
-        $data = [
-            'title' => $request->title,
-            'description' => $request->description,
-            'image' => $image ?? $designCategory->image,
-        ];
-
+        $data['image'] = $image ?? $designCategory->image;
         $designCategory->update($data);
 
         return to_route('design-category.index')->with('success', "You're successfully updated the data");
