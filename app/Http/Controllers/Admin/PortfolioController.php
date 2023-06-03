@@ -72,7 +72,7 @@ class PortfolioController extends Controller
         $datas = [
             'title' => $request->title,
             'category' => $request->category,
-            'image' => $image ?? null,
+            'image' => $image ?? $portfolio->image,
         ];
 
         $portfolio->update($datas);

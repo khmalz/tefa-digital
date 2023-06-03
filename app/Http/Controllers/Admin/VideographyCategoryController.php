@@ -40,7 +40,7 @@ class VideographyCategoryController extends Controller
         $data = [
             'title' => $request->title,
             'description' => $request->description,
-            'image' => $image ?? null,
+            'image' => $image ?? $videographyCategory->image,
         ];
 
         $videographyCategory->update($data);

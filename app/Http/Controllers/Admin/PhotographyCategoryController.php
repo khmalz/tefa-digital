@@ -40,7 +40,7 @@ class PhotographyCategoryController extends Controller
         $data = [
             'title' => $request->title,
             'description' => $request->description,
-            'image' => $image ?? null,
+            'image' => $image ?? $photographyCategory->image,
         ];
 
         $photographyCategory->update($data);

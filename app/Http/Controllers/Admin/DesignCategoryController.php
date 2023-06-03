@@ -40,7 +40,7 @@ class DesignCategoryController extends Controller
         $data = [
             'title' => $request->title,
             'description' => $request->description,
-            'image' => $image ?? null,
+            'image' => $image ?? $designCategory->image,
         ];
 
         $designCategory->update($data);
