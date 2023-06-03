@@ -31,9 +31,11 @@
                     <img src="{{ \Illuminate\Support\Facades\Storage::url($photographyCategory->image) }}"
                         class="img-preview d-block img-fluid col-md-8 col-lg-4 mb-3 rounded"
                         alt="{{ $photographyCategory->title }}">
+                @else
+                    <img class="img-preview img-fluid col-md-8 col-lg-4 d-none rounded" alt="preview-image">
                 @endif
                 <input class="form-control @error('image') is-invalid @enderror" type="file" id="category-image-input"
-                    name="image">
+                    name="image" onchange="previewImage()">
                 @error('image')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -46,3 +48,20 @@
         </form>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        function previewImage() {
+            const image = document.querySelector("#category-image-input")
+            const imgPreview = document.querySelector(".img-preview")
+            imgPreview.classList.remove("d-none");
+            imgPreview.classList.add("d-block");
+            imgPreview.classList.add("mb-3");
+            const [file] = image.files
+            if (file) {
+                const blob = URL.createObjectURL(file)
+                imgPreview.src = blob
+            }
+        }
+    </script>
+@endpush
