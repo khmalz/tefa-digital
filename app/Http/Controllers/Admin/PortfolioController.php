@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Models\Admin\Portfolio;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Storage;
 
 class PortfolioController extends Controller
 {
@@ -34,10 +35,12 @@ class PortfolioController extends Controller
      */
     public function store(Request $request)
     {
+        $image = $request->file('image')->store('portfolios');
+
         $datas = [
             'title' => $request->title,
             'category' => $request->category,
-            'image' => $request->image ?? fake()->filePath(),
+            'image' => $image ?? null,
         ];
 
         Portfolio::create($datas);
@@ -60,10 +63,16 @@ class PortfolioController extends Controller
      */
     public function update(Request $request, Portfolio $portfolio)
     {
+        if ($request->has('image')) {
+            Storage::delete($portfolio->image);
+
+            $image = $request->file('image')->store('portfolios');
+        }
+
         $datas = [
             'title' => $request->title,
             'category' => $request->category,
-            'image' => $request->image ?? fake()->filePath(),
+            'image' => $image ?? null,
         ];
 
         $portfolio->update($datas);

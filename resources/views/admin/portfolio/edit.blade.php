@@ -43,6 +43,11 @@
                                 </div>
                                 <div class="mb-3">
                                     <label for="Image" class="form-label">Image</label>
+                                    @if ($portfolio->image !== 'placeholder.jpg')
+                                        <img src="{{ \Illuminate\Support\Facades\Storage::url($portfolio->image) }}"
+                                            class="img-preview d-block img-fluid col-md-8 col-lg-4 mb-3 rounded"
+                                            alt="{{ $portfolio->title }}">
+                                    @endif
                                     <input type="file" class="form-control @error('image') is-invalid @enderror"
                                         id="Image" name="image" aria-describedby="image">
                                     @error('image')

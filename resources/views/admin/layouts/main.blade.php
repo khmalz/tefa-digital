@@ -305,6 +305,12 @@
         .show-more-tombol:hover {
             font-weight: bold;
         }
+
+        .portfolio-img {
+            width: 40% !important;
+            height: 100px !important;
+            object-fit: cover;
+        }
     </style>
     @stack('styles')
 </head>
