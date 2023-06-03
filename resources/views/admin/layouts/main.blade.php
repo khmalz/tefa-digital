@@ -120,6 +120,10 @@
             opacity: 100;
         }
 
+        .darken:hover .show-more-button {
+            background-color: transparent;
+        }
+
         .centering {
             margin: 0;
             position: absolute;
@@ -194,13 +198,14 @@
             height: auto;
             text-align: center;
             overflow: hidden;
+            transition: 250ms ease-in-out;
         }
 
         .plan-card-invis {
             background-color: transparent;
             border-radius: 12px;
             width: clamp(150px, 100%, 100vw);
-            height: 400px;
+            height: 100%;
             text-align: center;
             overflow: hidden
         }
@@ -241,8 +246,10 @@
             left: 0;
             width: 100%;
             text-align: center;
-            padding: 10px;
+            overflow: hidden
         }
+
+
 
         .card-container {
             padding-bottom: 50px !important;
@@ -298,12 +305,92 @@
 
         }
 
-        .show-more-tombol {
-            background-color: transparent;
+
+
+        .show-more-button {
+            /* background: rgb(255, 255, 255);
+            background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(57, 37, 37, 0) 250%); */
+
+            height: 12.5%;
+            transition: 250ms ease;
+            width: 100%;
+            color: black;
+            font-size: 15px;
+            border: 0;
+            border-radius: 0;
         }
 
-        .show-more-tombol:hover {
-            font-weight: bold;
+        .show-more-button:hover span {
+            display: none
+        }
+
+        .show-more-button:hover::before {
+
+            content: 'Show More';
+        }
+
+        .show-more-button:hover {
+            background: rgb(255, 255, 255);
+            background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(57, 37, 37, 0) 250%);
+            font-weight: 900;
+            font-size: 18px;
+            width: 100%;
+            color: black;
+            border-color: transparent;
+            border: 0;
+            transition: 250ms ease;
+            border-radius: 0;
+        }
+
+        .show-less-button {
+            /* background: rgb(255, 255, 255);
+            background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(57, 37, 37, 0) 250%); */
+
+            height: 12.5%;
+            transition: 250ms ease;
+            width: 100%;
+            color: black;
+            font-size: 15px;
+            border: 0;
+            border-radius: 0;
+        }
+
+        .show-less-button:hover span {
+            display: none
+        }
+
+        .show-less-button:hover::before {
+
+            content: 'Show Less';
+        }
+
+        .show-less-button:hover {
+            background: rgb(255, 255, 255);
+            background: linear-gradient(0deg, rgba(255, 255, 255, 0) 0%, rgba(57, 37, 37, 0) 250%);
+            font-weight: 900;
+            font-size: 18px;
+            width: 100%;
+            color: black;
+            border-color: transparent;
+            border: 0;
+            transition: 250ms ease;
+            border-radius: 0;
+        }
+
+        .blurrer {
+            background: rgb(255, 255, 255);
+            background: linear-gradient(0deg, rgba(255, 255, 255, 1) 0%, rgba(57, 37, 37, 0) 250%);
+            width: 100%;
+
+            position: absolute;
+            height: 10%;
+            color: transparent;
+            bottom: 0;
+            left: 0;
+        }
+
+        .blurrer:hover {
+            display: none
         }
     </style>
     @stack('styles')
@@ -344,7 +431,8 @@
                 if (planCard.height() > 400) {
                     planCard.css('height', '400px');
                     showMoreDiv.show().html(
-                        '<button onclick="showMore(this)" class="btn btn-primary">Show More</button>');
+                        '<button onclick="showMore(this)" class="btn show-more-button"><span>V</span></button>'
+                    );
                 }
 
                 showMoreDiv.on('click', 'button', function() {
@@ -364,14 +452,16 @@
         function showMore(button) {
             let planCard = $(button).closest('.plan-card');
             planCard.css('height', 'auto');
-            $(button).parent().html('<button onclick="showLess(this)" class="btn btn-primary">Show Less</button>');
+            $(button).parent().html(
+                '<button onclick="showLess(this)" class="btn show-less-button"><span>^</span></button>');
             planCard.addClass('card-container');
         }
 
         function showLess(button) {
             let planCard = $(button).closest('.plan-card');
             planCard.css('height', '400px');
-            $(button).parent().html('<button onclick="showMore(this)" class="btn btn-primary">Show More</button>');
+            $(button).parent().html(
+                '<button onclick="showMore(this)" class="btn show-more-button"><span>V</span></button>');
             planCard.removeClass('card-container');
         }
     </script>

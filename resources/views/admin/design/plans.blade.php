@@ -14,10 +14,11 @@
                     @forelse ($category['plans'] as $plan)
                         <div class="col-md-6 col-lg-4 col-xl-3">
                             <div class="plan-card position-relative mt-3 overflow-hidden" id="plan-card">
+                                <div class="blurrer">Show More</div>
                                 <div class="darken"><a href="{{ route('design-plan.edit', $plan->id) }}"
                                         class="centering text-decoration-none edit-text">Edit</a>
-                                    <a class="delete-tombol text-decoration-none"
-                                        href="{{ route('design-plan.destroy') }} "><span class="">DELETE</span></a>
+                                    <a class="delete-tombol text-decoration-none" href=""><span
+                                            class="">DELETE</span></a>
                                 </div>
                                 <div class="plan-card-content p-3">
                                     <div>
@@ -35,7 +36,7 @@
                                         @endforeach
                                     </div>
                                 </div>
-                                <div class="show-more"></div>
+                                <div class="show-more "></div>
                                 <div class="show-less"></div>
                             </div>
                         </div>
