@@ -33,7 +33,7 @@
 </head>
 
 <body>
-    @include('layouts.header')
+    @yield('header')
 
     @yield('hero')
 
@@ -42,9 +42,8 @@
     <!-- ======= Footer ======= -->
     <footer id="footer">
         <div class="container">
-            <h3>Selecao</h3>
-            <p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi
-                placeat.</p>
+            <h3>Tefa Digital</h3>
+            <p>Mendukung kreatifitas siswa berjiwa wirausaha.</p>
             <div class="social-links">
                 <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
                 <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
@@ -53,7 +52,7 @@
                 <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
             </div>
             <div class="copyright">
-                &copy; Copyright <strong><span>Selecao</span></strong>. All Rights Reserved
+                &copy; Copyright <strong><span>SMK Negeri 46</span></strong>. All Rights Reserved
             </div>
             <div class="credits">
                 <!-- All the links in the footer should remain intact. -->
