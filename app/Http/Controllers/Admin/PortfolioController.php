@@ -37,7 +37,7 @@ class PortfolioController extends Controller
         $datas = [
             'title' => $request->title,
             'category' => $request->category,
-            'path' => $request->path ?? fake()->filePath(),
+            'image' => $request->image ?? fake()->filePath(),
         ];
 
         Portfolio::create($datas);
@@ -63,7 +63,7 @@ class PortfolioController extends Controller
         $datas = [
             'title' => $request->title,
             'category' => $request->category,
-            'path' => $request->path ?? fake()->filePath(),
+            'image' => $request->image ?? fake()->filePath(),
         ];
 
         $portfolio->update($datas);
