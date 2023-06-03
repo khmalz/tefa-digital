@@ -13,20 +13,24 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::middleware('guest')->group(function () {
+    Route::get('/', function () {
+        return view('index');
+    });
 
-Route::get('/subcategory', function () {
-    return view('layouts.sub-category');
-});
+    route::prefix('photography')->group(function () {
+        Route::get('/', function () {
+            return view('photography.index');
+        });
 
-Route::get('/category', function () {
-    return view('layouts.category');
-});
+        Route::get('/foto-produk', function () {
+            return view('photography.foto-produk');
+        });
 
-Route::get('/form', function () {
-    return view('layouts.form');
+        Route::get('/form', function () {
+            return view('photography.form');
+        });
+    });
 });
 
 Route::prefix('admin')->group(function () {

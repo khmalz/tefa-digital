@@ -1,26 +1,6 @@
 @extends('layouts.main')
 
-@section('header')
-    <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top d-flex align-items-center  header-transparent ">
-        <div class="container d-flex align-items-center justify-content-between">
-
-            <div class="logo">
-                <h1><a href="index.html">Tefa Digital</a></h1>
-            </div>
-
-            <nav id="navbar" class="navbar">
-                <ul>
-                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                    <li><a class="nav-link scrollto" href="#about">About</a></li>
-                    <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li>
-                </ul>
-                <i class="bi bi-list mobile-nav-toggle"></i>
-            </nav><!-- .navbar -->
-
-        </div>
-    </header><!-- End Header -->
-@endsection
+@include('layouts.subcategory-header')
 
 @section('hero')
     <!-- ======= Hero Section ======= -->
@@ -34,19 +14,11 @@
             <div class="carousel-item active">
                 <div class="carousel-container">
                     <h2 class="animate__animated animate__fadeInDown">Jasa Foto Produk</span></h2>
-                    <p class="animate__animated fanimate__adeInUp">Buat produk Anda terlihat lebih menarik dengan jasa foto produk kami.</p>
+                    <p class="animate__animated fanimate__adeInUp">Buat produk Anda terlihat lebih menarik dengan jasa foto
+                        produk kami.</p>
                     <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
                 </div>
             </div>
-
-            {{-- <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
-            </a>
-
-            <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
-                <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
-            </a> --}}
-
         </div>
 
         <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" style="position: absolute"
@@ -65,7 +37,8 @@
             </g>
         </svg>
 
-    </section><!-- End Hero -->
+    </section>
+    <!-- End Hero -->
 @endsection
 
 @section('main')
@@ -82,25 +55,20 @@
                 <div class="row content" data-aos="fade-up">
                     <div class="col-lg-6">
                         <p style="margin-bottom: 40px">
-                            Buat produk Anda terlihat lebih menarik dengan jasa foto produk kami. Tim ahli kami akan mengambil gambar produk Anda dengan menggunakan peralatan fotografi terbaik dan mengedit foto untuk hasil yang lebih baik. Dapatkan foto produk yang memukau dengan penawaran terbaik dari kami. Hubungi kami sekarang!
+                            Buat produk Anda terlihat lebih menarik dengan jasa foto produk kami. Tim ahli kami akan
+                            mengambil gambar produk Anda dengan menggunakan peralatan fotografi terbaik dan mengedit foto
+                            untuk hasil yang lebih baik. Dapatkan foto produk yang memukau dengan penawaran terbaik dari
+                            kami. Hubungi kami sekarang!
                         </p>
-                        {{-- <ul>
-                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat</li>
-                            <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in
-                                voluptate velit</li>
-                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat</li>
-                        </ul> --}}
                     </div>
-                    <div class="col-lg-6 pt-4 pt-lg-0">
-                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" 
-                        alt="" style="width: 75%;">
-                        {{-- <a href="#" class="btn-learn-more">Learn More</a> --}}
+                    <div class="col-lg-6 pt-lg-0 pt-4">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+                            alt="" style="width: 75%;">
                     </div>
                 </div>
             </div>
-        </section><!-- End About Section -->
+        </section>
+        <!-- End About Section -->
 
         <!-- ======= Pricing Section ======= -->
         <section id="pricing" class="pricing">
@@ -130,7 +98,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6 mt-4 mt-md-0">
+                    <div class="col-lg-3 col-md-6 mt-md-0 mt-4">
                         <div class="box featured" data-aos="zoom-in" data-aos-delay="100">
                             <h3>Business</h3>
                             <h4><sup>$</sup>19<span> / month</span></h4>
@@ -147,7 +115,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
+                    <div class="col-lg-3 col-md-6 mt-lg-0 mt-4">
                         <div class="box" data-aos="zoom-in" data-aos-delay="200">
                             <h3>Developer</h3>
                             <h4><sup>$</sup>29<span> / month</span></h4>
@@ -164,7 +132,7 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
+                    <div class="col-lg-3 col-md-6 mt-lg-0 mt-4">
                         <div class="box" data-aos="zoom-in" data-aos-delay="300">
                             <span class="advanced">Advanced</span>
                             <h3>Ultimate</h3>
@@ -185,6 +153,7 @@
                 </div>
 
             </div>
-        </section><!-- End Pricing Section -->
+        </section>
+        <!-- End Pricing Section -->
     </main>
 @endsection

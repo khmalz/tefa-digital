@@ -1,26 +1,6 @@
 @extends('layouts.main')
 
-@section('header')
-    <!-- ======= Header ======= -->
-    <header id="header" class="fixed-top d-flex align-items-center  header-transparent ">
-        <div class="container d-flex align-items-center justify-content-between">
-
-            <div class="logo">
-                <h1><a href="">Tefa Digital</a></h1>
-            </div>
-
-            <nav id="navbar" class="navbar">
-                <ul>
-                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                    <li><a class="nav-link scrollto" href="#about">About</a></li>
-                    <li><a class="nav-link scrollto" href="#services">Services</a></li>
-                </ul>
-                <i class="bi bi-list mobile-nav-toggle"></i>
-            </nav><!-- .navbar -->
-
-        </div>
-    </header><!-- End Header -->
-@endsection
+@include('layouts.category-header')
 
 @section('hero')
     <!-- ======= Hero Section ======= -->
@@ -38,15 +18,6 @@
                     <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
                 </div>
             </div>
-
-            {{-- <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
-            </a>
-
-            <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
-                <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
-            </a> --}}
-
         </div>
 
         <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" style="position: absolute"
@@ -65,7 +36,8 @@
             </g>
         </svg>
 
-    </section><!-- End Hero -->
+    </section>
+    <!-- End Hero -->
 @endsection
 
 @section('main')
@@ -82,29 +54,22 @@
                 <div class="row content" data-aos="fade-up">
                     <div class="col-lg-6">
                         <p style="margin-bottom: 40px">
-                            Photography merupakan salah satu layanan yang kami sediakan untuk membantu menemukan fotografer yang cocok untuk menghasilkan gambar-gambar sesuai dengan kebutuhan Anda. 
-                            <ul>
-                                <li><i class="ri-check-double-line"></i> Meningkatkan citra dan profesionalisme</li>
-                                <li><i class="ri-check-double-line"></i> Memperkuat branding</li>
-                                <li><i class="ri-check-double-line"></i> Dokumentasi yang lengkap</li>
-                            </ul>
-                        {{-- <ul>
-                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat</li>
-                            <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in
-                                voluptate velit</li>
-                            <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat</li>
-                        </ul> --}}
+                            Photography merupakan salah satu layanan yang kami sediakan untuk membantu menemukan fotografer
+                            yang cocok untuk menghasilkan gambar-gambar sesuai dengan kebutuhan Anda.
+                        <ul>
+                            <li><i class="ri-check-double-line"></i> Meningkatkan citra dan profesionalisme</li>
+                            <li><i class="ri-check-double-line"></i> Memperkuat branding</li>
+                            <li><i class="ri-check-double-line"></i> Dokumentasi yang lengkap</li>
+                        </ul>
                     </div>
-                    <div class="col-lg-6 pt-4 pt-lg-0">
-                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80" 
-                        alt="" style="width: 75%;">
-                        {{-- <a href="#" class="btn-learn-more">Learn More</a> --}}
+                    <div class="col-lg-6 pt-lg-0 pt-4">
+                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+                            alt="" style="width: 75%;">
                     </div>
                 </div>
             </div>
-        </section><!-- End About Section -->
+        </section>
+        <!-- End About Section -->
 
         <!-- ======= Services Section ======= -->
         <section id="services" class="services">
@@ -113,7 +78,8 @@
                 <div class="section-title" data-aos="zoom-out">
                     <h2>Ragam layanan</h2>
                     <p>Photography</p>
-                    <span> Kami menyediakan layanan jasa fotografi yang dapat anda pilih untuk berbagai macam  acara dan event, seperti:</span>
+                    <span> Kami menyediakan layanan jasa fotografi yang dapat anda pilih untuk berbagai macam acara dan
+                        event, seperti:</span>
                 </div>
 
                 <div class="row">
@@ -121,18 +87,21 @@
                         <div class="icon-box" data-aos="zoom-in-left">
                             <div class="icon"><i class="bi bi-briefcase" style="color: #ff689b;"></i></div>
                             <h4 class="title"><a href="">Jasa Foto Produk</a></h4>
-                            <p class="description">Buat produk Anda terlihat lebih menarik dengan jasa foto produk kami. Dapatkan foto produk yang memukau dengan penawaran terbaik dari kami sekarang juga!
+                            <p class="description">Buat produk Anda terlihat lebih menarik dengan jasa foto produk kami.
+                                Dapatkan foto produk yang memukau dengan penawaran terbaik dari kami sekarang juga!
                             </p>
                             <button type="button" class="btn btn-color" style="color: #f06404">
                                 <a href="">Selengkapnya</a>
                             </button>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6 mt-5 mt-md-0">
+                    <div class="col-lg-4 col-md-6 mt-md-0 mt-5">
                         <div class="icon-box" data-aos="zoom-in-left" data-aos-delay="100">
                             <div class="icon"><i class="bi bi-book" style="color: #e9bf06;"></i></div>
                             <h4 class="title"><a href="">Jasa Foto Pernikahan</a></h4>
-                            <p class="description">Abadikan momen spesial pernikahan Anda dengan jasa foto pernikahan kami. Dapatkan kenangan pernikahan yang abadi dengan penawaran terbaik dari kami. Hubungi kami sekarang!
+                            <p class="description">Abadikan momen spesial pernikahan Anda dengan jasa foto pernikahan kami.
+                                Dapatkan kenangan pernikahan yang abadi dengan penawaran terbaik dari kami. Hubungi kami
+                                sekarang!
                             </p>
                             <button type="button" class="btn btn-color" style="color: #f06404">
                                 <a href="">Selengkapnya</a>
@@ -140,11 +109,13 @@
                         </div>
                     </div>
 
-                    <div class="col-lg-4 col-md-6 mt-5 mt-lg-0 ">
+                    <div class="col-lg-4 col-md-6 mt-lg-0 mt-5">
                         <div class="icon-box" data-aos="zoom-in-left" data-aos-delay="200">
                             <div class="icon"><i class="bi bi-card-checklist" style="color: #3fcdc7;"></i></div>
                             <h4 class="title"><a href="">Jasa Foto Acara</a></h4>
-                            <p class="description">Kami menawarkan jasa fotografi acara untuk mengabadikan momen penting Anda. Dapatkan gambar acara yang berkesan dengan jasa fotografi acara kami. Hubungi kami sekarang!</p>
+                            <p class="description">Kami menawarkan jasa fotografi acara untuk mengabadikan momen penting
+                                Anda. Dapatkan gambar acara yang berkesan dengan jasa fotografi acara kami. Hubungi kami
+                                sekarang!</p>
                             <button type="button" class="btn btn-color" style="color: #f06404;">
                                 <a href="">Selengkapnya</a>
                             </button>
@@ -153,6 +124,7 @@
                 </div>
 
             </div>
-        </section><!-- End Services Section -->
+        </section>
+        <!-- End Services Section -->
     </main>
 @endsection
