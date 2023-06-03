@@ -49,23 +49,41 @@
                                         <div class="modal-body">
                                             <div class="mb-3">
                                                 <label for="location" class="form-label">Location</label>
-                                                <input type="text" class="form-control"
+                                                <input type="text"
+                                                    class="form-control @error('location') is-invalid @enderror"
                                                     value="{{ old('location', $contact->location) }}" id="location"
                                                     aria-describedby="location" name="location">
+                                                @error('location')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
                                             <div class="mb-3">
                                                 <label for="email" class="form-label">Email</label>
-                                                <input type="email" class="form-control"
+                                                <input type="email"
+                                                    class="form-control @error('email') is-invalid @enderror"
                                                     value="{{ old('email', $contact->email) }}" id="email"
                                                     aria-describedby="email" name="email" pattern=".+@gmail\.com">
+                                                @error('email')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
                                             <div class="mb-3">
                                                 <label for="phoneNumber" class="form-label">Phone Number</label>
-                                                <input type="text" class="form-control"
+                                                <input type="text"
+                                                    class="form-control @error('phone_number') is-invalid @enderror"
                                                     value="{{ old('phone_number', $contact->phone_number) }}"
                                                     id="phoneNumber" aria-describedby="phoneNumber" name="phone_number"
                                                     pattern="[+0-9]+"
                                                     oninput="this.value = this.value.replace(/[^+0-9]/g, '');">
+                                                @error('phone_number')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
                                             </div>
                                         </div>
                                         <div class="modal-footer">

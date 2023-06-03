@@ -25,8 +25,9 @@
                         <div class="row">
                             <label for="category" class="col-sm-2 col-form-label">Category</label>
                             <div class="col-sm-10">
-                                <select class="form-select" aria-label="Default select example"
-                                    name="photography_category_id" id="photography-category-select" required>
+                                <select class="form-select @error('photography_category_id') is-invalid @enderror"
+                                    aria-label="Default select example" name="photography_category_id"
+                                    id="photography-category-select" required>
                                     <option selected disabled>Select Category</option>
                                     @foreach ($categories as $category)
                                         <option {{ $categoryValue == $category->title ? 'selected' : '' }}
@@ -34,6 +35,11 @@
                                             {{ $category->title }}</option>
                                     @endforeach
                                 </select>
+                                @error('photography_category_id')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                     </div>
@@ -41,19 +47,36 @@
                         <div class="row">
                             <label for="title" class="col-sm-2 col-form-label">Title</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="title_plan">
+                                <input type="text" class="form-control @error('title_plan') is-invalid @enderror"
+                                    name="title_plan">
+                                @error('title_plan')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="row">
                             <label for="price" class="col-sm-2 col-form-label">Price</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="price">
+                                <input type="text" class="form-control @error('price') is-invalid @enderror"
+                                    name="price">
+                                @error('price')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                         <div class="row">
                             <label for="description" class="col-sm-2 col-form-label">Description</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control" name="description_plan" rows="3"></textarea>
+                                <textarea class="form-control @error('description_plan') is-invalid @enderror" name="description_plan" rows="3"></textarea>
+                                @error('description_plan')
+                                    <div class="invalid-feedback">
+                                        {{ $message }}
+                                    </div>
+                                @enderror
                             </div>
                         </div>
                     </div>

@@ -6,16 +6,33 @@
             @method('PUT')
             <div>
                 <label for="category-title-input" class="form-label">Title</label>
-                <input class="form-control" id="category-title-input" type="text" name="title"
-                    value="{{ old('title', $videographyCategory->title) }}">
+                <input class="form-control @error('title') is-invalid @enderror" id="category-title-input" type="text"
+                    name="title" value="{{ old('title', $videographyCategory->title) }}">
+                @error('title')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
             <div class="mt-3">
                 <label for="category-description-input" class="form-label">Description</label>
-                <textarea class="form-control" id="category-description-input" name="body" cols="30" rows="10">{{ old('body', $videographyCategory->body) }}</textarea>
+                <textarea class="form-control @error('body') is-invalid @enderror" id="category-description-input" name="body"
+                    cols="30" rows="10">{{ old('body', $videographyCategory->body) }}</textarea>
+                @error('body')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
             <div class="mt-3">
                 <label for="category-image-input" class="form-label">Image</label>
-                <input class="form-control" type="file" id="category-image-input" name="image">
+                <input class="form-control @error('image') is-invalid @enderror" type="file" id="category-image-input"
+                    name="image">
+                @error('image')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
             <div class="mt-4">
                 <button type="submit" class="btn-submit">Save</button>
