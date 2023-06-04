@@ -418,19 +418,19 @@
 
                 if (planCard.height() > 400) {
                     planCard.css('height', '400px');
-                    showMoreDiv.show().html(createButton('&darr;', showMore));
+                    showMoreDiv.show().html(createButton('more', showMore));
                 }
 
                 function showMore(button) {
                     planCard.css('height', 'auto');
-                    $(button).parent().html(createButton('&uarr;', showLess));
+                    $(button).parent().html(createButton('less', showLess));
                     planCard.addClass('card-container');
                     scrollAnimation();
                 }
 
                 function showLess(button) {
                     planCard.css('height', '400px');
-                    $(button).parent().html(createButton('&darr;', showMore));
+                    $(button).parent().html(createButton('more', showMore));
                     planCard.removeClass('card-container');
                     scrollAnimation();
                 }
@@ -442,9 +442,12 @@
                         }, 400);
                     }
                 }
-                // bisa ga bang ini pas di bikin show-more-button nya jadi show-less-button?
+
                 function createButton(text, clickHandler) {
-                    return $('<button class="btn show-more-button"><span>' + text + '</span></button>')
+                    const className = (text === 'more') ? 'show-more-button' : 'show-less-button';
+                    const symbol = (text === 'more') ? '&darr;' : '&uarr;';
+
+                    return $(`<button class="btn ${className}"><span>${symbol}</span></button>`)
                         .click(function() {
                             clickHandler(this);
                         });
