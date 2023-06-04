@@ -83,19 +83,36 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-lg-4 col-md-6">
-                        <div class="icon-box" data-aos="zoom-in-left">
-                            <div class="icon"><i class="bi bi-briefcase" style="color: #ff689b;"></i></div>
-                            <h4 class="title"><a href="">Jasa Foto Produk</a></h4>
-                            <p class="description">Buat produk Anda terlihat lebih menarik dengan jasa foto produk kami.
-                                Dapatkan foto produk yang memukau dengan penawaran terbaik dari kami sekarang juga!
-                            </p>
-                            <button type="button" class="btn btn-color" style="color: #f06404">
-                                <a href="">Selengkapnya</a>
-                            </button>
+                    <div class="col-lg-4 col-md-6 mt-md-0 mt-5">
+                        <div class="icon-box text-center rounded-3" data-aos="zoom-in-left" data-aos-delay="100">
+                            <img src="https://source.unsplash.com/random/?photography&1" class="card-image card-img-top p-2 rounded-2 mb-2" alt="">
+                                <h5 class="title mt-2">Jasa Foto Produk</h5>
+                                <p class="description p-2">Buat produk Anda terlihat lebih menarik dengan jasa foto produk kami. Dapatkan foto produk yang memukau dengan penawaran terbaik dari
+                                    kami. Hubungi kami sekarang!</p>
+                                <a href="#" class="btn btn-outline" style="color: #f06404">Selengkapnya</a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 mt-md-0 mt-5">
+                        <div class="icon-box text-center rounded-3" data-aos="zoom-in-left" data-aos-delay="100">
+                            <img src="https://source.unsplash.com/random/?photography&2" class="card-image card-img-top p-2 rounded-2 mb-2" alt="">
+                                <h5 class="title mt-2">Jasa Foto Pernikahan</h5>
+                                <p class="description p-2">Abadikan momen spesial pernikahan Anda dengan jasa foto pernikahan kami.
+                                    Dapatkan kenangan pernikahan yang abadi dengan penawaran terbaik dari kami. Hubungi kami
+                                    sekarang!</p>
+                                <a href="#" class="btn btn-outline" style="color: #f06404">Selengkapnya</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6 mt-md-0 mt-5">
+                        <div class="icon-box text-center rounded-3" data-aos="zoom-in-left" data-aos-delay="100">
+                            <img src="https://source.unsplash.com/random/?photography&3" class="card-image card-img-top p-2 rounded-2 mb-2" alt="">
+                                <h5 class="title mt-2">Jasa Foto Acara</h5>
+                                <p class="description p-2">Kami menawarkan jasa fotografi acara untuk mengabadikan momen penting
+                                    Anda. Dapatkan gambar acara yang berkesan dengan jasa fotografi acara kami. Hubungi kami
+                                    sekarang!</p>
+                                <a href="#" class="btn btn-outline" style="color: #f06404">Selengkapnya</a>
+                        </div>
+                    </div>
+                    {{-- <div class="col-lg-4 col-md-6 mt-md-0 mt-5">
                         <div class="icon-box" data-aos="zoom-in-left" data-aos-delay="100">
                             <div class="icon"><i class="bi bi-book" style="color: #e9bf06;"></i></div>
                             <h4 class="title"><a href="">Jasa Foto Pernikahan</a></h4>
@@ -120,7 +137,7 @@
                                 <a href="">Selengkapnya</a>
                             </button>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
 
             </div>
