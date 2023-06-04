@@ -28,6 +28,14 @@ Route::middleware('guest')->group(function () {
             return view('photography.foto-produk');
         });
 
+        Route::get('/foto-acara', function () {
+            return view('photography.foto-acara');
+        });
+
+        Route::get('/foto-pernikahan', function () {
+            return view('photography.foto-pernikahan');
+        });
+
         Route::get('/form', function () {
             return view('photography.form');
         });
