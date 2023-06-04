@@ -15,6 +15,7 @@ use App\Http\Controllers\Admin\PhotographyPlanController;
 use App\Http\Controllers\Admin\VideographyPlanController;
 use App\Http\Controllers\Admin\PhotographyCategoryController;
 use App\Http\Controllers\Admin\VideographyCategoryController;
+use App\Http\Controllers\PDFController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,12 @@ Route::prefix('admin')->group(function () {
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
     Route::view('order-list', 'admin.order.index')->name('order.index');
+    Route::prefix('export-to-pdf')->group(function () {
+        Route::get('design/{design}', [PDFController::class, 'exportDesign']);
+        Route::get('photography/{photography}', [PDFController::class, 'exportPhotography']);
+        Route::get('videography/{videography}', [PDFController::class, 'exportVideography']);
+        Route::get('printing/{printing}', [PDFController::class, 'exportPrinting']);
+    });
     Route::resource('portfolio', PortfolioController::class)->except('show');
     Route::resource('contact', ContactController::class)->except('create', 'store', 'show', 'destroy');
 
