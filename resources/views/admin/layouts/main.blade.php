@@ -442,7 +442,7 @@
                         }, 400);
                     }
                 }
-
+                // bisa ga bang ini pas di bikin show-more-button nya jadi show-less-button?
                 function createButton(text, clickHandler) {
                     return $('<button class="btn show-more-button"><span>' + text + '</span></button>')
                         .click(function() {
