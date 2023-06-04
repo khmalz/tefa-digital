@@ -13,8 +13,8 @@
             <!-- Slide 1 -->
             <div class="carousel-item active">
                 <div class="carousel-container">
-                    <h2 class="animate__animated animate__fadeInDown">Photography</span></h2>
-                    <p class="animate__animated fanimate__adeInUp">Abadikan momen berharga dengan keindahan yang abadi.</p>
+                    <h2 class="animate__animated animate__fadeInDown">Videography</span></h2>
+                    <p class="animate__animated fanimate__adeInUp">Mengubah Momen Menjadi Karya Seni Bergerak.</p>
                     <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
                 </div>
             </div>
@@ -47,23 +47,22 @@
             <div class="container">
 
                 <div class="section-title" data-aos="zoom-out">
-                    <h2>Photography</h2>
-                    <p>Seberapa penting photography?</p>
+                    <h2>Videography</h2>
+                    <p>Seberapa penting videography?</p>
                 </div>
 
                 <div class="row content" data-aos="fade-up">
                     <div class="col-lg-6">
                         <p style="margin-bottom: 40px">
-                            Photography merupakan salah satu layanan yang kami sediakan untuk membantu menemukan fotografer
-                            yang cocok untuk menghasilkan gambar-gambar sesuai dengan kebutuhan Anda.
+                            Videography merupakan jasa yang kami sediakan dengan menggunakan keterampilan teknis dan kreatif. Kami dengan tulus berusaha menghasilkan video yang berkualitas tinggi dan menciptakan karya visual yang menarik dan memukau.
                         <ul>
-                            <li><i class="ri-check-double-line"></i> Meningkatkan citra dan profesionalisme</li>
-                            <li><i class="ri-check-double-line"></i> Memperkuat branding</li>
-                            <li><i class="ri-check-double-line"></i> Dokumentasi yang lengkap</li>
+                            <li><i class="ri-check-double-line"></i> Menyampaikan pesan dengan menarik</li>
+                            <li><i class="ri-check-double-line"></i> Merekam momen penting</li>
+                            <li><i class="ri-check-double-line"></i> Mencerminkan profesionalisme</li>
                         </ul>
                     </div>
                     <div class="col-lg-6 pt-lg-0 pt-4 image-about">
-                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
+                        <img src="https://source.unsplash.com/random/900×700/?videography"
                             alt="" style="width: 100%;">
                     </div>
                 </div>
@@ -77,38 +76,25 @@
 
                 <div class="section-title" data-aos="zoom-out">
                     <h2>Ragam layanan</h2>
-                    <p>Photography</p>
-                    <span> Kami menyediakan layanan jasa fotografi yang dapat anda pilih untuk berbagai macam acara dan
+                    <p>Videography</p>
+                    <span> Kami menyediakan layanan jasa videografi yang dapat anda pilih untuk berbagai macam acara dan
                         event, seperti:</span>
                 </div>
 
                 <div class="row justify-content-center">
                     <div class="col-lg-4 col-md-6 mt-md-0 mt-5">
                         <div class="icon-box text-center rounded-3" data-aos="zoom-in-left" data-aos-delay="100">
-                            <img src="https://source.unsplash.com/random/?photography&1" class="card-image card-img-top p-2 rounded-2 mb-2" alt="">
-                                <h5 class="title mt-2">Jasa Foto Produk</h5>
-                                <p class="description p-2">Buat produk Anda terlihat lebih menarik dengan jasa foto produk kami. Dapatkan foto produk yang memukau dengan penawaran terbaik dari
-                                    kami. Hubungi kami sekarang!</p>
+                            <img src="https://source.unsplash.com/random/?videography&1" class="card-image card-img-top p-2 rounded-2 mb-2" alt="">
+                                <h5 class="title mt-2">Jasa Video Syuting</h5>
+                                <p class="description p-2">Ciptakan video yang memukau dengan jasa pembuatan video syuting kami. Tim kami akan mengambil video syuting secara profesional dan menghasilkan video yang sesuai keinginan Anda. Hubungi kami sekarang untuk penawaran terbaik.</p>
                                 <a href="#" class="btn btn-outline" style="color: #f06404">Selengkapnya</a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 mt-md-0 mt-5">
                         <div class="icon-box text-center rounded-3" data-aos="zoom-in-left" data-aos-delay="100">
-                            <img src="https://source.unsplash.com/random/?photography&2" class="card-image card-img-top p-2 rounded-2 mb-2" alt="">
-                                <h5 class="title mt-2">Jasa Foto Pernikahan</h5>
-                                <p class="description p-2">Abadikan momen spesial pernikahan Anda dengan jasa foto pernikahan kami.
-                                    Dapatkan kenangan pernikahan yang abadi dengan penawaran terbaik dari kami. Hubungi kami
-                                    sekarang!</p>
-                                <a href="#" class="btn btn-outline" style="color: #f06404">Selengkapnya</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mt-md-0 mt-5">
-                        <div class="icon-box text-center rounded-3" data-aos="zoom-in-left" data-aos-delay="100">
-                            <img src="https://source.unsplash.com/random/?photography&3" class="card-image card-img-top p-2 rounded-2 mb-2" alt="">
-                                <h5 class="title mt-2">Jasa Foto Acara</h5>
-                                <p class="description p-2">Kami menawarkan jasa fotografi acara untuk mengabadikan momen penting
-                                    Anda. Dapatkan gambar acara yang berkesan dengan jasa fotografi acara kami. Hubungi kami
-                                    sekarang!</p>
+                            <img src="https://source.unsplash.com/random/?videography&2" class="card-image card-img-top p-2 rounded-2 mb-2" alt="">
+                                <h5 class="title mt-2">Jasa Video Dokumentasi</h5>
+                                <p class="description p-2">Buat momen penting dan spesial Anda terabadikan dengan jasa pembuatan video dokumentasi kami. Hubungi kami sekarang untuk mendapatkan penawaran terbaik untuk jasa pembuatan video dokumentasi kami.</p>
                                 <a href="#" class="btn btn-outline" style="color: #f06404">Selengkapnya</a>
                         </div>
                     </div>

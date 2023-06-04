@@ -40,6 +40,24 @@ Route::middleware('guest')->group(function () {
             return view('photography.form');
         });
     });
+
+    route::prefix('videography')->group(function () {
+        Route::get('/', function () {
+            return view('videography.index');
+        });
+
+        Route::get('/vid-syuting', function () {
+            return view('videography.vid-syuting');
+        });
+
+        Route::get('/vid-dokumentasi', function () {
+            return view('videography.vid-dokumentasi');
+        });
+
+        Route::get('/form', function () {
+            return view('videography.form');
+        });
+    });
 });
 
 Route::post('/contact-send', [SendMailController::class, 'sendMail'])->name('contact.send');
