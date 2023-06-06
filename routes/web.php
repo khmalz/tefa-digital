@@ -80,6 +80,16 @@ Route::middleware('guest')->group(function () {
             return view('design.form');
         });
     });
+
+    route::prefix('printing')->group(function () {
+        Route::get('/', function () {
+            return view('printing.index');
+        });
+
+        Route::get('/form', function () {
+            return view('printing.form');
+        });
+    });
 });
 
 Route::post('/contact-send', [SendMailController::class, 'sendMail'])->name('contact.send');
