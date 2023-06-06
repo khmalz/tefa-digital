@@ -47,7 +47,7 @@
             <div class="container">
 
                 <div class="section-title" data-aos="zoom-out">
-                    <h2>Jasa Foto Produk</h2>
+                    <h2>Jasa Video Syuting</h2>
                     <p>Mengapa menggunakan jasa Kami?</p>
                 </div>
 

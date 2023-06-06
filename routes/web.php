@@ -58,6 +58,28 @@ Route::middleware('guest')->group(function () {
             return view('videography.form');
         });
     });
+
+    route::prefix('design')->group(function () {
+        Route::get('/', function () {
+            return view('design.index');
+        });
+
+        Route::get('/design-logo', function () {
+            return view('design.design-logo');
+        });
+
+        Route::get('/design-promosi', function () {
+            return view('design.design-promosi');
+        });
+
+        Route::get('/design-3d', function () {
+            return view('design.design-3d');
+        });
+
+        Route::get('/form', function () {
+            return view('design.form');
+        });
+    });
 });
 
 Route::post('/contact-send', [SendMailController::class, 'sendMail'])->name('contact.send');

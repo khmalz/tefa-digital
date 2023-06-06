@@ -13,8 +13,8 @@
             <!-- Slide 1 -->
             <div class="carousel-item active">
                 <div class="carousel-container">
-                    <h2 class="animate__animated animate__fadeInDown">Jasa Video Dokumentasi</span></h2>
-                    <p class="animate__animated fanimate__adeInUp">Buat momen penting dan spesial Anda terabadikan dengan jasa pembuatan video dokumentasi kami.</p>
+                    <h2 class="animate__animated animate__fadeInDown">Jasa Design Logo</span></h2>
+                    <p class="animate__animated fanimate__adeInUp">Logo adalah jantung merek Anda, wujud visual yang mewakili identitas dan nilai-nilai bisnis Anda.</p>
                     <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
                 </div>
             </div>
@@ -47,23 +47,24 @@
             <div class="container">
 
                 <div class="section-title" data-aos="zoom-out">
-                    <h2>Jasa Video Dokumentasi</h2>
+                    <h2>Jasa Design Logo</h2>
                     <p>Mengapa menggunakan jasa Kami?</p>
                 </div>
 
                 <div class="row content" data-aos="fade-up">
                     <div class="col-lg-6">
-                        <p style="margin-bottom: 40px">
-                            Buat momen penting dan spesial Anda terabadikan dengan jasa pembuatan video dokumentasi kami. 
-                            Kami menawarkan jasa pembuatan video dokumentasi untuk acara, proyek, atau keperluan bisnis Anda. 
-                            Kami akan bekerja sama dengan Anda untuk memahami kebutuhan Anda dan menghasilkan video yang sesuai dengan visi Anda. 
-                            Dapatkan video dokumentasi yang berkualitas tinggi untuk memenuhi kebutuhan Anda. 
-                            Hubungi kami sekarang untuk mendapatkan penawaran terbaik untuk jasa pembuatan video dokumentasi kami.
-
+                        <p style="margin-bottom: 20px">
+                            Logo adalah jantung merek Anda, wujud visual yang mewakili identitas dan nilai-nilai bisnis Anda. Maka dari itu, penting bagi Anda untuk memiliki logo yang kuat dan menarik. Apakah Anda ingin menonjol di antara pesaing, menarik perhatian pelanggan potensial, dan membangun kesan yang tak terlupakan?
+                        </p>
+                        <p style="margin-bottom: 20px">
+                            Kami di sini untuk membantu! Dengan jasa pembuatan logo kami, Anda akan mendapatkan desain yang unik, kreatif, dan profesional yang mencerminkan esensi bisnis Anda. Kami memahami pentingnya logo sebagai alat pemasaran yang kuat, yang mampu mengkomunikasikan merek Anda dengan jelas dan membangun daya ingat yang tinggi.
+                        </p>
+                        <p>
+                            Hubungi Kami sekarang!
                         </p>
                     </div>
                     <div class="col-lg-6 pt-lg-0 pt-4 image-about">
-                        <img src="https://source.unsplash.com/random/900×700/?videography"
+                        <img src="https://source.unsplash.com/random/900×700/?illustrating"
                             alt="" style="width: 100%;">
                     </div>
                 </div>

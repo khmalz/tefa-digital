@@ -590,6 +590,7 @@ section {
 .image-about {
   width: 500px;
   height: 300px;
+  justify-content: center;
   object-fit: cover;
 }
 
@@ -1179,6 +1180,59 @@ section {
   padding: 1px 0 3px 0;
   background: #ef6603;
   color: #fff;
+}
+
+.price {
+  font-family: sans-serif;
+  font-weight: 500;
+}
+
+.card-pricing {
+  max-width: 400px;
+  min-height: 400px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 5px 35px 0 rgba(68, 88, 144, 0.12);
+  transition: all 0.4s ease-in-out;
+  width: 100%;
+  height: 100%;
+}
+
+.card-pricing:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 2px 35px 0 rgba(68, 88, 144, 0.2);
+}
+
+.card-desc {
+  min-width: 300px;
+  min-height: 200px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  background: #fff;
+  box-shadow: 0 5px 35px 0 rgba(68, 88, 144, 0.12);
+  transition: all 0.4s ease-in-out;
+  width: 100%;
+  height: 100%;
+}
+
+.card-desc:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 2px 35px 0 rgba(68, 88, 144, 0.2);
+}
+
+
+.btn-general {
+  --bs-btn-padding: .100rem;
+  --bs-btn-color: var(--bs-white);
+  --bs-btn-bg: #ef6603;
+  --bs-btn-border-color: #ef6603;
+  --bs-btn-hover-color: #ef6603;
+  --bs-btn-hover-border-color: #ef6603;
+  --bs-btn-focus-shadow-rgb: #ef6603;
+  --bs-btn-active-color: var(--bs-btn-hover-color);
 }
 
 /*--------------------------------------------------------------

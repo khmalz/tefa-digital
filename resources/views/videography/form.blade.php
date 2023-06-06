@@ -39,7 +39,7 @@
                     <div class="card justify-content-center mb-3 text-center" style="background-color: #e46409;">
                         <div class="card-body">
                             <div class="mb-4">
-                                <h2 class="card-title" style="color: white">Form Pemesanan Fotografi</h2>
+                                <h2 class="card-title" style="color: white">Form Pemesanan Videografi</h2>
                             </div>
                             <div class="form-floating mb-3">
                                 <input type="text" class="form-control" id="floatingInput" placeholder="">
