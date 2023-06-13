@@ -793,6 +793,10 @@ section {
 /*--------------------------------------------------------------
 # Portfolio
 --------------------------------------------------------------*/
+.portfolio-color {
+    filter: grayscale(100%);
+}
+
 .portfolio #portfolio-flters {
   list-style: none;
   margin-bottom: 20px;

@@ -166,7 +166,7 @@
                                     <li><i class="ri-check-double-line"></i> Jasa 3D Design</li>
                                     <li><i class="ri-check-double-line"></i> Jasa Digital Marketing</li>
                                 </ul>
-                                <button type="button" class="btn btn-color" style="color: #f06404">
+                                <button type="button" class="btn btn-get-started animate__animated animate__fadeInUp scrollto" style="color: #f06404">
                                     <a href="">Selengkapnya</a>
                                 </button>
                             </div>
@@ -272,7 +272,7 @@
                     <li data-filter=".filter-web">Web</li>
                 </ul>
 
-                <div class="row portfolio-container" data-aos="fade-up">
+                <div class="row portfolio-container portfolio-color" data-aos="fade-up">
 
                     <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                         <div class="portfolio-img"><img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid"
