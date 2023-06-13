@@ -11,6 +11,7 @@ use App\Http\Controllers\Admin\DesignPlanController;
 use App\Http\Controllers\Admin\PhotographyController;
 use App\Http\Controllers\Admin\VideographyController;
 use App\Http\Controllers\Admin\DesignCategoryController;
+use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\PhotographyPlanController;
 use App\Http\Controllers\Admin\VideographyPlanController;
 use App\Http\Controllers\Admin\PhotographyCategoryController;
@@ -34,7 +35,14 @@ Route::get('/', function () {
 
 Route::post('/contact-send', [SendMailController::class, 'sendMail'])->name('contact.send');
 
-Route::prefix('admin')->group(function () {
+Route::middleware('guest')->prefix('login')->as('login.')->group(function () {
+    Route::get('/', [LoginController::class, 'index'])->name('index');
+    Route::post('/', [LoginController::class, 'login'])->name('store');
+});
+
+Route::prefix('admin')->middleware('auth')->group(function () {
+    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
     Route::view('order-list', 'admin.order.index')->name('order.index');
