@@ -25,7 +25,12 @@
                             Tasks<span class="badge badge-sm bg-danger ms-2">42</span></a><a class="dropdown-item"
                             href="#">
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">
+                            <form action="{{ route('logout') }}" id="logout" method="POST">
+                                @csrf
+                                <button type="submit" class="d-none"><span>Logout</span></button>
+                            </form>
+                            <a class="dropdown-item" href="#"
+                                onclick="event.preventDefault(); confirm('Yakin?') && document.getElementById('logout').submit();">
                                 <svg class="icon me-2">
                                     <use
                                         xlink:href="{{ asset('assets/admin/vendors/@coreui/icons/svg/free.svg#cil-account-logout') }}">
@@ -35,16 +40,5 @@
                     </div>
                 </li>
             </ul>
-    </div>
-    <div class="header-divider"></div>
-    <div class="container-fluid">
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb ms-2 my-0">
-                <li class="breadcrumb-item">
-                    <!-- if breadcrumb is single--><span>Home</span>
-                </li>
-                <li class="breadcrumb-item active"><span>Dashboard</span></li>
-            </ol>
-        </nav>
     </div>
 </header>
