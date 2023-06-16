@@ -89,7 +89,7 @@
                 <div class="row justify-content-center">
                     @foreach ($category->plans as $plan)
                         <div class="col-lg-4 col-md-6 d-flex align-items-stretch" style="width: auto !important">
-                            <div class="box d-flex flex-column justify-content-between" data-aos="zoom-in">
+                            <div class="box {{ $loop->last ? 'featured' : '' }} d-flex flex-column justify-content-between" data-aos="zoom-in">
                                 <div>
                                     <h3>{{ $plan->title }}</h3>
                                     <h4><sup>Rp</sup>{{ number_format($plan->price, 0, ',', '.') }}<span></span></h4>

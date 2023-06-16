@@ -39,17 +39,11 @@ Route::as('user.')->group(function () {
     route::prefix('photography')->as('photography.')->group(function () {
         Route::get('/', [PhotographyUserController::class, 'index'])->name('index');
 
-        Route::get('/foto-produk', function () {
-            return view('photography.foto-produk');
-        })->name('foto-produk');
+        Route::get('/foto-produk', [PhotographyUserController::class, 'produk'])->name('foto-produk');
 
-        Route::get('/foto-pernikahan', function () {
-            return view('photography.foto-pernikahan');
-        })->name('foto-pernikahan');
+        Route::get('/foto-pernikahan', [PhotographyUserController::class, 'pernikahan'])->name('foto-pernikahan');
 
-        Route::get('/foto-acara', function () {
-            return view('photography.foto-acara');
-        })->name('foto-acara');
+        Route::get('/foto-acara',[PhotographyUserController::class, 'acara'])->name('foto-acara');
 
         Route::get('/form', function () {
             return view('photography.form');
