@@ -43,7 +43,7 @@ Route::as('user.')->group(function () {
 
         Route::get('/foto-pernikahan', [PhotographyUserController::class, 'pernikahan'])->name('foto-pernikahan');
 
-        Route::get('/foto-acara',[PhotographyUserController::class, 'acara'])->name('foto-acara');
+        Route::get('/foto-acara', [PhotographyUserController::class, 'acara'])->name('foto-acara');
 
         Route::get('/form', function () {
             return view('photography.form');
@@ -53,13 +53,9 @@ Route::as('user.')->group(function () {
     route::prefix('videography')->as('videography.')->group(function () {
         Route::get('/', [VideographyUserController::class, 'index'])->name('index');
 
-        Route::get('/vid-syuting', function () {
-            return view('videography.vid-syuting');
-        })->name('vid-syuting');
+        Route::get('/vid-syuting', [VideographyUserController::class, 'syuting'])->name('vid-syuting');
 
-        Route::get('/vid-dokumentasi', function () {
-            return view('videography.vid-dokumentasi');
-        })->name('vid-dokumentasi');
+        Route::get('/vid-dokumentasi', [VideographyUserController::class, 'dokumentasi'])->name('vid-dokumentasi');
 
         Route::get('/form', function () {
             return view('videography.form');
