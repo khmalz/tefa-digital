@@ -48,11 +48,13 @@
             <h3>Tefa Digital</h3>
             <p>Mendukung kreatifitas siswa berjiwa wirausaha.</p>
             <div class="social-links">
-                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                <a target="_blank" href="{{ url('https://www.instagram.com/smknegeri46jakarta') }}" class="instagram"><i
+                        class="bx bxl-instagram"></i></a>
+                <a target="_blank"
+                    href="{{ url('https://smksedkijakarta.wordpress.com/kota/jakarta-timur/smk-negeri-46') }}"
+                    class="wordpress"><i class="bx bxl-wordpress"></i></a>
+                <a target="_blank" href="{{ url('https://smkn46jaktim.sch.id') }}" class="website"><i
+                        class="bx bx-globe"></i></a>
             </div>
             <div class="copyright">
                 &copy; Copyright <strong><span>SMK Negeri 46</span></strong>. All Rights Reserved
