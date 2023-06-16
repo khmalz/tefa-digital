@@ -5,7 +5,7 @@
     <header id="header" class="fixed-top d-flex align-items-center header-transparent">
         <div class="d-flex align-items-center justify-content-between container">
             <div class="logo">
-                <h1><a href="#">Tefa Digital</a></h1>
+                <h1><a href="/">Tefa Digital</a></h1>
             </div>
 
             <nav id="navbar" class="navbar">
