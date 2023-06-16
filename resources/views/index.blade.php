@@ -81,8 +81,7 @@
 @endsection
 
 @section('main')
-    <main id="main">
-
+    <main id="main" data-mail-success="{{ session('success') }}" data-mail-failure="{{ session('failure') }}">
         <!-- ======= About Section ======= -->
         <section id="about" class="about">
             <div class="container">
@@ -403,25 +402,26 @@
                             <div class="address">
                                 <i class="bi bi-geo-alt"></i>
                                 <h4>Location:</h4>
-                                <p>A108 Adam Street, New York, NY 535022</p>
+                                <p>{{ $contact->location }}</p>
                             </div>
 
                             <div class="email">
                                 <i class="bi bi-envelope"></i>
                                 <h4>Email:</h4>
-                                <p>info@example.com</p>
+                                <p>{{ $contact->email }}</p>
                             </div>
 
                             <div class="phone">
                                 <i class="bi bi-phone"></i>
                                 <h4>Call:</h4>
-                                <p>+1 5589 55488 55s</p>
+                                <p>{{ $contact->phone_number }}</p>
                             </div>
                         </div>
                     </div>
 
                     <div class="col-lg-8 mt-lg-0 mt-5" data-aos="fade-left">
-                        <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                        <form action="{{ route('contact.send') }}" method="post">
+                            @csrf
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <input type="text" name="name" class="form-control" id="name"
@@ -439,19 +439,43 @@
                             <div class="form-group mt-3">
                                 <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
                             </div>
-                            <div class="my-3">
-                                <div class="loading">Loading</div>
-                                <div class="error-message"></div>
-                                <div class="sent-message">Your message has been sent. Thank you!</div>
-                            </div>
-                            <div class="text-center"><button type="submit">Send Message</button></div>
+                            <button type="submit">Send Message</button>
                         </form>
                     </div>
                 </div>
             </div>
         </section>
         <!-- End Contact Section -->
-
     </main>
     <!-- End #main -->
 @endsection
+
+@push('scripts')
+    <script>
+        function showToast(message, background) {
+            Toastify({
+                text: message,
+                duration: 1800,
+                newWindow: true,
+                close: true,
+                gravity: "top",
+                position: "right",
+                stopOnFocus: true,
+                style: {
+                    background,
+                },
+            }).showToast();
+        }
+
+        let successMessage = document.querySelector('main').dataset.mailSuccess;
+        let failureMessage = document.querySelector('main').dataset.mailFailure;
+
+        if (successMessage) {
+            showToast(successMessage, "#28a745");
+        }
+
+        if (failureMessage) {
+            showToast(failureMessage, "#dc3545");
+        }
+    </script>
+@endpush

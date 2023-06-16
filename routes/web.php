@@ -16,6 +16,7 @@ use App\Http\Controllers\Admin\PhotographyPlanController;
 use App\Http\Controllers\Admin\VideographyPlanController;
 use App\Http\Controllers\Admin\PhotographyCategoryController;
 use App\Http\Controllers\Admin\VideographyCategoryController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\PDFController;
 
 /*
@@ -29,9 +30,7 @@ use App\Http\Controllers\PDFController;
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', LandingPageController::class);
 
 Route::as('user.')->group(function () {
     route::prefix('photography')->as('photography.')->group(function () {
