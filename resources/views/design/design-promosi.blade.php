@@ -85,75 +85,46 @@
 
                 <div class="container px-3 text-center">
                     <div class="row gx-5">
-                        <div class="col-4">
-                            <div class="card-pricing rounded-3 p-4" data-aos="zoom-in-left" data-aos-delay="100">
-                                <span class="text-dark">
-                                    <p class="ms-3 mt-3 text-start">Mulai dari</p>
-                                    <span class="display-5">Rp</span>
-                                    <span class="display-4 price">900</span>
-                                    <span class="font-size-4">rb</span>
-                                </span>
-                                <hr class="my-4">
-                                <div class="mb-5">
-                                    <p>
-                                        Gratis konsultasi terkait design bersama tim kami agar dapat memberikan design
-                                        terbaik berdasarkan kebutuhan Anda.
-                                    </p>
-                                </div>
-                                <div class="mb-2">
-                                    <a href="" class="btn btn-lg btn-general rounded-5"> Konsultasikan sekarang</a>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-lg-7">
-                            <div class="pl-lg-6">
-                                <div class="row">
-                                    <div class="col-sm-6 mb-5">
-                                        <div class="card-desc rounded-3 p-2" data-aos="zoom-in-left" data-aos-delay="100">
-                                            <div class="m-3">
-                                                <h5>Design Unik</h5>
-                                                <hr class="my-3">
-                                                <p>Kami menawarkan desain unik dan kreatif yang akan membantu bisnis dan
-                                                    menarik perhatian pelanggan.</p>
-                                            </div>
-                                        </div>
+                        @foreach ($category->plans as $plan)
+                            <div class="col-4">
+                                <div class="card-pricing rounded-3 p-4" data-aos="zoom-in-left" data-aos-delay="100">
+                                    <span class="text-dark">
+                                        <p class="ms-3 mt-3 text-start">Mulai dari</p>
+                                        <span class="display-5">Rp</span>
+                                        <span class="display-4 price">{{ number_format($plan->price, 0, ',', '.') }}</span>
+                                    </span>
+                                    <hr class="my-4">
+                                    <div class="mb-5">
+                                        <p>
+                                            Gratis konsultasi terkait design bersama tim kami agar dapat memberikan design
+                                            terbaik berdasarkan kebutuhan Anda.
+                                        </p>
                                     </div>
-                                    <div class="col-sm-6 mb-5">
-                                        <div class="card-desc rounded-3 p-2" data-aos="zoom-in-left" data-aos-delay="100">
-                                            <div class="m-3">
-                                                <h5>Konsultasi Gratis</h5>
-                                                <hr class="my-3">
-                                                <p>Konsultasi gratis membantu menentukan desain yang sesuai dengan kebutuhan
-                                                    dengan hasil terbaik.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6 mb-3">
-                                        <div class="card-desc rounded-3 p-2" data-aos="zoom-in-left" data-aos-delay="100">
-                                            <div class="m-3">
-                                                <h5>Pengerjaan Profesional</h5>
-                                                <hr class="my-3">
-                                                <p>Kami mengutamakan sebuah kualitas dan kami akan memastikan desain yang
-                                                    sesuai dengan permintaan.</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-sm-6 mb-3">
-                                        <div class="card-desc rounded-3 p-2" data-aos="zoom-in-left" data-aos-delay="100">
-                                            <div class="m-3">
-                                                <h5>Pelayanan Maksimal</h5>
-                                                <hr class="my-3">
-                                                <p>Kami berusaha untuk memberikan pelayanan yang maksimal dan memahami
-                                                    setiap kebutuhan yang mendukung bisnis maupun personal.</p>
-                                            </div>
-                                        </div>
+                                    <div class="mb-2">
+                                        <a href="" class="btn btn-lg btn-general rounded-5"> Konsultasikan
+                                            sekarang</a>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                            <div class="col-lg-7">
+                                <div class="pl-lg-6">
+                                    <div class="row" style="row-gap: 1rem !important;">
+                                        @foreach ($plan->features as $feature)
+                                            <div class="col-sm-6">
+                                                <div class="card-desc rounded-3 p-2" data-aos="zoom-in-left"
+                                                    data-aos-delay="100">
+                                                    <div class="m-3">
+                                                        <h5>{{ $feature->text }}</h5>
+                                                        <hr class="my-3">
+                                                        <p>{{ $feature->description }}</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        @endforeach
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
             </div>

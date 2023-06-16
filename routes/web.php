@@ -75,17 +75,11 @@ Route::as('user.')->group(function () {
     route::prefix('design')->as('design.')->group(function () {
         Route::get('/', [DesignUserController::class, 'index'])->name('index');
 
-        Route::get('/design-logo', function () {
-            return view('design.design-logo');
-        })->name('design-logo');
+        Route::get('/design-logo', [DesignUserController::class, 'logo'])->name('design-logo');
 
-        Route::get('/design-promosi', function () {
-            return view('design.design-promosi');
-        })->name('design-promosi');
+        Route::get('/design-promosi', [DesignUserController::class, 'promosi'])->name('design-promosi');
 
-        Route::get('/design-3d', function () {
-            return view('design.design-3d');
-        })->name('design-3d');
+        Route::get('/design-3d', [DesignUserController::class, 'threeD'])->name('design-3d');
 
         Route::get('/form', function () {
             return view('design.form');
