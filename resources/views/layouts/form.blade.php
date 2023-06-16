@@ -20,6 +20,43 @@
             text-decoration: none;
             justify-content: center;
         }
+        .bg {
+            position: fixed; 
+            top: -50%; 
+            left: -50%; 
+            width: 200%; 
+            height: 200%;
+        }
+        .bg-img {
+            filter: grayscale(100%) saturate(0%); 
+            position: absolute; 
+            top: 0; 
+            left: 0; 
+            right: 0; 
+            bottom: 0; 
+            margin: auto; 
+            min-width: 50%;
+            min-height: 50%;
+
+        }
+        .card-form {
+            justify-content: center;
+            margin: auto;
+            margin-top: 16vh;
+            max-width: 60vw;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            background: #ef6603;
+        }
+        .card-input {
+            min-width: 95%;
+            margin-bottom: 2%;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            background: #fff;
+        }
         .btn-form {
             --bs-btn-padding: .100rem;
             --bs-btn-color: var(--bs-white);
@@ -31,37 +68,41 @@
             --bs-btn-active-color: var(--bs-btn-hover-color);
         }
 
-        .bg-form {
-            width: 100vw !important;
-            height: 100vh;
+        .preview-container {
+            background-color: #e9ecef;
+            width: 15vw;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            border-radius: 4px;
         }
 
-        .img-form {
-            width: 100% !important;
-            filter: brightness(20%) saturate(0);
-            height: 100%
+        .preview-container:hover {
+            background-color: #dfe4dd;
         }
 
-        .card-one {
-            width: 736px;
-            height: 500px;
-            background: #ef6603;
-            justify-content: center;
-            text-align: center;
-            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, 'sans-serif';
-            color: white;
+        .preview-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .card-two {     
-            height: 320px;
-            background: white;
-            justify-content: center;
-            border-radius: 5% 5% 0px 0px
+        .preview-image {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
+
+        .preview-file-name {
+            font-size: 14px;
+        }
+
     </style>
 </head>
 
-<body class="position-relative" style="max-height: 100vh !important; height: 100% !important">
+<body>
     <nav class="w-100 position-absolute top-0" style="z-index: 111">
         <div class="d-flex align-items-center justify-content-center" style="background-color: rgba(42, 44, 57, 0.9)">
             <div class="logo">
@@ -70,32 +111,88 @@
         </div>
     </nav>
 
-    <div class="bg-form">
-        <img class="img-form" src="{{ asset('assets/img/background/front.jpg')}}" alt="">
+    <div class="bg">
+        <img class="bg-img" src="{{ asset('assets/img/background/front.jpg')}}" alt="">
     </div>
 
-    <div class="d-flex justify-content-center position-absolute top-50 start-50 translate-middle container">
-        <div class="section-wrapper w-100">
-            <div class="row justify-content-center mt-5">
-                <div class="col-md-8 col-12">
-                    <div class="card-one position-relative overflow-hidden" style="border-radius: 10px">
-                            <h2 class="text-center p-2">Form Pemesanan Videografi</h2>
-                        <div class="card-two position-absolute h-100 w-100" >
-                            <div class="justify-content-center text-center" style="background-color: transparent;">
-                                <div class="card-body justify-content-center p-5">
-                                    @yield('input')
-                                </div>
-                            </div>
+    <div class="row">
+        <div class="col card-form">
+            <h2 class="text-center text-white my-3">Form Pemesanan Design</h2>
+            <div class="col card-input">
+                <div class="card-body justify-content-center p-5">
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="">
+                        <label for="floatingInput">Nama</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="">
+                        <label for="floatingInput">Nomor telepon</label>
+                    </div>
+                    <div class="form-floating mb-3">
+                        <input type="email" class="form-control" id="floatingInput" placeholder="">
+                        <label for="floatingInput">Email</label>
+                    </div>
+                    <div class="form-floating mb-4">
+                        <input type="text" class="form-control" id="floatingInput" placeholder="">
+                        <label for="floatingInput">Deskripsi</label>
+                    </div>
+                    <div class="mb-4">
+                        <button class="btn btn-sm btn-form">Want Upload Image?</button>
+                        <button class="btn btn-sm btn-form">More</button>
+                    </div>
+                    <div class="d-flex">
+                        <div class="mb-3 me-3">
+                            <input class="form-control" type="file" id="formFile">
                         </div>
+                        <div>
+                            <button class="btn btn-danger">Delete</button>
+                        </div>
+                    </div>
+                    <div class="preview-container p-2"></div>
+                    <div class="mb-1 text-center">
+                        <button type="button" class="btn btn-form rounded-5">Pesan</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous">
-    </script>
 </body>
+<script>
+    function previewImages() {
+    const previewContainer = document.querySelector('.preview-container');
+    previewContainer.innerHTML = '';
 
+    const files = document.getElementById('formFile').files;
+
+    for (let i = 0; i < files.length; i++) {
+        const file = files[i];
+        const reader = new FileReader();
+
+        reader.onload = function(e) {
+        const imageSrc = e.target.result;
+
+        const previewItem = document.createElement('div');
+        previewItem.classList.add('preview-item');
+
+        const previewImage = document.createElement('img');
+        previewImage.classList.add('preview-image');
+        previewImage.src = imageSrc;
+
+        const fileName = document.createElement('span');
+        fileName.classList.add('preview-file-name');
+        fileName.textContent = file.name;
+
+        previewItem.appendChild(previewImage);
+        previewItem.appendChild(fileName);
+
+        previewContainer.appendChild(previewItem);
+        };
+
+        reader.readAsDataURL(file);
+    }
+    }
+
+    document.getElementById('formFile').addEventListener('change', previewImages);
+
+</script>
 </html>
