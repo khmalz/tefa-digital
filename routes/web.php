@@ -1,23 +1,26 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PDFController;
 use App\Http\Controllers\SendMailController;
+use App\Http\Controllers\DesignUserController;
+use App\Http\Controllers\Admin\LoginController;
+use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\Admin\DesignController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\PrintingController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PortfolioController;
+use App\Http\Controllers\PhotographyUserController;
 use App\Http\Controllers\Admin\DesignPlanController;
 use App\Http\Controllers\Admin\PhotographyController;
 use App\Http\Controllers\Admin\VideographyController;
 use App\Http\Controllers\Admin\DesignCategoryController;
-use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\Admin\PhotographyPlanController;
 use App\Http\Controllers\Admin\VideographyPlanController;
 use App\Http\Controllers\Admin\PhotographyCategoryController;
 use App\Http\Controllers\Admin\VideographyCategoryController;
-use App\Http\Controllers\LandingPageController;
-use App\Http\Controllers\PDFController;
+use App\Http\Controllers\VideographyUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,14 +37,11 @@ Route::get('/', LandingPageController::class);
 
 Route::as('user.')->group(function () {
     route::prefix('photography')->as('photography.')->group(function () {
-        Route::get('/', function () {
-            return view('photography.index');
-        })->name('index');
+        Route::get('/', [PhotographyUserController::class, 'index'])->name('index');
 
         Route::get('/foto-produk', function () {
             return view('photography.foto-produk');
         })->name('foto-produk');
-
 
         Route::get('/foto-pernikahan', function () {
             return view('photography.foto-pernikahan');
@@ -57,9 +57,7 @@ Route::as('user.')->group(function () {
     });
 
     route::prefix('videography')->as('videography.')->group(function () {
-        Route::get('/', function () {
-            return view('videography.index');
-        })->name('index');
+        Route::get('/', [VideographyUserController::class, 'index'])->name('index');
 
         Route::get('/vid-syuting', function () {
             return view('videography.vid-syuting');
@@ -75,9 +73,7 @@ Route::as('user.')->group(function () {
     });
 
     route::prefix('design')->as('design.')->group(function () {
-        Route::get('/', function () {
-            return view('design.index');
-        })->name('index');
+        Route::get('/', [DesignUserController::class, 'index'])->name('index');
 
         Route::get('/design-logo', function () {
             return view('design.design-logo');
@@ -97,9 +93,7 @@ Route::as('user.')->group(function () {
     });
 
     route::prefix('printing')->as('printing.')->group(function () {
-        Route::get('/', function () {
-            return view('printing.index');
-        })->name('index');
+        Route::view('/', 'printing.index')->name('index');
 
         Route::get('/form', function () {
             return view('printing.form');

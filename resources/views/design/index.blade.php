@@ -83,42 +83,25 @@
                 </div>
 
                 <div class="row justify-content-center">
-                    <div class="col-lg-4 col-md-6 mt-md-0 mt-5">
-                        <div class="icon-box rounded-3 text-center" data-aos="zoom-in-left" data-aos-delay="100">
-                            <img src="https://source.unsplash.com/random/?design"
-                                class="card-image card-img-top rounded-2 mb-2 p-2" alt="">
-                            <h5 class="title mt-2">Jasa Design Logo</h5>
-                            <p class="description p-2">Buat merek Anda terlihat profesional dan menonjol dengan jasa desain
-                                logo kami. Tim ahli kami akan menciptakan logo yang sesuai dengan keinginan Anda. Dapatkan
-                                logo merek yang kuat dengan penawaran terbaik dari kami. Hubungi kami sekarang!</p>
-                            <a href="{{ route('user.design.design-logo') }}" class="btn btn-outline"
-                                style="color: #f06404">Selengkapnya</a>
+                    @forelse ($categories as $category)
+                        <div class="col-lg-4 col-md-6 mt-md-0 mt-5">
+                            <div class="icon-box rounded-3 text-center" data-aos="zoom-in-left" data-aos-delay="100">
+                                @if ($category->image === 'placeholder.jpg')
+                                    <img src="https://source.unsplash.com/random/?design&{{ $loop->iteration }}"
+                                        class="card-image card-img-top rounded-2 mb-2 p-2" alt="haha">
+                                @else
+                                    <img src="{{ \Illuminate\Support\Facades\Storage::url($category->image) }}"
+                                        class="card-image card-img-top rounded-2 mb-2 p-2" alt="hoho">
+                                @endif
+                                <h5 class="title mt-2">{{ $category->title }}</h5>
+                                <p class="description p-2">{{ $category->body }}</p>
+                                <a href="{{ $routeNames[$category->title] }}" class="btn btn-outline"
+                                    style="color: #f06404">Selengkapnya</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mt-md-0 mt-5">
-                        <div class="icon-box rounded-3 text-center" data-aos="zoom-in-left" data-aos-delay="100">
-                            <img src="https://source.unsplash.com/random/?marketing&2"
-                                class="card-image card-img-top rounded-2 mb-2 p-2" alt="">
-                            <h5 class="title mt-2">Jasa Design Promosi Digital</h5>
-                            <p class="description p-2">promosikan bisnismu dengan desain promosi digital yang menarik dan
-                                profesional! Kami berusaha menampilkan objek yang berkesan pada setiap detiknya. Hubungi
-                                kami sekarang untuk penawaran terbaik lainnya!</p>
-                            <a href="{{ route('user.design.design-promosi') }}" class="btn btn-outline"
-                                style="color: #f06404">Selengkapnya</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mt-md-0 mt-5">
-                        <div class="icon-box rounded-3 text-center" data-aos="zoom-in-left" data-aos-delay="100">
-                            <img src="https://source.unsplash.com/random/?design-3d"
-                                class="card-image card-img-top rounded-2 mb-2 p-2" alt="">
-                            <h5 class="title mt-2">Jasa Design 3D</h5>
-                            <p class="description p-2">Ingin menghadirkan ide kreatif ke dalam bentuk tiga dimensi? Dapatkan
-                                pengalaman desain 3D dengan jasa kami! Kami ahli dalam menciptakan visualisasi nyata dan
-                                menarik melalui desain 3D yang inovatif. Hubungi kami sekarang!</p>
-                            <a href="{{ route('user.design.design-3d') }}" class="btn btn-outline"
-                                style="color: #f06404">Selengkapnya</a>
-                        </div>
-                    </div>
+                    @empty
+                        <p>Tidak ada kategori yang tersedia.</p>
+                    @endforelse
                 </div>
             </div>
         </section>

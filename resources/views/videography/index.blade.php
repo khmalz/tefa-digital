@@ -80,30 +80,25 @@
                 </div>
 
                 <div class="row justify-content-center">
-                    <div class="col-lg-4 col-md-6 mt-md-0 mt-5">
-                        <div class="icon-box rounded-3 text-center" data-aos="zoom-in-left" data-aos-delay="100">
-                            <img src="https://source.unsplash.com/random/?videography&1"
-                                class="card-image card-img-top rounded-2 mb-2 p-2" alt="">
-                            <h5 class="title mt-2">Jasa Video Syuting</h5>
-                            <p class="description p-2">Ciptakan video yang memukau dengan jasa pembuatan video syuting kami.
-                                Tim kami akan mengambil video syuting secara profesional dan menghasilkan video yang sesuai
-                                keinginan Anda. Hubungi kami sekarang untuk penawaran terbaik.</p>
-                            <a href="{{ route('user.videography.vid-syuting') }}" class="btn btn-outline"
-                                style="color: #f06404">Selengkapnya</a>
+                    @forelse ($categories as $category)
+                        <div class="col-lg-4 col-md-6 mt-md-0 mt-5">
+                            <div class="icon-box rounded-3 text-center" data-aos="zoom-in-left" data-aos-delay="100">
+                                @if ($category->image === 'placeholder.jpg')
+                                    <img src="https://source.unsplash.com/random/?videography-{{ $category->title }}"
+                                        class="card-image card-img-top rounded-2 mb-2 p-2" alt="haha">
+                                @else
+                                    <img src="{{ \Illuminate\Support\Facades\Storage::url($category->image) }}"
+                                        class="card-image card-img-top rounded-2 mb-2 p-2" alt="hoho">
+                                @endif
+                                <h5 class="title mt-2">{{ $category->title }}</h5>
+                                <p class="description p-2">{{ $category->body }}</p>
+                                <a href="{{ $routeNames[$category->title] }}" class="btn btn-outline"
+                                    style="color: #f06404">Selengkapnya</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mt-md-0 mt-5">
-                        <div class="icon-box rounded-3 text-center" data-aos="zoom-in-left" data-aos-delay="100">
-                            <img src="https://source.unsplash.com/random/?videography&2"
-                                class="card-image card-img-top rounded-2 mb-2 p-2" alt="">
-                            <h5 class="title mt-2">Jasa Video Dokumentasi</h5>
-                            <p class="description p-2">Buat momen penting dan spesial Anda terabadikan dengan jasa pembuatan
-                                video dokumentasi kami. Hubungi kami sekarang untuk mendapatkan penawaran terbaik untuk jasa
-                                pembuatan video dokumentasi kami.</p>
-                            <a href="{{ route('user.videography.vid-dokumentasi') }}" class="btn btn-outline"
-                                style="color: #f06404">Selengkapnya</a>
-                        </div>
-                    </div>
+                    @empty
+                        <p>Tidak ada kategori yang tersedia.</p>
+                    @endforelse
                 </div>
             </div>
         </section>

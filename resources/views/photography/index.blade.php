@@ -79,43 +79,25 @@
                 </div>
 
                 <div class="row justify-content-center">
-                    <div class="col-lg-4 col-md-6 mt-md-0 mt-5">
-                        <div class="icon-box rounded-3 text-center" data-aos="zoom-in-left" data-aos-delay="100">
-                            <img src="https://source.unsplash.com/random/?photography&1"
-                                class="card-image card-img-top rounded-2 mb-2 p-2" alt="">
-                            <h5 class="title mt-2">Jasa Foto Produk</h5>
-                            <p class="description p-2">Buat produk Anda terlihat lebih menarik dengan jasa foto produk kami.
-                                Dapatkan foto produk yang memukau dengan penawaran terbaik dari
-                                kami. Hubungi kami sekarang!</p>
-                            <a href="{{ route('user.photography.foto-produk') }}" class="btn btn-outline"
-                                style="color: #f06404">Selengkapnya</a>
+                    @forelse ($categories as $category)
+                        <div class="col-lg-4 col-md-6 mt-md-0 mt-5">
+                            <div class="icon-box rounded-3 text-center" data-aos="zoom-in-left" data-aos-delay="100">
+                                @if ($category->image === 'placeholder.jpg')
+                                    <img src="https://source.unsplash.com/random/?photography-{{ $category->title }}"
+                                        class="card-image card-img-top rounded-2 mb-2 p-2" alt="haha">
+                                @else
+                                    <img src="{{ \Illuminate\Support\Facades\Storage::url($category->image) }}"
+                                        class="card-image card-img-top rounded-2 mb-2 p-2" alt="hoho">
+                                @endif
+                                <h5 class="title mt-2">{{ $category->title }}</h5>
+                                <p class="description p-2">{{ $category->body }}</p>
+                                <a href="{{ $routeNames[$category->title] }}" class="btn btn-outline"
+                                    style="color: #f06404">Selengkapnya</a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mt-md-0 mt-5">
-                        <div class="icon-box rounded-3 text-center" data-aos="zoom-in-left" data-aos-delay="100">
-                            <img src="https://source.unsplash.com/random/?photography-wedding&2"
-                                class="card-image card-img-top rounded-2 mb-2 p-2" alt="">
-                            <h5 class="title mt-2">Jasa Foto Pernikahan</h5>
-                            <p class="description p-2">Abadikan momen spesial pernikahan Anda dengan jasa foto pernikahan
-                                kami.
-                                Dapatkan kenangan pernikahan yang abadi dengan penawaran terbaik dari kami. Hubungi kami
-                                sekarang!</p>
-                            <a href="{{ route('user.photography.foto-pernikahan') }}" class="btn btn-outline"
-                                style="color: #f06404">Selengkapnya</a>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6 mt-md-0 mt-5">
-                        <div class="icon-box rounded-3 text-center" data-aos="zoom-in-left" data-aos-delay="100">
-                            <img src="https://source.unsplash.com/random/?photography&3"
-                                class="card-image card-img-top rounded-2 mb-2 p-2" alt="">
-                            <h5 class="title mt-2">Jasa Foto Acara</h5>
-                            <p class="description p-2">Kami menawarkan jasa fotografi acara untuk mengabadikan momen penting
-                                Anda. Dapatkan gambar acara yang berkesan dengan jasa fotografi acara kami. Hubungi kami
-                                sekarang!</p>
-                            <a href="{{ route('user.photography.foto-acara') }}" class="btn btn-outline"
-                                style="color: #f06404">Selengkapnya</a>
-                        </div>
-                    </div>
+                    @empty
+                        <p>Tidak ada kategori yang tersedia.</p>
+                    @endforelse
                 </div>
             </div>
         </section>
