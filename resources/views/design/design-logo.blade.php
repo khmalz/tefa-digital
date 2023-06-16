@@ -14,7 +14,8 @@
             <div class="carousel-item active">
                 <div class="carousel-container">
                     <h2 class="animate__animated animate__fadeInDown">Jasa Design Logo</span></h2>
-                    <p class="animate__animated fanimate__adeInUp">Logo adalah jantung merek Anda, wujud visual yang mewakili identitas dan nilai-nilai bisnis Anda.</p>
+                    <p class="animate__animated fanimate__adeInUp">Logo adalah jantung merek Anda, wujud visual yang
+                        mewakili identitas dan nilai-nilai bisnis Anda.</p>
                     <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
                 </div>
             </div>
@@ -45,7 +46,6 @@
         <!-- ======= About Section ======= -->
         <section id="about" class="about">
             <div class="container">
-
                 <div class="section-title" data-aos="zoom-out">
                     <h2>Jasa Design Logo</h2>
                     <p>Mengapa menggunakan jasa Kami?</p>
@@ -53,19 +53,25 @@
 
                 <div class="row content" data-aos="fade-up">
                     <div class="col-lg-6">
-                        <p style="margin-bottom: 20px">
-                            Logo adalah jantung merek Anda, wujud visual yang mewakili identitas dan nilai-nilai bisnis Anda. Maka dari itu, penting bagi Anda untuk memiliki logo yang kuat dan menarik. Apakah Anda ingin menonjol di antara pesaing, menarik perhatian pelanggan potensial, dan membangun kesan yang tak terlupakan?
+                        <p style="margin-bottom: 20px; text-align: justify">
+                            Logo adalah jantung merek Anda, wujud visual yang mewakili identitas dan nilai-nilai bisnis
+                            Anda. Maka dari itu, penting bagi Anda untuk memiliki logo yang kuat dan menarik. Apakah Anda
+                            ingin menonjol di antara pesaing, menarik perhatian pelanggan potensial, dan membangun kesan
+                            yang tak terlupakan?
                         </p>
-                        <p style="margin-bottom: 20px">
-                            Kami di sini untuk membantu! Dengan jasa pembuatan logo kami, Anda akan mendapatkan desain yang unik, kreatif, dan profesional yang mencerminkan esensi bisnis Anda. Kami memahami pentingnya logo sebagai alat pemasaran yang kuat, yang mampu mengkomunikasikan merek Anda dengan jelas dan membangun daya ingat yang tinggi.
+                        <p style="margin-bottom: 20px; text-align: justify">
+                            Kami di sini untuk membantu! Dengan jasa pembuatan logo kami, Anda akan mendapatkan desain yang
+                            unik, kreatif, dan profesional yang mencerminkan esensi bisnis Anda. Kami memahami pentingnya
+                            logo sebagai alat pemasaran yang kuat, yang mampu mengkomunikasikan merek Anda dengan jelas dan
+                            membangun daya ingat yang tinggi.
                         </p>
                         <p>
                             Hubungi Kami sekarang!
                         </p>
                     </div>
-                    <div class="col-lg-6 pt-lg-0 pt-4 image-about">
-                        <img src="https://source.unsplash.com/random/900×700/?illustrating"
-                            alt="" style="width: 100%;">
+                    <div class="col-lg-6 pt-lg-0 image-about pt-4">
+                        <img src="https://source.unsplash.com/random/900×700/?illustrating" alt=""
+                            style="width: 100%;">
                     </div>
                 </div>
             </div>
@@ -75,14 +81,12 @@
         <!-- ======= Pricing Section ======= -->
         <section id="pricing" class="pricing">
             <div class="container">
-
                 <div class="section-title" data-aos="zoom-out">
                     <h2>Ragam harga</h2>
                     <p>Penawaran Harga Jasa</p>
                 </div>
 
                 <div class="row">
-
                     <div class="col-lg-3 col-md-6">
                         <div class="box" data-aos="zoom-in">
                             <h3>Free</h3>
@@ -151,9 +155,7 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </section>
         <!-- End Pricing Section -->

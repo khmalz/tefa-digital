@@ -54,16 +54,18 @@
                 <div class="row content" data-aos="fade-up">
                     <div class="col-lg-6">
                         <p style="margin-bottom: 40px">
-                            Design merupakan salah satu jasa yang kami berikan untuk membantu memenuhi kebutuhan desain untuk dunia bisnis maupun personal. Kami memberikan desain yang fresh dan sesuai dengan kesepakatan Anda.
+                            Design merupakan salah satu jasa yang kami berikan untuk membantu memenuhi kebutuhan desain
+                            untuk dunia bisnis maupun personal. Kami memberikan desain yang fresh dan sesuai dengan
+                            kesepakatan Anda.
                         <ul>
                             <li><i class="ri-check-double-line"></i> Menarik perhatian audiens</li>
                             <li><i class="ri-check-double-line"></i> Membangun citra personal</li>
                             <li><i class="ri-check-double-line"></i> Meninggalkan kesan baik</li>
                         </ul>
                     </div>
-                    <div class="col-lg-6 pt-lg-0 pt-4 image-about">
-                        <img src="https://source.unsplash.com/random/900×700/?sketching"
-                            alt="" style="width: 100%;">
+                    <div class="col-lg-6 pt-lg-0 image-about pt-4">
+                        <img src="https://source.unsplash.com/random/900×700/?sketching" alt=""
+                            style="width: 100%;">
                     </div>
                 </div>
             </div>
@@ -73,7 +75,6 @@
         <!-- ======= Services Section ======= -->
         <section id="services" class="services">
             <div class="container">
-
                 <div class="section-title" data-aos="zoom-out">
                     <h2>Ragam layanan</h2>
                     <p>Design</p>
@@ -83,57 +84,42 @@
 
                 <div class="row justify-content-center">
                     <div class="col-lg-4 col-md-6 mt-md-0 mt-5">
-                        <div class="icon-box text-center rounded-3" data-aos="zoom-in-left" data-aos-delay="100">
-                            <img src="https://source.unsplash.com/random/?design" class="card-image card-img-top p-2 rounded-2 mb-2" alt="">
-                                <h5 class="title mt-2">Jasa Design Logo</h5>
-                                <p class="description p-2">Buat merek Anda terlihat profesional dan menonjol dengan jasa desain logo kami. Tim ahli kami akan menciptakan logo yang sesuai dengan keinginan Anda. Dapatkan logo merek yang kuat dengan penawaran terbaik dari kami. Hubungi kami sekarang!</p>
-                                <a href="#" class="btn btn-outline" style="color: #f06404">Selengkapnya</a>
+                        <div class="icon-box rounded-3 text-center" data-aos="zoom-in-left" data-aos-delay="100">
+                            <img src="https://source.unsplash.com/random/?design"
+                                class="card-image card-img-top rounded-2 mb-2 p-2" alt="">
+                            <h5 class="title mt-2">Jasa Design Logo</h5>
+                            <p class="description p-2">Buat merek Anda terlihat profesional dan menonjol dengan jasa desain
+                                logo kami. Tim ahli kami akan menciptakan logo yang sesuai dengan keinginan Anda. Dapatkan
+                                logo merek yang kuat dengan penawaran terbaik dari kami. Hubungi kami sekarang!</p>
+                            <a href="{{ route('user.design.design-logo') }}" class="btn btn-outline"
+                                style="color: #f06404">Selengkapnya</a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 mt-md-0 mt-5">
-                        <div class="icon-box text-center rounded-3" data-aos="zoom-in-left" data-aos-delay="100">
-                            <img src="https://source.unsplash.com/random/?marketing&2" class="card-image card-img-top p-2 rounded-2 mb-2" alt="">
-                                <h5 class="title mt-2">Jasa Design Promosi Digital</h5>
-                                <p class="description p-2">promosikan bisnismu dengan desain promosi digital yang menarik dan profesional! Kami berusaha menampilkan objek yang berkesan pada setiap detiknya. Hubungi kami sekarang untuk penawaran terbaik lainnya!</p>
-                                <a href="#" class="btn btn-outline" style="color: #f06404">Selengkapnya</a>
+                        <div class="icon-box rounded-3 text-center" data-aos="zoom-in-left" data-aos-delay="100">
+                            <img src="https://source.unsplash.com/random/?marketing&2"
+                                class="card-image card-img-top rounded-2 mb-2 p-2" alt="">
+                            <h5 class="title mt-2">Jasa Design Promosi Digital</h5>
+                            <p class="description p-2">promosikan bisnismu dengan desain promosi digital yang menarik dan
+                                profesional! Kami berusaha menampilkan objek yang berkesan pada setiap detiknya. Hubungi
+                                kami sekarang untuk penawaran terbaik lainnya!</p>
+                            <a href="{{ route('user.design.design-promosi') }}" class="btn btn-outline"
+                                style="color: #f06404">Selengkapnya</a>
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6 mt-md-0 mt-5">
-                        <div class="icon-box text-center rounded-3" data-aos="zoom-in-left" data-aos-delay="100">
-                            <img src="https://source.unsplash.com/random/?design-3d" class="card-image card-img-top p-2 rounded-2 mb-2" alt="">
-                                <h5 class="title mt-2">Jasa Design 3D</h5>
-                                <p class="description p-2">Ingin menghadirkan ide kreatif ke dalam bentuk tiga dimensi? Dapatkan pengalaman desain 3D dengan jasa kami! Kami ahli dalam menciptakan visualisasi nyata dan menarik melalui desain 3D yang inovatif. Hubungi kami sekarang!</p>
-                                <a href="#" class="btn btn-outline" style="color: #f06404">Selengkapnya</a>
+                        <div class="icon-box rounded-3 text-center" data-aos="zoom-in-left" data-aos-delay="100">
+                            <img src="https://source.unsplash.com/random/?design-3d"
+                                class="card-image card-img-top rounded-2 mb-2 p-2" alt="">
+                            <h5 class="title mt-2">Jasa Design 3D</h5>
+                            <p class="description p-2">Ingin menghadirkan ide kreatif ke dalam bentuk tiga dimensi? Dapatkan
+                                pengalaman desain 3D dengan jasa kami! Kami ahli dalam menciptakan visualisasi nyata dan
+                                menarik melalui desain 3D yang inovatif. Hubungi kami sekarang!</p>
+                            <a href="{{ route('user.design.design-3d') }}" class="btn btn-outline"
+                                style="color: #f06404">Selengkapnya</a>
                         </div>
                     </div>
-                    {{-- <div class="col-lg-4 col-md-6 mt-md-0 mt-5">
-                        <div class="icon-box" data-aos="zoom-in-left" data-aos-delay="100">
-                            <div class="icon"><i class="bi bi-book" style="color: #e9bf06;"></i></div>
-                            <h4 class="title"><a href="">Jasa Foto Pernikahan</a></h4>
-                            <p class="description">Abadikan momen spesial pernikahan Anda dengan jasa foto pernikahan kami.
-                                Dapatkan kenangan pernikahan yang abadi dengan penawaran terbaik dari kami. Hubungi kami
-                                sekarang!
-                            </p>
-                            <button type="button" class="btn btn-color" style="color: #f06404">
-                                <a href="">Selengkapnya</a>
-                            </button>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 mt-lg-0 mt-5">
-                        <div class="icon-box" data-aos="zoom-in-left" data-aos-delay="200">
-                            <div class="icon"><i class="bi bi-card-checklist" style="color: #3fcdc7;"></i></div>
-                            <h4 class="title"><a href="">Jasa Foto Acara</a></h4>
-                            <p class="description">Kami menawarkan jasa fotografi acara untuk mengabadikan momen penting
-                                Anda. Dapatkan gambar acara yang berkesan dengan jasa fotografi acara kami. Hubungi kami
-                                sekarang!</p>
-                            <button type="button" class="btn btn-color" style="color: #f06404;">
-                                <a href="">Selengkapnya</a>
-                            </button>
-                        </div>
-                    </div> --}}
                 </div>
-
             </div>
         </section>
         <!-- End Services Section -->

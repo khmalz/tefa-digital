@@ -18,75 +18,78 @@ Route::get('/', function () {
     return view('index');
 });
 
-route::prefix('photography')->group(function () {
-    Route::get('/', function () {
-        return view('photography.index');
+Route::as('user.')->group(function () {
+    route::prefix('photography')->as('photography.')->group(function () {
+        Route::get('/', function () {
+            return view('photography.index');
+        })->name('index');
+
+        Route::get('/foto-produk', function () {
+            return view('photography.foto-produk');
+        })->name('foto-produk');
+
+
+        Route::get('/foto-pernikahan', function () {
+            return view('photography.foto-pernikahan');
+        })->name('foto-pernikahan');
+
+        Route::get('/foto-acara', function () {
+            return view('photography.foto-acara');
+        })->name('foto-acara');
+
+        Route::get('/form', function () {
+            return view('photography.form');
+        })->name('form');
     });
 
-    Route::get('/foto-produk', function () {
-        return view('photography.foto-produk');
+    route::prefix('videography')->as('videography.')->group(function () {
+        Route::get('/', function () {
+            return view('videography.index');
+        })->name('index');
+
+        Route::get('/vid-syuting', function () {
+            return view('videography.vid-syuting');
+        })->name('vid-syuting');
+
+        Route::get('/vid-dokumentasi', function () {
+            return view('videography.vid-dokumentasi');
+        })->name('vid-dokumentasi');
+
+        Route::get('/form', function () {
+            return view('videography.form');
+        })->name('form');
     });
 
-    Route::get('/foto-acara', function () {
-        return view('photography.foto-acara');
+    route::prefix('design')->as('design.')->group(function () {
+        Route::get('/', function () {
+            return view('design.index');
+        })->name('index');
+
+        Route::get('/design-logo', function () {
+            return view('design.design-logo');
+        })->name('design-logo');
+
+        Route::get('/design-promosi', function () {
+            return view('design.design-promosi');
+        })->name('design-promosi');
+
+        Route::get('/design-3d', function () {
+            return view('design.design-3d');
+        })->name('design-3d');
+
+        Route::get('/form', function () {
+            return view('design.form');
+        })->name('form');
     });
 
-    Route::get('/foto-pernikahan', function () {
-        return view('photography.foto-pernikahan');
-    });
+    route::prefix('printing')->as('printing.')->group(function () {
+        Route::get('/', function () {
+            return view('printing.index');
+        })->name('index');
 
-    Route::get('/form', function () {
-        return view('photography.form');
-    });
-});
-
-route::prefix('videography')->group(function () {
-    Route::get('/', function () {
-        return view('videography.index');
-    });
-
-    Route::get('/vid-syuting', function () {
-        return view('videography.vid-syuting');
-    });
-
-    Route::get('/vid-dokumentasi', function () {
-        return view('videography.vid-dokumentasi');
-    });
-
-    Route::get('/form', function () {
-        return view('videography.form');
-    });
-});
-
-route::prefix('design')->group(function () {
-    Route::get('/', function () {
-        return view('design.index');
-    });
-
-    Route::get('/design-logo', function () {
-        return view('design.design-logo');
-    });
-
-    Route::get('/design-promosi', function () {
-        return view('design.design-promosi');
-    });
-
-    Route::get('/design-3d', function () {
-        return view('design.design-3d');
-    });
-
-    Route::get('/form', function () {
-        return view('design.form');
-    });
-});
-
-route::prefix('printing')->group(function () {
-    Route::get('/', function () {
-        return view('printing.index');
-    });
-
-    Route::get('/form', function () {
-        return view('printing.form');
+        Route::get('/form', function () {
+            return view('printing.form');
+        })->name('form');
     });
 });
 

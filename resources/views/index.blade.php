@@ -28,7 +28,6 @@
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex flex-column justify-content-end align-items-center">
         <div id="heroCarousel" data-bs-interval="5000" class="carousel carousel-fade" data-bs-ride="carousel">
-
             <img src="https://images.unsplash.com/photo-1603380353725-f8a4d39cc41e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
                 alt="" style="width: 100%; filter: brightness(55%)">
 
@@ -77,7 +76,6 @@
                 <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
             </g>
         </svg>
-
     </section>
     <!-- End Hero -->
 @endsection
@@ -88,7 +86,6 @@
         <!-- ======= About Section ======= -->
         <section id="about" class="about">
             <div class="container">
-
                 <div class="section-title" data-aos="zoom-out">
                     <h2>About</h2>
                     <p>Apa itu tefa digital?</p>
@@ -96,12 +93,12 @@
 
                 <div class="row content" data-aos="fade-up">
                     <div class="col-lg-6">
-                        <p>
+                        <p style="text-align: justify">
                             Tefa digital adalah website inovatif yang berdedikasi untuk meningkatkan pendidikan dan membantu
                             siswa mencapai potensi terbaik mereka. Kami hadir dengan visi untuk menjadi prasarana pendidikan
                             yang relevan dan mendukung kegiatan pembelajaran siswa sesuai kurikulum yang berlaku.
                         </p>
-                        <p>
+                        <p style="text-align: justify">
                             Website ini bertujuan untuk memperjualbelikan hasil karya siswa SMK Negeri 46 Jakarta, yang
                             diharapkan mampu merepresentasikan fungsi teaching factory sebagai model pembelajaran berbasis
                             industri. Dengan layanan-layanan pada website ini juga diharapkan dapat membantu siswa dalam
@@ -113,7 +110,6 @@
                             alt="" style="width: 75%;">
                     </div>
                 </div>
-
             </div>
         </section>
         <!-- End About Section -->
@@ -121,7 +117,6 @@
         <!-- ======= Features Section ======= -->
         <section id="features" class="features">
             <div class="container">
-
                 <ul class="nav nav-tabs row d-flex">
                     <li class="nav-item col-3" data-aos="zoom-in" data-aos-delay="200">
                         <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">
@@ -166,16 +161,45 @@
                                     <li><i class="ri-check-double-line"></i> Jasa 3D Design</li>
                                     <li><i class="ri-check-double-line"></i> Jasa Digital Marketing</li>
                                 </ul>
-                                <button type="button" class="btn btn-get-started animate__animated animate__fadeInUp scrollto" style="color: #f06404">
-                                    <a href="">Selengkapnya</a>
+                                <button type="button"
+                                    class="btn btn-get-started animate__animated animate__fadeInUp scrollto"
+                                    style="color: #f06404">
+                                    <a href="{{ route('user.design.index') }}">Selengkapnya</a>
                                 </button>
                             </div>
                             <div class="col-lg-6 order-lg-2 order-1 text-center">
-                                <img src="assets/img/features-3.png" alt="" class="img-fluid">
+                                <img src="{{ asset('assets/img/features-3.png') }}" alt="" class="img-fluid">
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane" id="tab-2">
+                        <div class="row">
+                            <div class="col-lg-6 order-lg-1 mt-lg-0 order-2 mt-3">
+                                <h3>Abadikan momen berharga dengan keindahan yang abadi.</h3>
+                                <p class="fst-italic">
+                                    Apakah Anda ingin mengabadikan momen-momen berharga dalam hidup Anda dengan cara yang
+                                    istimewa?
+                                    Kami hadir dengan jasa fotografi yang menghadirkan keahlian profesional dan sentuhan
+                                    kreatif
+                                    untuk menciptakan gambar-gambar yang tak terlupakan. Kami memiliki 3 jenis jasa
+                                    fotografi yang
+                                    dapat membantu anda dalam menemukan style fotografi yang cocok untuk momen berharga anda
+                                </p>
+                                <ul>
+                                    <li><i class="ri-check-double-line"></i> Jasa Foto Produk</li>
+                                    <li><i class="ri-check-double-line"></i> Jasa Foto Pernikahan</li>
+                                    <li><i class="ri-check-double-line"></i> Jasa Foto Acara</li>
+                                </ul>
+                                <button type="button" class="btn btn-color" style="color: #f06404">
+                                    <a href="{{ route('user.photography.index') }}">Selengkapnya</a>
+                                </button>
+                            </div>
+                            <div class="col-lg-6 order-lg-2 order-1 text-center">
+                                <img src="{{ asset('assets/img/features-1.png') }}" alt="" class="img-fluid">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane" id="tab-3">
                         <div class="row">
                             <div class="col-lg-6 order-lg-1 mt-lg-0 order-2 mt-3">
                                 <h3>Jadikan momen-momen berharga Anda menjadi film yang memukau.</h3>
@@ -196,38 +220,11 @@
                                     <li><i class="ri-check-double-line"></i> Jasa Video Dokumentasi</li>
                                 </ul>
                                 <button type="button" class="btn btn-color" style="color: #f06404">
-                                    <a href="">Selengkapnya</a>
+                                    <a href="{{ route('user.videography.index') }}">Selengkapnya</a>
                                 </button>
                             </div>
                             <div class="col-lg-6 order-lg-2 order-1 text-center">
-                                <img src="assets/img/features-2.png" alt="" class="img-fluid">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="tab-pane" id="tab-3">
-                        <div class="row">
-                            <div class="col-lg-6 order-lg-1 mt-lg-0 order-2 mt-3">
-                                <h3>Abadikan momen berharga dengan keindahan yang abadi.</h3>
-                                <p class="fst-italic">
-                                    Apakah Anda ingin mengabadikan momen-momen berharga dalam hidup Anda dengan cara yang
-                                    istimewa?
-                                    Kami hadir dengan jasa fotografi yang menghadirkan keahlian profesional dan sentuhan
-                                    kreatif
-                                    untuk menciptakan gambar-gambar yang tak terlupakan. Kami memiliki 3 jenis jasa
-                                    fotografi yang
-                                    dapat membantu anda dalam menemukan style fotografi yang cocok untuk momen berharga anda
-                                </p>
-                                <ul>
-                                    <li><i class="ri-check-double-line"></i> Jasa Foto Produk</li>
-                                    <li><i class="ri-check-double-line"></i> Jasa Foto Pernikahan</li>
-                                    <li><i class="ri-check-double-line"></i> Jasa Foto Acara</li>
-                                </ul>
-                                <button type="button" class="btn btn-color" style="color: #f06404">
-                                    <a href="">Selengkapnya</a>
-                                </button>
-                            </div>
-                            <div class="col-lg-6 order-lg-2 order-1 text-center">
-                                <img src="assets/img/features-1.png" alt="" class="img-fluid">
+                                <img src="{{ asset('assets/img/features-2.png') }}" alt="" class="img-fluid">
                             </div>
                         </div>
                     </div>
@@ -242,16 +239,15 @@
                                     yang disesuaikan dengan kebutuhan Anda.
                                 </p>
                                 <button type="button" class="btn btn-color" style="color: #f06404">
-                                    <a href="">Selengkapnya</a>
+                                    <a href="{{ route('user.printing.index') }}">Selengkapnya</a>
                                 </button>
                             </div>
                             <div class="col-lg-6 order-lg-2 order-1 text-center">
-                                <img src="assets/img/features-4.png" alt="" class="img-fluid">
+                                <img src="{{ asset('assets/img/features-4.png') }}" alt="" class="img-fluid">
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </section>
         <!-- End Features Section -->
@@ -259,7 +255,6 @@
         <!-- ======= Portfolio Section ======= -->
         <section id="portfolio" class="portfolio">
             <div class="container">
-
                 <div class="section-title" data-aos="zoom-out">
                     <h2>Portfolio</h2>
                     <p>What we've done</p>
@@ -273,7 +268,6 @@
                 </ul>
 
                 <div class="row portfolio-container portfolio-color" data-aos="fade-up">
-
                     <div class="col-lg-4 col-md-6 portfolio-item filter-app">
                         <div class="portfolio-img"><img src="assets/img/portfolio/portfolio-1.jpg" class="img-fluid"
                                 alt=""></div>
@@ -390,9 +384,7 @@
                                     class="bx bx-link"></i></a>
                         </div>
                     </div>
-
                 </div>
-
             </div>
         </section>
         <!-- End Portfolio Section -->
@@ -400,14 +392,12 @@
         <!-- ======= Contact Section ======= -->
         <section id="contact" class="contact">
             <div class="container">
-
                 <div class="section-title" data-aos="zoom-out">
                     <h2>Contact</h2>
                     <p>Contact Us</p>
                 </div>
 
                 <div class="row mt-5">
-
                     <div class="col-lg-4" data-aos="fade-right">
                         <div class="info">
                             <div class="address">
@@ -427,13 +417,10 @@
                                 <h4>Call:</h4>
                                 <p>+1 5589 55488 55s</p>
                             </div>
-
                         </div>
-
                     </div>
 
                     <div class="col-lg-8 mt-lg-0 mt-5" data-aos="fade-left">
-
                         <form action="forms/contact.php" method="post" role="form" class="php-email-form">
                             <div class="row">
                                 <div class="col-md-6 form-group">
@@ -459,11 +446,8 @@
                             </div>
                             <div class="text-center"><button type="submit">Send Message</button></div>
                         </form>
-
                     </div>
-
                 </div>
-
             </div>
         </section>
         <!-- End Contact Section -->
