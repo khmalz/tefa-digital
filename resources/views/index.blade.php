@@ -119,26 +119,26 @@
                 <ul class="nav nav-tabs row d-flex">
                     <li class="nav-item col-3" data-aos="zoom-in" data-aos-delay="200">
                         <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">
-                            <i class="ri-sun-line"></i>
-                            <h4 class="d-none d-lg-block">Digital Design</h4>
+                            <i class="ri-gps-line"></i>
+                            <h4 class="d-none d-lg-block">Modi sit est dela pireda nest</h4>
                         </a>
                     </li>
                     <li class="nav-item col-3" data-aos="zoom-in">
                         <a class="nav-link" data-bs-toggle="tab" href="#tab-2">
-                            <i class="ri-gps-line"></i>
-                            <h4 class="d-none d-lg-block">Photography</h4>
+                            <i class="ri-body-scan-line"></i>
+                            <h4 class="d-none d-lg-block">Unde praesenti mara setra le</h4>
                         </a>
                     </li>
                     <li class="nav-item col-3" data-aos="zoom-in" data-aos-delay="100">
                         <a class="nav-link" data-bs-toggle="tab" href="#tab-3">
-                            <i class="ri-body-scan-line"></i>
-                            <h4 class="d-none d-lg-block">Videography</h4>
+                            <i class="ri-sun-line"></i>
+                            <h4 class="d-none d-lg-block">Pariatur explica nitro dela</h4>
                         </a>
                     </li>
                     <li class="nav-item col-3" data-aos="zoom-in" data-aos-delay="300">
                         <a class="nav-link" data-bs-toggle="tab" href="#tab-4">
                             <i class="ri-store-line"></i>
-                            <h4 class="d-none d-lg-block">Printing</h4>
+                            <h4 class="d-none d-lg-block">Nostrum qui dile node</h4>
                         </a>
                     </li>
                 </ul>
@@ -146,103 +146,129 @@
                 <div class="tab-content" data-aos="fade-up">
                     <div class="tab-pane active show" id="tab-1">
                         <div class="row">
-                            <div class="col-lg-6 order-lg-1 mt-lg-0 order-2 mt-3">
-                                <h3>Wujudkan ide-ide visual Anda menjadi karya digital yang memukau.</h3>
+                            <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                                <h3>Voluptatem dignissimos provident quasi corporis voluptates sit assumenda.</h3>
                                 <p class="fst-italic">
-                                    Kami adalah jasa digital design yang berdedikasi untuk menghadirkan karya desain yang
-                                    menakjubkan dan berdampak.
-                                    Dalam era digital yang terus berkembang, kami memahami pentingnya tampilan yang menarik
-                                    dan profesional untuk membedakan identitas bisnis Anda dari yang lain.
-                                    Kami memiliki 3 jasa untuk menghasilkan branding yang baik untuk perusahaan Anda :
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore
+                                    magna aliqua.
                                 </p>
                                 <ul>
-                                    <li><i class="ri-check-double-line"></i> Jasa Logo Design</li>
-                                    <li><i class="ri-check-double-line"></i> Jasa 3D Design</li>
-                                    <li><i class="ri-check-double-line"></i> Jasa Digital Marketing</li>
+                                    <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea
+                                        commodo consequat.</li>
+                                    <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in
+                                        voluptate velit.</li>
+                                    <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea
+                                        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta
+                                        storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
                                 </ul>
-                                <button type="button"
-                                    class="btn btn-get-started animate__animated animate__fadeInUp scrollto"
-                                    style="color: #f06404">
-                                    <a href="{{ route('user.design.index') }}">Selengkapnya</a>
-                                </button>
+                                <p>
+                                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                                    reprehenderit in voluptate
+                                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                                    non proident, sunt in
+                                    culpa qui officia deserunt mollit anim id est laborum
+                                </p>
                             </div>
-                            <div class="col-lg-6 order-lg-2 order-1 text-center">
-                                <img src="{{ asset('assets/img/features-3.png') }}" alt="" class="img-fluid">
+                            <div class="col-lg-6 order-1 order-lg-2 text-center">
+                                <img src="assets/img/features-1.png" alt="" class="img-fluid">
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane" id="tab-2">
                         <div class="row">
-                            <div class="col-lg-6 order-lg-1 mt-lg-0 order-2 mt-3">
-                                <h3>Abadikan momen berharga dengan keindahan yang abadi.</h3>
+                            <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                                <h3>Neque exercitationem debitis soluta quos debitis quo mollitia officia est</h3>
+                                <p>
+                                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                                    reprehenderit in voluptate
+                                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                                    non proident, sunt in
+                                    culpa qui officia deserunt mollit anim id est laborum
+                                </p>
                                 <p class="fst-italic">
-                                    Apakah Anda ingin mengabadikan momen-momen berharga dalam hidup Anda dengan cara yang
-                                    istimewa?
-                                    Kami hadir dengan jasa fotografi yang menghadirkan keahlian profesional dan sentuhan
-                                    kreatif
-                                    untuk menciptakan gambar-gambar yang tak terlupakan. Kami memiliki 3 jenis jasa
-                                    fotografi yang
-                                    dapat membantu anda dalam menemukan style fotografi yang cocok untuk momen berharga anda
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore
+                                    magna aliqua.
                                 </p>
                                 <ul>
-                                    <li><i class="ri-check-double-line"></i> Jasa Foto Produk</li>
-                                    <li><i class="ri-check-double-line"></i> Jasa Foto Pernikahan</li>
-                                    <li><i class="ri-check-double-line"></i> Jasa Foto Acara</li>
+                                    <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea
+                                        commodo consequat.</li>
+                                    <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in
+                                        voluptate velit.</li>
+                                    <li><i class="ri-check-double-line"></i> Provident mollitia neque rerum asperiores
+                                        dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</li>
+                                    <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea
+                                        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta
+                                        storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
                                 </ul>
                                 <button type="button" class="btn btn-color" style="color: #f06404">
                                     <a href="{{ route('user.photography.index') }}">Selengkapnya</a>
                                 </button>
                             </div>
-                            <div class="col-lg-6 order-lg-2 order-1 text-center">
-                                <img src="{{ asset('assets/img/features-1.png') }}" alt="" class="img-fluid">
+                            <div class="col-lg-6 order-1 order-lg-2 text-center">
+                                <img src="assets/img/features-2.png" alt="" class="img-fluid">
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane" id="tab-3">
                         <div class="row">
-                            <div class="col-lg-6 order-lg-1 mt-lg-0 order-2 mt-3">
-                                <h3>Jadikan momen-momen berharga Anda menjadi film yang memukau.</h3>
-                                <p class="fst-italic">
-                                    Apakah Anda mencari jasa videografi yang dapat mengabadikan momen berharga Anda dengan
-                                    keindahan dan kualitas sinematik?
-                                    Kami memahami betapa pentingnya setiap momen yang ditampilkan kembali secara sempurna
-                                    bagi Anda,
-                                    dan itulah mengapa kami menangkap setiap detail dengan kecermatan.
-                                    Dari syuting yang melelahkan hingga acara bisnis yang megah, kami berkomitmen untuk
-                                    menciptakan video yang autentik
-                                    dan seakan menceritakannya kembali dengan sentuhan artistik. Untuk memenuhi
-                                    masing-masing kebutuhan yang berbeda pada setiap hasil video yang memukau,
-                                    kami memiliki 2 jenis jasa videografi yang ditawarkan :
+                            <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                                <h3>Voluptatibus commodi ut accusamus ea repudiandae ut autem dolor ut assumenda</h3>
+                                <p>
+                                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                                    reprehenderit in voluptate
+                                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                                    non proident, sunt in
+                                    culpa qui officia deserunt mollit anim id est laborum
                                 </p>
                                 <ul>
-                                    <li><i class="ri-check-double-line"></i> Jasa Video Syuting</li>
-                                    <li><i class="ri-check-double-line"></i> Jasa Video Dokumentasi</li>
+                                    <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea
+                                        commodo consequat.</li>
+                                    <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in
+                                        voluptate velit.</li>
+                                    <li><i class="ri-check-double-line"></i> Provident mollitia neque rerum asperiores
+                                        dolores quos qui a. Ipsum neque dolor voluptate nisi sed.</li>
                                 </ul>
-                                <button type="button" class="btn btn-color" style="color: #f06404">
-                                    <a href="{{ route('user.videography.index') }}">Selengkapnya</a>
-                                </button>
+                                <p class="fst-italic">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore
+                                    magna aliqua.
+                                </p>
                             </div>
-                            <div class="col-lg-6 order-lg-2 order-1 text-center">
-                                <img src="{{ asset('assets/img/features-2.png') }}" alt="" class="img-fluid">
+                            <div class="col-lg-6 order-1 order-lg-2 text-center">
+                                <img src="assets/img/features-3.png" alt="" class="img-fluid">
                             </div>
                         </div>
                     </div>
                     <div class="tab-pane" id="tab-4">
                         <div class="row">
-                            <div class="col-lg-6 order-lg-1 mt-lg-0 order-2 mt-3">
-                                <h3>Realisasikan design Anda menjadi nyata dengan 3D Printing.</h3>
-                                <p class="fst-italic">
-                                    Kami menyediakan jasa 3D Printing yang memungkinkan Anda menghasilkan objek fisik dengan
-                                    presisi tinggi dan kebebasan kreatif yang tak terbatas.
-                                    Dengan teknologi canggih dan bahan berkualitas, kami menghadirkan solusi 3D Printing
-                                    yang disesuaikan dengan kebutuhan Anda.
+                            <div class="col-lg-6 order-2 order-lg-1 mt-3 mt-lg-0">
+                                <h3>Omnis fugiat ea explicabo sunt dolorum asperiores sequi inventore rerum</h3>
+                                <p>
+                                    Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in
+                                    reprehenderit in voluptate
+                                    velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                                    non proident, sunt in
+                                    culpa qui officia deserunt mollit anim id est laborum
                                 </p>
-                                <button type="button" class="btn btn-color" style="color: #f06404">
-                                    <a href="{{ route('user.printing.index') }}">Selengkapnya</a>
-                                </button>
+                                <p class="fst-italic">
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt ut labore et dolore
+                                    magna aliqua.
+                                </p>
+                                <ul>
+                                    <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea
+                                        commodo consequat.</li>
+                                    <li><i class="ri-check-double-line"></i> Duis aute irure dolor in reprehenderit in
+                                        voluptate velit.</li>
+                                    <li><i class="ri-check-double-line"></i> Ullamco laboris nisi ut aliquip ex ea
+                                        commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta
+                                        storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
+                                </ul>
                             </div>
-                            <div class="col-lg-6 order-lg-2 order-1 text-center">
-                                <img src="{{ asset('assets/img/features-4.png') }}" alt="" class="img-fluid">
+                            <div class="col-lg-6 order-1 order-lg-2 text-center">
+                                <img src="assets/img/features-4.png" alt="" class="img-fluid">
                             </div>
                         </div>
                     </div>
