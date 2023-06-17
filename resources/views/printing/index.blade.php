@@ -85,19 +85,18 @@
                     <div class="row gx-5">
                         <div class="col-4">
                             <div class="card-pricing rounded-3 p-4" data-aos="zoom-in-left" data-aos-delay="100">
-                                <span class="text-dark">
-                                    <p class="ms-3 mt-3 text-start">Mulai dari</p>
-                                    <span class="display-5">Rp</span>
-                                    <span class="display-4 price">900</span>
-                                    <span class="font-size-4">rb</span>
-                                </span>
+                                <div class="m-3">
+                                <h5 class="my-3">
+                                    Konsultasikan pada Kami!
+                                </h5>
                                 <hr class="my-4">
-                                <div class="mb-5">
-                                    <p>
-                                        Gratis konsultasi terkait design bersama tim kami agar dapat memberikan design
-                                        terbaik berdasarkan kebutuhan Anda.
-                                    </p>
                                 </div>
+                                <span> 
+                                    jadikan design inovatif anda menjadi prototipe nyata dengan jasa 3D design kami!
+                                </span>
+                                <p class="my-4">
+                                    Segera hubungi kami untuk penawaran khusus dan konsultasikan kebutuhan serta keinginan Anda. Jangan lewatkan kesempatan ini agar dunia terkesan dengan inovasi produk hebat Anda.
+                                </p>
                                 <div class="mb-2">
                                     <a href="" class="btn btn-lg btn-general rounded-5"> Konsultasikan sekarang</a>
                                 </div>
