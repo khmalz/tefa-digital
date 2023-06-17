@@ -56,7 +56,7 @@
                                         onblur="notAllowedEmpty(this)">
                                 </div>
                             </div>
-                            <input type="text" name="scale" id="scaleInput">
+                            <input type="hidden" name="scale" id="scaleInput">
                         </div>
                         <div class="mb-3">
                             <label class="col-form-label-sm" for="fileInput">File</label>
