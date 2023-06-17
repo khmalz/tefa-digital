@@ -427,7 +427,7 @@
                     </div>
 
                     <div class="col-lg-8 mt-lg-0 mt-5" data-aos="fade-left">
-                        <form action="{{ route('contact.send') }}" method="post">
+                        <form action="{{ route('contact.send') }}" method="post" class="php-email-form">
                             @csrf
                             <div class="row">
                                 <div class="col-md-6 form-group">
