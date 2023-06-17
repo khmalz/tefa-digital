@@ -142,7 +142,7 @@
                         </a>
                     </li>
                 </ul>
-
+;
                 <div class="tab-content" data-aos="fade-up">
                     <div class="tab-pane active show" id="tab-1">
                         <div class="row">
