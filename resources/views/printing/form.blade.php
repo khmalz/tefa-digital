@@ -61,7 +61,7 @@
                         <div class="mb-3">
                             <label class="col-form-label-sm" for="fileInput">File</label>
                             <input class="form-control form-control-sm form-control-file" name="file" type="file"
-                                id="fileUpload" accept=".stl, .obj, .zip" onchange="validateFile(this)">
+                                id="fileUpload" accept=".stl, .obj, .zip" onchange="validatePrintingFile(this)">
                         </div>
                         <div class="mb-3">
                             <label for="descriptionInput" class="col-form-label-sm">Description</label>
@@ -103,31 +103,9 @@
             updateScaleInput();
         }
 
-        const validateFile = (input) => {
-            const [file] = input.files;
-            const allowedExtensions = ['stl', 'obj', 'zip'];
-
-            if (file) {
-                const {
-                    name
-                } = file;
-                const fileExtension = name.split('.').pop().toLowerCase();
-
-                if (!allowedExtensions.includes(fileExtension)) {
-                    const validationHtml =
-                        `<div id="validationFile" class="invalid-feedback">Hanya file dengan format STL, OBJ, dan ZIP yang diizinkan.</div>`
-
-                    $(input).next('#validationFile').remove()
-                        .end()
-                        .addClass('is-invalid')
-                        .val('')
-                        .after(validationHtml);
-                } else {
-                    $(input).removeClass('is-invalid')
-                        .next('#validationFile')
-                        .remove();
-                }
-            }
+        const allowedExtensions = ['stl', 'obj', 'zip'];
+        const validatePrintingFile = (input) => {
+            validateFile(input, allowedExtensions);
         }
     </script>
 @endpush

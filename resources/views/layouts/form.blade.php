@@ -59,6 +59,33 @@
 
     <script src="https://code.jquery.com/jquery-3.7.0.min.js"
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script>
+        const validateFile = (input, allowedExtensions, index) => {
+            const [file] = input.files;
+
+            if (file) {
+                const {
+                    name
+                } = file;
+                const fileExtension = name.split('.').pop().toLowerCase();
+
+                if (!allowedExtensions.includes(fileExtension)) {
+                    const validationHtml =
+                        `<div id="validationFile" class="invalid-feedback ${index ? `inv-${index}` : ''}">Hanya file dengan format yang diizinkan.</div>`;
+
+                    $(input).next('#validationFile').remove()
+                        .end()
+                        .addClass('is-invalid')
+                        .val('')
+                        .after(validationHtml);
+                } else {
+                    $(input).removeClass('is-invalid')
+                        .next('#validationFile')
+                        .remove();
+                }
+            }
+        }
+    </script>
     @stack('scripts')
 </body>
 

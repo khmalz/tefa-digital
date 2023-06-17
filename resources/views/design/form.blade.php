@@ -62,14 +62,14 @@
     <script>
         const changeInputType = () => {
             const colorInput = `
-            <input type="color" name="color" class="form-control form-control-color" id="colorInput" value="#ef6603" title="Choose your color" />
-            <button type="button" onclick="changeInputType()" id="changeColorInput" class="btn btn-sm btn-general">Ubah ke Input Teks?</button>
-        `;
+               <input type="color" name="color" class="form-control form-control-color" id="colorInput" value="#ef6603" title="Choose your color" />
+               <button type="button" onclick="changeInputType()" id="changeColorInput" class="btn btn-sm btn-general">Ubah ke Input Teks?</button>
+            `;
 
             const textInput = `
-            <input type="text" class="form-control form-control-sm" name="color" id="colorInput" placeholder="">
-            <button type="button" onclick="changeInputType()" id="changeColorInput" class="btn btn-sm btn-general">Ubah ke Input Color?</button>
-        `;
+               <input type="text" class="form-control form-control-sm" name="color" id="colorInput" placeholder="">
+               <button type="button" onclick="changeInputType()" id="changeColorInput" class="btn btn-sm btn-general">Ubah ke Input Color?</button>
+            `;
 
             const currentInputType = $('#colorInput').prop('type');
             $('#colorInput, #changeColorInput').remove();
@@ -79,30 +79,30 @@
 
         let imageIndexReal = 0;
 
-        const addImage = (el) => {
-            const inputImageCount = $(el).data('input-image-count') + 1;
+        const addImage = (input) => {
+            const inputImageCount = $(input).data('input-image-count') + 1;
             imageIndexReal++;
 
             const imageSection = `
-            <div id="imageSection${imageIndexReal}" class="mt-2">
-                <img class="preview-image${imageIndexReal} d-none img-fluid col-md-8 col-lg-4 mb-2 rounded" alt="preview image">
-                <div class="d-flex">
-                    <div class="me-3 mb-3">
-                        <input class="form-control form-control-sm" name="gambar[]" type="file" accept=".jpg, .jpeg, .png, .webp" id="image${imageIndexReal}" onchange="validateFile(this, ${imageIndexReal})">
-                    </div>
-                    <div>
-                        <button class="btn btn-sm btn-danger" type="button" onclick="deleteImage(${imageIndexReal})">Delete</button>
-                    </div>
-                </div>
-            </div>
-        `;
+               <div id="imageSection${imageIndexReal}" class="mt-2">
+                  <img class="preview-image${imageIndexReal} d-none img-fluid col-md-8 col-lg-4 mb-2 rounded" alt="preview image">
+                  <div class="d-flex">
+                     <div class="me-3 mb-3">
+                           <input class="form-control form-control-sm" name="gambar[]" type="file" accept=".jpg, .jpeg, .png, .webp" id="image${imageIndexReal}" onchange="validateDesignFile(this, ${imageIndexReal})">
+                     </div>
+                     <div>
+                           <button class="btn btn-sm btn-danger" type="button" onclick="deleteImage(${imageIndexReal})">Delete</button>
+                     </div>
+                  </div>
+               </div>
+            `;
 
             $('#container-image').append(imageSection);
 
             // Mengubah nilai data-input-image-count pada elemen tombol
             // Mengubah teks tombol menjadi "More"
             // Menghilangkan tombol "Want Upload Image?" setelah ada 3 input gambar
-            $(el).data('input-image-count', inputImageCount)
+            $(input).data('input-image-count', inputImageCount)
                 .attr('data-input-image-count', inputImageCount)
                 .text('More')
                 .toggle(inputImageCount < 3);
@@ -123,32 +123,10 @@
             (currentCount - 1 == 0) && uploadImage.text('Want Upload Image?');
         }
 
-        const validateFile = (input, index) => {
-            const [file] = input.files;
-            const allowedExtensions = ['jpg', 'jpeg', 'png', 'webp'];
-
-            if (file) {
-                const {
-                    name
-                } = file;
-                const fileExtension = name.split('.').pop().toLowerCase();
-
-                if (!allowedExtensions.includes(fileExtension)) {
-                    const validationHtml =
-                        `<div id="validationFile" class="invalid-feedback inv-${index}">Hanya file dengan format JPG, PNG, JPEG, dan WEBP yang diizinkan.</div>`
-
-                    $(input).next('#validationFile').remove()
-                        .end()
-                        .addClass('is-invalid')
-                        .val('')
-                        .after(validationHtml);
-                } else {
-                    $(input).removeClass('is-invalid')
-                        .next('#validationFile')
-                        .remove();
-                    previewImage(input, index);
-                }
-            }
+        const allowedExtensions = ['jpg', 'jpeg', 'png', 'webp'];
+        const validateDesignFile = (input, index) => {
+            validateFile(input, allowedExtensions, index);
+            previewImage(input, index);
         }
 
         const previewImage = (input, index) => {
