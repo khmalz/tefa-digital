@@ -88,7 +88,7 @@
                 <img class="preview-image${imageIndexReal} d-none img-fluid col-md-8 col-lg-4 mb-2 rounded" alt="preview image">
                 <div class="d-flex">
                     <div class="me-3 mb-3">
-                        <input class="form-control form-control-sm" name="gambar[]" type="file" id="image${imageIndexReal}" onchange="previewImage(this, ${imageIndexReal})">
+                        <input class="form-control form-control-sm" name="gambar[]" type="file" accept=".jpg, .jpeg, .png, .webp" id="image${imageIndexReal}" onchange="validateFile(this, ${imageIndexReal})">
                     </div>
                     <div>
                         <button class="btn btn-sm btn-danger" type="button" onclick="deleteImage(${imageIndexReal})">Delete</button>
@@ -121,6 +121,34 @@
             // Memeriksa jika data-input-image-count kurang dari 3, maka tampilkan tombol, dan ketika input countnya 0 berubah isi teks ke "Want Upload Image?"
             (currentCount - 1 < 3) && uploadImage.show();
             (currentCount - 1 == 0) && uploadImage.text('Want Upload Image?');
+        }
+
+        const validateFile = (input, index) => {
+            const [file] = input.files;
+            const allowedExtensions = ['jpg', 'jpeg', 'png', 'webp'];
+
+            if (file) {
+                const {
+                    name
+                } = file;
+                const fileExtension = name.split('.').pop().toLowerCase();
+
+                if (!allowedExtensions.includes(fileExtension)) {
+                    const validationHtml =
+                        `<div id="validationFile" class="invalid-feedback inv-${index}">Hanya file dengan format JPG, PNG, JPEG, dan WEBP yang diizinkan.</div>`
+
+                    $(input).next('#validationFile').remove()
+                        .end()
+                        .addClass('is-invalid')
+                        .val('')
+                        .after(validationHtml);
+                } else {
+                    $(input).removeClass('is-invalid')
+                        .next('#validationFile')
+                        .remove();
+                    previewImage(input, index);
+                }
+            }
         }
 
         const previewImage = (input, index) => {
