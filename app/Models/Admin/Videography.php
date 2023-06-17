@@ -5,14 +5,13 @@ namespace App\Models\Admin;
 use App\Helpers\MixCaseULID;
 use App\Models\Admin\VideographyPlan;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Admin\VideographyCategory;
+use Znck\Eloquent\Traits\BelongsToThrough;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasOneThrough;
 
 class Videography extends Model
 {
-    use HasFactory;
+    use HasFactory, BelongsToThrough;
 
     /**
      *  Setup model event hooks
@@ -34,24 +33,32 @@ class Videography extends Model
         'description'
     ];
 
+    protected $with = ['plan', 'category'];
+    protected $appends = ['price', 'order'];
+
     public function plan(): BelongsTo
     {
         return $this->belongsTo(VideographyPlan::class, 'videography_plan_id');
     }
 
-    public function category(): HasOneThrough
+    public function category()
     {
-        return $this->hasOneThrough(
-            VideographyCategory::class, // Model target
+        return $this->belongsToThrough(
+            VideographyCategory::class,
             VideographyPlan::class,
-            // Model perantara
-            'videography_category_id',
-            // foreign key pada model VideographyPlan
-            'id',
-            // foreign key pada model VideographyCategory
-            'id',
-            // local key pada model Videography
-            'videography_category_id' // local key pada model VideographyPlan
+            'videography_plan_id',
+            null,
+            [VideographyCategory::class => 'videography_category_id']
         );
+    }
+
+    public function getPriceAttribute()
+    {
+        return $this->plan->price;
+    }
+
+    public function getOrderAttribute()
+    {
+        return $this->category->title;
     }
 }
