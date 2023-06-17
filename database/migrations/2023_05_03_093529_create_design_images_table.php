@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      */
@@ -13,7 +14,7 @@ return new class extends Migration {
         Schema::create('design_images', function (Blueprint $table) {
             $table->id();
             $table->foreignId('design_id')->constrained('designs')->onDelete('cascade');
-            $table->string('path');
+            $table->string('image')->default('placeholder.jpg');
             $table->timestamps();
         });
     }

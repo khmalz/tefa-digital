@@ -6,6 +6,7 @@ use App\Helpers\MixCaseULID;
 use App\Models\Admin\DesignPlan;
 use App\Models\Admin\DesignImage;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Znck\Eloquent\Traits\BelongsToThrough;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -34,11 +35,17 @@ class Design extends Model
         'email_customer',
         'slogan',
         'color',
+        'status',
         'description'
     ];
 
     protected $with = ['plan', 'category'];
     protected $appends = ['price', 'order'];
+
+    public function getRouteKeyName()
+    {
+        return 'ulid';
+    }
 
     public function plan(): BelongsTo
     {
@@ -69,5 +76,10 @@ class Design extends Model
     public function getOrderAttribute()
     {
         return $this->category->title;
+    }
+
+    public function scopeByStatus($query, $status): Builder
+    {
+        return $query->where('status', $status);
     }
 }

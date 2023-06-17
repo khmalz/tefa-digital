@@ -12,6 +12,7 @@ class VideographyFeature extends Model
 
     protected $fillable = [
         'text',
+        'description',
         'videography_plan_id'
     ];
 

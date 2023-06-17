@@ -4,6 +4,7 @@ namespace App\Models\Admin;
 
 use App\Helpers\MixCaseULID;
 use App\Models\Admin\PhotographyPlan;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Znck\Eloquent\Traits\BelongsToThrough;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -30,6 +31,7 @@ class Photography extends Model
         'name_customer',
         'number_customer',
         'email_customer',
+        'status',
         'description'
     ];
 
@@ -52,6 +54,11 @@ class Photography extends Model
         );
     }
 
+    public function getRouteKeyName()
+    {
+        return 'ulid';
+    }
+
     public function getPriceAttribute()
     {
         return $this->plan->price;
@@ -60,5 +67,10 @@ class Photography extends Model
     public function getOrderAttribute()
     {
         return $this->category->title;
+    }
+
+    public function scopeByStatus($query, $status): Builder
+    {
+        return $query->where('status', $status);
     }
 }
