@@ -7,7 +7,6 @@ use App\Models\User;
 use App\Models\Admin\Design;
 use App\Models\Admin\Contact;
 use App\Models\Admin\Printing;
-use App\Models\Admin\Portfolio;
 use Illuminate\Database\Seeder;
 use App\Models\Admin\DesignImage;
 use App\Models\Admin\Photography;
@@ -28,7 +27,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             DesignSeeder::class,
             PhotographySeeder::class,
-            VideographySeeder::class
+            VideographySeeder::class,
+            PortfolioSeeder::class
         ]);
 
         Photography::factory(15)->create();
@@ -43,7 +43,6 @@ class DatabaseSeeder extends Seeder
 
         DesignImage::factory(8)->create();
 
-        Portfolio::factory(35)->create();
         Contact::create([
             'location' => 'Jl Pasar Mangkang Bl B/4',
             'email' => 'admin@gmail.com',

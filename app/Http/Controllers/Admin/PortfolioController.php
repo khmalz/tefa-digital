@@ -35,7 +35,7 @@ class PortfolioController extends Controller
      */
     public function store(Request $request)
     {
-        $image = $request->file('image')->store('portfolios');
+        $image = $request->file('image')->store('portfolios/' . $request->category, ['disk' => 'public-dir']);
 
         $datas = [
             'title' => $request->title,
@@ -66,7 +66,7 @@ class PortfolioController extends Controller
         if ($request->has('image')) {
             Storage::delete($portfolio->image);
 
-            $image = $request->file('image')->store('portfolios');
+            $image = $request->file('image')->store('portfolios/' . $request->category, ['disk' => 'public-dir']);
         }
 
         $datas = [

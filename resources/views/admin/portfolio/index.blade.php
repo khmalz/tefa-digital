@@ -58,7 +58,7 @@
                                                             @if ($portfolio->image !== 'placeholder.jpg')
                                                                 <td>
                                                                     <img class="portfolio-img"
-                                                                        src="{{ \Illuminate\Support\Facades\Storage::url($portfolio->image) }}"
+                                                                        src="{{ asset('assets/img/' . $portfolio->image) }}"
                                                                         alt="{{ $portfolio->title }}">
                                                                 </td>
                                                             @else
