@@ -1,6 +1,8 @@
 <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
     <div class="sidebar-brand d-none d-md-flex">
-        <h4>Tefa Digital</h4>
+        <a href="/" class="text-decoration-none text-white">
+            <h4>Tefa Digital</h4>
+        </a>
     </div>
     <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
         <li class="nav-item">
