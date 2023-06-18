@@ -8,6 +8,7 @@ use App\Http\Controllers\DesignUserController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\Admin\DesignController;
+use App\Http\Controllers\PrintingFormController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\PrintingController;
 use App\Http\Controllers\Admin\DashboardController;
@@ -82,9 +83,9 @@ Route::as('user.')->group(function () {
     route::prefix('printing')->as('printing.')->group(function () {
         Route::view('/', 'printing.index')->name('index');
 
-        Route::get('/form', function () {
-            return view('printing.form');
-        })->name('form');
+        Route::get('/form', [PrintingFormController::class, 'index'])->name('form.index');
+        Route::post('/form', [PrintingFormController::class, 'store'])->name('form.store');
+        Route::get('/form-success/{nama}/{orderId}', [PrintingFormController::class, 'success'])->name('form.success');
     });
 });
 
