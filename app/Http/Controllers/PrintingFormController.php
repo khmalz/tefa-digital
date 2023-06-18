@@ -31,10 +31,12 @@ class PrintingFormController extends Controller
 
     public function success($nama, $orderId): RedirectResponse
     {
+        $no_phone = config('app.no_phone');
+
         $message = "Halo, saya $nama, yang memesan orderan 3D Printing dengan no receipt *$orderId*.\n\nSaya ingin mendiskusikan lebih lanjut terkait pemesanan saya";
-        $keyboardOtomatis = "https://api.whatsapp.com/send?phone=6285936128829&text=" . urlencode($message);
+        $url = "https://api.whatsapp.com/send?phone=$no_phone&text=" . urlencode($message);
 
         // Redirect to the WhatsApp URL
-        return redirect($keyboardOtomatis);
+        return redirect($url);
     }
 }
