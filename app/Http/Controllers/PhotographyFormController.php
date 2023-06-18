@@ -7,10 +7,11 @@ use App\Models\Admin\Photography;
 use App\Http\Requests\PhotographyRequest;
 use App\Models\Admin\PhotographyCategory;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\View\View;
 
 class PhotographyFormController extends Controller
 {
-    public function index(Request $request)
+    public function index(Request $request): View
     {
         $categories = PhotographyCategory::with('plans')->get();
         $selectedCategory = $request->category;
