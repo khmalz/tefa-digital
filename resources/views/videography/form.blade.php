@@ -39,7 +39,7 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label class="col-form-label-sm" for="phoneInput">Number Telephone</label>
+                            <label class="col-form-label-sm" for="phoneInput">Phone Number</label>
                             <input type="text"
                                 class="form-control form-control-sm @error('number_customer') is-invalid @enderror"
                                 name="number_customer" id="phoneInput" placeholder="" value="{{ old('number_customer') }}">
