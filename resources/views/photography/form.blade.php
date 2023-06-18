@@ -11,8 +11,8 @@
                         <div class="mb-3">
                             <label class="col-form-label-sm" for="categoryInput">Category</label>
                             <select class="form-select form-select-sm" id="categoryInput"
-                                data-select-category="{{ $selectedCategory }}" aria-label=".form-select-sm example"
-                                onchange="selectPlan(this)" required>
+                                data-select-category="{{ old('category', $selectedCategory) }}"
+                                aria-label=".form-select-sm example" onchange="selectPlan(this)" name="category" required>
                                 <option selected disabled>Select the category</option>
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}" data-plans='@json($category->plans)'>
@@ -23,7 +23,8 @@
                         <div class="mb-3">
                             <label class="col-form-label-sm" for="planInput">Plan</label>
                             <select class="form-select form-select-sm" name="photography_plan_id" id="planInput"
-                                data-select-plan="{{ $selectedPlan }}" aria-label=".form-select-sm example" required>
+                                data-select-plan="{{ old('photography_plan_id', $selectedPlan) }}"
+                                aria-label=".form-select-sm example" required>
                                 <option selected disabled>Select the plan</option>
                             </select>
                         </div>
@@ -87,12 +88,18 @@
             const selectedPlan = $('#planInput').data('select-plan');
 
             $('#categoryInput option')
-                .filter((index, element) => $(element).text().trim() === selectedCategory)
+                .filter((index, element) =>
+                    !isNaN(selectedCategory) ? $(element).val() === selectedCategory.toString() :
+                    $(element).text().trim() === selectedCategory
+                )
                 .prop('selected', true)
                 .trigger('change');
 
             $('#planInput option')
-                .filter((index, element) => $(element).text().trim().startsWith(selectedPlan))
+                .filter((index, element) =>
+                    !isNaN(selectedPlan) ? $(element).val() === selectedPlan.toString() :
+                    $(element).text().trim().startsWith(selectedPlan)
+                )
                 .prop('selected', true);
         });
 
