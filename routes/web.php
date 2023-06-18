@@ -14,6 +14,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\PhotographyFormController;
 use App\Http\Controllers\PhotographyUserController;
+use App\Http\Controllers\VideographyFormController;
 use App\Http\Controllers\VideographyUserController;
 use App\Http\Controllers\Admin\DesignPlanController;
 use App\Http\Controllers\Admin\PhotographyController;
@@ -59,9 +60,9 @@ Route::as('user.')->group(function () {
 
         Route::get('/vid-dokumentasi', [VideographyUserController::class, 'dokumentasi'])->name('vid-dokumentasi');
 
-        Route::get('/form', function () {
-            return view('videography.form');
-        })->name('form');
+        Route::get('/form', [VideographyFormController::class, 'index'])->name('form.index');
+        Route::post('/form', [VideographyFormController::class, 'store'])->name('form.store');
+        Route::get('/form-success/{nama}/{order}/{orderId}', [VideographyFormController::class, 'success'])->name('form.success');
     });
 
     route::prefix('design')->as('design.')->group(function () {
