@@ -7,7 +7,6 @@ use Illuminate\Http\Request;
 use App\Http\Requests\DesignRequest;
 use App\Models\Admin\DesignCategory;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Routing\Redirector;
 use Illuminate\View\View;
 
 class DesignFormController extends Controller
@@ -39,7 +38,7 @@ class DesignFormController extends Controller
         ]);
     }
 
-    public function success($nama, $order, $orderId): Redirector
+    public function success($nama, $order, $orderId): RedirectResponse
     {
         $message = "Halo, saya $nama, yang memesan orderan $order dengan no receipt *$orderId*.\n\nSaya ingin mendiskusikan lebih lanjut terkait pemesanan saya";
         $keyboardOtomatis = "https://api.whatsapp.com/send?phone=6285936128829&text=" . urlencode($message);

@@ -5,34 +5,111 @@
         <div class="card-form position-relative m-auto mb-3 overflow-hidden rounded">
             <h4 class="fw-semibold my-3 text-center text-white">Form Pemesanan Photography</h4>
             <div class="card-input position-relative mb-4 overflow-hidden rounded bg-white">
-                <form action="" method="POST">
+                <form action="{{ route('user.photography.form.store') }}" method="POST" onsubmit="validationSelect(event)">
                     @csrf
                     <div class="p-5">
                         <div class="mb-3">
-                            <label class="col-form-label-sm" for="nameInput">Nama</label>
-                            <input type="text" class="form-control form-control-sm" name="name_customer" id="nameInput"
-                                placeholder="">
+                            <label class="col-form-label-sm" for="categoryInput">Category</label>
+                            <select class="form-select form-select-sm" id="categoryInput"
+                                data-select-category="{{ $selectedCategory }}" aria-label=".form-select-sm example"
+                                onchange="selectPlan(this)" required>
+                                <option selected disabled>Select the category</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}" data-plans='@json($category->plans)'>
+                                        {{ $category->title }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="mb-3">
-                            <label class="col-form-label-sm" for="phoneInput">Nomor telepon</label>
-                            <input type="text" class="form-control form-control-sm" name="number_customer"
-                                id="phoneInput" placeholder="">
+                            <label class="col-form-label-sm" for="planInput">Plan</label>
+                            <select class="form-select form-select-sm" name="photography_plan_id" id="planInput"
+                                data-select-plan="{{ $selectedPlan }}" aria-label=".form-select-sm example" required>
+                                <option selected disabled>Select the plan</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label-sm" for="nameInput">Name</label>
+                            <input type="text"
+                                class="form-control form-control-sm @error('name_customer') is-invalid @enderror"
+                                name="name_customer" id="nameInput" placeholder="" value="{{ old('name_customer') }}">
+                            @error('name_customer')
+                                <div id="nameInvalid" class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label-sm" for="phoneInput">Number Telephone</label>
+                            <input type="text"
+                                class="form-control form-control-sm @error('number_customer') is-invalid @enderror"
+                                name="number_customer" id="phoneInput" placeholder="" value="{{ old('number_customer') }}">
+                            @error('number_customer')
+                                <div id="numberInvalid" class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label class="col-form-label-sm" for="emailInput">Email</label>
-                            <input type="email" class="form-control form-control-sm" name="email_customer" id="emailInput"
-                                placeholder="">
+                            <input type="email"
+                                class="form-control form-control-sm @error('email_customer') is-invalid @enderror"
+                                name="email_customer" id="emailInput" placeholder="" value="{{ old('email_customer') }}">
+                            @error('email_customer')
+                                <div id="emailInvalid" class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label for="descriptionInput" class="col-form-label-sm">Description</label>
-                            <textarea class="form-control form-control-sm" name="description" id="descriptionInput" rows="3"></textarea>
+                            <textarea class="form-control form-control-sm @error('description') is-invalid @enderror" name="description"
+                                id="descriptionInput" rows="3">{{ old('description') }}</textarea>
+                            @error('description')
+                                <div id="descriptionInvalid" class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                     </div>
                     <div class="mb-3 text-center">
-                        <button type="button" class="btn btn-general rounded-2">Pesan</button>
+                        <button type="submit" class="btn btn-general rounded-2">Pesan</button>
                     </div>
                 </form>
             </div>
         </div>
     </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            const selectedCategory = $('#categoryInput').data('select-category');
+            const selectedPlan = $('#planInput').data('select-plan');
+
+            $('#categoryInput option')
+                .filter((index, element) => $(element).text().trim() === selectedCategory)
+                .prop('selected', true)
+                .trigger('change');
+
+            $('#planInput option')
+                .filter((index, element) => $(element).text().trim().startsWith(selectedPlan))
+                .prop('selected', true);
+        });
+
+        const selectPlan = (select) => {
+            let plans = $(select).find('option:selected').data('plans');
+            $('#planInput').html(plans.map(plan =>
+                        `<option value="${plan.id}">${plan.title} - ${plan.price.toLocaleString('id-ID')}</option>`)
+                    .join(''))
+                .focus();
+        }
+
+        const validationSelect = (e) => {
+            e.preventDefault(); // Mencegah pengiriman formulir
+
+            const selectedCategoryId = $('#categoryInput').val();
+            (selectedCategoryId && selectedCategoryId !== 'disabled') ? e.target.submit(): $('#categoryInput')
+                .focus();
+        };
+    </script>
+@endpush

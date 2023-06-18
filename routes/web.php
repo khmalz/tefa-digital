@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\SendMailController;
+use App\Http\Controllers\DesignFormController;
 use App\Http\Controllers\DesignUserController;
 use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\LandingPageController;
@@ -11,7 +12,9 @@ use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Admin\PrintingController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\PortfolioController;
+use App\Http\Controllers\PhotographyFormController;
 use App\Http\Controllers\PhotographyUserController;
+use App\Http\Controllers\VideographyUserController;
 use App\Http\Controllers\Admin\DesignPlanController;
 use App\Http\Controllers\Admin\PhotographyController;
 use App\Http\Controllers\Admin\VideographyController;
@@ -20,8 +23,6 @@ use App\Http\Controllers\Admin\PhotographyPlanController;
 use App\Http\Controllers\Admin\VideographyPlanController;
 use App\Http\Controllers\Admin\PhotographyCategoryController;
 use App\Http\Controllers\Admin\VideographyCategoryController;
-use App\Http\Controllers\DesignFormController;
-use App\Http\Controllers\VideographyUserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -46,9 +47,9 @@ Route::as('user.')->group(function () {
 
         Route::get('/foto-acara', [PhotographyUserController::class, 'acara'])->name('foto-acara');
 
-        Route::get('/form', function () {
-            return view('photography.form');
-        })->name('form');
+        Route::get('/form', [PhotographyFormController::class, 'index'])->name('form.index');
+        Route::post('/form', [PhotographyFormController::class, 'store'])->name('form.store');
+        Route::get('/form-success/{nama}/{order}/{orderId}', [PhotographyFormController::class, 'success'])->name('form.success');
     });
 
     route::prefix('videography')->as('videography.')->group(function () {
