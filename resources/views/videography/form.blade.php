@@ -5,14 +5,16 @@
         <div class="card-form position-relative m-auto mb-3 overflow-hidden rounded">
             <h4 class="fw-semibold my-3 text-center text-white">Form Pemesanan Videography</h4>
             <div class="card-input position-relative mb-4 overflow-hidden rounded bg-white">
-                <form action="{{ route('user.videography.form.store') }}" method="POST" onsubmit="validationSelect(event)">
+                <form action="{{ route('user.videography.form.store') }}" method="POST"
+                    onsubmit="validationSelectVideography(event)">
                     @csrf
                     <div class="p-5">
                         <div class="mb-3">
                             <label class="col-form-label-sm" for="categoryInput">Category</label>
                             <select class="form-select form-select-sm" id="categoryInput"
                                 data-select-category="{{ old('category', $selectedCategory) }}"
-                                aria-label=".form-select-sm example" onchange="selectPlan(this)" name="category" required>
+                                aria-label=".form-select-sm example" onchange="selectPlanVideography(this)" name="category"
+                                required>
                                 <option selected disabled>Select the category</option>
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}" data-plans='@json($category->plans)'>
@@ -87,36 +89,15 @@
             const selectedCategory = $('#categoryInput').data('select-category');
             const selectedPlan = $('#planInput').data('select-plan');
 
-            $('#categoryInput option')
-                .filter((index, element) =>
-                    !isNaN(selectedCategory) ? $(element).val() === selectedCategory.toString() :
-                    $(element).text().trim() === selectedCategory
-                )
-                .prop('selected', true)
-                .trigger('change');
-
-            $('#planInput option')
-                .filter((index, element) =>
-                    !isNaN(selectedPlan) ? $(element).val() === selectedPlan.toString() :
-                    $(element).text().trim().startsWith(selectedPlan)
-                )
-                .prop('selected', true);
+            selectCategoryAndPlan('#categoryInput', '#planInput', selectedCategory, selectedPlan);
         });
 
-        const selectPlan = (select) => {
-            let plans = $(select).find('option:selected').data('plans');
-            $('#planInput').html(plans.map(plan =>
-                        `<option value="${plan.id}">${plan.title} - ${plan.price.toLocaleString('id-ID')}</option>`)
-                    .join(''))
-                .focus();
+        const selectPlanVideography = (select) => {
+            selectPlan(select)
         }
 
-        const validationSelect = (e) => {
-            e.preventDefault(); // Mencegah pengiriman formulir
-
-            const selectedCategoryId = $('#categoryInput').val();
-            (selectedCategoryId && selectedCategoryId !== 'disabled') ? e.target.submit(): $('#categoryInput')
-                .focus();
+        const validationSelectVideography = (e) => {
+            validationSelect(e, '#categoryInput')
         };
     </script>
 @endpush
