@@ -18,6 +18,8 @@ return [
 
     'name' => env('APP_NAME', 'Laravel'),
 
+    'no_phone' => env('NUMBER_PHONE', '6285936128829'),
+
     /*
     |--------------------------------------------------------------------------
     | Application Environment

@@ -86,19 +86,22 @@
                         <div class="col-4">
                             <div class="card-pricing rounded-3 p-4" data-aos="zoom-in-left" data-aos-delay="100">
                                 <div class="m-3">
-                                <h5 class="my-3">
-                                    Konsultasikan pada Kami!
-                                </h5>
-                                <hr class="my-4">
+                                    <h5 class="my-3">
+                                        Konsultasikan pada Kami!
+                                    </h5>
+                                    <hr class="my-4">
                                 </div>
-                                <span> 
+                                <span>
                                     jadikan design inovatif anda menjadi prototipe nyata dengan jasa 3D design kami!
                                 </span>
                                 <p class="my-4">
-                                    Segera hubungi kami untuk penawaran khusus dan konsultasikan kebutuhan serta keinginan Anda. Jangan lewatkan kesempatan ini agar dunia terkesan dengan inovasi produk hebat Anda.
+                                    Segera hubungi kami untuk penawaran khusus dan konsultasikan kebutuhan serta keinginan
+                                    Anda. Jangan lewatkan kesempatan ini agar dunia terkesan dengan inovasi produk hebat
+                                    Anda.
                                 </p>
                                 <div class="mb-2">
-                                    <a href="" class="btn btn-lg btn-general rounded-5"> Konsultasikan sekarang</a>
+                                    <a href="{{ route('user.printing.form.index') }}"
+                                        class="btn btn-lg btn-general rounded-5"> Konsultasikan sekarang</a>
                                 </div>
                             </div>
                         </div>

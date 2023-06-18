@@ -88,7 +88,8 @@
                                     </ul>
                                 </div>
                                 <div class="btn-wrap">
-                                    <a href="#" class="btn-buy">Buy Now</a>
+                                    <a href="{{ route('user.photography.form.index', ['category' => 'Pernikahan', 'plan' => $plan->title]) }}"
+                                        class="btn-buy">Buy Now</a>
                                 </div>
                             </div>
                         </div>

@@ -5,52 +5,105 @@
         <div class="card-form position-relative m-auto mb-3 overflow-hidden rounded">
             <h4 class="fw-semibold my-3 text-center text-white">Form Pemesanan Design</h4>
             <div class="card-input position-relative mb-4 overflow-hidden rounded bg-white">
-                <form action="" method="POST">
+                <form action="{{ route('user.design.form.store') }}" method="POST" enctype="multipart/form-data"
+                    onsubmit="validationSelectDesign(event)">
                     @csrf
                     <div class="p-5">
                         <div class="mb-3">
-                            <label class="col-form-label-sm" for="nameInput">Nama</label>
-                            <input type="text" class="form-control form-control-sm" name="name_customer" id="nameInput"
-                                placeholder="">
+                            <label class="col-form-label-sm" for="categoryInput">Category</label>
+                            <select class="form-select form-select-sm" id="categoryInput"
+                                data-select-category="{{ old('category', $selectedCategory) }}"
+                                aria-label=".form-select-sm example" onchange="selectPlanDesign(this)" name="category"
+                                required>
+                                <option selected disabled>Select the category</option>
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}" data-plans='@json($category->plans)'>
+                                        {{ $category->title }}</option>
+                                @endforeach
+                            </select>
                         </div>
                         <div class="mb-3">
-                            <label class="col-form-label-sm" for="phoneInput">Nomor telepon</label>
-                            <input type="text" class="form-control form-control-sm" name="number_customer"
-                                id="phoneInput" placeholder="">
+                            <label class="col-form-label-sm" for="planInput">Plan</label>
+                            <select class="form-select form-select-sm" name="design_plan_id" id="planInput"
+                                data-select-plan="{{ old('design_plan_id', $selectedPlan) }}"
+                                aria-label=".form-select-sm example" required>
+                                <option selected disabled>Select the plan</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label-sm" for="nameInput">Name</label>
+                            <input type="text"
+                                class="form-control form-control-sm @error('name_customer') is-invalid @enderror"
+                                name="name_customer" id="nameInput" placeholder="" value="{{ old('name_customer') }}">
+                            @error('name_customer')
+                                <div id="nameInvalid" class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label-sm" for="phoneInput">Phone Number</label>
+                            <input type="text"
+                                class="form-control form-control-sm @error('number_customer') is-invalid @enderror"
+                                name="number_customer" id="phoneInput" placeholder="" value="{{ old('number_customer') }}">
+                            @error('number_customer')
+                                <div id="numberInvalid" class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label class="col-form-label-sm" for="emailInput">Email</label>
-                            <input type="email" class="form-control form-control-sm" name="email_customer" id="emailInput"
-                                placeholder="">
+                            <input type="email"
+                                class="form-control form-control-sm @error('email_customer') is-invalid @enderror"
+                                name="email_customer" id="emailInput" placeholder="" value="{{ old('email_customer') }}">
+                            @error('email_customer')
+                                <div id="emailInvalid" class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label class="col-form-label-sm" for="sloganInput">Slogan</label>
-                            <input type="text" class="form-control form-control-sm" name="slogan" id="sloganInput"
-                                placeholder="">
+                            <input type="text" class="form-control form-control-sm @error('slogan') is-invalid @enderror"
+                                name="slogan" id="sloganInput" placeholder="" value="{{ old('slogan') }}">
+                            @error('slogan')
+                                <div id="sloganInvalid" class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label class="col-form-label-sm" for="colorInput">Color</label>
+                            <input type="hidden" name="input_type" value="color" id="inputType">
                             <div class="d-flex gap-1" id="colorInputSection">
-                                <input type="text" class="form-control form-control-sm" name="color" id="colorInput"
-                                    placeholder="">
+                                <input type="{{ old('input_type', 'color') }}"
+                                    class="form-control {{ old('input_type') === 'text' ? 'form-control-sm' : 'form-control-color' }}"
+                                    name="color" id="colorInput"
+                                    value="{{ old('color', old('input_type') === 'text' ? '' : '#ef6603') }}">
                                 <button type="button" onclick="changeInputType()" id="changeColorInput"
-                                    class="btn btn-sm btn-general">Ubah ke Input
-                                    Color?</button>
+                                    class="btn btn-sm btn-general">{{ old('input_type') === 'text' ? 'Ubah ke Input Color?' : 'Ubah ke Input Teks?' }}</button>
                             </div>
                         </div>
                         <div class="mb-3">
                             <label for="descriptionInput" class="col-form-label-sm">Description</label>
-                            <textarea class="form-control form-control-sm" name="description" id="descriptionInput" rows="3"></textarea>
+                            <textarea class="form-control form-control-sm @error('description') is-invalid @enderror" name="description"
+                                id="descriptionInput" rows="3">{{ old('description') }}</textarea>
+                            @error('description')
+                                <div id="descriptionInvalid" class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="mb-4">
-                            <button class="btn btn-sm btn-general" type="button" id="uploadImage" onclick="addImage(this)"
-                                data-input-image-count="0">Want Upload
+                            <button class="btn btn-sm btn-general" type="button" id="uploadImage"
+                                onclick="addImage(this)" data-input-image-count="0">Want Upload
                                 Image?</button>
                             <div id="container-image"></div>
                         </div>
                     </div>
                     <div class="mb-3 text-center">
-                        <button type="button" class="btn btn-general rounded-2">Pesan</button>
+                        <button type="submit" class="btn btn-general rounded-2">Pesan</button>
                     </div>
                 </form>
             </div>
@@ -60,21 +113,36 @@
 
 @push('scripts')
     <script>
+        $(document).ready(function() {
+            const selectedCategory = $('#categoryInput').data('select-category');
+            const selectedPlan = $('#planInput').data('select-plan');
+
+            selectCategoryAndPlan('#categoryInput', '#planInput', selectedCategory, selectedPlan);
+        });
+
+        const selectPlanDesign = (select) => {
+            selectPlan(select)
+        }
+
+        const validationSelectDesign = (e) => {
+            validationSelect(e, '#categoryInput')
+        };
+
         const changeInputType = () => {
             const colorInput = `
-               <input type="color" name="color" class="form-control form-control-color" id="colorInput" value="#ef6603" title="Choose your color" />
-               <button type="button" onclick="changeInputType()" id="changeColorInput" class="btn btn-sm btn-general">Ubah ke Input Teks?</button>
+               <input type="color" class="form-control form-control-color" name="color" id="colorInput" value="#ef6603" title="Choose your color" />
             `;
-
             const textInput = `
-               <input type="text" class="form-control form-control-sm" name="color" id="colorInput" placeholder="">
-               <button type="button" onclick="changeInputType()" id="changeColorInput" class="btn btn-sm btn-general">Ubah ke Input Color?</button>
+               <input type="text" class="form-control form-control-sm" name="color" id="colorInput">
             `;
 
             const currentInputType = $('#colorInput').prop('type');
-            $('#colorInput, #changeColorInput').remove();
 
-            $('#colorInputSection').append(currentInputType === 'text' ? colorInput : textInput);
+            $('#colorInput').remove();
+            $('#changeColorInput')
+                .text(currentInputType === 'text' ? 'Ubah ke Input Teks?' : 'Ubah ke Input Color?')
+                .before(currentInputType === 'text' ? colorInput : textInput);
+            $('#inputType').val(currentInputType !== 'text' ? 'text' : 'color');
         };
 
         let imageIndexReal = 0;
@@ -124,6 +192,7 @@
         }
 
         const allowedExtensions = ['jpg', 'jpeg', 'png', 'webp'];
+
         const validateDesignFile = (input, index) => {
             validateFile(input, allowedExtensions, index);
             previewImage(input, index);
@@ -131,7 +200,6 @@
 
         const previewImage = (input, index) => {
             const [file] = input.files;
-
             if (file) {
                 $(`.preview-image${index}`).removeClass("d-none").attr('src', URL.createObjectURL(file));
             }

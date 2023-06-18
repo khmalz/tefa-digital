@@ -100,7 +100,8 @@
                                         </p>
                                     </div>
                                     <div class="mb-2">
-                                        <a href="" class="btn btn-lg btn-general rounded-5"> Konsultasikan
+                                        <a href="{{ route('user.design.form.index', ['category' => '3D']) }}"
+                                            class="btn btn-lg btn-general rounded-5"> Konsultasikan
                                             sekarang</a>
                                     </div>
                                 </div>
