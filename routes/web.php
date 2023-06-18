@@ -20,6 +20,7 @@ use App\Http\Controllers\Admin\PhotographyPlanController;
 use App\Http\Controllers\Admin\VideographyPlanController;
 use App\Http\Controllers\Admin\PhotographyCategoryController;
 use App\Http\Controllers\Admin\VideographyCategoryController;
+use App\Http\Controllers\DesignFormController;
 use App\Http\Controllers\VideographyUserController;
 
 /*
@@ -71,9 +72,9 @@ Route::as('user.')->group(function () {
 
         Route::get('/design-3d', [DesignUserController::class, 'threeD'])->name('design-3d');
 
-        Route::get('/form', function () {
-            return view('design.form');
-        })->name('form');
+        Route::get('/form', [DesignFormController::class, 'index'])->name('form.index');
+        Route::post('/form', [DesignFormController::class, 'store'])->name('form.store');
+        Route::get('/form-success/{nama}/{order}/{orderId}', [DesignFormController::class, 'success'])->name('form.success');
     });
 
     route::prefix('printing')->as('printing.')->group(function () {
