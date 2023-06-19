@@ -275,23 +275,7 @@
                     @endforeach
                 </ul>
 
-                <div class="row portfolio-container" data-aos="fade-up">
-                    @foreach ($portfolios as $portfolio)
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-{{ $portfolio->category }}">
-                            <div class="portfolio-img">
-                                <img src="{{ asset('assets/img/' . $portfolio->image) }}" class="img-fluid"
-                                    alt="{{ $portfolio->title }}">
-                            </div>
-                            <div class="portfolio-info">
-                                <h4>{{ $portfolio->title }}</h4>
-                                <p>{{ $portfolio->category }}</p>
-                                <a href="{{ asset('assets/img/' . $portfolio->image) }}" data-gallery="portfolioGallery"
-                                    class="portfolio-lightbox preview-link" title="{{ $portfolio->title }}">
-                                    <i class="bx bx-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                    @endforeach
+                <div class="row portfolio-container" data-aos="fade-up" data-portfolios="{{ $portfolios }}">
                 </div>
 
             </div>
@@ -382,6 +366,36 @@
 
 @push('scripts')
     <script>
+        $(document).ready(function() {
+            const screenWidth = $(window).width();
+            let limit = (screenWidth >= 992) ? 14 : (screenWidth >= 576) ? 10 : 6;
+
+            showPortfolios('.portfolio-container', 'portfolios', limit)
+
+            const portfolioLightbox = GLightbox({
+                selector: '.portfolio-lightbox'
+            });
+        })
+
+        const showPortfolios = (element, dataName, limit) => {
+            let portfolios = $(element).data(dataName);
+
+            $(element).html(portfolios.slice(0, limit).map(portfolio => `
+                <div class="col-lg-4 col-md-6 portfolio-item filter-${portfolio.category}">
+                    <div class="portfolio-img">
+                        <img src="{{ asset('assets/img/${portfolio.image}') }}" class="img-fluid" alt="${portfolio.title}">
+                    </div>
+                    <div class="portfolio-info">
+                        <h4>${portfolio.title}</h4>
+                        <p>${portfolio.category}</p>
+                        <a href="{{ asset('assets/img/${portfolio.image}') }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="${portfolio.title}">
+                            <i class="bx bx-plus"></i>
+                        </a>
+                    </div>
+                </div>
+            `).join(''));
+        }
+
         function showToast(message, background) {
             Toastify({
                 text: message,
