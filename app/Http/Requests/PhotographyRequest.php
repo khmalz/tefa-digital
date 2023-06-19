@@ -26,7 +26,7 @@ class PhotographyRequest extends FormRequest
             'name_customer' => ['required', 'string', 'max:191'],
             'number_customer' => ['required', 'numeric', 'regex:/^(\+62|62|0*)[2-9]{1}[0-9]{5,20}$/'],
             'email_customer' => ['required', 'email'],
-            'description' => ['string', 'max:191'],
+            'description' => ['nullable', 'string', 'max:191'],
         ];
     }
 }
