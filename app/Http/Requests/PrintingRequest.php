@@ -28,7 +28,7 @@ class PrintingRequest extends FormRequest
             'material' => ['required', 'string', 'max:191'],
             'scale' => ['required', 'string', 'max:191'],
             'file' => ['required', 'file', 'mimes:stl,obj,zip'],
-            'description' => ['string', 'max:191'],
+            'description' => ['nullable', 'string', 'max:191'],
         ];
     }
 }
