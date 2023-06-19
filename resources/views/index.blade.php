@@ -28,37 +28,39 @@
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex flex-column justify-content-end align-items-center">
         <div id="heroCarousel" data-bs-interval="5000" class="carousel carousel-fade" data-bs-ride="carousel">
-            <img src="https://images.unsplash.com/photo-1603380353725-f8a4d39cc41e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                alt="" style="width: 100%; filter: brightness(55%)">
-
-            <!-- Slide 1 -->
-            <div class="carousel-item active">
-                <div class="carousel-container">
-                    <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Tefa digital</span></h2>
-                    <p class="animate__animated fanimate__adeInUp">Tefa digital adalah website inovatif yang berdedikasi
-                        untuk meningkatkan pendidikan dan membantu siswa mencapai potensi terbaik mereka.</p>
-                    <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
+            <div class="carousel-image-container">
+                <img src="https://images.unsplash.com/photo-1603380353725-f8a4d39cc41e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                    alt="">
+    
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+                    <div class="carousel-container">
+                        <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Tefa digital</span></h2>
+                        <p class="animate__animated fanimate__adeInUp">Tefa digital adalah website inovatif yang berdedikasi
+                            untuk meningkatkan pendidikan dan membantu siswa mencapai potensi terbaik mereka.</p>
+                        <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
+                    </div>
                 </div>
-            </div>
-
-            <!-- Slide 2 -->
-            <div class="carousel-item">
-                <div class="carousel-container">
-                    <h2 class="animate__animated animate__fadeInDown">Kenali Jasa Kami</h2>
-                    <p class="animate__animated animate__fadeInUp">Kami hadir menyediakan jasa yang dapat membantu
-                        memperhemat waktu Anda dan memberikan pengalaman yang menarik.</p>
-                    <a href="#features"
-                        class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
+    
+                <!-- Slide 2 -->
+                <div class="carousel-item">
+                    <div class="carousel-container">
+                        <h2 class="animate__animated animate__fadeInDown">Kenali Jasa Kami</h2>
+                        <p class="animate__animated animate__fadeInUp">Kami hadir menyediakan jasa yang dapat membantu
+                            memperhemat waktu Anda dan memberikan pengalaman yang menarik.</p>
+                        <a href="#features"
+                            class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
+                    </div>
                 </div>
+    
+                <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
+                </a>
+    
+                <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
+                    <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
+                </a>
             </div>
-
-            <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
-            </a>
-
-            <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
-                <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
-            </a>
         </div>
 
         <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" style="position: absolute"
@@ -357,6 +359,26 @@
     </main>
     <!-- End #main -->
 @endsection
+
+@push('styles')
+    <style>
+         .carousel-image-container {
+            position: relative;
+            width: 100vw;
+            overflow: hidden;
+        }
+
+        .carousel-image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(45%);
+        }
+    </style>
+@endpush
 
 @push('scripts')
     <script>
