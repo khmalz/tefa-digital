@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\DesignPlanController;
 use App\Http\Controllers\Admin\PhotographyController;
 use App\Http\Controllers\Admin\VideographyController;
 use App\Http\Controllers\Admin\DesignCategoryController;
+use App\Http\Controllers\Admin\OrderListController;
 use App\Http\Controllers\Admin\PhotographyPlanController;
 use App\Http\Controllers\Admin\VideographyPlanController;
 use App\Http\Controllers\Admin\PhotographyCategoryController;
@@ -101,7 +102,9 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
-    Route::view('order-list', 'admin.order.index')->name('order.index');
+    Route::get('order-list', [OrderListController::class, 'index'])->name('order.index');
+    Route::get('detail/{design}', [OrderListController::class, 'show'])->name('order.show');
+
     Route::prefix('export-to-pdf')->group(function () {
         Route::get('design/{design}', [PDFController::class, 'exportDesign']);
         Route::get('photography/{photography}', [PDFController::class, 'exportPhotography']);
