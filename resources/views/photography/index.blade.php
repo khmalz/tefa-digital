@@ -6,15 +6,19 @@
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex flex-column justify-content-end align-items-center">
         <div id="heroCarousel" data-bs-interval="5000" class="carousel carousel-fade" data-bs-ride="carousel">
-            <img src="https://images.unsplash.com/photo-1603380353725-f8a4d39cc41e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                alt="" style="width:100vw; filter: brightness(55%)">
+            <div class="carousel-image-container">
+                <img src="https://images.unsplash.com/photo-1603380353725-f8a4d39cc41e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                    alt="">
 
-            <!-- Slide 1 -->
-            <div class="carousel-item active">
-                <div class="carousel-container">
-                    <h2 class="animate__animated animate__fadeInDown">Photography</span></h2>
-                    <p class="animate__animated fanimate__adeInUp">Abadikan momen berharga dengan keindahan yang abadi.</p>
-                    <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+                    <div class="carousel-container">
+                        <h2 class="animate__animated animate__fadeInDown">Photography</span></h2>
+                        <p class="animate__animated fanimate__adeInUp">Abadikan momen berharga dengan keindahan yang abadi.
+                        </p>
+                        <a href="#about"
+                            class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -61,7 +65,7 @@
                     </div>
                     <div class="col-lg-6 pt-lg-0 image-about pt-4">
                         <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
-                            alt="" style="width: 100%;">
+                            alt="" class="img-pricing">
                     </div>
                 </div>
             </div>
@@ -104,3 +108,23 @@
         <!-- End Services Section -->
     </main>
 @endsection
+
+@push('styles')
+    <style>
+        .carousel-image-container {
+            position: relative;
+            width: 100vw;
+            overflow: hidden;
+        }
+
+        .carousel-image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(45%);
+        }
+    </style>
+@endpush

@@ -1,4 +1,4 @@
-# Tefa Digital
+# TEFA DIGITAL
 
 Website inovatif yang berdedikasi untuk meningkatkan pendidikan dan membantu siswa mencapai potensi terbaik mereka. Kami hadir menyediakan jasa yang membantu menghemat waktu Anda dan memberikan pengalaman yang menarik.
 
@@ -27,7 +27,7 @@ Kami menyediakan 3 kategori fotografi:
 
 ### Videography
 
-Kami menyediakan 3 kategori videografi:
+Kami menyediakan 2 kategori videografi:
 
 -   Video Syuting
 -   Video Dokumentasi
@@ -41,7 +41,7 @@ Kami menyediakan 2 pilihan material untuk 3D printing:
 
 ## Jalankan Secara Lokal
 
-Berikut adalah langkah-langkah untuk menginstall TEFA Digital:
+Berikut adalah langkah-langkah untuk menginstall Tefa Digital:
 
 **Klon Proyek**
 
@@ -106,6 +106,14 @@ MAIL_USERNAME
 MAIL_PASSWORD
 MAIL_FROM_ADDRESS
 ```
+
+## Login Dashboard
+
+Untuk ke halaman login, silahkan ke url ini `/login/secret/4pw` dan login menggunakan akun dibawah ini:
+
+`email: admin@gmail.com`
+
+`password: password`
 
 ## Kontak
 

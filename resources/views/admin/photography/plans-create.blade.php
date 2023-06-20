@@ -143,7 +143,7 @@
 
             $('.create-feature').click(function() {
                 let newFormGroup = `
-                    <div class="form-group d-flex align-items-center gap-3">
+                    <div class="form-group d-md-flex align-items-center gap-3">
                         <div class="d-flex flex-column w-100 mt-3 flex-wrap gap-3">
                             <div class="row gap-3">
                                 <label for="text" class="col-sm-2 col-form-label">Text</label>
@@ -168,7 +168,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div>
+                        <div class="mt-3 mt-md-0">
                             <button type="button" class="btn btn-danger text-white delete-feature-new">Delete</button>
                         </div>
                     </div>

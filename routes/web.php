@@ -93,8 +93,8 @@ Route::as('user.')->group(function () {
 Route::post('/contact-send', [SendMailController::class, 'sendMail'])->name('contact.send');
 
 Route::middleware('guest')->prefix('login')->as('login.')->group(function () {
-    Route::get('/', [LoginController::class, 'index'])->name('index');
-    Route::post('/', [LoginController::class, 'login'])->name('store');
+    Route::get('/secret/4pw', [LoginController::class, 'index'])->name('index');
+    Route::post('/secret/4pw', [LoginController::class, 'login'])->name('store');
 });
 
 Route::prefix('admin')->middleware('auth')->group(function () {

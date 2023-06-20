@@ -6,16 +6,20 @@
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex flex-column justify-content-end align-items-center">
         <div id="heroCarousel" data-bs-interval="5000" class="carousel carousel-fade" data-bs-ride="carousel">
-            <img src="https://images.unsplash.com/photo-1603380353725-f8a4d39cc41e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                alt="" style="width:100vw; filter: brightness(55%)">
+            <div class="carousel-image-container">
+                <img src="https://images.unsplash.com/photo-1603380353725-f8a4d39cc41e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                    alt="">
 
-            <!-- Slide 1 -->
-            <div class="carousel-item active">
-                <div class="carousel-container">
-                    <h2 class="animate__animated animate__fadeInDown">Jasa Design Promosi</span></h2>
-                    <p class="animate__animated fanimate__adeInUp">Taklukkan pasar yang kompetitif dengan promosi digital.
-                    </p>
-                    <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+                    <div class="carousel-container">
+                        <h2 class="animate__animated animate__fadeInDown">Jasa Design Promosi</span></h2>
+                        <p class="animate__animated fanimate__adeInUp">Taklukkan pasar yang kompetitif dengan promosi
+                            digital.
+                        </p>
+                        <a href="#about"
+                            class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -68,7 +72,7 @@
                     </div>
                     <div class="col-lg-6 pt-lg-0 image-about pt-4">
                         <img src="https://source.unsplash.com/random/900×700/?digital-marketing" alt=""
-                            style="width: 100%;">
+                            class="img-pricing">
                     </div>
                 </div>
             </div>
@@ -86,8 +90,8 @@
                 <div class="container px-3 text-center">
                     <div class="row gx-5">
                         @foreach ($category->plans as $plan)
-                            <div class="col-4">
-                                <div class="card-pricing rounded-3 p-4" data-aos="zoom-in-left" data-aos-delay="100">
+                            <div class="spacer-cool col-lg-4 col-md-12 col-sm-12">
+                                <div class="card-pricing" data-aos="zoom-in-left" data-aos-delay="100">
                                     <span class="text-dark">
                                         <p class="ms-3 mt-3 text-start">Mulai dari</p>
                                         <span class="display-5">Rp</span>
@@ -111,7 +115,7 @@
                                 <div class="pl-lg-6">
                                     <div class="row" style="row-gap: 1rem !important;">
                                         @foreach ($plan->features as $feature)
-                                            <div class="col-sm-6">
+                                            <div class="col-md-6">
                                                 <div class="card-desc rounded-3 p-2" data-aos="zoom-in-left"
                                                     data-aos-delay="100">
                                                     <div class="m-3">
@@ -133,3 +137,23 @@
         <!-- End Pricing Section -->
     </main>
 @endsection
+
+@push('styles')
+    <style>
+        .carousel-image-container {
+            position: relative;
+            width: 100vw;
+            overflow: hidden;
+        }
+
+        .carousel-image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(45%);
+        }
+    </style>
+@endpush

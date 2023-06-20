@@ -51,7 +51,7 @@
                     @empty
                     @endforelse
                     @if ($category['plans']->count() < 4)
-                        <div class="col plan-card-invis position-relative">
+                        <div class="col plan-card-invis  position-relative">
                             <a href="{{ route('design-plan.create', ['category' => $category['title']]) }}"
                                 class="centering big-plus text-decoration-none">+</a>
                         </div>

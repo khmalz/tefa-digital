@@ -6,16 +6,19 @@
     <!-- ======= Hero Section ======= -->
     <section id="hero" class="d-flex flex-column justify-content-end align-items-center">
         <div id="heroCarousel" data-bs-interval="5000" class="carousel carousel-fade" data-bs-ride="carousel">
-            <img src="https://images.unsplash.com/photo-1603380353725-f8a4d39cc41e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                alt="" style="width:100vw; filter: brightness(55%)">
+            <div class="carousel-image-container">
+                <img src="https://images.unsplash.com/photo-1603380353725-f8a4d39cc41e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+                    alt="">
 
-            <!-- Slide 1 -->
-            <div class="carousel-item active">
-                <div class="carousel-container">
-                    <h2 class="animate__animated animate__fadeInDown">Jasa 3D Printing</span></h2>
-                    <p class="animate__animated fanimate__adeInUp">Jadikan ide Anda bentuk nyata dengan 3D printing yang
-                        mengagumkan.</p>
-                    <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
+                <!-- Slide 1 -->
+                <div class="carousel-item active">
+                    <div class="carousel-container">
+                        <h2 class="animate__animated animate__fadeInDown">Jasa 3D Printing</span></h2>
+                        <p class="animate__animated fanimate__adeInUp">Jadikan ide Anda bentuk nyata dengan 3D printing yang
+                            mengagumkan.</p>
+                        <a href="#about"
+                            class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -83,7 +86,7 @@
 
                 <div class="container px-3 text-center">
                     <div class="row gx-5">
-                        <div class="col-4">
+                        <div class="spacer-cool col-lg-4 col-md-12 col-sm-12">
                             <div class="card-pricing rounded-3 p-4" data-aos="zoom-in-left" data-aos-delay="100">
                                 <div class="m-3">
                                     <h5 class="my-3">
@@ -92,7 +95,7 @@
                                     <hr class="my-4">
                                 </div>
                                 <span>
-                                    jadikan design inovatif anda menjadi prototipe nyata dengan jasa 3D design kami!
+                                    Jadikan design inovatif anda menjadi prototipe nyata dengan jasa 3D design kami!
                                 </span>
                                 <p class="my-4">
                                     Segera hubungi kami untuk penawaran khusus dan konsultasikan kebutuhan serta keinginan
@@ -108,8 +111,8 @@
 
                         <div class="col-lg-7">
                             <div class="pl-lg-6">
-                                <div class="row">
-                                    <div class="col-sm-6 mb-5">
+                                <div class="row" style="row-gap: 1rem !important;">
+                                    <div class="col-md-6">
                                         <div class="card-desc rounded-3 p-2" data-aos="zoom-in-left" data-aos-delay="100">
                                             <div class="m-3">
                                                 <h5>Pengembangan Cepat</h5>
@@ -119,7 +122,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6 mb-5">
+                                    <div class="col-md-6">
                                         <div class="card-desc rounded-3 p-2" data-aos="zoom-in-left" data-aos-delay="100">
                                             <div class="m-3">
                                                 <h5>Konsultasi Gratis</h5>
@@ -129,9 +132,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6 mb-3">
+                                    <div class="col-md-6">
                                         <div class="card-desc rounded-3 p-2" data-aos="zoom-in-left" data-aos-delay="100">
                                             <div class="m-3">
                                                 <h5>Efisiensi Biaya</h5>
@@ -141,7 +142,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-sm-6 mb-3">
+                                    <div class="col-md-6">
                                         <div class="card-desc rounded-3 p-2" data-aos="zoom-in-left" data-aos-delay="100">
                                             <div class="m-3">
                                                 <h5>Kustomisasi Fleksibel</h5>
@@ -161,3 +162,23 @@
         <!-- End Pricing Section -->
     </main>
 @endsection
+
+@push('styles')
+    <style>
+        .carousel-image-container {
+            position: relative;
+            width: 100vw;
+            overflow: hidden;
+        }
+
+        .carousel-image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(45%);
+        }
+    </style>
+@endpush
