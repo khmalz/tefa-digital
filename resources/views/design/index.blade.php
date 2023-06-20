@@ -9,13 +9,14 @@
             <div class="carousel-image-container">
                 <img src="https://images.unsplash.com/photo-1603380353725-f8a4d39cc41e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
                     alt="">
-    
+
                 <!-- Slide 1 -->
                 <div class="carousel-item active">
                     <div class="carousel-container">
                         <h2 class="animate__animated animate__fadeInDown">Design</span></h2>
                         <p class="animate__animated fanimate__adeInUp">Buat Konsep Anda Menjadi Desain yang Memikat</p>
-                        <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
+                        <a href="#about"
+                            class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
                     </div>
                 </div>
             </div>
@@ -65,8 +66,7 @@
                         </ul>
                     </div>
                     <div class="col-lg-6 pt-lg-0 image-about pt-4">
-                        <img src="https://source.unsplash.com/random/900×700/?sketching" alt=""
-                            style="width: 100%;">
+                        <img src="https://source.unsplash.com/random/900×700/?sketching" alt="" class="img-pricing">
                     </div>
                 </div>
             </div>
@@ -112,7 +112,7 @@
 
 @push('styles')
     <style>
-         .carousel-image-container {
+        .carousel-image-container {
             position: relative;
             width: 100vw;
             overflow: hidden;
