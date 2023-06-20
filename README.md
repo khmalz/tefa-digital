@@ -107,6 +107,14 @@ MAIL_PASSWORD
 MAIL_FROM_ADDRESS
 ```
 
+## Login Dashboard
+
+Untuk ke halaman login, silahkan ke url ini `/login/secret/4pw` dan login menggunakan akun dibawah ini:
+
+`email: admin@gmail.com`
+
+`password: password`
+
 ## Kontak
 
 Jika Anda memiliki pertanyaan, saran, atau masalah teknis terkait dengan penggunaan Tefa Digital, silakan hubungi tim dukungan kami melalui email tefadigital.smk46@gmail.com atau melalui halaman kontak di situs web kami.
