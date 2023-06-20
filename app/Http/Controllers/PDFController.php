@@ -3,55 +3,103 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin\Design;
-use App\Models\Admin\Photography;
+use Illuminate\Http\Response;
 use App\Models\Admin\Printing;
+use App\Models\Admin\Photography;
 use App\Models\Admin\Videography;
-use Barryvdh\DomPDF\Facade\Pdf;
+use LaravelDaily\Invoices\Invoice;
+use Illuminate\Database\Eloquent\Model;
+use LaravelDaily\Invoices\Classes\Party;
+use LaravelDaily\Invoices\Classes\InvoiceItem;
 
 class PDFController extends Controller
 {
-
-    /**
-     * Create PDF instance with common settings
-     */
-    private function createPdf()
+    private function makeInvoice(Model $model, string $type, array $customFields, InvoiceItem $item): Invoice
     {
-        return Pdf::setOptions(['defaultFont' => 'sans-serif'])->setPaper([0, 0, 500, 400], 'landscape');
+        $client = new Party([
+            'name'          => $model->name_customer,
+            'phone'         => $model->number_customer,
+        ]);
+
+        $customer = new Party([
+            'name' => $type,
+            'custom_fields' => $customFields,
+        ]);
+
+        return Invoice::make('Tefa Digital SMKN 46')
+            ->seller($client)
+            ->buyer($customer)
+            ->date($model->created_at)
+            ->dateFormat('d/m/Y h:i:s')
+            ->filename("$customer->name - $model->ulid")
+            ->addItem($item);
     }
 
-    /**
-     * Generate pdf for Design
-     */
-    public function exportDesign(Design $design)
+    public function createInvoiceDesign(Design $design): Response
     {
-        $pdf = $this->createPdf()->loadView('pdf-design', compact('design'));
-        return $pdf->stream();
+        $customFields = array_filter(
+            [
+                'Order' => $design->order,
+                'Plan' => $design->plan->title,
+                'Receipt number' => $design->ulid,
+                'Color' => $design->color,
+                $design->slogan ? 'Slogan' : null => $design->slogan ?? null,
+            ]
+        );
+
+        $item = (new InvoiceItem())->title($design->order)->pricePerUnit($design->price);
+
+        $invoice = $this->makeInvoice($design, 'Design', $customFields, $item);
+
+        // And return invoice itself to browser or have a different view
+        return $invoice->stream();
     }
 
-    /**
-     * Generate pdf for Photography
-     */
-    public function exportPhotography(Photography $photography)
+    public function createInvoicePhotography(Photography $photography): Response
     {
-        $pdf = $this->createPdf()->loadView('pdf-photography', compact('photography'));
-        return $pdf->stream();
+        $customFields = [
+            'Order' => $photography->order,
+            'Plan' => $photography->plan->title,
+            'Receipt number' => $photography->ulid,
+        ];
+
+        $item = (new InvoiceItem())->title($photography->order)->pricePerUnit($photography->price);
+
+        $invoice = $this->makeInvoice($photography, 'Photography', $customFields, $item);
+
+        // And return invoice itself to browser or have a different view
+        return $invoice->stream();
     }
 
-    /**
-     * Generate pdf for Videography
-     */
-    public function exportVideography(Videography $videography)
+    public function createInvoiceVideography(Videography $videography): Response
     {
-        $pdf = $this->createPdf()->loadView('pdf-videography', compact('videography'));
-        return $pdf->stream();
+        $customFields = [
+            'Order' => $videography->order,
+            'Plan' => $videography->plan->title,
+            'Receipt number' => $videography->ulid,
+        ];
+
+        $item = (new InvoiceItem())->title($videography->order)->pricePerUnit($videography->price);
+
+        $invoice = $this->makeInvoice($videography, 'Videography', $customFields, $item);
+
+        // And return invoice itself to browser or have a different view
+        return $invoice->stream();
     }
 
-    /**
-     * Generate pdf for Printing
-     */
-    public function exportPrinting(Printing $printing)
+    public function createInvoicePrinting(Printing $printing): Response
     {
-        $pdf = $this->createPdf()->loadView('pdf-printing', compact('printing'));
-        return $pdf->stream();
+        $customFields = [
+            'Material' => $printing->material,
+            'Scale' => $printing->scale,
+            'Receipt number' => $printing->ulid,
+        ];
+
+        $item = (new InvoiceItem())->title("Printing")->pricePerUnit(0);
+
+        $invoice = $this->makeInvoice($printing, 'Printing', $customFields, $item);
+
+        // And return invoice itself to browser or have a different view
+        return $invoice->stream();
     }
 }

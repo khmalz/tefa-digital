@@ -106,10 +106,10 @@ Route::prefix('admin')->middleware('auth')->group(function () {
     Route::get('detail/{design}', [OrderListController::class, 'show'])->name('order.show');
 
     Route::prefix('export-to-pdf')->group(function () {
-        Route::get('design/{design}', [PDFController::class, 'exportDesign']);
-        Route::get('photography/{photography}', [PDFController::class, 'exportPhotography']);
-        Route::get('videography/{videography}', [PDFController::class, 'exportVideography']);
-        Route::get('printing/{printing}', [PDFController::class, 'exportPrinting']);
+        Route::get('design/{design}', [PDFController::class, 'createInvoiceDesign']);
+        Route::get('photography/{photography}', [PDFController::class, 'createInvoicePhotography']);
+        Route::get('videography/{videography}', [PDFController::class, 'createInvoiceVideography']);
+        Route::get('printing/{printing}', [PDFController::class, 'createInvoicePrinting']);
     });
     Route::resource('portfolio', PortfolioController::class)->except('show');
     Route::resource('contact', ContactController::class)->except('create', 'store', 'show', 'destroy');
