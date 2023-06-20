@@ -205,7 +205,8 @@
             background-color: transparent;
             border-radius: 12px;
             width: clamp(150px, 100%, 100vw);
-            height: 100%;
+            padding-top: 200px;
+            padding-bottom: 200px;
             text-align: center;
             overflow: hidden
         }
