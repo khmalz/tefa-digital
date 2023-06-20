@@ -1,66 +1,137 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# TEFA DIGITAL
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+Website inovatif yang berdedikasi untuk meningkatkan pendidikan dan membantu siswa mencapai potensi terbaik mereka. Kami hadir menyediakan jasa yang membantu menghemat waktu Anda dan memberikan pengalaman yang menarik.
 
-## About Laravel
+## Jasa yang Kami Sediakan
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+-   Design
+-   Photography
+-   Videography
+-   3D Printing
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### Design
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Kami menyediakan 3 kategori desain:
 
-## Learning Laravel
+-   Logo
+-   Promosi Digital
+-   3D
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### Photography
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+Kami menyediakan 3 kategori fotografi:
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+-   Produk
+-   Pernikahan
+-   Acara
 
-## Laravel Sponsors
+### Videography
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+Kami menyediakan 2 kategori videografi:
 
-### Premium Partners
+-   Video Syuting
+-   Video Dokumentasi
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+### 3D Printing
 
-## Contributing
+Kami menyediakan 2 pilihan material untuk 3D printing:
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+-   Metal Stainless Steel
+-   Strong Nylon Plastic
 
-## Code of Conduct
+## Jalankan Secara Lokal
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+Berikut adalah langkah-langkah untuk menginstall Tefa Digital:
 
-## Security Vulnerabilities
+**Klon Proyek**
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```shell
+git clone https://github.com/khmalz/tefa-digital.git
+```
 
-## License
+**Pergi ke Direktori Proyek**
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```shell
+cd tefa-digital
+```
+
+**Instalasi Dependensi**:
+
+```shell
+composer install
+```
+
+```shell
+npm install
+```
+
+**Konfigurasi Environment**:
+
+```shell
+cp .env.example .env
+```
+
+**Generate Key Aplikasi**
+
+```shell
+php artisan key:generate
+```
+
+**Mengatur Konfigurasi Database pada Environment Variables**
+
+```
+DB_HOST=
+DB_PORT=
+DB_DATABASE=
+DB_USERNAME=
+DB_PASSWORD=
+```
+
+**Migrasi Database**:
+
+```shell
+php artisan migrate --seed
+```
+
+**Link Storage**
+
+```shell
+php artisan storage:link
+```
+
+**Menjalankan Server Lokal**
+
+```shell
+php artisan serve
+```
+
+## Environment Variables
+
+Untuk menjalankan fitur Contact Us pada situs web kami, Anda perlu mengubah konfigurasi variabel pada file .env Anda
+
+```
+MAIL_HOST
+MAIL_PORT
+MAIL_USERNAME
+MAIL_PASSWORD
+MAIL_FROM_ADDRESS
+```
+
+## Login Dashboard
+
+Untuk ke halaman login, silahkan ke url ini `/login/secret/4pw` dan login menggunakan akun dibawah ini:
+
+`email: admin@gmail.com`
+
+`password: password`
+
+## Kontak
+
+Jika Anda memiliki pertanyaan, saran, atau masalah teknis terkait dengan penggunaan Tefa Digital, silakan hubungi tim dukungan kami melalui email tefadigital.smk46@gmail.com atau melalui halaman kontak di situs web kami.
+
+## Developer
+
+-   [@khmalz](https://github.com/khmalz)
+-   [@Advenian](https://github.com/Advenian)
+-   [@nesyafakhira](https://github.com/nesyafakhira)
+-   [@nursyakilla](https://github.com/nursyakilla)

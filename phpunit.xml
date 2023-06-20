@@ -23,6 +23,12 @@
         <env name="CACHE_DRIVER" value="array"/>
         <!-- <env name="DB_CONNECTION" value="sqlite"/> -->
         <!-- <env name="DB_DATABASE" value=":memory:"/> -->
+        <env name="DB_CONNECTION" value="${env:DB_CONNECTION}"/>
+        <env name="DB_DATABASE" value="${env:DB_DATABASE}"/>
+        <env name="DB_HOST" value="${env:DB_HOST}"/>
+        <env name="DB_PORT" value="${env:DB_PORT}"/>
+        <env name="DB_USERNAME" value="${env:DB_USERNAME}"/>
+        <env name="DB_PASSWORD" value="${env:DB_PASSWORD}"/>
         <env name="MAIL_MAILER" value="array"/>
         <env name="QUEUE_CONNECTION" value="sync"/>
         <env name="SESSION_DRIVER" value="array"/>
