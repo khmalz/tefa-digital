@@ -82,7 +82,7 @@
                 <div class="col-md-6">
                     <div id="deleted-id-input" hidden></div>
                     @foreach ($plan->features as $feature)
-                        <div class="form-group d-flex align-items-center gap-3" data-feature-id="{{ $feature->id }}">
+                        <div class="form-group d-md-flex align-items-center gap-3" data-feature-id="{{ $feature->id }}">
                             <div class="d-flex flex-column w-100 mt-3 flex-wrap gap-3">
                                 <div class="row gap-3">
                                     <label for="text" class="col-sm-2 col-form-label">Text</label>
@@ -105,7 +105,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="d-flex align-items-center flex-column gap-2">
+                            <div class="d-flex align-items-md-center flex-column mt-md-0 mt-3 gap-2">
                                 <div>
                                     <input type="checkbox" hidden id="deleted-{{ $feature->id }}" class="delete-feature">
                                     <label for="deleted-{{ $feature->id }}"
@@ -166,7 +166,7 @@
 
             $('.create-feature').click(function() {
                 var newFormGroup = `
-                    <div class="form-group d-flex align-items-center gap-3" data-feature-id="{{ $feature->id }}">
+                    <div class="form-group d-md-flex align-items-center gap-3" data-feature-id="{{ $feature->id }}">
                         <div class="d-flex flex-column w-100 mt-3 flex-wrap gap-3">
                             <input type="hidden" name="id[]" class="form-control" value="{{ $plan->id }}">
                             <div class="row gap-3">
@@ -192,7 +192,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="">
+                        <div class="mt-3 mt-md-0">
                             <button type="button" class="btn btn-danger text-white delete-feature-new">Delete</button>
                         </div>
                     </div>

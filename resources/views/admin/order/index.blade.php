@@ -218,6 +218,7 @@
                     </button>
                     <div class="dropdown-menu dropdown-menu-end">
                         <a class="dropdown-item" target="_blank" href="export-to-pdf/${orderType}/${orderId}">Export to PDF</a>
+                        ${orderType === 'design' ? `<a class="dropdown-item" href="detail/${orderId}">Detail</a>` : ''}
                         <button class="dropdown-item" type="button" data-coreui-toggle="modal" data-coreui-target="${targetID}" data-order-id="${orderId}" data-order-type="${orderType}" id="changeStatus">Ganti Status</button>
                     </div>
                 </div>

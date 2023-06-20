@@ -115,8 +115,8 @@
                     </div>
 
                     <div class="d-flex align-items-center justify-content-between mt-3" id="button-bottom">
-                        <button type="button" class="btn btn-success text-white create-feature">Add</button>
-                        <button type="submit" class="btn btn-info text-white save-changes">Save Changes</button>
+                        <button type="button" class="btn btn-success create-feature text-white">Add</button>
+                        <button type="submit" class="btn btn-info save-changes text-white">Save Changes</button>
                     </div>
                 </div>
             </div>
@@ -143,7 +143,7 @@
 
             $('.create-feature').click(function() {
                 let newFormGroup = `
-                    <div class="form-group d-flex align-items-center gap-3">
+                    <div class="form-group d-md-flex align-items-center gap-3">
                         <div class="d-flex flex-column w-100 mt-3 flex-wrap gap-3">
                             <div class="row gap-3">
                                 <label for="text" class="col-sm-2 col-form-label">Text</label>
@@ -168,7 +168,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div>
+                        <div class="mt-3 mt-md-0">
                             <button type="button" class="btn btn-danger text-white delete-feature-new">Delete</button>
                         </div>
                     </div>

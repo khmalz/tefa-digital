@@ -21,6 +21,7 @@ use App\Http\Controllers\Admin\DesignPlanController;
 use App\Http\Controllers\Admin\PhotographyController;
 use App\Http\Controllers\Admin\VideographyController;
 use App\Http\Controllers\Admin\DesignCategoryController;
+use App\Http\Controllers\Admin\OrderListController;
 use App\Http\Controllers\Admin\PhotographyPlanController;
 use App\Http\Controllers\Admin\VideographyPlanController;
 use App\Http\Controllers\Admin\PhotographyCategoryController;
@@ -101,12 +102,14 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
-    Route::view('order-list', 'admin.order.index')->name('order.index');
+    Route::get('order-list', [OrderListController::class, 'index'])->name('order.index');
+    Route::get('detail/{design}', [OrderListController::class, 'show'])->name('order.show');
+
     Route::prefix('export-to-pdf')->group(function () {
-        Route::get('design/{design}', [PDFController::class, 'exportDesign']);
-        Route::get('photography/{photography}', [PDFController::class, 'exportPhotography']);
-        Route::get('videography/{videography}', [PDFController::class, 'exportVideography']);
-        Route::get('printing/{printing}', [PDFController::class, 'exportPrinting']);
+        Route::get('design/{design}', [PDFController::class, 'createInvoiceDesign']);
+        Route::get('photography/{photography}', [PDFController::class, 'createInvoicePhotography']);
+        Route::get('videography/{videography}', [PDFController::class, 'createInvoiceVideography']);
+        Route::get('printing/{printing}', [PDFController::class, 'createInvoicePrinting']);
     });
     Route::resource('portfolio', PortfolioController::class)->except('show');
     Route::resource('contact', ContactController::class)->except('create', 'store', 'show', 'destroy');

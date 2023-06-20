@@ -31,21 +31,9 @@ class DatabaseSeeder extends Seeder
             PortfolioSeeder::class
         ]);
 
-        Photography::factory(15)->create();
-        Videography::factory(15)->create();
-        Printing::factory(15)->create();
-
-        $designs = Design::factory(16)->create();
-
-        $designs->each(function ($design) {
-            DesignImage::factory()->create(['design_id' => $design->id]);
-        });
-
-        DesignImage::factory(8)->create();
-
         Contact::create([
-            'location' => 'Jl Pasar Mangkang Bl B/4',
-            'email' => 'admin@gmail.com',
+            'location' => 'Jl. B7 Cipinang Pulo No.19',
+            'email' => 'tefadigital.smk46@gmail.com',
             'phone_number' => '+628679732129'
         ]);
     }
