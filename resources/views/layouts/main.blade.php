@@ -33,6 +33,10 @@
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
+
+    <style>
+        .pad-x-500 {}
+    </style>
     @stack('styles')
 </head>
 

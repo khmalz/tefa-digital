@@ -71,7 +71,7 @@
                     </div>
                     <div class="col-lg-6 pt-lg-0 image-about pt-4">
                         <img src="https://source.unsplash.com/random/900×700/?illustrating" alt=""
-                            style="width: 100%;">
+                            class="img-pricing">
                     </div>
                 </div>
             </div>
@@ -88,11 +88,12 @@
 
                 <div class="row justify-content-center">
                     @foreach ($category->plans as $plan)
-                        <div class="col-lg-4 col-md-6 d-flex align-items-stretch" style="width: auto !important">
+                        <div class="mx-3 mb-5 col-lg-3 col-md-6 d-flex align-items-stretch" style="width: auto !important">
                             <div class="box {{ $loop->last ? 'featured' : '' }} d-flex flex-column justify-content-between"
                                 data-aos="zoom-in">
                                 <div>
                                     <h3>{{ $plan->title }}</h3>
+
                                     <h4><sup>Rp</sup>{{ number_format($plan->price, 0, ',', '.') }}<span></span></h4>
                                     <ul>
                                         @foreach ($plan->features as $feature)

@@ -68,7 +68,7 @@
                     </div>
                     <div class="col-lg-6 pt-lg-0 image-about pt-4">
                         <img src="https://source.unsplash.com/random/900×700/?digital-marketing" alt=""
-                            style="width: 100%;">
+                            class="img-pricing">
                     </div>
                 </div>
             </div>
@@ -86,8 +86,8 @@
                 <div class="container px-3 text-center">
                     <div class="row gx-5">
                         @foreach ($category->plans as $plan)
-                            <div class="col-4">
-                                <div class="card-pricing rounded-3 p-4" data-aos="zoom-in-left" data-aos-delay="100">
+                            <div class="spacer-cool col-lg-4 col-md-12 col-sm-12 ">
+                                <div class="card-pricing" data-aos="zoom-in-left" data-aos-delay="100">
                                     <span class="text-dark">
                                         <p class="ms-3 mt-3 text-start">Mulai dari</p>
                                         <span class="display-5">Rp</span>
@@ -111,7 +111,7 @@
                                 <div class="pl-lg-6">
                                     <div class="row" style="row-gap: 1rem !important;">
                                         @foreach ($plan->features as $feature)
-                                            <div class="col-sm-6">
+                                            <div class="col-md-6">
                                                 <div class="card-desc rounded-3 p-2" data-aos="zoom-in-left"
                                                     data-aos-delay="100">
                                                     <div class="m-3">
