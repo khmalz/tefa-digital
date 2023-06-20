@@ -27,7 +27,7 @@ Kami menyediakan 3 kategori fotografi:
 
 ### Videography
 
-Kami menyediakan 3 kategori videografi:
+Kami menyediakan 2 kategori videografi:
 
 -   Video Syuting
 -   Video Dokumentasi
