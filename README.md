@@ -77,6 +77,16 @@ cp .env.example .env
 php artisan key:generate
 ```
 
+**Mengatur Konfigurasi Database pada Environment Variables**
+
+```
+DB_HOST=
+DB_PORT=
+DB_DATABASE=
+DB_USERNAME=
+DB_PASSWORD=
+```
+
 **Migrasi Database**:
 
 ```shell
