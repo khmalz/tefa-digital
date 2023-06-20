@@ -31,17 +31,18 @@
             <div class="carousel-image-container">
                 <img src="https://images.unsplash.com/photo-1603380353725-f8a4d39cc41e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
                     alt="">
-    
+
                 <!-- Slide 1 -->
                 <div class="carousel-item active">
                     <div class="carousel-container">
                         <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Tefa digital</span></h2>
                         <p class="animate__animated fanimate__adeInUp">Tefa digital adalah website inovatif yang berdedikasi
                             untuk meningkatkan pendidikan dan membantu siswa mencapai potensi terbaik mereka.</p>
-                        <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
+                        <a href="#about"
+                            class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
                     </div>
                 </div>
-    
+
                 <!-- Slide 2 -->
                 <div class="carousel-item">
                     <div class="carousel-container">
@@ -52,11 +53,11 @@
                             class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
                     </div>
                 </div>
-    
+
                 <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
                     <span class="carousel-control-prev-icon bx bx-chevron-left" aria-hidden="true"></span>
                 </a>
-    
+
                 <a class="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
                     <span class="carousel-control-next-icon bx bx-chevron-right" aria-hidden="true"></span>
                 </a>
@@ -118,7 +119,7 @@
         <!-- ======= Features Section ======= -->
         <section id="features" class="features">
             <div class="container">
-                <ul class="nav nav-tabs row d-flex">
+                <ul class="nav nav-tabs d-flex gap-md-4 flex-nowrap gap-1">
                     <li class="nav-item col-3" data-aos="zoom-in" data-aos-delay="200">
                         <a class="nav-link active show" data-bs-toggle="tab" href="#tab-1">
                             <i class="bi bi-camera"></i>
@@ -268,7 +269,7 @@
                     <p>What we've done</p>
                 </div>
 
-                <ul id="portfolio-flters" class="d-flex justify-content-end" data-aos="fade-up">
+                <ul id="portfolio-flters" class="d-md-flex justify-content-end d-inline-block" data-aos="fade-up">
                     <li data-filter="*" class="filter-active">All</li>
                     @foreach ($portfolioCategories as $category)
                         <li data-filter=".filter-{{ $category }}">{{ ucfirst($category) }}</li>
@@ -346,7 +347,7 @@
 
 @push('styles')
     <style>
-         .carousel-image-container {
+        .carousel-image-container {
             position: relative;
             width: 100vw;
             overflow: hidden;
@@ -366,35 +367,41 @@
 
 @push('scripts')
     <script>
-        $(document).ready(function() {
-            const screenWidth = $(window).width();
+        document.addEventListener('DOMContentLoaded', function() {
+            const screenWidth = window.innerWidth;
             let limit = (screenWidth >= 992) ? 14 : (screenWidth >= 576) ? 10 : 6;
 
-            showPortfolios('.portfolio-container', 'portfolios', limit)
+            showPortfolios('.portfolio-container', 'portfolios', limit);
 
             const portfolioLightbox = GLightbox({
                 selector: '.portfolio-lightbox'
             });
-        })
+        });
 
         const showPortfolios = (element, dataName, limit) => {
-            let portfolios = $(element).data(dataName);
+            const portfolioContainer = document.querySelector(element);
+            const portfolios = JSON.parse(portfolioContainer.dataset[dataName]);
 
-            $(element).html(portfolios.slice(0, limit).map(portfolio => `
-                <div class="col-lg-4 col-md-6 portfolio-item filter-${portfolio.category}">
-                    <div class="portfolio-img">
-                        <img src="{{ asset('assets/img/${portfolio.image}') }}" class="img-fluid" alt="${portfolio.title}">
-                    </div>
-                    <div class="portfolio-info">
-                        <h4>${portfolio.title}</h4>
-                        <p>${portfolio.category}</p>
-                        <a href="{{ asset('assets/img/${portfolio.image}') }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="${portfolio.title}">
-                            <i class="bx bx-plus"></i>
-                        </a>
-                    </div>
-                </div>
-            `).join(''));
-        }
+            portfolioContainer.innerHTML = portfolios
+                .slice(0, limit)
+                .map((portfolio) => {
+                    return `
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-${portfolio.category}">
+                            <div class="portfolio-img">
+                                <img src="{{ asset('assets/img/${portfolio.image}') }}" class="img-fluid" alt="${portfolio.title}">
+                            </div>
+                            <div class="portfolio-info">
+                                <h4>${portfolio.title}</h4>
+                                <p>${portfolio.category}</p>
+                                <a href="{{ asset('assets/img/${portfolio.image}') }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="${portfolio.title}">
+                                    <i class="bx bx-plus"></i>
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                })
+                .join('');
+        };
 
         function showToast(message, background) {
             Toastify({

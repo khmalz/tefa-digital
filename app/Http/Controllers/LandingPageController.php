@@ -15,7 +15,17 @@ class LandingPageController extends Controller
     {
         $contact = Contact::first();
         $portfolioCategories = Portfolio::getSortedCategories();
-        $portfolios = Portfolio::inRandomOrder()->get();
+
+        $minPortfolios = collect();
+        foreach ($portfolioCategories as $category) {
+            $selectPortfolio = Portfolio::where('category', $category)->first();
+
+            $minPortfolios->push($selectPortfolio);
+        }
+
+        $allPortfolios = Portfolio::inRandomOrder()->get();
+
+        $portfolios = $minPortfolios->merge($allPortfolios);
 
         return view('index', compact('contact', 'portfolioCategories', 'portfolios'));
     }

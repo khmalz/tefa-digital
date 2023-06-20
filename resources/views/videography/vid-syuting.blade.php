@@ -78,7 +78,7 @@
                     <p>Penawaran Harga Jasa</p>
                 </div>
 
-                <div class="row justify-content-center">
+                <div class="row justify-content-center" style="row-gap: 2rem">
                     @foreach ($category->plans as $plan)
                         <div class="col-lg-4 col-md-6 d-flex align-items-stretch" style="width: auto !important">
                             <div class="box {{ $loop->last ? 'featured' : '' }} d-flex flex-column justify-content-between"

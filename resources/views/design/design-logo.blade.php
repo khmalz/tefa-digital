@@ -9,14 +9,15 @@
             <div class="carousel-image-container">
                 <img src="https://images.unsplash.com/photo-1603380353725-f8a4d39cc41e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
                     alt="">
-    
+
                 <!-- Slide 1 -->
                 <div class="carousel-item active">
                     <div class="carousel-container">
                         <h2 class="animate__animated animate__fadeInDown">Jasa Design Logo</span></h2>
                         <p class="animate__animated fanimate__adeInUp">Logo adalah jantung merek Anda, wujud visual yang
                             mewakili identitas dan nilai-nilai bisnis Anda.</p>
-                        <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
+                        <a href="#about"
+                            class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
                     </div>
                 </div>
             </div>
@@ -87,9 +88,9 @@
                     <p>Penawaran Harga Jasa</p>
                 </div>
 
-                <div class="row justify-content-center">
+                <div class="row justify-content-center" style="row-gap: 2rem">
                     @foreach ($category->plans as $plan)
-                        <div class="mx-3 mb-5 col-lg-3 col-md-6 d-flex align-items-stretch" style="width: auto !important">
+                        <div class="col-lg-3 col-md-6 d-flex align-items-stretch" style="width: auto !important">
                             <div class="box {{ $loop->last ? 'featured' : '' }} d-flex flex-column justify-content-between"
                                 data-aos="zoom-in">
                                 <div>
@@ -118,7 +119,7 @@
 
 @push('styles')
     <style>
-         .carousel-image-container {
+        .carousel-image-container {
             position: relative;
             width: 100vw;
             overflow: hidden;

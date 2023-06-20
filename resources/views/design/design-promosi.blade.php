@@ -9,14 +9,16 @@
             <div class="carousel-image-container">
                 <img src="https://images.unsplash.com/photo-1603380353725-f8a4d39cc41e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
                     alt="">
-    
+
                 <!-- Slide 1 -->
                 <div class="carousel-item active">
                     <div class="carousel-container">
                         <h2 class="animate__animated animate__fadeInDown">Jasa Design Promosi</span></h2>
-                        <p class="animate__animated fanimate__adeInUp">Taklukkan pasar yang kompetitif dengan promosi digital.
+                        <p class="animate__animated fanimate__adeInUp">Taklukkan pasar yang kompetitif dengan promosi
+                            digital.
                         </p>
-                        <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
+                        <a href="#about"
+                            class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
                     </div>
                 </div>
             </div>
@@ -88,7 +90,7 @@
                 <div class="container px-3 text-center">
                     <div class="row gx-5">
                         @foreach ($category->plans as $plan)
-                            <div class="spacer-cool col-lg-4 col-md-12 col-sm-12 ">
+                            <div class="spacer-cool col-lg-4 col-md-12 col-sm-12">
                                 <div class="card-pricing" data-aos="zoom-in-left" data-aos-delay="100">
                                     <span class="text-dark">
                                         <p class="ms-3 mt-3 text-start">Mulai dari</p>
@@ -138,7 +140,7 @@
 
 @push('styles')
     <style>
-         .carousel-image-container {
+        .carousel-image-container {
             position: relative;
             width: 100vw;
             overflow: hidden;
@@ -153,6 +155,5 @@
             object-fit: cover;
             filter: brightness(45%);
         }
-
     </style>
 @endpush
