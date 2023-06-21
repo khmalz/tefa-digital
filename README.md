@@ -55,7 +55,7 @@ git clone https://github.com/khmalz/tefa-digital.git
 cd tefa-digital
 ```
 
-**Instalasi Dependensi**:
+**Instalasi Dependensi**
 
 ```shell
 composer install
@@ -65,7 +65,7 @@ composer install
 npm install
 ```
 
-**Konfigurasi Environment**:
+**Konfigurasi Environment**
 
 ```shell
 cp .env.example .env
@@ -87,7 +87,7 @@ DB_USERNAME=
 DB_PASSWORD=
 ```
 
-**Migrasi Database**:
+**Migrasi Database**
 
 ```shell
 php artisan migrate --seed
@@ -110,11 +110,8 @@ php artisan serve
 Untuk menjalankan fitur Contact Us pada situs web kami, Anda perlu mengubah konfigurasi variabel pada file .env Anda
 
 ```
-MAIL_HOST
-MAIL_PORT
 MAIL_USERNAME
 MAIL_PASSWORD
-MAIL_FROM_ADDRESS
 ```
 
 ## Login Dashboard
