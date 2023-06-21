@@ -23,7 +23,7 @@ class MailRequest extends FormRequest
     {
         return [
             'name' => ['required', 'string'],
-            'email' => ['required', 'email'],
+            'email' => ['required', 'email:dns'],
             'subject' => ['required', 'string'],
             'message' => ['required', 'string'],
         ];

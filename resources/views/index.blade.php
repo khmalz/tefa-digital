@@ -324,7 +324,7 @@
                                 </div>
                                 <div class="col-md-6 form-group mt-md-0 mt-3">
                                     <input type="email" class="form-control" name="email" id="email"
-                                        placeholder="Your Email" required>
+                                        placeholder="Your Email" pattern=".+@gmail\.com" required>
                                 </div>
                             </div>
                             <div class="form-group mt-3">
