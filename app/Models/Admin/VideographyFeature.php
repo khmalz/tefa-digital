@@ -5,18 +5,21 @@ namespace App\Models\Admin;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Admin\VideographyPlan;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class VideographyFeature extends Model
 {
     use HasFactory;
 
+    protected $table = 'videography_features';
+
     protected $fillable = [
+        'videography_plan_id',
         'text',
-        'description',
-        'videography_plan_id'
+        'description'
     ];
 
-    public function plan()
+    public function plan(): BelongsTo
     {
         return $this->belongsTo(VideographyPlan::class, 'videography_plan_id');
     }

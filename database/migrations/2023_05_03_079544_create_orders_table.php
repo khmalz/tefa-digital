@@ -11,12 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('photography_plans', function (Blueprint $table) {
+        Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('photography_category_id')->constrained('photography_categories')->cascadeOnDelete();
-            $table->string('title');
-            $table->integer('price');
+            $table->ulid()->unique();
+            $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->string('name_customer');
+            $table->string('number_customer');
+            $table->string('email_customer');
             $table->text('description')->nullable();
+            $table->enum('status', ['cancel', 'pending', 'progress', 'completed'])->default('pending');
             $table->timestamps();
         });
     }
@@ -26,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('photography_plans');
+        Schema::dropIfExists('orders');
     }
 };
