@@ -21,7 +21,7 @@
                             <ul>
                                 <li><a href="#">{{ auth()->user()->email }}</a></li>
                                 <li>
-                                    <form action="{{ route('logout') }}" method="post">
+                                    <form action="{{ route('logout') }}" method="post" class="d-inline">
                                         @csrf
                                         <a href="#"
                                             onclick="return confirm('Yakin ? ') ? this.parentElement.submit() : null">Log

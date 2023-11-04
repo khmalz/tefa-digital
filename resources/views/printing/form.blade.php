@@ -20,23 +20,23 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label class="col-form-label-sm" for="phoneInput">Phone Number</label>
-                            <input type="text"
-                                class="form-control form-control-sm @error('number_customer') is-invalid @enderror"
-                                name="number_customer" id="phoneInput" placeholder="" value="{{ old('number_customer') }}">
-                            @error('number_customer')
-                                <div id="numberInvalid" class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
                             <label class="col-form-label-sm" for="emailInput">Email</label>
                             <input type="email"
                                 class="form-control form-control-sm @error('email_customer') is-invalid @enderror"
                                 name="email_customer" id="emailInput" placeholder="" value="{{ old('email_customer') }}">
                             @error('email_customer')
                                 <div id="emailInvalid" class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label-sm" for="phoneInput">Phone Number</label>
+                            <input type="text"
+                                class="form-control form-control-sm @error('number_customer') is-invalid @enderror"
+                                name="number_customer" id="phoneInput" placeholder="" value="{{ old('number_customer') }}">
+                            @error('number_customer')
+                                <div id="numberInvalid" class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror

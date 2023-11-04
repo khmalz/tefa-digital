@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Form {{ $title }}</title>
+    <title>Form - {{ $title }}</title>
     <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
     <style>
@@ -43,7 +43,7 @@
     <nav class="w-100 position-absolute top-0" style="z-index: 111">
         <div class="d-flex align-items-center justify-content-center" style="background-color: rgba(42, 44, 57, 0.9)">
             <div class="logo">
-                <h1 class="fw-bold fs-3 p-3 text-white">Tefa Digital</h1>
+                <h1><a class="fw-bold fs-3 p-3 text-white" href="{{ route('home') }}">Tefa Digital</a></h1>
             </div>
         </div>
     </nav>

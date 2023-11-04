@@ -10,6 +10,24 @@
                  <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
                  <li><a class="nav-link scrollto" href="#about">About</a></li>
                  <li><a class="nav-link scrollto" href="#pricing">Pricing</a></li>
+                 @auth
+                     <li class="dropdown"><a href="#"><span>Welcome, {{ auth()->user()->name }}</span> <i
+                                 class="bi bi-chevron-down"></i></a>
+                         <ul>
+                             <li><a href="#">{{ auth()->user()->email }}</a></li>
+                             <li>
+                                 <form action="{{ route('logout') }}" method="post" class="d-inline">
+                                     @csrf
+                                     <a href="#"
+                                         onclick="return confirm('Yakin ? ') ? this.parentElement.submit() : null">Log
+                                         Out</a>
+                                 </form>
+                             </li>
+                         </ul>
+                     </li>
+                 @else
+                     <li><a class="nav-link" href="{{ route('login.index') }}">Login</a></li>
+                 @endauth
              </ul>
              <i class="bi bi-list mobile-nav-toggle"></i>
          </nav>

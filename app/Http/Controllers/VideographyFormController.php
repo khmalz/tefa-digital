@@ -22,12 +22,16 @@ class VideographyFormController extends Controller
 
     public function store(VideographyRequest $request): RedirectResponse
     {
-        $videography = Videography::create($request->validated());
+        $order = $request->user()->orders()->create($request->validated());
+
+        $videography = $order->videographies()->create([
+            'videography_plan_id' => $request->videography_plan_id,
+        ]);
 
         return to_route('user.videography.form.success', [
-            'nama' => $videography->name_customer,
-            'order' => $videography->order,
-            'orderId' => $videography->ulid
+            'nama' => $order->name_customer,
+            'order' => $videography->category->title,
+            'orderId' => $order->ulid
         ]);
     }
 
