@@ -23,7 +23,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
     <link href="{{ asset('assets/admin/css/style.min.css') }}" rel="stylesheet" />
-    <link href="{{ asset('assets/admin/css/custom.css') }}" rel="stylesheet" />
+    {{-- <link href="{{ asset('assets/admin/css/custom.css') }}" rel="stylesheet" /> --}}
     <style>
         .navstabs {
             color: #3c4b64ac !important;

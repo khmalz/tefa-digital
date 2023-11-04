@@ -53,7 +53,7 @@ class VideographyController extends Controller
      */
     public function update(Request $request, Videography $videography)
     {
-        $videography->update([
+        $videography->order()->update([
             'status' => $request->status
         ]);
 

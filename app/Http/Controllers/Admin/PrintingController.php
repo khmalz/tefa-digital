@@ -53,7 +53,7 @@ class PrintingController extends Controller
      */
     public function update(Request $request, Printing $printing)
     {
-        $printing->update([
+        $printing->order()->update([
             'status' => $request->status
         ]);
 

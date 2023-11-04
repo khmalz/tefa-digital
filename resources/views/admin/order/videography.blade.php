@@ -56,11 +56,41 @@
                                                     </button>
                                                     <div class="dropdown-menu dropdown-menu-end">
                                                         <a class="dropdown-item" target="_blank"
-                                                            href="export-to-pdf/videography/1">Export to PDF</a>
+                                                            href="{{ route('print-pdf.videography', $videography->order->ulid) }}">Export
+                                                            to
+                                                            PDF</a>
+                                                        <button class="dropdown-item" type="button"
+                                                            data-coreui-toggle="modal"
+                                                            data-coreui-target="#videographyModal"
+                                                            data-order-title="{{ $videography->category->title }}"
+                                                            data-order-status="{{ $videography->order->status }}"
+                                                            data-order-name="{{ $videography->order->name_customer }}"
+                                                            id="changeStatus"
+                                                            onclick="changeStatusOrder(this, {{ $videography->id }})">Ganti
+                                                            Status</button>
                                                     </div>
                                                 </div>
                                             </td>
                                         @endforeach
+                                        <div class="modal fade" id="videographyModal" tabindex="-1"
+                                            aria-labelledby="videographyModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+
+                                                    <div class="modal-header justify-content-center">
+                                                        <h5 class="modal-title" id="videographyModalLabel">Ganti Status</h5>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        {{-- Konten form yang akan diisi oleh JavaScript --}}
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" onclick="submitForm()"
+                                                            class="btn btn-primary">Save
+                                                            change</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </tbody>
                                 </table>
                             </div>
@@ -74,6 +104,46 @@
 
 @push('scripts')
     <script>
+        function submitForm() {
+            $('#videographyForm').submit();
+        }
+
+        function changeStatusOrder(el, orderId) {
+            let orderTitle = $(el).data('order-title');
+            let orderStatus = $(el).data('order-status');
+            let orderName = $(el).data('order-name');
+
+            // Membuat template literal untuk isi modal
+            let modalBody = `
+                <p>ID: ${orderId}</p>
+                <p class="text-capitalize">Jenis Order: ${orderTitle}</p>
+                <p>Nama: ${orderName}
+                <form id="videographyForm" method="POST">
+                    @csrf
+                    @method('PATCH')
+                    <div class="form-group">
+                        <label for="statusSelect">Status:</label>
+                        <select class="form-control" id="statusSelect" name="status">
+                            <option ${orderStatus === 'pending' ? 'selected' : ''} value="pending">Pending</option>
+                            <option ${orderStatus === 'progress' ? 'selected' : ''} value="progress">Progress</option>
+                            <option ${orderStatus === 'completed' ? 'selected' : ''} value="completed">Completed</option>
+                        </select>
+                    </div>
+                </form>
+            `;
+
+            // Mengganti konten modal dengan template literal
+            $('#videographyModal .modal-content .modal-body').html(modalBody);
+
+            // Menyiapkan form untuk pengiriman PUT request
+            const editRoute = "{{ route('videography.update', ':order_id') }}";
+            const actionUrl = editRoute.replace(':order_id', orderId);
+            $('#videographyForm').attr('action', actionUrl);
+
+            // Menampilkan modal
+            $('#videographyModal').modal('show');
+        }
+
         $(function() {
             $("#data-table-videography").DataTable({
                 dom: 'Bfrtip',

@@ -53,7 +53,7 @@ class PhotographyController extends Controller
      */
     public function update(Request $request, Photography $photography)
     {
-        $photography->update([
+        $photography->order()->update([
             'status' => $request->status
         ]);
 
