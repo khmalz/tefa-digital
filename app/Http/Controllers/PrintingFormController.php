@@ -23,7 +23,7 @@ class PrintingFormController extends Controller
 
         $order = $request->user()->orders()->create($datas);
 
-        $order->printings()->create([
+        $order->printing()->create([
             'material' => $datas['material'],
             'scale' => $datas['scale'],
             'file' => $datas['file'],

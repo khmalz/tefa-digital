@@ -21,7 +21,7 @@ class Design extends Model
         'color',
     ];
 
-    protected $with = ['plan', 'category', 'order'];
+    protected $with = ['plan', 'category'];
     protected $appends = ['price'];
 
     public function order(): BelongsTo

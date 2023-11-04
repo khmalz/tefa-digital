@@ -24,7 +24,7 @@ class PhotographyFormController extends Controller
     {
         $order = $request->user()->orders()->create($request->validated());
 
-        $photography = $order->photographies()->create([
+        $photography = $order->photography()->create([
             'photography_plan_id' => $request->photography_plan_id,
         ]);
 

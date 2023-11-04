@@ -24,7 +24,7 @@ class VideographyFormController extends Controller
     {
         $order = $request->user()->orders()->create($request->validated());
 
-        $videography = $order->videographies()->create([
+        $videography = $order->videography()->create([
             'videography_plan_id' => $request->videography_plan_id,
         ]);
 
