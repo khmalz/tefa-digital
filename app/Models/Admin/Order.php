@@ -6,7 +6,7 @@ use App\Helpers\MixCaseULID;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Order extends Model
 {
@@ -38,24 +38,24 @@ class Order extends Model
         return 'ulid';
     }
 
-    public function photographies(): HasMany
+    public function photography(): HasOne
     {
-        return $this->hasMany(Photography::class, 'order_id');
+        return $this->hasOne(Photography::class, 'order_id');
     }
 
-    public function videographies(): HasMany
+    public function videography(): HasOne
     {
-        return $this->hasMany(Videography::class, 'order_id');
+        return $this->hasOne(Videography::class, 'order_id');
     }
 
-    public function designs(): HasMany
+    public function design(): HasOne
     {
-        return $this->hasMany(Design::class, 'order_id');
+        return $this->hasOne(Design::class, 'order_id');
     }
 
-    public function printings(): HasMany
+    public function printing(): HasOne
     {
-        return $this->hasMany(Printing::class, 'order_id');
+        return $this->hasOne(Printing::class, 'order_id');
     }
 
     public function scopeByStatus($query, $status): Builder

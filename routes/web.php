@@ -113,14 +113,21 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
-    Route::get('order-list', [OrderListController::class, 'index'])->name('order.index');
-    Route::get('detail/{design}', [OrderListController::class, 'show'])->name('order.show');
+    route::prefix('list')->as('list.')->group(function () {
+        Route::get('design', [OrderListController::class, 'design'])->name('design.index');
+        Route::get('photography', [OrderListController::class, 'photography'])->name('photography.index');
+        Route::get('videography', [OrderListController::class, 'videography'])->name('videography.index');
+        Route::get('printing', [OrderListController::class, 'printing'])->name('printing.index');
+    });
 
-    Route::prefix('export-to-pdf')->group(function () {
-        Route::get('design/{design}', [PDFController::class, 'createInvoiceDesign']);
-        Route::get('photography/{photography}', [PDFController::class, 'createInvoicePhotography']);
-        Route::get('videography/{videography}', [PDFController::class, 'createInvoiceVideography']);
-        Route::get('printing/{printing}', [PDFController::class, 'createInvoicePrinting']);
+    // Only Design
+    Route::get('detail/{order}', [OrderListController::class, 'show'])->name('order.show');
+
+    Route::prefix('export-to-pdf')->as('print-pdf.')->group(function () {
+        Route::get('design/{order}', [PDFController::class, 'createInvoiceDesign'])->name('design');
+        Route::get('photography/{order}', [PDFController::class, 'createInvoicePhotography'])->name('photography');
+        Route::get('videography/{order}', [PDFController::class, 'createInvoiceVideography'])->name('videography');
+        Route::get('printing/{order}', [PDFController::class, 'createInvoicePrinting'])->name('printing');
     });
     Route::resource('portfolio', PortfolioController::class)->except('show');
     Route::resource('contact', ContactController::class)->except('create', 'store', 'show', 'destroy');

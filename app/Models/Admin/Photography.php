@@ -17,7 +17,7 @@ class Photography extends Model
         'photography_plan_id',
     ];
 
-    protected $with = ['plan', 'category', 'order'];
+    protected $with = ['plan', 'category'];
     protected $appends = ['price'];
 
     public function plan(): BelongsTo

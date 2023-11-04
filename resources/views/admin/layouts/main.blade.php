@@ -12,10 +12,12 @@
     <!-- Vendors styles-->
     <link rel="stylesheet" href="{{ asset('assets/admin/vendors/simplebar/css/simplebar.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/admin/css/vendors/simplebar.css') }}" />
+
     <!-- Datatables style -->
     <link
-        href="https://cdn.datatables.net/v/bs5/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/cr-1.6.2/date-1.4.1/fc-4.2.2/fh-3.3.2/kt-2.9.0/r-2.4.1/rg-1.3.1/rr-1.3.3/sc-2.1.1/sb-1.4.2/sp-2.1.2/sl-1.6.2/sr-1.2.2/datatables.min.css"
-        rel="stylesheet" />
+        href="https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-1.13.7/af-2.6.0/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/b-print-2.4.2/r-2.5.0/rg-1.4.1/sb-1.6.0/sp-2.2.0/sr-1.3.0/datatables.min.css"
+        rel="stylesheet">
+
     <!-- Main styles for this application-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -44,7 +46,6 @@
             padding: 15px;
             overflow: hidden;
         } */
-
         .category-text {
             text-align: justify !important;
             font-size: clamp(12px, 2vw, 15px);
@@ -66,7 +67,6 @@
             height: 50%;
             width: 100%;
             object-fit: cover;
-
         }
 
         .category-title {
@@ -103,7 +103,6 @@
             transition: 200ms ease;
             position: relative;
         } */
-
         .darken {
             height: 100%;
             background-color: rgb(0, 0, 0, 0.9);
@@ -281,7 +280,6 @@
                 position: relative;
             }
         } */
-
         .delete-tombol {
             background-color: rgb(255, 0, 0, 0.5);
             padding-left: 12%;
@@ -406,8 +404,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
     <script
-        src="https://cdn.datatables.net/v/bs5/dt-1.13.4/b-2.3.6/b-colvis-2.3.6/b-html5-2.3.6/b-print-2.3.6/cr-1.6.2/date-1.4.1/fc-4.2.2/fh-3.3.2/kt-2.9.0/r-2.4.1/rg-1.3.1/rr-1.3.3/sc-2.1.1/sb-1.4.2/sp-2.1.2/sl-1.6.2/sr-1.2.2/datatables.min.js">
+        src="https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-1.13.7/af-2.6.0/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/b-print-2.4.2/r-2.5.0/rg-1.4.1/sb-1.6.0/sp-2.2.0/sr-1.3.0/datatables.min.js">
     </script>
+
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
     <script>
         $(document).ready(function() {

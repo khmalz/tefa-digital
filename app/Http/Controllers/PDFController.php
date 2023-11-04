@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Admin\Order;
 use App\Models\Admin\Design;
 use Illuminate\Http\Response;
 use App\Models\Admin\Printing;
@@ -12,22 +13,24 @@ use LaravelDaily\Invoices\Classes\InvoiceItem;
 
 class PDFController extends Controller
 {
-    public function createInvoiceDesign(Design $design): Response
+    public function createInvoiceDesign(Order $order): Response
     {
+        $order->load('design');
+
         $customFields = array_filter(
             [
-                'Order' => $design->order,
-                'Plan' => $design->plan->title,
-                'Receipt number' => $design->ulid,
-                'Color' => $design->color,
-                $design->slogan ? 'Slogan' : null => $design->slogan ?? null,
+                'Order' => $order->design->category->title,
+                'Plan' => $order->design->plan->title,
+                'Receipt number' => $order->ulid,
+                'Color' => $order->design->color,
+                $order->design->slogan ? 'Slogan' : null => $order->design->slogan ?? null,
             ]
         );
 
-        $item = (new InvoiceItem())->title($design->order)->pricePerUnit($design->price);
+        $item = (new InvoiceItem())->title($order->design->category->title)->pricePerUnit($order->design->price);
 
         $generateInvoice = new GenerateInvoice(
-            model: $design,
+            model: $order,
             item: $item
         );
 
@@ -37,18 +40,20 @@ class PDFController extends Controller
         return $invoice->stream();
     }
 
-    public function createInvoicePhotography(Photography $photography): Response
+    public function createInvoicePhotography(Order $order): Response
     {
+        $order->load('photography');
+
         $customFields = [
-            'Order' => $photography->order,
-            'Plan' => $photography->plan->title,
-            'Receipt number' => $photography->ulid,
+            'Order' => $order->photography->category->title,
+            'Plan' => $order->photography->plan->title,
+            'Receipt number' => $order->ulid,
         ];
 
-        $item = (new InvoiceItem())->title($photography->order)->pricePerUnit($photography->price);
+        $item = (new InvoiceItem())->title($order->photography->category->title)->pricePerUnit($order->photography->price);
 
         $generateInvoice = new GenerateInvoice(
-            model: $photography,
+            model: $order,
             item: $item
         );
 
@@ -58,18 +63,20 @@ class PDFController extends Controller
         return $invoice->stream();
     }
 
-    public function createInvoiceVideography(Videography $videography): Response
+    public function createInvoiceVideography(Order $order): Response
     {
+        $order->load('videography');
+
         $customFields = [
-            'Order' => $videography->order,
-            'Plan' => $videography->plan->title,
-            'Receipt number' => $videography->ulid,
+            'Order' => $order->videography->category->title,
+            'Plan' => $order->videography->plan->title,
+            'Receipt number' => $order->ulid,
         ];
 
-        $item = (new InvoiceItem())->title($videography->order)->pricePerUnit($videography->price);
+        $item = (new InvoiceItem())->title($order->videography->category->title)->pricePerUnit($order->videography->price);
 
         $generateInvoice = new GenerateInvoice(
-            model: $videography,
+            model: $order,
             item: $item
         );
 
@@ -79,18 +86,20 @@ class PDFController extends Controller
         return $invoice->stream();
     }
 
-    public function createInvoicePrinting(Printing $printing): Response
+    public function createInvoicePrinting(Order $order): Response
     {
+        $order->load('printing');
+
         $customFields = [
-            'Material' => $printing->material,
-            'Scale' => $printing->scale,
-            'Receipt number' => $printing->ulid,
+            'Material' => $order->printing->material,
+            'Scale' => $order->printing->scale,
+            'Receipt number' => $order->ulid,
         ];
 
         $item = (new InvoiceItem())->title("Printing")->pricePerUnit(0);
 
         $generateInvoice = new GenerateInvoice(
-            model: $printing,
+            model: $order,
             item: $item
         );
 

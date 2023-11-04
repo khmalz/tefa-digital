@@ -24,7 +24,7 @@ class DesignFormController extends Controller
     {
         $order = $request->user()->orders()->create($request->validated());
 
-        $design = $order->designs()->create([
+        $design = $order->design()->create([
             'design_plan_id' => $request->design_plan_id,
             'slogan' => $request->slogan,
             'color' => $request->color,

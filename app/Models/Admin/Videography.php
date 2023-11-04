@@ -17,7 +17,7 @@ class Videography extends Model
         'videography_plan_id',
     ];
 
-    protected $with = ['plan', 'category', 'order'];
+    protected $with = ['plan', 'category'];
     protected $appends = ['price'];
 
     public function order(): BelongsTo
