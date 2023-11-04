@@ -9,15 +9,38 @@ use Illuminate\View\View;
 
 class OrderListController extends Controller
 {
+    public function design(): View
+    {
+        $designs = Design::with('order', 'category')->get();
+
+        return view('admin.order.design', compact('designs'));
+    }
+
+    public function photography(): View
+    {
+        return view('admin.order.photography');
+    }
+
+    public function videography(): View
+    {
+        return view('admin.order.videography');
+    }
+
+    public function printing(): View
+    {
+        return view('admin.order.printing');
+    }
+
     public function index(): View
     {
         return view('admin.order.index');
     }
 
-    public function show(Design $design): View
+    public function show(\App\Models\Admin\Order $order)
     {
-        $design = $design->load('images');
+        $order->load('design.images');
 
-        return view('admin.order.detail', compact('design'));
+        // Lakukan operasi yang diperlukan dengan objek Order
+        return view('admin.order.detail', compact('order'));
     }
 }

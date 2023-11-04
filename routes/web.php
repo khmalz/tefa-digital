@@ -113,8 +113,15 @@ Route::prefix('admin')->middleware('auth')->group(function () {
 
     Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
 
+    route::prefix('list')->as('list.')->group(function () {
+        Route::get('design', [OrderListController::class, 'design'])->name('design.index');
+        Route::get('photography', [OrderListController::class, 'photography'])->name('photography.index');
+        Route::get('videography', [OrderListController::class, 'videography'])->name('videography.index');
+        Route::get('printing', [OrderListController::class, 'printing'])->name('printing.index');
+    });
+
     Route::get('order-list', [OrderListController::class, 'index'])->name('order.index');
-    Route::get('detail/{design}', [OrderListController::class, 'show'])->name('order.show');
+    Route::get('detail/{order}', [OrderListController::class, 'show'])->name('order.show');
 
     Route::prefix('export-to-pdf')->group(function () {
         Route::get('design/{design}', [PDFController::class, 'createInvoiceDesign']);
