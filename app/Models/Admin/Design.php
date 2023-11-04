@@ -2,11 +2,9 @@
 
 namespace App\Models\Admin;
 
-use App\Helpers\MixCaseULID;
 use App\Models\Admin\DesignPlan;
 use App\Models\Admin\DesignImage;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Builder;
 use Znck\Eloquent\Traits\BelongsToThrough;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -16,35 +14,19 @@ class Design extends Model
 {
     use HasFactory, BelongsToThrough;
 
-    /**
-     *  Setup model event hooks
-     */
-    public static function boot()
-    {
-        parent::boot();
-
-        self::creating(function ($model) {
-            $model->ulid = MixCaseULID::generate();
-        });
-    }
-
     protected $fillable = [
+        'order_id',
         'design_plan_id',
-        'name_customer',
-        'number_customer',
-        'email_customer',
         'slogan',
         'color',
-        'status',
-        'description'
     ];
 
-    protected $with = ['plan', 'category'];
-    protected $appends = ['price', 'order'];
+    protected $with = ['plan', 'category', 'order'];
+    protected $appends = ['price'];
 
-    public function getRouteKeyName()
+    public function order(): BelongsTo
     {
-        return 'ulid';
+        return $this->belongsTo(Order::class, 'order_id');
     }
 
     public function plan(): BelongsTo
@@ -52,7 +34,7 @@ class Design extends Model
         return $this->belongsTo(DesignPlan::class, 'design_plan_id');
     }
 
-    public function category()
+    public function category(): \Znck\Eloquent\Relations\BelongsToThrough
     {
         return $this->belongsToThrough(
             DesignCategory::class,
@@ -71,15 +53,5 @@ class Design extends Model
     public function getPriceAttribute()
     {
         return $this->plan->price;
-    }
-
-    public function getOrderAttribute()
-    {
-        return $this->category->title;
-    }
-
-    public function scopeByStatus($query, $status): Builder
-    {
-        return $query->where('status', $status);
     }
 }

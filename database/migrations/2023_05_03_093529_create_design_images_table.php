@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('design_images', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('design_id')->constrained('designs')->onDelete('cascade');
-            $table->string('image')->default('placeholder.jpg');
+            $table->foreignId('design_id')->constrained('designs')->cascadeOnDelete();
+            $table->string('path')->default('placeholder.jpg');
             $table->timestamps();
         });
     }

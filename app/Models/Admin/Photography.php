@@ -2,9 +2,7 @@
 
 namespace App\Models\Admin;
 
-use App\Helpers\MixCaseULID;
 use App\Models\Admin\PhotographyPlan;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
 use Znck\Eloquent\Traits\BelongsToThrough;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -14,36 +12,25 @@ class Photography extends Model
 {
     use HasFactory, BelongsToThrough;
 
-    /**
-     *  Setup model event hooks
-     */
-    public static function boot()
-    {
-        parent::boot();
-
-        self::creating(function ($model) {
-            $model->ulid = MixCaseULID::generate();
-        });
-    }
-
     protected $fillable = [
+        'order_id',
         'photography_plan_id',
-        'name_customer',
-        'number_customer',
-        'email_customer',
-        'status',
-        'description'
     ];
 
-    protected $with = ['plan', 'category'];
-    protected $appends = ['price', 'order'];
+    protected $with = ['plan', 'category', 'order'];
+    protected $appends = ['price'];
 
     public function plan(): BelongsTo
     {
         return $this->belongsTo(PhotographyPlan::class, 'photography_plan_id');
     }
 
-    public function category()
+    public function order(): BelongsTo
+    {
+        return $this->belongsTo(Order::class, 'order_id');
+    }
+
+    public function category(): \Znck\Eloquent\Relations\BelongsToThrough
     {
         return $this->belongsToThrough(
             PhotographyCategory::class,
@@ -54,23 +41,8 @@ class Photography extends Model
         );
     }
 
-    public function getRouteKeyName()
-    {
-        return 'ulid';
-    }
-
     public function getPriceAttribute()
     {
         return $this->plan->price;
-    }
-
-    public function getOrderAttribute()
-    {
-        return $this->category->title;
-    }
-
-    public function scopeByStatus($query, $status): Builder
-    {
-        return $query->where('status', $status);
     }
 }

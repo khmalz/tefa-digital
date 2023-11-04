@@ -14,7 +14,7 @@ class PhotographyController extends Controller
      */
     public function index(): PhotographyCollection
     {
-        return new PhotographyCollection(Photography::all());
+        return new PhotographyCollection(Photography::get());
     }
 
     /**

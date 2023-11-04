@@ -15,12 +15,12 @@ class PhotographyResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'order_id' => $this->ulid,
-            'order' => $this->order,
-            'nama' => $this->name_customer,
+            'order_id' => $this->order->ulid,
+            'order' => $this->category->title,
+            'nama' => $this->order->name_customer,
             'date' => $this->created_at->format('d F Y'),
             'price' => $this->price,
-            'status' => $this->status
+            'status' => $this->order->status
         ];
     }
 
