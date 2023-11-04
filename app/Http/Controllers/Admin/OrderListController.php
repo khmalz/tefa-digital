@@ -44,7 +44,7 @@ class OrderListController extends Controller
     {
         $order->load('design.images');
 
-        // Lakukan operasi yang diperlukan dengan objek Order
+        abort_if(!$order->design, 404);
         return view('admin.order.detail', compact('order'));
     }
 }
