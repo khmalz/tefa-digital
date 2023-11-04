@@ -53,7 +53,7 @@ class DesignController extends Controller
      */
     public function update(Request $request, Design $design)
     {
-        $design->update([
+        $design->order()->update([
             'status' => $request->status
         ]);
 

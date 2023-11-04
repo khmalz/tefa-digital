@@ -56,11 +56,41 @@
                                                     </button>
                                                     <div class="dropdown-menu dropdown-menu-end">
                                                         <a class="dropdown-item" target="_blank"
-                                                            href="export-to-pdf/photography/1">Export to PDF</a>
+                                                            href="{{ route('print-pdf.photography', $photography->order->ulid) }}">Export
+                                                            to
+                                                            PDF</a>
+                                                        <button class="dropdown-item" type="button"
+                                                            data-coreui-toggle="modal"
+                                                            data-coreui-target="#photographyModal"
+                                                            data-order-title="{{ $photography->category->title }}"
+                                                            data-order-status="{{ $photography->order->status }}"
+                                                            data-order-name="{{ $photography->order->name_customer }}"
+                                                            id="changeStatus"
+                                                            onclick="changeStatusOrder(this, {{ $photography->id }})">Ganti
+                                                            Status</button>
                                                     </div>
                                                 </div>
                                             </td>
                                         @endforeach
+                                        <div class="modal fade" id="photographyModal" tabindex="-1"
+                                            aria-labelledby="photographyModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+
+                                                    <div class="modal-header justify-content-center">
+                                                        <h5 class="modal-title" id="photographyModalLabel">Ganti Status</h5>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        {{-- Konten form yang akan diisi oleh JavaScript --}}
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" onclick="submitForm()"
+                                                            class="btn btn-primary">Save
+                                                            change</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </tbody>
                                 </table>
                             </div>
@@ -74,6 +104,46 @@
 
 @push('scripts')
     <script>
+        function submitForm() {
+            $('#photographyForm').submit();
+        }
+
+        function changeStatusOrder(el, orderId) {
+            let orderTitle = $(el).data('order-title');
+            let orderStatus = $(el).data('order-status');
+            let orderName = $(el).data('order-name');
+
+            // Membuat template literal untuk isi modal
+            let modalBody = `
+                <p>ID: ${orderId}</p>
+                <p class="text-capitalize">Jenis Order: ${orderTitle}</p>
+                <p>Nama: ${orderName}
+                <form id="photographyForm" method="POST">
+                    @csrf
+                    @method('PATCH')
+                    <div class="form-group">
+                        <label for="statusSelect">Status:</label>
+                        <select class="form-control" id="statusSelect" name="status">
+                            <option ${orderStatus === 'pending' ? 'selected' : ''} value="pending">Pending</option>
+                            <option ${orderStatus === 'progress' ? 'selected' : ''} value="progress">Progress</option>
+                            <option ${orderStatus === 'completed' ? 'selected' : ''} value="completed">Completed</option>
+                        </select>
+                    </div>
+                </form>
+            `;
+
+            // Mengganti konten modal dengan template literal
+            $('#photographyModal .modal-content .modal-body').html(modalBody);
+
+            // Menyiapkan form untuk pengiriman PUT request
+            const editRoute = "{{ route('photography.update', ':order_id') }}";
+            const actionUrl = editRoute.replace(':order_id', orderId);
+            $('#photographyForm').attr('action', actionUrl);
+
+            // Menampilkan modal
+            $('#photographyModal').modal('show');
+        }
+
         $(function() {
             $("#data-table-photography").DataTable({
                 dom: 'Bfrtip',
