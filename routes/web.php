@@ -50,9 +50,11 @@ Route::as('user.')->group(function () {
 
         Route::get('/foto-acara', [PhotographyUserController::class, 'acara'])->name('foto-acara');
 
-        Route::get('/form', [PhotographyFormController::class, 'index'])->name('form.index');
-        Route::post('/form', [PhotographyFormController::class, 'store'])->name('form.store');
-        Route::get('/form-success/{nama}/{order}/{orderId}', [PhotographyFormController::class, 'success'])->name('form.success');
+        Route::middleware('auth')->group(function () {
+            Route::get('/form', [PhotographyFormController::class, 'index'])->name('form.index');
+            Route::post('/form', [PhotographyFormController::class, 'store'])->name('form.store');
+            Route::get('/form-success/{nama}/{order}/{orderId}', [PhotographyFormController::class, 'success'])->name('form.success');
+        });
     });
 
     route::prefix('videography')->as('videography.')->group(function () {
