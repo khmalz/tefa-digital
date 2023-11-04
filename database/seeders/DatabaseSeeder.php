@@ -24,6 +24,11 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@gmail.com',
         ]);
 
+        User::factory()->create([
+            'name' => 'Client',
+            'email' => 'client@gmail.com',
+        ]);
+
         $this->call([
             DesignSeeder::class,
             PhotographySeeder::class,
