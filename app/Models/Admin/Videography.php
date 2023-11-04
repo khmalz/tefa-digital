@@ -17,8 +17,8 @@ class Videography extends Model
         'videography_plan_id',
     ];
 
-    protected $with = ['plan', 'category'];
-    protected $appends = ['price', 'order'];
+    protected $with = ['plan', 'category', 'order'];
+    protected $appends = ['price'];
 
     public function order(): BelongsTo
     {
@@ -44,10 +44,5 @@ class Videography extends Model
     public function getPriceAttribute()
     {
         return $this->plan->price;
-    }
-
-    public function getOrderAttribute()
-    {
-        return $this->category->title;
     }
 }

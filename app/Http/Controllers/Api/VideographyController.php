@@ -14,7 +14,7 @@ class VideographyController extends Controller
      */
     public function index(): VideographyCollection
     {
-        return new VideographyCollection(Videography::all());
+        return new VideographyCollection(Videography::get());
     }
 
     /**

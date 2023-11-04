@@ -17,6 +17,8 @@ class Printing extends Model
         'file',
     ];
 
+    protected $with = ['order'];
+
     public function order(): BelongsTo
     {
         return $this->belongsTo(Order::class, 'order_id');

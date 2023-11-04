@@ -14,7 +14,7 @@ class PrintingController extends Controller
      */
     public function index(): PrintingCollection
     {
-        return new PrintingCollection(Printing::all());
+        return new PrintingCollection(Printing::get());
     }
 
     /**

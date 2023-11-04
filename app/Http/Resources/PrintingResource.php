@@ -15,12 +15,12 @@ class PrintingResource extends JsonResource
     public function toArray(Request $request): array
     {
         return [
-            'order_id' => $this->ulid,
-            'nama' => $this->name_customer,
+            'order_id' => $this->order->ulid,
+            'nama' => $this->order->name_customer,
             'date' => $this->created_at->format('d F Y'),
             'material' => $this->material,
             'scale' => $this->scale,
-            'status' => $this->status
+            'status' => $this->order->status
         ];
     }
 
