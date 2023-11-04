@@ -21,11 +21,17 @@ class PrintingFormController extends Controller
         $file = $request->file('file')->store('order/printing');
         $datas['file'] = $file;
 
-        $printing = Printing::create($datas);
+        $order = $request->user()->orders()->create($datas);
+
+        $order->printings()->create([
+            'material' => $datas['material'],
+            'scale' => $datas['scale'],
+            'file' => $datas['file'],
+        ]);
 
         return to_route('user.printing.form.success', [
-            'nama' => $printing->name_customer,
-            'orderId' => $printing->ulid
+            'nama' => $order->name_customer,
+            'orderId' => $order->ulid
         ]);
     }
 

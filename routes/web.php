@@ -38,7 +38,7 @@ use App\Http\Controllers\Admin\VideographyCategoryController;
 |
 */
 
-Route::get('/', LandingPageController::class);
+Route::get('/', LandingPageController::class)->name('home');
 
 Route::as('user.')->group(function () {
     route::prefix('photography')->as('photography.')->group(function () {
@@ -62,9 +62,11 @@ Route::as('user.')->group(function () {
 
         Route::get('/vid-dokumentasi', [VideographyUserController::class, 'dokumentasi'])->name('vid-dokumentasi');
 
-        Route::get('/form', [VideographyFormController::class, 'index'])->name('form.index');
-        Route::post('/form', [VideographyFormController::class, 'store'])->name('form.store');
-        Route::get('/form-success/{nama}/{order}/{orderId}', [VideographyFormController::class, 'success'])->name('form.success');
+        Route::middleware('auth')->group(function () {
+            Route::get('/form', [VideographyFormController::class, 'index'])->name('form.index');
+            Route::post('/form', [VideographyFormController::class, 'store'])->name('form.store');
+            Route::get('/form-success/{nama}/{order}/{orderId}', [VideographyFormController::class, 'success'])->name('form.success');
+        });
     });
 
     route::prefix('design')->as('design.')->group(function () {
@@ -76,23 +78,27 @@ Route::as('user.')->group(function () {
 
         Route::get('/design-3d', [DesignUserController::class, 'threeD'])->name('design-3d');
 
-        Route::get('/form', [DesignFormController::class, 'index'])->name('form.index');
-        Route::post('/form', [DesignFormController::class, 'store'])->name('form.store');
-        Route::get('/form-success/{nama}/{order}/{orderId}', [DesignFormController::class, 'success'])->name('form.success');
+        Route::middleware('auth')->group(function () {
+            Route::get('/form', [DesignFormController::class, 'index'])->name('form.index');
+            Route::post('/form', [DesignFormController::class, 'store'])->name('form.store');
+            Route::get('/form-success/{nama}/{order}/{orderId}', [DesignFormController::class, 'success'])->name('form.success');
+        });
     });
 
     route::prefix('printing')->as('printing.')->group(function () {
         Route::view('/', 'printing.index')->name('index');
 
-        Route::get('/form', [PrintingFormController::class, 'index'])->name('form.index');
-        Route::post('/form', [PrintingFormController::class, 'store'])->name('form.store');
-        Route::get('/form-success/{nama}/{orderId}', [PrintingFormController::class, 'success'])->name('form.success');
+        Route::middleware('auth')->group(function () {
+            Route::get('/form', [PrintingFormController::class, 'index'])->name('form.index');
+            Route::post('/form', [PrintingFormController::class, 'store'])->name('form.store');
+            Route::get('/form-success/{nama}/{orderId}', [PrintingFormController::class, 'success'])->name('form.success');
+        });
     });
 });
 
 Route::post('/contact-send', [SendMailController::class, 'sendMail'])->name('contact.send');
 
-Route::middleware('guest')->prefix('login/secret/4pw')->as('login.')->group(function () {
+Route::middleware('guest')->prefix('login')->as('login.')->group(function () {
     Route::get('/', [LoginController::class, 'index'])->name('index');
     Route::post('/', [LoginController::class, 'login'])->name('store');
 });

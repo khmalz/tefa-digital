@@ -11,8 +11,8 @@
                     <div class="p-5">
                         <div class="mb-3">
                             <label class="col-form-label-sm" for="categoryInput">Category</label>
-                            <select class="form-select form-select-sm" id="categoryInput"
-                                data-select-category="{{ old('category', $selectedCategory) }}"
+                            <select class="form-select form-select-sm @error('category') is-invalid @enderror"
+                                id="categoryInput" data-select-category="{{ old('category', $selectedCategory) }}"
                                 aria-label=".form-select-sm example" onchange="selectPlanVideography(this)" name="category"
                                 required>
                                 <option selected disabled>Select the category</option>
@@ -21,14 +21,25 @@
                                         {{ $category->title }}</option>
                                 @endforeach
                             </select>
+                            @error('category')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label class="col-form-label-sm" for="planInput">Plan</label>
-                            <select class="form-select form-select-sm" name="videography_plan_id" id="planInput"
+                            <select class="form-select form-select-sm @error('videography_plan_id') is-invalid @enderror"
+                                name="videography_plan_id" id="planInput"
                                 data-select-plan="{{ old('videography_plan_id', $selectedPlan) }}"
                                 aria-label=".form-select-sm example" required>
                                 <option selected disabled>Select the plan</option>
                             </select>
+                            @error('videography_plan_id')
+                                <div class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
                         </div>
                         <div class="mb-3">
                             <label class="col-form-label-sm" for="nameInput">Name</label>
@@ -42,23 +53,23 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label class="col-form-label-sm" for="phoneInput">Phone Number</label>
-                            <input type="text"
-                                class="form-control form-control-sm @error('number_customer') is-invalid @enderror"
-                                name="number_customer" id="phoneInput" placeholder="" value="{{ old('number_customer') }}">
-                            @error('number_customer')
-                                <div id="numberInvalid" class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
                             <label class="col-form-label-sm" for="emailInput">Email</label>
                             <input type="email"
                                 class="form-control form-control-sm @error('email_customer') is-invalid @enderror"
                                 name="email_customer" id="emailInput" placeholder="" value="{{ old('email_customer') }}">
                             @error('email_customer')
                                 <div id="emailInvalid" class="invalid-feedback">
+                                    {{ $message }}
+                                </div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label-sm" for="phoneInput">Phone Number</label>
+                            <input type="text"
+                                class="form-control form-control-sm @error('number_customer') is-invalid @enderror"
+                                name="number_customer" id="phoneInput" placeholder="" value="{{ old('number_customer') }}">
+                            @error('number_customer')
+                                <div id="numberInvalid" class="invalid-feedback">
                                     {{ $message }}
                                 </div>
                             @enderror
