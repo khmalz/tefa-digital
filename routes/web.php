@@ -3,15 +3,17 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\SendMailController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DesignFormController;
 use App\Http\Controllers\DesignUserController;
-use App\Http\Controllers\Admin\LoginController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\Admin\DesignController;
 use App\Http\Controllers\PrintingFormController;
 use App\Http\Controllers\Admin\ContactController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\PrintingController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\OrderListController;
 use App\Http\Controllers\Admin\PortfolioController;
 use App\Http\Controllers\PhotographyFormController;
 use App\Http\Controllers\PhotographyUserController;
@@ -21,7 +23,6 @@ use App\Http\Controllers\Admin\DesignPlanController;
 use App\Http\Controllers\Admin\PhotographyController;
 use App\Http\Controllers\Admin\VideographyController;
 use App\Http\Controllers\Admin\DesignCategoryController;
-use App\Http\Controllers\Admin\OrderListController;
 use App\Http\Controllers\Admin\PhotographyPlanController;
 use App\Http\Controllers\Admin\VideographyPlanController;
 use App\Http\Controllers\Admin\PhotographyCategoryController;
@@ -100,9 +101,11 @@ Route::as('user.')->group(function () {
 
 Route::post('/contact-send', [SendMailController::class, 'sendMail'])->name('contact.send');
 
-Route::middleware('guest')->prefix('login')->as('login.')->group(function () {
-    Route::get('/', [LoginController::class, 'index'])->name('index');
-    Route::post('/', [LoginController::class, 'login'])->name('store');
+Route::middleware('guest')->group(function () {
+    Route::get('/login', [LoginController::class, 'index'])->name('login.index');
+    Route::post('/login', [LoginController::class, 'login'])->name('login.store');
+    Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
+    Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 });
 
 Route::prefix('admin')->middleware('auth')->group(function () {
