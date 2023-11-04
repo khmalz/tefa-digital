@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use Illuminate\View\View;
 use App\Models\Admin\Design;
 use Illuminate\Http\Request;
-use Illuminate\View\View;
+use App\Models\Admin\Printing;
+use App\Models\Admin\Photography;
+use App\Models\Admin\Videography;
+use App\Http\Controllers\Controller;
 
 class OrderListController extends Controller
 {
@@ -18,22 +21,23 @@ class OrderListController extends Controller
 
     public function photography(): View
     {
-        return view('admin.order.photography');
+        $photographies = Photography::with('order', 'category')->get();
+
+        return view('admin.order.photography', compact('photographies'));
     }
 
     public function videography(): View
     {
-        return view('admin.order.videography');
+        $videographies = Videography::with('order', 'category')->get();
+
+        return view('admin.order.videography', compact('videographies'));
     }
 
     public function printing(): View
     {
-        return view('admin.order.printing');
-    }
+        $printings = Printing::with('order')->get();
 
-    public function index(): View
-    {
-        return view('admin.order.index');
+        return view('admin.order.printing', compact('printings'));
     }
 
     public function show(\App\Models\Admin\Order $order)

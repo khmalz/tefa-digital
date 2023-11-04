@@ -120,7 +120,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('printing', [OrderListController::class, 'printing'])->name('printing.index');
     });
 
-    Route::get('order-list', [OrderListController::class, 'index'])->name('order.index');
+    // Khusus Design
     Route::get('detail/{order}', [OrderListController::class, 'show'])->name('order.show');
 
     Route::prefix('export-to-pdf')->group(function () {

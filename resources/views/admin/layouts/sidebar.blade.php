@@ -9,7 +9,7 @@
             <a class="nav-link" href="{{ route('admin.dashboard') }}">
                 Dashboard</a>
         </li>
-        <li class="nav-title">Orderan</li>
+        <li class="nav-title">Order</li>
         <li class="nav-group">
             <a class="nav-link nav-group-toggle" href="#">
                 List</a>
@@ -21,10 +21,6 @@
                 </li>
                 <li class="nav-item"><a class="nav-link" href="{{ route('list.printing.index') }}">Printing</a></li>
             </ul>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="{{ route('order.index') }}">
-                List</a>
         </li>
         <li class="nav-title">Tampilan</li>
         <li class="nav-item">
