@@ -56,7 +56,9 @@
                                                     </button>
                                                     <div class="dropdown-menu dropdown-menu-end">
                                                         <a class="dropdown-item" target="_blank"
-                                                            href="export-to-pdf/design/1">Export to PDF</a>
+                                                            href="{{ route('print-pdf.design', $design->order->ulid) }}">Export
+                                                            to
+                                                            PDF</a>
                                                         <a class="dropdown-item"
                                                             href="{{ route('order.show', $design->order->ulid) }}">Detail</a>
                                                     </div>

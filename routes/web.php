@@ -120,14 +120,14 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('printing', [OrderListController::class, 'printing'])->name('printing.index');
     });
 
-    // Khusus Design
+    // Only Design
     Route::get('detail/{order}', [OrderListController::class, 'show'])->name('order.show');
 
-    Route::prefix('export-to-pdf')->group(function () {
-        Route::get('design/{design}', [PDFController::class, 'createInvoiceDesign']);
-        Route::get('photography/{photography}', [PDFController::class, 'createInvoicePhotography']);
-        Route::get('videography/{videography}', [PDFController::class, 'createInvoiceVideography']);
-        Route::get('printing/{printing}', [PDFController::class, 'createInvoicePrinting']);
+    Route::prefix('export-to-pdf')->as('print-pdf.')->group(function () {
+        Route::get('design/{order}', [PDFController::class, 'createInvoiceDesign'])->name('design');
+        Route::get('photography/{order}', [PDFController::class, 'createInvoicePhotography'])->name('photography');
+        Route::get('videography/{order}', [PDFController::class, 'createInvoiceVideography'])->name('videography');
+        Route::get('printing/{order}', [PDFController::class, 'createInvoicePrinting'])->name('printing');
     });
     Route::resource('portfolio', PortfolioController::class)->except('show');
     Route::resource('contact', ContactController::class)->except('create', 'store', 'show', 'destroy');
