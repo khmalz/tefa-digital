@@ -27,7 +27,21 @@
                                             <td>{{ $photography->category->title }}</td>
                                             <td>{{ $photography->order->name_customer }}</td>
                                             <td>{{ $photography->created_at->format('d F Y') }}</td>
-                                            <td>{{ $photography->order->status }}</td>
+                                            @php
+                                                $statusClass = '';
+                                                if ($photography->order->status == 'cancel') {
+                                                    $statusClass = 'danger';
+                                                } elseif ($photography->order->status == 'pending') {
+                                                    $statusClass = 'warning';
+                                                } elseif ($photography->order->status == 'progress') {
+                                                    $statusClass = 'info';
+                                                } else {
+                                                    $statusClass = 'success';
+                                                }
+                                            @endphp
+                                            <td><span
+                                                    class="badge bg-{{ $statusClass }}">{{ $photography->order->status }}</span>
+                                            </td>
                                             <td>{{ $photography->price }}</td>
                                             <td>
                                                 <div class="dropdown">

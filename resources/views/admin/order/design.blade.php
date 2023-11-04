@@ -27,7 +27,21 @@
                                             <td>{{ $design->category->title }}</td>
                                             <td>{{ $design->order->name_customer }}</td>
                                             <td>{{ $design->created_at->format('d F Y') }}</td>
-                                            <td>{{ $design->order->status }}</td>
+                                            @php
+                                                $statusClass = '';
+                                                if ($design->order->status == 'cancel') {
+                                                    $statusClass = 'danger';
+                                                } elseif ($design->order->status == 'pending') {
+                                                    $statusClass = 'warning';
+                                                } elseif ($design->order->status == 'progress') {
+                                                    $statusClass = 'info';
+                                                } else {
+                                                    $statusClass = 'success';
+                                                }
+                                            @endphp
+                                            <td><span
+                                                    class="badge bg-{{ $statusClass }}">{{ $design->order->status }}</span>
+                                            </td>
                                             <td>{{ $design->price }}</td>
                                             <td>
                                                 <div class="dropdown">

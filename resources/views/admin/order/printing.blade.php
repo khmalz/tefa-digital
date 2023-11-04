@@ -28,7 +28,21 @@
                                             <td>{{ $printing->created_at->format('d F Y') }}</td>
                                             <td>{{ $printing->material }}</td>
                                             <td>{{ $printing->scale }}</td>
-                                            <td>{{ $printing->order->status }}</td>
+                                            @php
+                                                $statusClass = '';
+                                                if ($printing->order->status == 'cancel') {
+                                                    $statusClass = 'danger';
+                                                } elseif ($printing->order->status == 'pending') {
+                                                    $statusClass = 'warning';
+                                                } elseif ($printing->order->status == 'progress') {
+                                                    $statusClass = 'info';
+                                                } else {
+                                                    $statusClass = 'success';
+                                                }
+                                            @endphp
+                                            <td><span
+                                                    class="badge bg-{{ $statusClass }}">{{ $printing->order->status }}</span>
+                                            </td>
                                             <td>
                                                 <div class="dropdown">
                                                     <button class="btn btn-transparent p-0" type="button"

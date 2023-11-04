@@ -27,7 +27,21 @@
                                             <td>{{ $videography->category->title }}</td>
                                             <td>{{ $videography->order->name_customer }}</td>
                                             <td>{{ $videography->created_at->format('d F Y') }}</td>
-                                            <td>{{ $videography->order->status }}</td>
+                                            @php
+                                                $statusClass = '';
+                                                if ($videography->order->status == 'cancel') {
+                                                    $statusClass = 'danger';
+                                                } elseif ($videography->order->status == 'pending') {
+                                                    $statusClass = 'warning';
+                                                } elseif ($videography->order->status == 'progress') {
+                                                    $statusClass = 'info';
+                                                } else {
+                                                    $statusClass = 'success';
+                                                }
+                                            @endphp
+                                            <td><span
+                                                    class="badge bg-{{ $statusClass }}">{{ $videography->order->status }}</span>
+                                            </td>
                                             <td>{{ $videography->price }}</td>
                                             <td>
                                                 <div class="dropdown">
