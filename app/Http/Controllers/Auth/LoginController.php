@@ -24,7 +24,7 @@ class LoginController extends Controller
             $request->session()->regenerate();
 
             if ($request->email == "admin@gmail.com") {
-                return redirect()->intended(route('admin.dashboard'));
+                return redirect()->intended(route('dashboard'));
             }
 
             return redirect()->intended(route('home'));

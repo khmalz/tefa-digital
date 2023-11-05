@@ -39,66 +39,8 @@ use App\Http\Controllers\Admin\VideographyCategoryController;
 |
 */
 
+// Public Routes (No Authentication Required)
 Route::get('/', LandingPageController::class)->name('home');
-
-Route::as('user.')->group(function () {
-    route::prefix('photography')->as('photography.')->group(function () {
-        Route::get('/', [PhotographyUserController::class, 'index'])->name('index');
-
-        Route::get('/foto-produk', [PhotographyUserController::class, 'produk'])->name('foto-produk');
-
-        Route::get('/foto-pernikahan', [PhotographyUserController::class, 'pernikahan'])->name('foto-pernikahan');
-
-        Route::get('/foto-acara', [PhotographyUserController::class, 'acara'])->name('foto-acara');
-
-        Route::middleware('auth')->group(function () {
-            Route::get('/form', [PhotographyFormController::class, 'index'])->name('form.index');
-            Route::post('/form', [PhotographyFormController::class, 'store'])->name('form.store');
-            Route::get('/form-success/{nama}/{order}/{orderId}', [PhotographyFormController::class, 'success'])->name('form.success');
-        });
-    });
-
-    route::prefix('videography')->as('videography.')->group(function () {
-        Route::get('/', [VideographyUserController::class, 'index'])->name('index');
-
-        Route::get('/vid-syuting', [VideographyUserController::class, 'syuting'])->name('vid-syuting');
-
-        Route::get('/vid-dokumentasi', [VideographyUserController::class, 'dokumentasi'])->name('vid-dokumentasi');
-
-        Route::middleware('auth')->group(function () {
-            Route::get('/form', [VideographyFormController::class, 'index'])->name('form.index');
-            Route::post('/form', [VideographyFormController::class, 'store'])->name('form.store');
-            Route::get('/form-success/{nama}/{order}/{orderId}', [VideographyFormController::class, 'success'])->name('form.success');
-        });
-    });
-
-    route::prefix('design')->as('design.')->group(function () {
-        Route::get('/', [DesignUserController::class, 'index'])->name('index');
-
-        Route::get('/design-logo', [DesignUserController::class, 'logo'])->name('design-logo');
-
-        Route::get('/design-promosi', [DesignUserController::class, 'promosi'])->name('design-promosi');
-
-        Route::get('/design-3d', [DesignUserController::class, 'threeD'])->name('design-3d');
-
-        Route::middleware('auth')->group(function () {
-            Route::get('/form', [DesignFormController::class, 'index'])->name('form.index');
-            Route::post('/form', [DesignFormController::class, 'store'])->name('form.store');
-            Route::get('/form-success/{nama}/{order}/{orderId}', [DesignFormController::class, 'success'])->name('form.success');
-        });
-    });
-
-    route::prefix('printing')->as('printing.')->group(function () {
-        Route::view('/', 'printing.index')->name('index');
-
-        Route::middleware('auth')->group(function () {
-            Route::get('/form', [PrintingFormController::class, 'index'])->name('form.index');
-            Route::post('/form', [PrintingFormController::class, 'store'])->name('form.store');
-            Route::get('/form-success/{nama}/{orderId}', [PrintingFormController::class, 'success'])->name('form.success');
-        });
-    });
-});
-
 Route::post('/contact-send', [SendMailController::class, 'sendMail'])->name('contact.send');
 
 Route::middleware('guest')->group(function () {
@@ -108,12 +50,75 @@ Route::middleware('guest')->group(function () {
     Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 });
 
-Route::prefix('admin')->middleware('auth')->group(function () {
-    Route::post('/logout', [LoginController::class, 'logout'])->name('logout');
+Route::as('user.')->group(function () {
+    // Public Routes (No Authentication Required)
+    Route::prefix('photography')->as('photography.')->group(function () {
+        Route::get('/', [PhotographyUserController::class, 'index'])->name('index');
+        Route::get('/foto-produk', [PhotographyUserController::class, 'produk'])->name('foto-produk');
+        Route::get('/foto-pernikahan', [PhotographyUserController::class, 'pernikahan'])->name('foto-pernikahan');
+        Route::get('/foto-acara', [PhotographyUserController::class, 'acara'])->name('foto-acara');
+    });
 
-    Route::get('dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::prefix('videography')->as('videography.')->group(function () {
+        Route::get('/', [VideographyUserController::class, 'index'])->name('index');
+        Route::get('/vid-syuting', [VideographyUserController::class, 'syuting'])->name('vid-syuting');
+        Route::get('/vid-dokumentasi', [VideographyUserController::class, 'dokumentasi'])->name('vid-dokumentasi');
+    });
 
-    route::prefix('list')->as('list.')->group(function () {
+    Route::prefix('design')->as('design.')->group(function () {
+        Route::get('/', [DesignUserController::class, 'index'])->name('index');
+        Route::get('/design-logo', [DesignUserController::class, 'logo'])->name('design-logo');
+        Route::get('/design-promosi', [DesignUserController::class, 'promosi'])->name('design-promosi');
+        Route::get('/design-3d', [DesignUserController::class, 'threeD'])->name('design-3d');
+    });
+
+    Route::prefix('printing')->as('printing.')->group(function () {
+        Route::view('/', 'printing.index')->name('index');
+    });
+
+    // Routes for Client (Authenticated Users)
+    Route::middleware(['auth', 'role:client'])->group(function () {
+        Route::prefix('photography')->as('photography.')->group(function () {
+            Route::middleware('auth')->group(function () {
+                Route::get('/form', [PhotographyFormController::class, 'index'])->name('form.index');
+                Route::post('/form', [PhotographyFormController::class, 'store'])->name('form.store');
+                Route::get('/form-success/{nama}/{order}/{orderId}', [PhotographyFormController::class, 'success'])->name('form.success');
+            });
+        });
+
+        Route::prefix('videography')->as('videography.')->group(function () {
+            Route::middleware('auth')->group(function () {
+                Route::get('/form', [VideographyFormController::class, 'index'])->name('form.index');
+                Route::post('/form', [VideographyFormController::class, 'store'])->name('form.store');
+                Route::get('/form-success/{nama}/{order}/{orderId}', [VideographyFormController::class, 'success'])->name('form.success');
+            });
+        });
+
+        Route::prefix('design')->as('design.')->group(function () {
+            Route::middleware('auth')->group(function () {
+                Route::get('/form', [DesignFormController::class, 'index'])->name('form.index');
+                Route::post('/form', [DesignFormController::class, 'store'])->name('form.store');
+                Route::get('/form-success/{nama}/{order}/{orderId}', [DesignFormController::class, 'success'])->name('form.success');
+            });
+        });
+
+        Route::prefix('printing')->as('printing.')->group(function () {
+            Route::middleware('auth')->group(function () {
+                Route::get('/form', [PrintingFormController::class, 'index'])->name('form.index');
+                Route::post('/form', [PrintingFormController::class, 'store'])->name('form.store');
+                Route::get('/form-success/{nama}/{orderId}', [PrintingFormController::class, 'success'])->name('form.success');
+            });
+        });
+    });
+});
+
+Route::middleware('auth')->group(function () {
+    Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+    Route::get('dashboard', DashboardController::class)->name('dashboard');
+});
+
+Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
+    Route::prefix('list')->as('list.')->group(function () {
         Route::get('design', [OrderListController::class, 'design'])->name('design.index');
         Route::get('photography', [OrderListController::class, 'photography'])->name('photography.index');
         Route::get('videography', [OrderListController::class, 'videography'])->name('videography.index');
@@ -129,6 +134,7 @@ Route::prefix('admin')->middleware('auth')->group(function () {
         Route::get('videography/{order}', [PDFController::class, 'createInvoiceVideography'])->name('videography');
         Route::get('printing/{order}', [PDFController::class, 'createInvoicePrinting'])->name('printing');
     });
+
     Route::resource('portfolio', PortfolioController::class)->except('show');
     Route::resource('contact', ContactController::class)->except('create', 'store', 'show', 'destroy');
 

@@ -16,14 +16,14 @@ class DashboardController extends Controller
     }
 
     /**
-     * Display  of index
+     * Display of index
      */
-    public function index(): View
+    public function __invoke(): View
     {
         $pending = $this->orderService->getPendingOrderCount();
         $progress = $this->orderService->getInProgressOrderCount();
         $completed = $this->orderService->getCompletedOrderCount();
 
-        return view('admin.dashboard.index', compact('pending', 'progress', 'completed'));
+        return view('dashboard.index', compact('pending', 'progress', 'completed'));
     }
 }
