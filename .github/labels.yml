@@ -1,0 +1,31 @@
+# This file defines the labels that should be applied to Pull Requests
+# based on the contents of the commit messages.
+# See: https://github.com/marketplace/actions/labeler
+
+model:
+  - any: ["app/Models/*"]
+    all: ["*.php"]
+provider:
+  - any: ["app/Providers/*"]
+    all: ["*.php"]
+controller:
+  - any: ["app/Http/Controllers/*"]
+    all: ["*.php"]
+repository:
+  - any: ["app/Repositories/*"]
+    all: ["*.php"]
+service:
+  - any: ["app/Services/*"]
+    all: ["*.php"]
+config:
+  - any: ["config/*"]
+    all: ["*.php"]
+public:
+  - any: ["public/*"]
+    all: ["*"]
+view:
+  - any: ["resources/views/*"]
+    all: ["*"]
+route:
+  - any: ["routes/*"]
+    all: ["*.php"]
