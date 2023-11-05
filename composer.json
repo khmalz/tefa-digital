@@ -12,6 +12,7 @@
         "laravel/sanctum": "^3.2",
         "laravel/tinker": "^2.8",
         "laraveldaily/laravel-invoices": "^3.0",
+        "spatie/laravel-permission": "^6.0",
         "staudenmeir/belongs-to-through": "^2.5"
     },
     "require-dev": {

@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('dashboard.layouts.main')
 
 @push('styles')
     <style>

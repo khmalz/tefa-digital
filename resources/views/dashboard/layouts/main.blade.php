@@ -382,13 +382,13 @@
 </head>
 
 <body>
-    @include('admin.layouts.sidebar')
+    @include('dashboard.layouts.sidebar')
     <div class="wrapper d-flex flex-column min-vh-100 bg-light">
-        @include('admin.layouts.header')
+        @include('dashboard.layouts.header')
 
         @yield('content')
 
-        @include('admin.layouts.footer')
+        @include('dashboard.layouts.footer')
     </div>
 
     <!-- CoreUI and necessary plugins-->

@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('dashboard.layouts.main')
 @section('content')
     <div class="container">
         @if (session('success'))
@@ -115,8 +115,8 @@
                     </div>
 
                     <div class="d-flex align-items-center justify-content-between mt-3" id="button-bottom">
-                        <button type="button" class="btn btn-success text-white create-feature">Add</button>
-                        <button type="submit" class="btn btn-info text-white save-changes">Save Changes</button>
+                        <button type="button" class="btn btn-success create-feature text-white">Add</button>
+                        <button type="submit" class="btn btn-info save-changes text-white">Save Changes</button>
                     </div>
                 </div>
             </div>

@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('dashboard.layouts.main')
 @section('content')
     <div class="container" style="height: 100%">
         <div class="row">
