@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('dashboard.layouts.main')
 @section('content')
     <div class="container" style="height: 100%">
         <form action="{{ route('design-category.update', $designCategory->id) }}" method="POST" enctype="multipart/form-data">
