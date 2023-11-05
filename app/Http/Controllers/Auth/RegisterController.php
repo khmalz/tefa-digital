@@ -28,6 +28,8 @@ class RegisterController extends Controller
             'password' => bcrypt($request->password),
         ]);
 
+        $user->assignRole('client');
+
         Auth::login($user);
 
         $request->session()->regenerate();
