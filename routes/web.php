@@ -6,6 +6,7 @@ use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DesignFormController;
 use App\Http\Controllers\DesignUserController;
+use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\Admin\DesignController;
 use App\Http\Controllers\PrintingFormController;
@@ -51,6 +52,11 @@ Route::middleware('guest')->group(function () {
     Route::post('/login', [LoginController::class, 'login'])->name('login.store');
     Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
     Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
+
+    Route::controller(GoogleController::class)->group(function () {
+        Route::get('auth/google', 'handleRedirect')->name('auth.google');
+        Route::get('auth/google/callback', 'handleCallback');
+    });
 });
 
 Route::as('user.')->group(function () {
