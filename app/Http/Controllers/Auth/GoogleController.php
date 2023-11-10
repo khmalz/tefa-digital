@@ -38,6 +38,8 @@ class GoogleController extends Controller
                     'password' => bcrypt('MvXk3OXpJt/12p7BfgZQu5I2iSMNqe2UIFIJssxAhWH33hXLZo7iL88RK8JYU6piu5ONHiBQH2sw2aQHDKvp03SQ7CUl/Q=='),
                     'picture' => $googleUser->getAvatar(),
                 ]);
+
+                $findUser->assignRole('client');
             }
 
             Auth::login($findUser);
