@@ -3,15 +3,25 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\View\View;
+use App\Models\Admin\Order;
 use App\Models\Admin\Design;
 use Illuminate\Http\Request;
 use App\Models\Admin\Printing;
 use App\Models\Admin\Photography;
 use App\Models\Admin\Videography;
 use App\Http\Controllers\Controller;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class OrderListController extends Controller
 {
+
+    public function all()
+    {
+        $orders = Order::with('design', 'photography', 'videography', 'printing')->paginate(5);
+
+        return view('admin.order.all', compact('orders'));
+    }
+
     public function design(): View
     {
         $designs = Design::with('order', 'category')->get();

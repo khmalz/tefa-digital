@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Schema;
 use App\Services\OrderServiceInterface;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\OrderRepositoryInterface;
+use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -26,5 +27,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Schema::defaultStringLength(125);
+        Paginator::useBootstrapFive();
     }
 }
