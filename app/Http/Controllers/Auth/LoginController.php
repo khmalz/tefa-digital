@@ -20,15 +20,19 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt($credentials)) {
-            $request->session()->regenerate();
+        $credentials['social_type'] = 'credentials';
 
-            if ($request->email == "admin@gmail.com") {
-                return redirect()->intended(route('dashboard'));
-            }
-
-            return redirect()->intended(route('home'));
+        if (!Auth::attempt($credentials)) {
+            return back()->with('fail', 'Email or password is incorrect');
         }
+
+        $request->session()->regenerate();
+
+        if ($request->user()->hasRole('admin')) {
+            return redirect()->intended(route('dashboard'));
+        }
+
+        return redirect()->intended(route('home'));
     }
 
     public function logout(Request $request)
