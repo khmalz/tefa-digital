@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->ulid()->unique();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
+            $table->morphs('orderable');
             $table->string('name_customer');
             $table->string('number_customer');
             $table->string('email_customer');

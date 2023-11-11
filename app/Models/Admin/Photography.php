@@ -5,6 +5,7 @@ namespace App\Models\Admin;
 use App\Models\Admin\PhotographyPlan;
 use Illuminate\Database\Eloquent\Model;
 use Znck\Eloquent\Traits\BelongsToThrough;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -13,7 +14,6 @@ class Photography extends Model
     use HasFactory, BelongsToThrough;
 
     protected $fillable = [
-        'order_id',
         'photography_plan_id',
     ];
 
@@ -25,9 +25,9 @@ class Photography extends Model
         return $this->belongsTo(PhotographyPlan::class, 'photography_plan_id');
     }
 
-    public function order(): BelongsTo
+    public function order(): MorphOne
     {
-        return $this->belongsTo(Order::class, 'order_id');
+        return $this->morphOne(Order::class, 'orderable');
     }
 
     public function category(): \Znck\Eloquent\Relations\BelongsToThrough

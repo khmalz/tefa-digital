@@ -9,13 +9,13 @@ use Znck\Eloquent\Traits\BelongsToThrough;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 
 class Design extends Model
 {
     use HasFactory, BelongsToThrough;
 
     protected $fillable = [
-        'order_id',
         'design_plan_id',
         'slogan',
         'color',
@@ -24,9 +24,9 @@ class Design extends Model
     protected $with = ['plan', 'category'];
     protected $appends = ['price'];
 
-    public function order(): BelongsTo
+    public function order(): MorphOne
     {
-        return $this->belongsTo(Order::class, 'order_id');
+        return $this->morphOne(Order::class, 'orderable');
     }
 
     public function plan(): BelongsTo
