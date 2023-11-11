@@ -39,6 +39,11 @@
                                 </span>
                             </a>
                             <p class="my-3 text-center">or</p>
+                            @if (session('fail'))
+                                <div class="alert alert-danger py-2">
+                                    {{ session('fail') }}
+                                </div>
+                            @endif
                             <form action="{{ route('login.store') }}" method="post">
                                 @csrf
                                 <div class="input-group mb-3">

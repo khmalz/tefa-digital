@@ -35,7 +35,7 @@ class GoogleController extends Controller
                     'email' => $googleUser->getEmail(),
                     'social_id' => $googleUser->getId(),
                     'social_type' => 'google',
-                    'password' => bcrypt('MvXk3OXpJt/12p7BfgZQu5I2iSMNqe2UIFIJssxAhWH33hXLZo7iL88RK8JYU6piu5ONHiBQH2sw2aQHDKvp03SQ7CUl/Q=='),
+                    'password' => bcrypt(\Illuminate\Support\Str::uuid()->toString() . \Illuminate\Support\Str::uuid()->toString()),
                     'picture' => $googleUser->getAvatar(),
                 ]);
 

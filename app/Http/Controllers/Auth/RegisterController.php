@@ -40,7 +40,7 @@ class RegisterController extends Controller
 
         $request->session()->regenerate();
 
-        if ($user->email == "admin@gmail.com") {
+        if ($request->user()->hasRole('admin')) {
             return redirect()->intended(route('dashboard'));
         }
 
