@@ -2,11 +2,13 @@
 
 namespace App\Models\Admin;
 
+use App\Models\User;
 use App\Helpers\MixCaseULID;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Order extends Model
 {
@@ -14,6 +16,8 @@ class Order extends Model
 
     protected $fillable = [
         'user_id',
+        'orderable_id',
+        'orderable_type',
         'name_customer',
         'number_customer',
         'email_customer',
@@ -38,24 +42,14 @@ class Order extends Model
         return 'ulid';
     }
 
-    public function photography(): HasOne
+    public function orderable(): MorphTo
     {
-        return $this->hasOne(Photography::class, 'order_id');
+        return $this->morphTo(__FUNCTION__, 'orderable_type', 'orderable_id');
     }
 
-    public function videography(): HasOne
+    public function user(): BelongsTo
     {
-        return $this->hasOne(Videography::class, 'order_id');
-    }
-
-    public function design(): HasOne
-    {
-        return $this->hasOne(Design::class, 'order_id');
-    }
-
-    public function printing(): HasOne
-    {
-        return $this->hasOne(Printing::class, 'order_id');
+        return $this->belongsTo(User::class, 'user_id');
     }
 
     public function scopeByStatus($query, $status): Builder

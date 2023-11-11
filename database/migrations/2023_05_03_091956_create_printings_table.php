@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('printings', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->constrained('orders')->cascadeOnDelete();
             $table->string('material');
             $table->string('scale');
             $table->string('file');

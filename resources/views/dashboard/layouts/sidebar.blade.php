@@ -11,22 +11,37 @@
         </li>
         @role('admin')
             <li class="nav-title">Order</li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('order.all') }}">
+                    List</a>
+            </li>
+            <li class="nav-group">
+                <a class="nav-link nav-group-toggle" href="#">
+                    List</a>
+                <ul class="nav-group-items">
+                    <li class="nav-item"><a class="nav-link" href="{{ route('list.design.index') }}">Design</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('list.photography.index') }}">Photography</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('list.videography.index') }}">Videography</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{{ route('list.printing.index') }}">Printing</a></li>
+                </ul>
+            </li>
         @else
             <li class="nav-title">Your Order</li>
+            <li class="nav-group">
+                <a class="nav-link nav-group-toggle" href="#">
+                    List</a>
+                <ul class="nav-group-items">
+                    <li class="nav-item"><a class="nav-link" href="{{ url('#') }}">Design</a></li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('#') }}">Photography</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('#') }}">Videography</a>
+                    </li>
+                    <li class="nav-item"><a class="nav-link" href="{{ url('#') }}">Printing</a></li>
+                </ul>
+            </li>
         @endrole
-        <li class="nav-group">
-            <a class="nav-link nav-group-toggle" href="#">
-                List</a>
-            <ul class="nav-group-items">
-                <li class="nav-item"><a class="nav-link" href="{{ route('list.design.index') }}">Design</a></li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('list.photography.index') }}">Photography</a>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('list.videography.index') }}">Videography</a>
-                </li>
-                <li class="nav-item"><a class="nav-link" href="{{ route('list.printing.index') }}">Printing</a></li>
-            </ul>
-        </li>
-
         @role('admin')
             <li class="nav-title">Tampilan</li>
             <li class="nav-item">

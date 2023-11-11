@@ -22,11 +22,14 @@ class PhotographyFormController extends Controller
 
     public function store(PhotographyRequest $request): RedirectResponse
     {
-        $order = $request->user()->orders()->create($request->validated());
+        $datas = $request->validated();
+        $datas['user_id'] = $request->user()->id;
 
-        $photography = $order->photography()->create([
+        $photography = Photography::create([
             'photography_plan_id' => $request->photography_plan_id,
         ]);
+
+        $order = $photography->order()->create($datas);
 
         return to_route('user.photography.form.success', [
             'nama' => $order->name_customer,

@@ -127,6 +127,8 @@ Route::middleware('auth')->group(function () {
 });
 
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('list-order', [OrderListController::class, 'all'])->name('order.all');
+
     Route::prefix('list')->as('list.')->group(function () {
         Route::get('design', [OrderListController::class, 'design'])->name('design.index');
         Route::get('photography', [OrderListController::class, 'photography'])->name('photography.index');

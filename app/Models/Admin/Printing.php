@@ -3,7 +3,7 @@
 namespace App\Models\Admin;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Printing extends Model
@@ -11,14 +11,13 @@ class Printing extends Model
     use HasFactory;
 
     protected $fillable = [
-        'order_id',
         'material',
         'scale',
         'file',
     ];
 
-    public function order(): BelongsTo
+    public function order(): MorphOne
     {
-        return $this->belongsTo(Order::class, 'order_id');
+        return $this->morphOne(Order::class, 'orderable');
     }
 }

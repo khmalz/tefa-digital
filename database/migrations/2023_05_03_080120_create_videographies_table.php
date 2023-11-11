@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('videographies', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->constrained('orders')->cascadeOnDelete();
             $table->foreignId('videography_plan_id')->constrained('videography_plans')->cascadeOnDelete();
             $table->timestamps();
         });

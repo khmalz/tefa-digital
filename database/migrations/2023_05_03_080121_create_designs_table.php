@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('designs', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('order_id')->constrained('orders')->cascadeOnDelete();
             $table->foreignId('design_plan_id')->constrained('design_plans')->cascadeOnDelete();
             $table->string('slogan')->nullable();
             $table->string('color');
