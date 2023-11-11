@@ -412,7 +412,7 @@
                                 <h4>${portfolio.title}</h4>
                                 <p>${portfolio.category}</p>
                                 <a href="{{ asset('assets/img/${portfolio.image}') }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="${portfolio.title}">
-                                    <i class="bx bx-plus"></i>
+                                    <i class="bx bx-zoom-in"></i>
                                 </a>
                             </div>
                         </div>
