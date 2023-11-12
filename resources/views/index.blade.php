@@ -183,11 +183,9 @@
                                     <li><i class="ri-check-double-line"></i> Jasa 3D Design</li>
                                     <li><i class="ri-check-double-line"></i> Jasa Digital Marketing</li>
                                 </ul>
-                                <button type="button"
-                                    class="btn btn-get-started animate__animated animate__fadeInUp scrollto"
-                                    style="color: #f06404">
-                                    <a href="{{ route('user.design.index') }}">Selengkapnya</a>
-                                </button>
+                                <a href="{{ route('user.design.index') }}" class="btn btn-color order-button">
+                                    Order!
+                                </a>                                
                             </div>
                             <div class="col-lg-6 order-lg-2 order-1 text-center">
                                 <img src="{{ asset('assets/img/design.jpg') }}" alt="Design" class="img-fluid">
@@ -217,9 +215,9 @@
                                     <li><i class="ri-check-double-line"></i> Jasa Foto Pernikahan</li>
                                     <li><i class="ri-check-double-line"></i> Jasa Foto Acara</li>
                                 </ul>
-                                <button type="button" class="btn btn-color" style="color: #f06404">
-                                    <a href="{{ route('user.photography.index') }}">Selengkapnya</a>
-                                </button>
+                                <a href="{{ route('user.design.index') }}" class="btn btn-color order-button">
+                                    Order!
+                                </a>                                
                             </div>
                             <div class="col-lg-6 order-lg-2 order-1 text-center">
                                 <img src="{{ asset('assets/img/photo.jpg') }}" alt="" class="img-fluid">
@@ -244,9 +242,9 @@
                                     <li><i class="ri-check-double-line"></i> Jasa Video Syuting</li>
                                     <li><i class="ri-check-double-line"></i> Jasa Video Dokumentasi</li>
                                 </ul>
-                                <button type="button" class="btn btn-color" style="color: #f06404">
-                                    <a href="{{ route('user.videography.index') }}">Selengkapnya</a>
-                                </button>
+                                <a href="{{ route('user.design.index') }}" class="btn btn-color order-button">
+                                    Order!
+                                </a>                                
                             </div>
                             <div class="col-lg-6 order-lg-2 order-1 text-center">
                                 <img src="{{ asset('assets/img/video.jpg') }}" alt="" class="img-fluid">
@@ -265,9 +263,9 @@
                                     audiens.
                                     Jadikan kami mitra dalam mencetak keberhasilan Anda
                                 </p>
-                                <button type="button" class="btn btn-color" style="color: #f06404">
-                                    <a href="{{ route('user.printing.index') }}">Selengkapnya</a>
-                                </button>
+                                <a href="{{ route('user.design.index') }}" class="btn btn-color order-button">
+                                    Order!
+                                </a>                                
                             </div>
                             <div class="col-lg-6 order-lg-2 order-1 text-center">
                                 <img src="{{ asset('assets/img/print.jpg') }}" alt="" class="img-fluid">
@@ -379,6 +377,28 @@
             height: 100%;
             object-fit: cover;
             filter: brightness(45%);
+        }
+
+        .order-button {
+            font-family: "Raleway", sans-serif;
+            background-color: #f06404;
+            width: 100px;
+            height: 50px;
+            font-size: 25px;
+            padding: 5px;
+            border-radius: 10px;
+            color: #fff;
+            text-align: center;
+            display: inline-block;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .order-button:hover {
+            background: #fff;
+            color: #f06404;
+            text-decoration: none;
+            border: 2px solid #ef6603;
         }
     </style>
 @endpush
