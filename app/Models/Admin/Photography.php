@@ -17,8 +17,8 @@ class Photography extends Model
         'photography_plan_id',
     ];
 
-    protected $with = ['plan', 'category'];
-    protected $appends = ['price'];
+    protected $with = ['plan:id,price', 'category'];
+    protected $appends = ['price', 'order_title'];
 
     public function plan(): BelongsTo
     {
@@ -44,5 +44,10 @@ class Photography extends Model
     public function getPriceAttribute()
     {
         return $this->plan->price;
+    }
+
+    public function getOrderTitleAttribute()
+    {
+        return $this->category->title;
     }
 }

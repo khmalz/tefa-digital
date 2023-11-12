@@ -10,16 +10,36 @@ use App\Models\Admin\Printing;
 use App\Models\Admin\Photography;
 use App\Models\Admin\Videography;
 use App\Http\Controllers\Controller;
-use Illuminate\Pagination\LengthAwarePaginator;
 
 class OrderListController extends Controller
 {
 
-    public function all()
+    public function all(Request $request)
     {
-        $orders = Order::with('design', 'photography', 'videography', 'printing')->paginate(5);
+        // Jangan yang ada di dalam [7, 30, 100]
+        $defaultLength = 10;
 
-        return view('admin.order.all', compact('orders'));
+        // 1 Minggu ini blm jalan
+        $orders = Order::with('orderable')
+            ->when($request->has('date'), function ($query) use ($request) {
+                switch ($request->date) {
+                    case 'week':
+                        return $query->whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()]);
+                    case 'month':
+                        return $query->whereMonth('created_at', now()->month);
+                    case 'year':
+                        return $query->whereYear('created_at', now()->year);
+                    default:
+                        return $query->whereDate('created_at', now());
+                }
+            }, function ($query) {
+                // Query default jika parameter date tidak ada
+                return $query->whereDate('created_at', now());
+            })
+            ->paginate($defaultLength);
+
+        // return $orders;
+        return view('admin.order.all', compact('orders', 'defaultLength'));
     }
 
     public function design(): View

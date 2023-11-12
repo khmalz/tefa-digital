@@ -9,7 +9,8 @@
                         <div class="card-body">
                             <h4>Order's List</h4>
                             <div class="mt-4">
-                                <table class="mb-0 table border" id="data-table-all">
+                                <table class="mb-0 table border" id="data-table-all"
+                                    data-default-length="{{ $defaultLength }}">
                                     <thead class="table-light fw-semibold">
                                         <tr class="align-middle">
                                             <th class="text-center">Order ID</th>
@@ -25,15 +26,7 @@
                                             <tr>
                                                 <td>{{ $order->ulid }}</td>
                                                 <td class="text-center">
-                                                    @if ($order->printing)
-                                                        Printing
-                                                    @elseif ($order->design)
-                                                        {{ $order->design->category->title }}
-                                                    @elseif ($order->photography)
-                                                        {{ $order->photography->category->title }}
-                                                    @elseif ($order->videography)
-                                                        {{ $order->videography->category->title }}
-                                                    @endif
+                                                    {{ $order->orderable->order_title }}
                                                 </td>
                                                 <td>{{ $order->name_customer }}</td>
                                                 <td>{{ $order->created_at->format('d F Y') }}</td>
@@ -81,7 +74,12 @@
                                     </tbody>
                                 </table>
                                 <div>
-                                    {{ $orders->links() }}
+                                    <form method="get" id="dateForm">
+                                        <input type="hidden" name="date" value="1">
+                                    </form>
+                                </div>
+                                <div>
+                                    {{ $orders->appends(['date' => request('date')])->links() }}
                                 </div>
                             </div>
                         </div>
@@ -94,13 +92,72 @@
 
 @push('scripts')
     <script>
-        $(function() {
-            $("#data-table-all").DataTable({
+        document.addEventListener('DOMContentLoaded', function() {
+            const defaultLength = $("#data-table-all").data('default-length');
+
+            const urlParams = new URLSearchParams(window.location.search);
+            generateDataTable('data-table-all', defaultLength);
+
+            // Ambil nilai "date" dari URL
+            const dateParam = urlParams.get('date');
+
+            const selectElement = $('#data-table-all_length select');
+
+            switch (dateParam) {
+                case "week":
+                    selectElement.val('7');
+                    break;
+                case "month":
+                    selectElement.val('30');
+                    break;
+                case "year":
+                    selectElement.val('100');
+                    break;
+                default:
+                    // Jika parameter tidak sesuai, atur ke nilai default
+                    selectElement.val(defaultLength);
+                    break;
+            }
+
+            // Nonaktifkan fungsi kontrol panjang
+            $('#data-table-all_length select').off('change')
+
+            $("#data-table-all_length select").on("change", function() {
+                const selectedValue = parseInt($('#data-table-all_length select')
+                    .val()); // Ambil nilai yang dipilih dan ubah menjadi integer
+                const formDate = $('#dateForm');
+
+                switch (selectedValue) {
+                    case 7:
+                        formDate.find('input[name="date"]').val("week");
+                        break;
+                    case 30:
+                        formDate.find('input[name="date"]').val("month");
+                        break;
+                    case 100:
+                        formDate.find('input[name="date"]').val("year");
+                        break;
+                    default:
+                        formDate.find('input[name="date"]').val("today");
+                        break;
+                }
+
+                // Submit formulir setelah mengatur nilainya
+                formDate.submit();
+            })
+        });
+
+        function generateDataTable(id, length) {
+            $(`#${id}`).DataTable({
                 dom: 'Bflrt',
                 paging: true,
-                pageLength: 10,
-                stateSave: true,
-                stateDuration: 60 * 5,
+                lengthMenu: [
+                    [length, 7, 30, 100],
+                    ["Today", "1 Week", "1 Month", "1 Year"]
+                ],
+                pageLength: length,
+                // stateSave: true,
+                // stateDuration: 60 * 5,
                 order: [
                     [4, "asc"],
                     [3, 'asc']
@@ -152,6 +209,6 @@
                     "targets": -1,
                 }]
             });
-        })
+        }
     </script>
 @endpush
