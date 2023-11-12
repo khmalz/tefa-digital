@@ -36,6 +36,24 @@
 
     <style>
         .pad-x-500 {}
+
+        .whatsapp-button {
+            position: fixed;
+            right: 15px;
+            bottom: 60px;
+            z-index: 997;
+            background-color: #25d366;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.4s;
+            color: #fff;
+        }
+        .whatsapp-button:hover {
+            background-color: #128c7e;
+            color: #fff;
+        }
     </style>
     @stack('styles')
 </head>
@@ -69,6 +87,9 @@
 
     <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
             class="bi bi-arrow-up-short"></i>
+    </a>
+    <a href="https://wa.me/6285936128829?text=Halo,%20saya%20tertarik%20dengan%20produk%20Anda..." class="whatsapp-button d-flex align-items-center justify-content-center" target="_blank">
+        <i class="bi bi-whatsapp"></i>
     </a>
 
     <!-- Vendor JS Files -->
