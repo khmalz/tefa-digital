@@ -76,26 +76,7 @@
 
     @yield('main')
 
-    <!-- ======= Footer ======= -->
-    <footer id="footer">
-        <div class="container">
-            <h3>Tefa Digital</h3>
-            <p>Mendukung kreatifitas siswa berjiwa wirausaha.</p>
-            <div class="social-links">
-                <a target="_blank" href="{{ url('https://www.instagram.com/smknegeri46jakarta') }}" class="instagram"><i
-                        class="bx bxl-instagram"></i></a>
-                <a target="_blank"
-                    href="{{ url('https://smksedkijakarta.wordpress.com/kota/jakarta-timur/smk-negeri-46') }}"
-                    class="wordpress"><i class="bx bxl-wordpress"></i></a>
-                <a target="_blank" href="{{ url('https://smkn46jaktim.sch.id') }}" class="website"><i
-                        class="bx bx-globe"></i></a>
-            </div>
-            <div class="copyright">
-                &copy; Copyright <strong><span>SMK Negeri 46</span></strong>. All Rights Reserved
-            </div>
-        </div>
-    </footer><!-- End Footer -->
-
+    @include('layouts.footer')
     <div class="bottom-button d-flex flex-column">
         <a href="https://wa.me/6285936128829?text=Halo,%20saya%20tertarik%20dengan%20produk%20Anda..."
             class="back-to-top-wa whatsapp-button d-flex align-items-center justify-content-center" target="_blank">
