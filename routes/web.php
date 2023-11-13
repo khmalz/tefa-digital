@@ -8,11 +8,9 @@ use App\Http\Controllers\DesignFormController;
 use App\Http\Controllers\DesignUserController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\LandingPageController;
-use App\Http\Controllers\Admin\DesignController;
 use App\Http\Controllers\PrintingFormController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Admin\PrintingController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrderListController;
 use App\Http\Controllers\Admin\PortfolioController;
@@ -21,8 +19,6 @@ use App\Http\Controllers\PhotographyUserController;
 use App\Http\Controllers\VideographyFormController;
 use App\Http\Controllers\VideographyUserController;
 use App\Http\Controllers\Admin\DesignPlanController;
-use App\Http\Controllers\Admin\PhotographyController;
-use App\Http\Controllers\Admin\VideographyController;
 use App\Http\Controllers\Admin\DesignCategoryController;
 use App\Http\Controllers\Admin\PhotographyPlanController;
 use App\Http\Controllers\Admin\VideographyPlanController;
@@ -136,6 +132,8 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
         Route::get('printing', [OrderListController::class, 'printing'])->name('printing.index');
     });
 
+    Route::patch('order/{order}/update', [OrderListController::class, 'update'])->name('order.update');
+
     // Only Design
     Route::get('detail/{order}', [OrderListController::class, 'show'])->name('order.show');
 
@@ -148,11 +146,6 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
 
     Route::resource('portfolio', PortfolioController::class)->except('show');
     Route::resource('contact', ContactController::class)->except('create', 'store', 'show', 'destroy');
-
-    Route::resource('design', DesignController::class);
-    Route::resource('photography', PhotographyController::class);
-    Route::resource('videography', VideographyController::class);
-    Route::resource('printing', PrintingController::class);
 
     Route::resource('design-category', DesignCategoryController::class)->except('create', 'store', 'show', 'destroy');
     Route::resource('design-plan', DesignPlanController::class);

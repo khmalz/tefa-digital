@@ -75,11 +75,23 @@ class OrderListController extends Controller
         return view('admin.order.printing', compact('printings'));
     }
 
-    public function show(\App\Models\Admin\Order $order)
+    public function show(Order $order)
     {
         $order->load('design.images');
 
         abort_if(!$order->design, 404);
         return view('admin.order.detail', compact('order'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Order $order)
+    {
+        $order->update([
+            'status' => $request->status
+        ]);
+
+        return back()->with('success', "You're successfully updated status a order");
     }
 }

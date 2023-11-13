@@ -86,21 +86,50 @@
                                                             </svg>
                                                         </button>
                                                         <div class="dropdown-menu dropdown-menu-end">
+                                                            @php
+                                                                $orderableType = strtolower(class_basename($order->orderable_type));
+                                                            @endphp
+
                                                             <a class="dropdown-item" target="_blank"
-                                                                href="{{ route('print-pdf.design', 1) }}">Export
-                                                                to
-                                                                PDF</a>
-                                                            <a class="dropdown-item"
-                                                                href="{{ route('order.show', 1) }}">Detail</a>
+                                                                href="{{ route("print-pdf.$orderableType", $order->ulid) }}">Export
+                                                                to PDF</a>
+                                                            @if ($orderableType == 'design')
+                                                                <a class="dropdown-item"
+                                                                    href="{{ route('order.show', $order->ulid) }}">Detail</a>
+                                                            @endif
                                                             <button class="dropdown-item" type="button"
-                                                                data-coreui-toggle="modal" data-coreui-target="#designModal"
-                                                                id="changeStatus">Ganti
+                                                                data-coreui-toggle="modal" data-coreui-target="#orderModal"
+                                                                data-order-title="{{ $order->orderable->order_title }}"
+                                                                data-order-status="{{ $order->status }}"
+                                                                data-order-name="{{ $order->name_customer }}"
+                                                                data-order-category="{{ $orderableType }}"
+                                                                id="changeStatus"
+                                                                onclick="changeStatusOrder(this, '{{ $order->ulid }}')">Ganti
                                                                 Status</button>
                                                         </div>
                                                     </div>
                                                 </td>
                                             </tr>
                                         @endforeach
+                                        <div class="modal fade" id="orderModal" tabindex="-1"
+                                            aria-labelledby="orderModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+
+                                                    <div class="modal-header justify-content-center">
+                                                        <h5 class="modal-title" id="orderModalLabel">Ganti Status</h5>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        {{-- Konten form yang akan diisi oleh JavaScript --}}
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" onclick="submitStatusOrderForm()"
+                                                            class="btn btn-primary">Save
+                                                            change</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </tbody>
                                 </table>
                                 <div>
@@ -117,6 +146,47 @@
 
 @push('scripts')
     <script>
+        function submitStatusOrderForm() {
+            $('#orderStatusForm').submit();
+        }
+
+        function changeStatusOrder(el, orderId) {
+            const orderTitle = $(el).data('order-title');
+            const orderStatus = $(el).data('order-status');
+            const orderName = $(el).data('order-name');
+            const orderCategory = $(el).data('order-category');
+
+            // Membuat template literal untuk isi modal
+            const modalBody = `
+                <p>ID: ${orderId}</p>
+                <p class="text-capitalize">Jenis Order: ${orderTitle}</p>
+                <p>Nama: ${orderName}
+                <form id="orderStatusForm" method="POST">
+                    @csrf
+                    @method('PATCH')
+                    <div class="form-group">
+                        <label for="statusSelect">Status:</label>
+                        <select class="form-control" id="statusSelect" name="status">
+                            <option ${orderStatus === 'pending' ? 'selected' : ''} value="pending">Pending</option>
+                            <option ${orderStatus === 'progress' ? 'selected' : ''} value="progress">Progress</option>
+                            <option ${orderStatus === 'completed' ? 'selected' : ''} value="completed">Completed</option>
+                        </select>
+                    </div>
+                </form>
+            `;
+
+            // Mengganti konten modal dengan template literal
+            $('#orderModal .modal-content .modal-body').html(modalBody);
+
+            // Menyiapkan form untuk pengiriman PUT request
+            const editRoute = "{{ route('order.update', ':order_id') }}";
+            const actionUrl = editRoute.replace(':order_id', orderId);
+            $('#orderStatusForm').attr('action', actionUrl);
+
+            // Menampilkan modal
+            $('#orderModal').modal('show');
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             const defaultLength = $("#data-table-all").data('default-length');
 
