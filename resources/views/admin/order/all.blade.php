@@ -98,7 +98,6 @@
             const urlParams = new URLSearchParams(window.location.search);
             generateDataTable('data-table-all', defaultLength);
 
-            // Ambil nilai "date" dari URL
             const dateParam = urlParams.get('date');
 
             const selectElement = $('#data-table-all_length select');
@@ -113,6 +112,9 @@
                 case "year":
                     selectElement.val('100');
                     break;
+                case "all":
+                    selectElement.val('500');
+                    break;
                 default:
                     // Jika parameter tidak sesuai, atur ke nilai default
                     selectElement.val(defaultLength);
@@ -123,8 +125,7 @@
             $('#data-table-all_length select').off('change')
 
             $("#data-table-all_length select").on("change", function() {
-                const selectedValue = parseInt($('#data-table-all_length select')
-                    .val()); // Ambil nilai yang dipilih dan ubah menjadi integer
+                const selectedValue = parseInt($('#data-table-all_length select').val());
                 const formDate = $('#dateForm');
 
                 switch (selectedValue) {
@@ -137,12 +138,14 @@
                     case 100:
                         formDate.find('input[name="date"]').val("year");
                         break;
+                    case 500:
+                        formDate.find('input[name="date"]').val("all");
+                        break;
                     default:
                         formDate.find('input[name="date"]').val("today");
                         break;
                 }
 
-                // Submit formulir setelah mengatur nilainya
                 formDate.submit();
             })
         });
@@ -152,8 +155,8 @@
                 dom: 'Bflrt',
                 paging: true,
                 lengthMenu: [
-                    [length, 7, 30, 100],
-                    ["Today", "1 Week", "1 Month", "1 Year"]
+                    [length, 7, 30, 100, 500],
+                    ["Today", "This Week", "This Month", "This Year", "All"]
                 ],
                 pageLength: length,
                 // stateSave: true,

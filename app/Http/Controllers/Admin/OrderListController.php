@@ -16,10 +16,9 @@ class OrderListController extends Controller
 
     public function all(Request $request)
     {
-        // Jangan yang ada di dalam [7, 30, 100]
+        // Jangan yang ada di dalam [7, 30, 100, 500]
         $defaultLength = 10;
 
-        // 1 Minggu ini blm jalan
         $orders = Order::with('orderable')
             ->when($request->has('date'), function ($query) use ($request) {
                 switch ($request->date) {
@@ -29,6 +28,8 @@ class OrderListController extends Controller
                         return $query->whereMonth('created_at', now()->month);
                     case 'year':
                         return $query->whereYear('created_at', now()->year);
+                    case 'all':
+                        return $query;
                     default:
                         return $query->whereDate('created_at', now());
                 }
@@ -38,7 +39,6 @@ class OrderListController extends Controller
             })
             ->paginate($defaultLength);
 
-        // return $orders;
         return view('admin.order.all', compact('orders', 'defaultLength'));
     }
 
