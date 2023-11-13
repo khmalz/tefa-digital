@@ -77,9 +77,11 @@ class OrderListController extends Controller
 
     public function show(Order $order)
     {
-        $order->load('design.images');
+        $order->load('orderable');
+        if ($order->orderable_type === 'App\Models\Admin\Design') {
+            $order->orderable->load('images');
+        }
 
-        abort_if(!$order->design, 404);
         return view('admin.order.detail', compact('order'));
     }
 

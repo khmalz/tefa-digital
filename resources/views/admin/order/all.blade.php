@@ -93,10 +93,8 @@
                                                             <a class="dropdown-item" target="_blank"
                                                                 href="{{ route("print-pdf.$orderableType", $order->ulid) }}">Export
                                                                 to PDF</a>
-                                                            @if ($orderableType == 'design')
-                                                                <a class="dropdown-item"
-                                                                    href="{{ route('order.show', $order->ulid) }}">Detail</a>
-                                                            @endif
+                                                            <a class="dropdown-item"
+                                                                href="{{ route('order.show', $order->ulid) }}">Detail</a>
                                                             <button class="dropdown-item" type="button"
                                                                 data-coreui-toggle="modal" data-coreui-target="#orderModal"
                                                                 data-order-title="{{ $order->orderable->order_title }}"

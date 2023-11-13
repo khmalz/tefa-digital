@@ -21,7 +21,7 @@ class Design extends Model
         'color',
     ];
 
-    protected $with = ['plan:id,price', 'category'];
+    protected $with = ['plan:id,title,price', 'category'];
     protected $appends = ['price', 'order_title'];
 
     public function order(): MorphOne
