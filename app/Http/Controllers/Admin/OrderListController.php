@@ -20,6 +20,11 @@ class OrderListController extends Controller
         $defaultLength = 10;
 
         $orders = Order::with('orderable')
+            ->when($request->has('category') && in_array($request->category, ['all', 'design', 'photography', 'videography', 'printing']), function ($query) use ($request) {
+                if ($request->category !== 'all') {
+                    return $query->whereHasMorph('orderable', ['App\Models\Admin\\' . $request->category], null);
+                }
+            })
             ->when($request->has('date'), function ($query) use ($request) {
                 switch ($request->date) {
                     case 'week':

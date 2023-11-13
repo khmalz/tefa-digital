@@ -9,6 +9,36 @@
                         <div class="card-body">
                             <h4>Order's List</h4>
                             <div class="mt-4">
+                                <form method="GET" id="orderForm">
+                                    <input type="hidden" name="date" value="{{ request('date', 1) }}">
+
+                                    <div class="d-flex align-items-center flex-nowrap" style="column-gap: 10px">
+                                        <div class="col-md-11">
+                                            <select class="form-select" name="category" aria-label="Select Category Order">
+                                                <option value="all"
+                                                    {{ request('category') == 'all' ? 'selected' : null }}>All
+                                                    Category</option>
+                                                <option value="design"
+                                                    {{ request('category') == 'design' ? 'selected' : null }}>
+                                                    Design</option>
+                                                <option value="photography"
+                                                    {{ request('category') == 'photography' ? 'selected' : null }}>
+                                                    Photography
+                                                </option>
+                                                <option value="videography"
+                                                    {{ request('category') == 'videography' ? 'selected' : null }}>
+                                                    Videography
+                                                </option>
+                                                <option value="printing"
+                                                    {{ request('category') == 'printing' ? 'selected' : null }}>Printing
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col">
+                                            <button type="submit" class="btn btn-primary btn-sm px-3 py-2">Filter</button>
+                                        </div>
+                                    </div>
+                                </form>
                                 <table class="mb-0 table border" id="data-table-all"
                                     data-default-length="{{ $defaultLength }}">
                                     <thead class="table-light fw-semibold">
@@ -74,12 +104,7 @@
                                     </tbody>
                                 </table>
                                 <div>
-                                    <form method="get" id="dateForm">
-                                        <input type="hidden" name="date" value="1">
-                                    </form>
-                                </div>
-                                <div>
-                                    {{ $orders->appends(['date' => request('date')])->links() }}
+                                    {{ $orders->appends(['date' => request('date'), 'category' => request('category')])->links() }}
                                 </div>
                             </div>
                         </div>
@@ -126,7 +151,7 @@
 
             $("#data-table-all_length select").on("change", function() {
                 const selectedValue = parseInt($('#data-table-all_length select').val());
-                const formDate = $('#dateForm');
+                const formDate = $('#orderForm');
 
                 switch (selectedValue) {
                     case 7:
@@ -145,14 +170,12 @@
                         formDate.find('input[name="date"]').val("today");
                         break;
                 }
-
-                formDate.submit();
             })
         });
 
         function generateDataTable(id, length) {
             $(`#${id}`).DataTable({
-                dom: 'Bflrt',
+                dom: '<"mt-2"l><frBt>',
                 paging: true,
                 lengthMenu: [
                     [length, 7, 30, 100, 500],
