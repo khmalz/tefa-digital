@@ -2,9 +2,7 @@
 
 @push('styles')
     <!-- Datatables style -->
-    <link
-        href="https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-1.13.7/af-2.6.0/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/b-print-2.4.2/r-2.5.0/rg-1.4.1/sb-1.6.0/sp-2.2.0/sr-1.3.0/datatables.min.css"
-        rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/datatable/datatables.min.css') }}">
 @endpush
 
 @section('header')
@@ -163,14 +161,12 @@
 @endsection
 
 @push('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
-    <script
-        src="https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-1.13.7/af-2.6.0/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/b-print-2.4.2/r-2.5.0/rg-1.4.1/sb-1.6.0/sp-2.2.0/sr-1.3.0/datatables.min.js">
-    </script>
+    <script src="{{ asset('assets/vendor/datatable/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatable/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatable/datatables.min.js') }}"></script>
 
     <script>
-        $(document).ready(function() {
+        document.addEventListener('DOMContentLoaded', function() {
             const defaultLength = $("#table-order").data('default-length');
 
             createDataTable("table-order", defaultLength)
