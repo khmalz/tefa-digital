@@ -10,11 +10,7 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                    <li><a class="nav-link scrollto" href="#about">About</a></li>
-                    <li><a class="nav-link scrollto" href="#features">Services</a></li>
-                    <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
-                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                    <li><a class="nav-link scrollto active" href="#profile">Profile</a></li>
                     @auth
                         <li class="dropdown"><a href="#"><span>Welcome, {{ auth()->user()->name }}</span> <i
                                     class="bi bi-chevron-down"></i></a>

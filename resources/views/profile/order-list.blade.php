@@ -15,11 +15,7 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-                    <li><a class="nav-link scrollto" href="#about">About</a></li>
-                    <li><a class="nav-link scrollto" href="#features">Services</a></li>
-                    <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
-                    <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                    <li><a class="nav-link scrollto active" href="#orderlist">List Order</a></li>
                     @auth
                         <li class="dropdown"><a href="#"><span>Welcome, {{ auth()->user()->name }}</span> <i
                                     class="bi bi-chevron-down"></i></a>
@@ -60,7 +56,7 @@
                 </div>
             </div>
         </section>
-        <section>
+        <section id="orderlist">
             <div class="container">
                 <div class="justify-content-center">
                     <div class="col-lg-12">
