@@ -29,12 +29,12 @@
                         <div style="text-align: left">
                             <h4>Categories</h4>
                             <div class="footer-links">
+                                {{-- <a href="{{  }}">Links</a><br>
                                 <a href="{{  }}">Links</a><br>
                                 <a href="{{  }}">Links</a><br>
                                 <a href="{{  }}">Links</a><br>
                                 <a href="{{  }}">Links</a><br>
-                                <a href="{{  }}">Links</a><br>
-                                <a href="{{  }}">Links</a>
+                                <a href="{{  }}">Links</a> --}}
                             </div>
                         </div>
                     </div>
@@ -45,12 +45,12 @@
                         <div style="text-align: left">
                             <h4>Sub-Categories</h4>
                             <div class="footer-links">
+                                {{-- <a href="">Links</a><br>
                                 <a href="">Links</a><br>
                                 <a href="">Links</a><br>
                                 <a href="">Links</a><br>
                                 <a href="">Links</a><br>
-                                <a href="">Links</a><br>
-                                <a href="">Links</a>
+                                <a href="">Links</a> --}}
                             </div>
                         </div>
                     </div>
