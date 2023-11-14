@@ -9,6 +9,7 @@ use App\Http\Controllers\DesignFormController;
 use App\Http\Controllers\DesignUserController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\OrderClientController;
 use App\Http\Controllers\PrintingFormController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -84,6 +85,7 @@ Route::as('user.')->group(function () {
         Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
         Route::get('/profile-update', [ProfileController::class, 'edit'])->name('profile.edit');
         Route::put('/profile-update', [ProfileController::class, 'update'])->name('profile.update');
+        Route::get('/list-order', OrderClientController::class)->name('order.list');
 
         Route::prefix('photography')->as('photography.')->group(function () {
             Route::get('/form', [PhotographyFormController::class, 'index'])->name('form.index');
