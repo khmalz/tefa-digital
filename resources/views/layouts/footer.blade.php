@@ -1,11 +1,22 @@
     <!-- ======= Footer ======= -->
     <footer id="footer">
         <div class="container">
-            <div class="row mb-5" style="width 80%; ">
+            <div class="row" style="text-align: left" style="text-align: left">
+                <div class="col-4">
+                    <h3>Tefa Digital</h3>
+                </div>
+                <div class="col-4">
+                    <h4>Categories</h4>
+                </div>
+                <div class="col-4">
+                    <h4>Sub-Categories</h4>
+                </div>
+            </div>
+            <div class="row">
                 <div class="col-md-4 ">
-                    <div style="width: 90%; margin: auto">
+                    <div>
                         <div class="" style="text-align: left">
-                            <h3>Tefa Digital</h3>
+
                             <span><i>Mendukung kreatifitas siswa berjiwa wirausaha.</i></span>
 
                             <div style="text-align: left" class="mt-3">
@@ -25,10 +36,10 @@
                     </div>
                 </div>
                 <div class="col-md-4 mb-3">
-                    <div style="width: 90%; margin: auto; ">
+                    <div>
                         <div style="text-align: left">
-                            <h4>Categories</h4>
-                            <div class="footer-links">
+
+                            <div class="footer-links ">
                                 <a href="">Design</a><br>
                                 <a href="">Photography</a><br>
                                 <a href="">Videography</a><br>
@@ -38,12 +49,11 @@
                     </div>
                 </div>
                 <div class="col-md-4 ">
-                    <div style="width: 90%; margin: auto">
+                    <div>
 
                         <div style="text-align: left">
-                            <h4>Sub-Categories</h4>
                             <div class="footer-links">
-                                <div class="row mt-3">
+                                <div class="row ">
                                     <div class="col-md-4  mb-4">
                                         <span>Design</span><br>
                                         <hr style="width: 33%">
