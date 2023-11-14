@@ -5,7 +5,7 @@
     <header id="header" class="fixed-top d-flex align-items-center">
         <div class="d-flex align-items-center justify-content-between container">
             <div class="logo">
-                <h1><a href="/">Tefa Digital</a></h1>
+                <h1><a href="{{ route('home') }}">Tefa Digital</a></h1>
             </div>
 
             <nav id="navbar" class="navbar">
@@ -44,13 +44,13 @@
 
 @section('main')
     <main>
-        
+
         <section id="breadcrumbs" class="breadcrumbs">
             <div class="container">
                 <div class="align-items-center justify-content-between d-flex">
                     <h2>Profile</h2>
                     <ol>
-                        <li><a href="{{ route('home')}}">Home</a></li>
+                        <li><a href="{{ route('home') }}">Home</a></li>
                         <li>Profile</li>
                     </ol>
                 </div>
@@ -59,39 +59,56 @@
         <section id="profile" class="services">
             <div class="container">
                 <div class="row justify-content-center">
-                    <div class="col-lg-12 ">
-                        <div class="div">
+                    <div class="col-lg-12">
+                        <div>
                             <div class="box profile-box rounded-3" data-aos="zoom-in-left" data-aos-delay="100">
-                                <h2 class="text-center">Edit Profile</h2>
+                                <h2>Edit Profile</h2>
                                 <div class="card-input position-relative mb-4 overflow-hidden rounded bg-white">
-                                    <form action="#" method="POST" enctype="multipart/form-data">
+                                    <form action="{{ route('user.profile.update') }}" method="POST">
                                         @csrf
-                                        <div class="p-5">
-                                            <div class="mb-3">
+                                        @method('PUT')
+                                        <div>
+                                            <div class="mb-2">
                                                 <label class="col-form-label-sm" for="nameInput">Nama</label>
                                                 <input type="text"
-                                                    class="form-control form-control-sm @error('name_customer') is-invalid @enderror"
-                                                    name="name_customer" id="nameInput" placeholder="" value="{{ old('name_customer') }}">
-                                                @error('name_customer')
+                                                    class="form-control form-control-sm @error('name') is-invalid @enderror"
+                                                    name="name" id="nameInput" placeholder="Your Name"
+                                                    value="{{ old('name', $user->name) }}">
+                                                @error('name')
                                                     <div id="nameInvalid" class="invalid-feedback">
                                                         {{ $message }}
                                                     </div>
                                                 @enderror
                                             </div>
-                                            <div class="mb-3">
+                                            <div class="mb-2">
                                                 <label class="col-form-label-sm" for="emailInput">Email</label>
                                                 <input type="email"
-                                                    class="form-control form-control-sm @error('email_customer') is-invalid @enderror"
-                                                    name="email_customer" id="emailInput" placeholder="" value="{{ old('email_customer') }}">
-                                                @error('email_customer')
+                                                    class="form-control form-control-sm @error('email') is-invalid @enderror"
+                                                    name="email" id="emailInput" placeholder="Your Email"
+                                                    value="{{ old('email', $user->email) }}">
+                                                @error('email')
                                                     <div id="emailInvalid" class="invalid-feedback">
                                                         {{ $message }}
                                                     </div>
                                                 @enderror
                                             </div>
+                                            <div class="mb-2">
+                                                <label class="col-form-label-sm" for="passwordInput">Password <span
+                                                        class="text-secondary">(optiona)</span></label>
+                                                <input type="password"
+                                                    class="form-control form-control-sm @error('password') is-invalid @enderror"
+                                                    name="password" id="passwordInput" placeholder="Your Password"
+                                                    value="{{ old('password') }}">
+                                                @error('password')
+                                                    <div id="passwordInvalid" class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
                                         </div>
-                                        <div class="mb-3 text-center">
-                                            <button type="submit" class="btn btn-color btn-profile rounded-2">Edit Profile</button>
+                                        <div class="text-center">
+                                            <button type="submit" class="btn btn-color btn-profile rounded-2">Edit
+                                                Profile</button>
                                         </div>
                                     </form>
                                 </div>
@@ -103,50 +120,3 @@
         </section>
     </main>
 @endsection
-
-@push('styles')
-    <style>
-        .box {
-            padding: 30px;
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            background: #fff;
-            width: 100%;
-            height: 100%;
-        }
-
-        .profile-box {
-            box-shadow: 0 10px 55px 0 rgba(52, 62, 90, 0.12);
-            transition: all 0.4s ease-in-out;
-        }
-
-        .profile-box:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 2px 35px 0 rgba(68, 88, 144, 0.2);
-        }
-
-        .btn-profile {
-            font-family: "Raleway", sans-serif;
-            background-color: #f06404;
-            margin-top: 40px;
-            width: 130px;
-            height: 40px;
-            font-size: 16px;
-            padding: 5px;
-            border-radius: 10px;
-            color: #fff;
-            text-align: center;
-            display: inline-block;
-            text-decoration: none;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .btn-profile:hover {
-            background: #fff;
-            color: #f06404;
-            text-decoration: none;
-            border: 2px solid #ef6603;
-        }
-    </style>
-@endpush
