@@ -4,17 +4,18 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\View\View;
 use App\Models\Admin\Order;
-use App\Models\Admin\Design;
 use Illuminate\Http\Request;
-use App\Models\Admin\Printing;
-use App\Models\Admin\Photography;
-use App\Models\Admin\Videography;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\RedirectResponse;
 
 class OrderListController extends Controller
 {
 
-    public function all(Request $request)
+    /**
+     * Retrieves all orders based on the given request.
+     *
+     */
+    public function all(Request $request): View
     {
         // Jangan yang ada di dalam [7, 30, 100, 500]
         $defaultLength = 10;
@@ -47,35 +48,11 @@ class OrderListController extends Controller
         return view('admin.order.all', compact('orders', 'defaultLength'));
     }
 
-    public function design(): View
-    {
-        $designs = Design::with('order', 'category')->get();
-
-        return view('admin.order.design', compact('designs'));
-    }
-
-    public function photography(): View
-    {
-        $photographies = Photography::with('order', 'category')->get();
-
-        return view('admin.order.photography', compact('photographies'));
-    }
-
-    public function videography(): View
-    {
-        $videographies = Videography::with('order', 'category')->get();
-
-        return view('admin.order.videography', compact('videographies'));
-    }
-
-    public function printing(): View
-    {
-        $printings = Printing::with('order')->get();
-
-        return view('admin.order.printing', compact('printings'));
-    }
-
-    public function show(Order $order)
+    /**
+     * Show the order details.
+     *
+     */
+    public function show(Order $order): View
     {
         $order->load('orderable');
         if ($order->orderable_type === 'App\Models\Admin\Design') {
@@ -86,9 +63,10 @@ class OrderListController extends Controller
     }
 
     /**
-     * Update the specified resource in storage.
+     * Updates the status of an order.
+     *
      */
-    public function update(Request $request, Order $order)
+    public function update(Request $request, Order $order): RedirectResponse
     {
         $order->update([
             'status' => $request->status

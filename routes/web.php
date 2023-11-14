@@ -84,35 +84,27 @@ Route::as('user.')->group(function () {
     // Routes for Client (Authenticated Users)
     Route::middleware(['auth', 'role:client'])->group(function () {
         Route::prefix('photography')->as('photography.')->group(function () {
-            Route::middleware('auth')->group(function () {
-                Route::get('/form', [PhotographyFormController::class, 'index'])->name('form.index');
-                Route::post('/form', [PhotographyFormController::class, 'store'])->name('form.store');
-                Route::get('/form-success/{nama}/{order}/{orderId}', [PhotographyFormController::class, 'success'])->name('form.success');
-            });
+            Route::get('/form', [PhotographyFormController::class, 'index'])->name('form.index');
+            Route::post('/form', [PhotographyFormController::class, 'store'])->name('form.store');
+            Route::get('/form-success/{nama}/{order}/{orderId}', [PhotographyFormController::class, 'success'])->name('form.success');
         });
 
         Route::prefix('videography')->as('videography.')->group(function () {
-            Route::middleware('auth')->group(function () {
-                Route::get('/form', [VideographyFormController::class, 'index'])->name('form.index');
-                Route::post('/form', [VideographyFormController::class, 'store'])->name('form.store');
-                Route::get('/form-success/{nama}/{order}/{orderId}', [VideographyFormController::class, 'success'])->name('form.success');
-            });
+            Route::get('/form', [VideographyFormController::class, 'index'])->name('form.index');
+            Route::post('/form', [VideographyFormController::class, 'store'])->name('form.store');
+            Route::get('/form-success/{nama}/{order}/{orderId}', [VideographyFormController::class, 'success'])->name('form.success');
         });
 
         Route::prefix('design')->as('design.')->group(function () {
-            Route::middleware('auth')->group(function () {
-                Route::get('/form', [DesignFormController::class, 'index'])->name('form.index');
-                Route::post('/form', [DesignFormController::class, 'store'])->name('form.store');
-                Route::get('/form-success/{nama}/{order}/{orderId}', [DesignFormController::class, 'success'])->name('form.success');
-            });
+            Route::get('/form', [DesignFormController::class, 'index'])->name('form.index');
+            Route::post('/form', [DesignFormController::class, 'store'])->name('form.store');
+            Route::get('/form-success/{nama}/{order}/{orderId}', [DesignFormController::class, 'success'])->name('form.success');
         });
 
         Route::prefix('printing')->as('printing.')->group(function () {
-            Route::middleware('auth')->group(function () {
-                Route::get('/form', [PrintingFormController::class, 'index'])->name('form.index');
-                Route::post('/form', [PrintingFormController::class, 'store'])->name('form.store');
-                Route::get('/form-success/{nama}/{orderId}', [PrintingFormController::class, 'success'])->name('form.success');
-            });
+            Route::get('/form', [PrintingFormController::class, 'index'])->name('form.index');
+            Route::post('/form', [PrintingFormController::class, 'store'])->name('form.store');
+            Route::get('/form-success/{nama}/{orderId}', [PrintingFormController::class, 'success'])->name('form.success');
         });
     });
 });
@@ -124,17 +116,7 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('list-order', [OrderListController::class, 'all'])->name('order.all');
-
-    Route::prefix('list')->as('list.')->group(function () {
-        Route::get('design', [OrderListController::class, 'design'])->name('design.index');
-        Route::get('photography', [OrderListController::class, 'photography'])->name('photography.index');
-        Route::get('videography', [OrderListController::class, 'videography'])->name('videography.index');
-        Route::get('printing', [OrderListController::class, 'printing'])->name('printing.index');
-    });
-
     Route::patch('order/{order}/update', [OrderListController::class, 'update'])->name('order.update');
-
-    // Only Design
     Route::get('detail/{order}', [OrderListController::class, 'show'])->name('order.show');
 
     Route::prefix('export-to-pdf')->as('print-pdf.')->group(function () {
