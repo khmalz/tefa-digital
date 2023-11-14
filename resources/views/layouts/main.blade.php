@@ -29,7 +29,7 @@
     <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link href="{{ asset('assets/vendor/toastify/toastify.css') }}" rel="stylesheet">
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
@@ -77,6 +77,7 @@
     @yield('main')
 
     @include('layouts.footer')
+
     <div class="bottom-button d-flex flex-column">
         <a href="https://wa.me/6285936128829?text=Halo,%20saya%20tertarik%20dengan%20produk%20Anda..."
             class="back-to-top-wa whatsapp-button d-flex align-items-center justify-content-center" target="_blank">
@@ -89,18 +90,36 @@
     </div>
 
     <!-- Vendor JS Files -->
+    <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
+
     <script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
     <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
-        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="{{ asset('assets/vendor/toastify/toastify.js') }}"></script>
+
+    <script>
+        function showToast(message, background) {
+            Toastify({
+                text: message,
+                duration: 1800,
+                newWindow: true,
+                close: true,
+                gravity: "top",
+                position: "right",
+                stopOnFocus: true,
+                style: {
+                    background,
+                },
+            }).showToast();
+        }
+    </script>
+
+    @stack('scripts')
 
     <!-- Template Main JS File -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
-    @stack('scripts')
 </body>
 
 </html>

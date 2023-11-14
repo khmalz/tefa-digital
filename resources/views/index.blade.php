@@ -5,7 +5,7 @@
     <header id="header" class="fixed-top d-flex align-items-center header-transparent">
         <div class="d-flex align-items-center justify-content-between container">
             <div class="logo">
-                <h1><a href="/">Tefa Digital</a></h1>
+                <h1><a href="{{ route('home') }}">Tefa Digital</a></h1>
             </div>
 
             <nav id="navbar" class="navbar">
@@ -185,7 +185,7 @@
                                 </ul>
                                 <a href="{{ route('user.design.index') }}" class="btn btn-color order-button">
                                     Order!
-                                </a>                                
+                                </a>
                             </div>
                             <div class="col-lg-6 order-lg-2 order-1 text-center">
                                 <img src="{{ asset('assets/img/design.jpg') }}" alt="Design" class="img-fluid">
@@ -217,7 +217,7 @@
                                 </ul>
                                 <a href="{{ route('user.design.index') }}" class="btn btn-color order-button">
                                     Order!
-                                </a>                                
+                                </a>
                             </div>
                             <div class="col-lg-6 order-lg-2 order-1 text-center">
                                 <img src="{{ asset('assets/img/photo.jpg') }}" alt="" class="img-fluid">
@@ -244,7 +244,7 @@
                                 </ul>
                                 <a href="{{ route('user.design.index') }}" class="btn btn-color order-button">
                                     Order!
-                                </a>                                
+                                </a>
                             </div>
                             <div class="col-lg-6 order-lg-2 order-1 text-center">
                                 <img src="{{ asset('assets/img/video.jpg') }}" alt="" class="img-fluid">
@@ -265,7 +265,7 @@
                                 </p>
                                 <a href="{{ route('user.design.index') }}" class="btn btn-color order-button">
                                     Order!
-                                </a>                                
+                                </a>
                             </div>
                             <div class="col-lg-6 order-lg-2 order-1 text-center">
                                 <img src="{{ asset('assets/img/print.jpg') }}" alt="" class="img-fluid">
@@ -406,6 +406,17 @@
 @push('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
+            let successMessage = document.querySelector('main').dataset.mailSuccess;
+            let failureMessage = document.querySelector('main').dataset.mailFailure;
+
+            if (successMessage) {
+                showToast(successMessage, "#28a745");
+            }
+
+            if (failureMessage) {
+                showToast(failureMessage, "#dc3545");
+            }
+
             const screenWidth = window.innerWidth;
             let limit = (screenWidth >= 992) ? 14 : (screenWidth >= 576) ? 10 : 6;
 
@@ -440,31 +451,5 @@
                 })
                 .join('');
         };
-
-        function showToast(message, background) {
-            Toastify({
-                text: message,
-                duration: 1800,
-                newWindow: true,
-                close: true,
-                gravity: "top",
-                position: "right",
-                stopOnFocus: true,
-                style: {
-                    background,
-                },
-            }).showToast();
-        }
-
-        let successMessage = document.querySelector('main').dataset.mailSuccess;
-        let failureMessage = document.querySelector('main').dataset.mailFailure;
-
-        if (successMessage) {
-            showToast(successMessage, "#28a745");
-        }
-
-        if (failureMessage) {
-            showToast(failureMessage, "#dc3545");
-        }
     </script>
 @endpush
