@@ -37,16 +37,16 @@
 
                     <div class="footer-links d-flex flex-column w-full gap-3">
                         <div>
-                            <a href="">Design</a>
+                            <a href="{{ route('user.design.index') }}">Design</a>
                         </div>
                         <div>
-                            <a href="">Photography</a>
+                            <a href="{{ route('user.photography.index') }}">Photography</a>
                         </div>
                         <div>
-                            <a href="">Videography</a>
+                            <a href="{{ route('user.videography.index') }}">Videography</a>
                         </div>
                         <div>
-                            <a href="">Printing</a>
+                            <a href="{{ route('user.printing.index') }}">Printing</a>
                         </div>
                     </div>
                 </div>
@@ -58,28 +58,27 @@
                             <div class="col-md-6 mb-4">
                                 <span>Design</span><br>
                                 <hr style="width: 25%">
-                                <a href="">3D</a><br>
-                                <a href="">Logo</a><br>
-                                <a href="">Promotion</a>
+                                <a href="{{ route('user.design.design-3d') }}">3D</a><br>
+                                <a href="{{ route('user.design.design-logo') }}">Logo</a><br>
+                                <a href="{{ route('user.design.design-promosi') }}">Promotion</a>
                             </div>
                             <div class="col-md-6 mb-4">
                                 <span>Photography</span><br>
                                 <hr style="width: 25%">
-                                <a href="">Event</a><br>
-                                <a href="">Wedding</a><br>
-                                <a href="">Product</a>
+                                <a href="{{ route('user.photography.foto-acara') }}">Event</a><br>
+                                <a href="{{ route('user.photography.foto-pernikahan') }}">Wedding</a><br>
+                                <a href="{{ route('user.photography.foto-produk') }}">Product</a>
                             </div>
                             <div class="col-md-6 mb-4">
                                 <span>Videography</span><br>
                                 <hr style="width: 25%">
-                                <a href="">Documentation</a><br>
-                                <a href="">Shooting</a><br>
-                                <a href="">Commercial</a>
+                                <a href="{{ route('user.videography.vid-dokumentasi') }}">Documentation</a><br>
+                                <a href="{{ route('user.videography.vid-syuting') }}">Shooting</a><br>
                             </div>
                             <div class="col-md-6 mb-4">
                                 <span>Printing</span><br>
                                 <hr style="width: 25%">
-                                <a href="">3D</a>
+                                <a href="{{ route('user.printing.index') }}">3D</a>
                             </div>
                         </div>
                     </div>
