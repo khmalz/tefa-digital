@@ -65,6 +65,42 @@
             background-color: #128c7e;
             color: #fff;
         }
+
+        .btn-profile {
+            font-family: "Poppins", sans-serif;
+            background-color: #f06404;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            color: #fff;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-profile:hover {
+            background: #fff;
+            color: #f06404;
+            text-decoration: none;
+            border: 2px solid #ef6603;
+        }
+
+        #profile .box {
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            background: #fff;
+            width: 100%;
+            height: 100%;
+        }
+
+        #profile .profile-box {
+            box-shadow: 0 10px 55px 0 rgba(52, 62, 90, 0.12);
+            transition: all 0.4s ease-in-out;
+        }
+
+        #profile .profile-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 2px 35px 0 rgba(68, 88, 144, 0.2);
+        }
     </style>
     @stack('styles')
 </head>
