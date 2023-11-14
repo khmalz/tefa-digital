@@ -21,8 +21,8 @@ class Design extends Model
         'color',
     ];
 
-    protected $with = ['plan', 'category'];
-    protected $appends = ['price'];
+    protected $with = ['plan:id,title,price', 'category'];
+    protected $appends = ['price', 'order_title'];
 
     public function order(): MorphOne
     {
@@ -53,5 +53,10 @@ class Design extends Model
     public function getPriceAttribute()
     {
         return $this->plan->price;
+    }
+
+    public function getOrderTitleAttribute()
+    {
+        return $this->category->title;
     }
 }

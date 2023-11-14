@@ -16,8 +16,16 @@ class Printing extends Model
         'file',
     ];
 
+    protected $appends = ['order_title'];
+
+
     public function order(): MorphOne
     {
         return $this->morphOne(Order::class, 'orderable');
+    }
+
+    public function getOrderTitleAttribute()
+    {
+        return "Printing";
     }
 }

@@ -8,11 +8,9 @@ use App\Http\Controllers\DesignFormController;
 use App\Http\Controllers\DesignUserController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\LandingPageController;
-use App\Http\Controllers\Admin\DesignController;
 use App\Http\Controllers\PrintingFormController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Admin\PrintingController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrderListController;
 use App\Http\Controllers\Admin\PortfolioController;
@@ -21,8 +19,6 @@ use App\Http\Controllers\PhotographyUserController;
 use App\Http\Controllers\VideographyFormController;
 use App\Http\Controllers\VideographyUserController;
 use App\Http\Controllers\Admin\DesignPlanController;
-use App\Http\Controllers\Admin\PhotographyController;
-use App\Http\Controllers\Admin\VideographyController;
 use App\Http\Controllers\Admin\DesignCategoryController;
 use App\Http\Controllers\Admin\PhotographyPlanController;
 use App\Http\Controllers\Admin\VideographyPlanController;
@@ -88,35 +84,27 @@ Route::as('user.')->group(function () {
     // Routes for Client (Authenticated Users)
     Route::middleware(['auth', 'role:client'])->group(function () {
         Route::prefix('photography')->as('photography.')->group(function () {
-            Route::middleware('auth')->group(function () {
-                Route::get('/form', [PhotographyFormController::class, 'index'])->name('form.index');
-                Route::post('/form', [PhotographyFormController::class, 'store'])->name('form.store');
-                Route::get('/form-success/{nama}/{order}/{orderId}', [PhotographyFormController::class, 'success'])->name('form.success');
-            });
+            Route::get('/form', [PhotographyFormController::class, 'index'])->name('form.index');
+            Route::post('/form', [PhotographyFormController::class, 'store'])->name('form.store');
+            Route::get('/form-success/{nama}/{order}/{orderId}', [PhotographyFormController::class, 'success'])->name('form.success');
         });
 
         Route::prefix('videography')->as('videography.')->group(function () {
-            Route::middleware('auth')->group(function () {
-                Route::get('/form', [VideographyFormController::class, 'index'])->name('form.index');
-                Route::post('/form', [VideographyFormController::class, 'store'])->name('form.store');
-                Route::get('/form-success/{nama}/{order}/{orderId}', [VideographyFormController::class, 'success'])->name('form.success');
-            });
+            Route::get('/form', [VideographyFormController::class, 'index'])->name('form.index');
+            Route::post('/form', [VideographyFormController::class, 'store'])->name('form.store');
+            Route::get('/form-success/{nama}/{order}/{orderId}', [VideographyFormController::class, 'success'])->name('form.success');
         });
 
         Route::prefix('design')->as('design.')->group(function () {
-            Route::middleware('auth')->group(function () {
-                Route::get('/form', [DesignFormController::class, 'index'])->name('form.index');
-                Route::post('/form', [DesignFormController::class, 'store'])->name('form.store');
-                Route::get('/form-success/{nama}/{order}/{orderId}', [DesignFormController::class, 'success'])->name('form.success');
-            });
+            Route::get('/form', [DesignFormController::class, 'index'])->name('form.index');
+            Route::post('/form', [DesignFormController::class, 'store'])->name('form.store');
+            Route::get('/form-success/{nama}/{order}/{orderId}', [DesignFormController::class, 'success'])->name('form.success');
         });
 
         Route::prefix('printing')->as('printing.')->group(function () {
-            Route::middleware('auth')->group(function () {
-                Route::get('/form', [PrintingFormController::class, 'index'])->name('form.index');
-                Route::post('/form', [PrintingFormController::class, 'store'])->name('form.store');
-                Route::get('/form-success/{nama}/{orderId}', [PrintingFormController::class, 'success'])->name('form.success');
-            });
+            Route::get('/form', [PrintingFormController::class, 'index'])->name('form.index');
+            Route::post('/form', [PrintingFormController::class, 'store'])->name('form.store');
+            Route::get('/form-success/{nama}/{orderId}', [PrintingFormController::class, 'success'])->name('form.success');
         });
     });
 });
@@ -128,15 +116,7 @@ Route::middleware('auth')->group(function () {
 
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('list-order', [OrderListController::class, 'all'])->name('order.all');
-
-    Route::prefix('list')->as('list.')->group(function () {
-        Route::get('design', [OrderListController::class, 'design'])->name('design.index');
-        Route::get('photography', [OrderListController::class, 'photography'])->name('photography.index');
-        Route::get('videography', [OrderListController::class, 'videography'])->name('videography.index');
-        Route::get('printing', [OrderListController::class, 'printing'])->name('printing.index');
-    });
-
-    // Only Design
+    Route::patch('order/{order}/update', [OrderListController::class, 'update'])->name('order.update');
     Route::get('detail/{order}', [OrderListController::class, 'show'])->name('order.show');
 
     Route::prefix('export-to-pdf')->as('print-pdf.')->group(function () {
@@ -148,11 +128,6 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
 
     Route::resource('portfolio', PortfolioController::class)->except('show');
     Route::resource('contact', ContactController::class)->except('create', 'store', 'show', 'destroy');
-
-    Route::resource('design', DesignController::class);
-    Route::resource('photography', PhotographyController::class);
-    Route::resource('videography', VideographyController::class);
-    Route::resource('printing', PrintingController::class);
 
     Route::resource('design-category', DesignCategoryController::class)->except('create', 'store', 'show', 'destroy');
     Route::resource('design-plan', DesignPlanController::class);
