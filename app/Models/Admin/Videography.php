@@ -17,17 +17,17 @@ class Videography extends Model
         'videography_plan_id',
     ];
 
-    protected $with = ['plan', 'category'];
-    protected $appends = ['price'];
-
-    public function order(): MorphOne
-    {
-        return $this->morphOne(Order::class, 'orderable');
-    }
+    protected $with = ['plan:id,title,price', 'category'];
+    protected $appends = ['price', 'order_title'];
 
     public function plan(): BelongsTo
     {
         return $this->belongsTo(VideographyPlan::class, 'videography_plan_id');
+    }
+
+    public function order(): MorphOne
+    {
+        return $this->morphOne(Order::class, 'orderable');
     }
 
     public function category(): \Znck\Eloquent\Relations\BelongsToThrough
@@ -44,5 +44,10 @@ class Videography extends Model
     public function getPriceAttribute()
     {
         return $this->plan->price;
+    }
+
+    public function getOrderTitleAttribute()
+    {
+        return $this->category->title;
     }
 }

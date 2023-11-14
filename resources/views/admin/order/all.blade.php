@@ -9,7 +9,38 @@
                         <div class="card-body">
                             <h4>Order's List</h4>
                             <div class="mt-4">
-                                <table class="mb-0 table border" id="data-table-all">
+                                <form method="GET" id="orderForm">
+                                    <input type="hidden" name="date" value="{{ request('date', 1) }}">
+
+                                    <div class="d-flex align-items-center flex-nowrap" style="column-gap: 10px">
+                                        <div class="col-md-11">
+                                            <select class="form-select" name="category" aria-label="Select Category Order">
+                                                <option value="all"
+                                                    {{ request('category') == 'all' ? 'selected' : null }}>All
+                                                    Category</option>
+                                                <option value="design"
+                                                    {{ request('category') == 'design' ? 'selected' : null }}>
+                                                    Design</option>
+                                                <option value="photography"
+                                                    {{ request('category') == 'photography' ? 'selected' : null }}>
+                                                    Photography
+                                                </option>
+                                                <option value="videography"
+                                                    {{ request('category') == 'videography' ? 'selected' : null }}>
+                                                    Videography
+                                                </option>
+                                                <option value="printing"
+                                                    {{ request('category') == 'printing' ? 'selected' : null }}>Printing
+                                                </option>
+                                            </select>
+                                        </div>
+                                        <div class="col">
+                                            <button type="submit" class="btn btn-primary btn-sm px-3 py-2">Filter</button>
+                                        </div>
+                                    </div>
+                                </form>
+                                <table class="mb-0 table border" id="data-table-all"
+                                    data-default-length="{{ $defaultLength }}">
                                     <thead class="table-light fw-semibold">
                                         <tr class="align-middle">
                                             <th class="text-center">Order ID</th>
@@ -25,15 +56,7 @@
                                             <tr>
                                                 <td>{{ $order->ulid }}</td>
                                                 <td class="text-center">
-                                                    @if ($order->printing)
-                                                        Printing
-                                                    @elseif ($order->design)
-                                                        {{ $order->design->category->title }}
-                                                    @elseif ($order->photography)
-                                                        {{ $order->photography->category->title }}
-                                                    @elseif ($order->videography)
-                                                        {{ $order->videography->category->title }}
-                                                    @endif
+                                                    {{ $order->orderable->order_title }}
                                                 </td>
                                                 <td>{{ $order->name_customer }}</td>
                                                 <td>{{ $order->created_at->format('d F Y') }}</td>
@@ -63,25 +86,52 @@
                                                             </svg>
                                                         </button>
                                                         <div class="dropdown-menu dropdown-menu-end">
+                                                            @php
+                                                                $orderableType = strtolower(class_basename($order->orderable_type));
+                                                            @endphp
+
                                                             <a class="dropdown-item" target="_blank"
-                                                                href="{{ route('print-pdf.design', 1) }}">Export
-                                                                to
-                                                                PDF</a>
+                                                                href="{{ route("print-pdf.$orderableType", $order->ulid) }}">Export
+                                                                to PDF</a>
                                                             <a class="dropdown-item"
-                                                                href="{{ route('order.show', 1) }}">Detail</a>
+                                                                href="{{ route('order.show', $order->ulid) }}">Detail</a>
                                                             <button class="dropdown-item" type="button"
-                                                                data-coreui-toggle="modal" data-coreui-target="#designModal"
-                                                                id="changeStatus">Ganti
+                                                                data-coreui-toggle="modal" data-coreui-target="#orderModal"
+                                                                data-order-title="{{ $order->orderable->order_title }}"
+                                                                data-order-status="{{ $order->status }}"
+                                                                data-order-name="{{ $order->name_customer }}"
+                                                                data-order-category="{{ $orderableType }}"
+                                                                id="changeStatus"
+                                                                onclick="changeStatusOrder(this, '{{ $order->ulid }}')">Ganti
                                                                 Status</button>
                                                         </div>
                                                     </div>
                                                 </td>
                                             </tr>
                                         @endforeach
+                                        <div class="modal fade" id="orderModal" tabindex="-1"
+                                            aria-labelledby="orderModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+
+                                                    <div class="modal-header justify-content-center">
+                                                        <h5 class="modal-title" id="orderModalLabel">Ganti Status</h5>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        {{-- Konten form yang akan diisi oleh JavaScript --}}
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" onclick="submitStatusOrderForm()"
+                                                            class="btn btn-primary">Save
+                                                            change</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </tbody>
                                 </table>
                                 <div>
-                                    {{ $orders->links() }}
+                                    {{ $orders->appends(['date' => request('date'), 'category' => request('category')])->links() }}
                                 </div>
                             </div>
                         </div>
@@ -94,13 +144,114 @@
 
 @push('scripts')
     <script>
-        $(function() {
-            $("#data-table-all").DataTable({
-                dom: 'Bflrt',
+        function submitStatusOrderForm() {
+            $('#orderStatusForm').submit();
+        }
+
+        function changeStatusOrder(el, orderId) {
+            const orderTitle = $(el).data('order-title');
+            const orderStatus = $(el).data('order-status');
+            const orderName = $(el).data('order-name');
+            const orderCategory = $(el).data('order-category');
+
+            // Membuat template literal untuk isi modal
+            const modalBody = `
+                <p>ID: ${orderId}</p>
+                <p class="text-capitalize">Jenis Order: ${orderTitle}</p>
+                <p>Nama: ${orderName}
+                <form id="orderStatusForm" method="POST">
+                    @csrf
+                    @method('PATCH')
+                    <div class="form-group">
+                        <label for="statusSelect">Status:</label>
+                        <select class="form-control" id="statusSelect" name="status">
+                            <option ${orderStatus === 'pending' ? 'selected' : ''} value="pending">Pending</option>
+                            <option ${orderStatus === 'progress' ? 'selected' : ''} value="progress">Progress</option>
+                            <option ${orderStatus === 'completed' ? 'selected' : ''} value="completed">Completed</option>
+                        </select>
+                    </div>
+                </form>
+            `;
+
+            // Mengganti konten modal dengan template literal
+            $('#orderModal .modal-content .modal-body').html(modalBody);
+
+            // Menyiapkan form untuk pengiriman PUT request
+            const editRoute = "{{ route('order.update', ':order_id') }}";
+            const actionUrl = editRoute.replace(':order_id', orderId);
+            $('#orderStatusForm').attr('action', actionUrl);
+
+            // Menampilkan modal
+            $('#orderModal').modal('show');
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const defaultLength = $("#data-table-all").data('default-length');
+
+            const urlParams = new URLSearchParams(window.location.search);
+            generateDataTable('data-table-all', defaultLength);
+
+            const dateParam = urlParams.get('date');
+
+            const selectElement = $('#data-table-all_length select');
+
+            switch (dateParam) {
+                case "week":
+                    selectElement.val('7');
+                    break;
+                case "month":
+                    selectElement.val('30');
+                    break;
+                case "year":
+                    selectElement.val('100');
+                    break;
+                case "all":
+                    selectElement.val('500');
+                    break;
+                default:
+                    // Jika parameter tidak sesuai, atur ke nilai default
+                    selectElement.val(defaultLength);
+                    break;
+            }
+
+            // Nonaktifkan fungsi kontrol panjang
+            $('#data-table-all_length select').off('change')
+
+            $("#data-table-all_length select").on("change", function() {
+                const selectedValue = parseInt($('#data-table-all_length select').val());
+                const formDate = $('#orderForm');
+
+                switch (selectedValue) {
+                    case 7:
+                        formDate.find('input[name="date"]').val("week");
+                        break;
+                    case 30:
+                        formDate.find('input[name="date"]').val("month");
+                        break;
+                    case 100:
+                        formDate.find('input[name="date"]').val("year");
+                        break;
+                    case 500:
+                        formDate.find('input[name="date"]').val("all");
+                        break;
+                    default:
+                        formDate.find('input[name="date"]').val("today");
+                        break;
+                }
+            })
+        });
+
+        function generateDataTable(id, length) {
+            $(`#${id}`).DataTable({
+                dom: '<"mt-2"l><frBt>',
                 paging: true,
-                pageLength: 10,
-                stateSave: true,
-                stateDuration: 60 * 5,
+                lengthMenu: [
+                    [length, 7, 30, 100, 500],
+                    ["Today", "This Week", "This Month", "This Year", "All"]
+                ],
+                pageLength: length,
+                // stateSave: true,
+                // stateDuration: 60 * 5,
                 order: [
                     [4, "asc"],
                     [3, 'asc']
@@ -152,6 +303,6 @@
                     "targets": -1,
                 }]
             });
-        })
+        }
     </script>
 @endpush

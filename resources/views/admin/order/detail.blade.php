@@ -10,15 +10,20 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <div>
-                                    <h4>Design</h4>
-                                    <h6>{{ $order->design->category->title }}</h6>
+                                    @php
+                                        $orderableType = strtolower(class_basename($order->orderable_type));
+                                    @endphp
+                                    <h4 class="text-capitalize">{{ $orderableType }}</h4>
+                                    @if ($orderableType !== 'printing')
+                                        <h6>{{ $order->orderable->category->title }}</h6>
+                                    @endif
                                     <small>
                                         <p class="text-secondary">#{{ $order->ulid }}</p>
                                     </small>
                                 </div>
                                 <div>
                                     <a class="btn btn-info text-light" target="_blank"
-                                        href="{{ url("admin/export-to-pdf/design/$order->ulid") }}">Export to PDF</a>
+                                        href='{{ route("print-pdf.$orderableType", $order->ulid) }}'>Export to PDF</a>
                                 </div>
                             </div>
                             <hr class="mt-0">
@@ -36,16 +41,18 @@
                                         <h6>Email</h6>
                                         <p>{{ $order->email_customer }}</p>
                                     </div>
-                                    @if ($order->design->slogan)
+                                    @if ($orderableType == 'design')
+                                        @if ($order->orderable->slogan)
+                                            <div class="row row-cols-1 row-cols-sm-2">
+                                                <h6>Slogan</h6>
+                                                <p>{{ $order->orderable->slogan }}</p>
+                                            </div>
+                                        @endif
                                         <div class="row row-cols-1 row-cols-sm-2">
-                                            <h6>Slogan</h6>
-                                            <p>{{ $order->design->slogan }}</p>
+                                            <h6>Color</h6>
+                                            <p>{{ $order->orderable->color }}</p>
                                         </div>
                                     @endif
-                                    <div class="row row-cols-1 row-cols-sm-2">
-                                        <h6>Color</h6>
-                                        <p>{{ $order->design->color }}</p>
-                                    </div>
                                     @if ($order->description)
                                         <div class="row row-cols-1 row-cols-sm-2">
                                             <h6>Description</h6>
@@ -54,14 +61,16 @@
                                     @endif
                                 </div>
                                 <div class="col-md-6 mt-md-0 order-md-2 order-1 mt-2">
-                                    <div class="row row-cols-1 row-cols-sm-2">
-                                        <h6>Plan</h6>
-                                        <p>{{ $order->design->plan->title }}</p>
-                                    </div>
-                                    <div class="row row-cols-1 row-cols-sm-2">
-                                        <h6>Price</h6>
-                                        <p>{{ number_format($order->design->price, 0, ',', '.') }}</p>
-                                    </div>
+                                    @if ($orderableType !== 'printing')
+                                        <div class="row row-cols-1 row-cols-sm-2">
+                                            <h6>Plan</h6>
+                                            <p>{{ $order->orderable->plan->title }}</p>
+                                        </div>
+                                        <div class="row row-cols-1 row-cols-sm-2">
+                                            <h6>Price</h6>
+                                            <p>{{ number_format($order->orderable->price, 0, ',', '.') }}</p>
+                                        </div>
+                                    @endif
                                     <div class="row row-cols-1 row-cols-sm-2">
                                         <h6>Status</h6>
                                         <p>{{ ucfirst($order->status) }}</p>
@@ -70,12 +79,12 @@
                             </div>
                         </div>
                     </div>
-                    @if (count($order->design->images) > 0)
+                    @if (!empty($order->orderable->images) && count($order->orderable->images) > 0)
                         <div class="card mb-4">
                             <div class="card-body">
                                 <h4>Image</h4>
                                 <div class="row" style="row-gap: 10px">
-                                    @foreach ($order->design->images as $image)
+                                    @foreach ($order->orderable->images as $image)
                                         <div class="col-md-6 col-lg-4">
                                             <div style="width: 100%; height: 250px;">
                                                 <img src="{{ $image->path === 'placeholder.jpg' ? "https://source.unsplash.com/random/900×700/?design&$loop->iteration" : \Illuminate\Support\Facades\Storage::url($image->image) }}"
