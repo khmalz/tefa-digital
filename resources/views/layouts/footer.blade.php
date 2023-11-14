@@ -43,8 +43,8 @@
                         <div style="text-align: left">
                             <h4>Sub-Categories</h4>
                             <div class="footer-links">
-                                <div class="row">
-                                    <div class="col-md-3 mt-3 mb-4">
+                                <div class="row mt-3">
+                                    <div class="col-md-4  mb-4">
                                         <span>Design</span><br>
                                         <hr style="width: 33%">
 
@@ -53,7 +53,7 @@
                                         <a href="">Promotion</a>
 
                                     </div>
-                                    <div class="col-md-3 mb-4">
+                                    <div class="col-md-4 mb-4">
                                         <span>Photography</span><br>
                                         <hr style="width: 33%">
 
@@ -63,7 +63,7 @@
 
 
                                     </div>
-                                    <div class="col-md-3 mb-4">
+                                    <div class="col-md-4 mb-4">
                                         <span>Videography</span><br>
                                         <hr style="width: 33%">
 
@@ -73,7 +73,7 @@
 
 
                                     </div>
-                                    <div class="col-md-3 mb-4">
+                                    <div class="col-md-4 mb-4">
                                         <span>Printing</span><br>
                                         <hr style="width: 33%">
                                         <a href="">3D</a>
