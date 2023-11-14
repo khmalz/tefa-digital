@@ -42,12 +42,6 @@ use App\Http\Controllers\Admin\VideographyCategoryController;
 
 // Public Routes (No Authentication Required)
 Route::get('/', LandingPageController::class)->name('home');
-Route::get('/clientdashboard', function () {
-    return view('client.dashboard');
-});
-Route::get('/profile', function () {
-    return view('profile.index');
-});
 Route::post('/contact-send', [SendMailController::class, 'sendMail'])->name('contact.send');
 
 Route::middleware('guest')->group(function () {
