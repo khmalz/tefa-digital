@@ -41,6 +41,10 @@ use App\Http\Controllers\Admin\VideographyCategoryController;
 */
 
 // Public Routes (No Authentication Required)
+Route::get('/editprofile', function () {
+    return view('profile.edit');
+});
+
 Route::get('/', LandingPageController::class)->name('home');
 Route::post('/contact-send', [SendMailController::class, 'sendMail'])->name('contact.send');
 
