@@ -1267,6 +1267,13 @@ section {
     --bs-btn-active-color: var(--bs-btn-hover-color);
 }
 
+.btn-general.disable-btn,
+.pricing .btn-buy.disable-btn {
+    background: #b35715;
+    text-decoration: line-through;
+    pointer-events: none;
+}
+
 /*--------------------------------------------------------------
 # F.A.Q
 --------------------------------------------------------------*/

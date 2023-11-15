@@ -16,8 +16,7 @@
                         <h2 class="animate__animated animate__fadeInDown">Jasa Design Logo</span></h2>
                         <p class="animate__animated fanimate__adeInUp">Logo adalah jantung merek Anda, wujud visual yang
                             mewakili identitas dan nilai-nilai bisnis Anda.</p>
-                        <a href="#about"
-                            class="btn-get-started animate__animated animate__fadeInUp scrollto">Order</a>
+                        <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Order</a>
                     </div>
                 </div>
             </div>
@@ -105,7 +104,8 @@
                                 </div>
                                 <div class="btn-wrap">
                                     <a href="{{ route('user.design.form.index', ['category' => 'Logo', 'plan' => $plan->title]) }}"
-                                        class="btn-buy">Buy Now</a>
+                                        class="btn-buy {{ auth()->guest() ||auth()->user()->hasRole('client')? null: 'disable-btn' }}">Buy
+                                        Now</a>
                                 </div>
                             </div>
                         </div>

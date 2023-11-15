@@ -220,7 +220,7 @@
                                     <li><i class="ri-check-double-line"></i> Jasa Foto Pernikahan</li>
                                     <li><i class="ri-check-double-line"></i> Jasa Foto Acara</li>
                                 </ul>
-                                <a href="{{ route('user.design.index') }}" class="btn btn-color order-button">
+                                <a href="{{ route('user.photography.index') }}" class="btn btn-color order-button">
                                     Order!
                                 </a>
                             </div>
@@ -247,7 +247,7 @@
                                     <li><i class="ri-check-double-line"></i> Jasa Video Syuting</li>
                                     <li><i class="ri-check-double-line"></i> Jasa Video Dokumentasi</li>
                                 </ul>
-                                <a href="{{ route('user.design.index') }}" class="btn btn-color order-button">
+                                <a href="{{ route('user.videography.index') }}" class="btn btn-color order-button">
                                     Order!
                                 </a>
                             </div>
@@ -268,7 +268,7 @@
                                     audiens.
                                     Jadikan kami mitra dalam mencetak keberhasilan Anda
                                 </p>
-                                <a href="{{ route('user.design.index') }}" class="btn btn-color order-button">
+                                <a href="{{ route('user.printing.index') }}" class="btn btn-color order-button">
                                     Order!
                                 </a>
                             </div>

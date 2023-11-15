@@ -104,7 +104,8 @@
                                 </p>
                                 <div class="mb-2">
                                     <a href="{{ route('user.printing.form.index') }}"
-                                        class="btn btn-lg btn-general rounded-5"> Konsultasikan sekarang</a>
+                                        class="btn btn-lg btn-general rounded-5 {{ auth()->guest() ||auth()->user()->hasRole('client')? null: 'disable-btn' }}">
+                                        Konsultasikan sekarang</a>
                                 </div>
                             </div>
                         </div>
