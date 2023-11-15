@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Tefa Digital</title>
+    <title>{{ $websiteTitle }}</title>
     <meta name="description"
-        content="Tefa Digital is a service ordering website that provides printing, design, photography, and videography services in SMKN 46 Jakarta. We offer high-quality services for teachers and students of SMKN 46 Jakarta.">
+        content="{{ $websiteTitle }} is a service ordering website that provides printing, design, photography, and videography services in SMKN 46 Jakarta. We offer high-quality services for teachers and students of SMKN 46 Jakarta.">
     <meta name="keywords"
-        content="Tefa Digital, printing, design, photography, videography, SMKN 46 Jakarta, services, high-quality, teachers, students">
+        content="{{ $websiteTitle }}, printing, design, photography, videography, SMKN 46 Jakarta, services, high-quality, teachers, students">
 
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
@@ -50,11 +50,11 @@
     <!-- ======= Footer ======= -->
     <footer id="footer">
         <div class="container">
-            <h3>Tefa Digital</h3>
+            <h3>{{ $websiteTitle }}</h3>
             <p>Mendukung kreatifitas siswa berjiwa wirausaha.</p>
             <div class="social-links">
-                <a target="_blank" href="{{ url('https://www.instagram.com/smknegeri46jakarta') }}" class="instagram"><i
-                        class="bx bxl-instagram"></i></a>
+                <a target="_blank" href="{{ url('https://www.instagram.com/smknegeri46jakarta') }}"
+                    class="instagram"><i class="bx bxl-instagram"></i></a>
                 <a target="_blank"
                     href="{{ url('https://smksedkijakarta.wordpress.com/kota/jakarta-timur/smk-negeri-46') }}"
                     class="wordpress"><i class="bx bxl-wordpress"></i></a>
