@@ -8,6 +8,64 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
+                                <h4>Title App</h4>
+                                <button type="button" class="btn btn-info text-white" data-coreui-toggle="modal"
+                                    data-coreui-target="#exampleModal">
+                                    <svg class="icon">
+                                        <use
+                                            xlink:href="{{ asset('assets/admin/vendors/@coreui/icons/svg/free.svg#cil-pencil') }}">
+                                        </use>
+                                    </svg>
+                                    Edit
+                                </button>
+                            </div>
+                            <div>
+                                <h6 class="mb-1">Name</h6>
+                                <p class="mb-0 text-black opacity-75">{{ $title->name }}</p>
+                            </div>
+                        </div>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+                            aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Edit Title App</h5>
+                                        <button type="button" class="btn-close" data-coreui-dismiss="modal"
+                                            aria-label="Close"></button>
+                                    </div>
+                                    <form action="{{ route('profile-app.title.update', $title->id) }}" method="post">
+                                        @csrf
+                                        @method('PATCH')
+                                        <div class="modal-body">
+                                            <div class="mb-3">
+                                                <label for="name" class="form-label">Name</label>
+                                                <input type="text"
+                                                    class="form-control @error('name') is-invalid @enderror"
+                                                    value="{{ old('name', $title->name) }}" id="name"
+                                                    aria-describedby="name" name="name">
+                                                @error('name')
+                                                    <div class="invalid-feedback">
+                                                        {{ $message }}
+                                                    </div>
+                                                @enderror
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="submit" class="btn btn-info text-white">Save Changes</button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between">
                                 <h4>Contact Us</h4>
                                 <!-- Button trigger modal -->
                                 <button type="button" class="btn btn-info text-white" data-coreui-toggle="modal"
@@ -43,9 +101,9 @@
                                         <button type="button" class="btn-close" data-coreui-dismiss="modal"
                                             aria-label="Close"></button>
                                     </div>
-                                    <form action="{{ route('contact.update', $contact->id) }}" method="post">
+                                    <form action="{{ route('profile-app.contact.update', $contact->id) }}" method="post">
                                         @csrf
-                                        @method('PUT')
+                                        @method('PATCH')
                                         <div class="modal-body">
                                             <div class="mb-3">
                                                 <label for="location" class="form-label">Location</label>

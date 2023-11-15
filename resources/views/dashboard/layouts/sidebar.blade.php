@@ -35,8 +35,8 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('portfolio.index') }}">
                     Portfolio</a>
-                <a class="nav-link" href="{{ route('contact.index') }}">
-                    Contact Us</a>
+                <a class="nav-link" href="{{ route('profile-app.index') }}">
+                    Profile App</a>
             </li>
             <li class="nav-title">Jasa</li>
             <li class="nav-group">
