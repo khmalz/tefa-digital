@@ -1,7 +1,7 @@
 <div class="sidebar sidebar-dark sidebar-fixed" id="sidebar">
     <div class="sidebar-brand d-none d-md-flex">
-        <a href="/" class="text-decoration-none text-white">
-            <h4>Tefa Digital</h4>
+        <a href="{{ route('home') }}" class="text-decoration-none text-white">
+            <h4>{{ $websiteTitle }}</h4>
         </a>
     </div>
     <ul class="sidebar-nav" data-coreui="navigation" data-simplebar="">
@@ -35,8 +35,8 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('portfolio.index') }}">
                     Portfolio</a>
-                <a class="nav-link" href="{{ route('contact.index') }}">
-                    Contact Us</a>
+                <a class="nav-link" href="{{ route('profile-app.index') }}">
+                    Profile App</a>
             </li>
             <li class="nav-title">Jasa</li>
             <li class="nav-group">
