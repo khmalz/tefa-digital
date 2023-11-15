@@ -3,7 +3,7 @@
         <div class="container">
             <div class="row" style="row-gap: 15px">
                 <div class="col-md-4">
-                    <h3>Tefa Digital</h3>
+                    <h3>{{ $websiteTitle }}</h3>
 
                     <span><q>Mendukung kreatifitas siswa berjiwa wirausaha.</q></span>
                     <div class="mt-3">

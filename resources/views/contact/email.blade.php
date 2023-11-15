@@ -1,5 +1,5 @@
 @component('mail::message')
-    # Ada pesan baru untuk Tefa Digital dari Contact Us
+    # Ada pesan baru untuk {{ $websiteTitle || config('app.name') }} dari Contact Us
 
     Nama: {{ $name }}
 

@@ -5,7 +5,7 @@
     <header id="header" class="fixed-top d-flex align-items-center header-transparent">
         <div class="d-flex align-items-center justify-content-between container">
             <div class="logo">
-                <h1><a href="{{ route('home') }}">Tefa Digital</a></h1>
+                <h1><a href="{{ route('home') }}">{{ $websiteTitle }}</a></h1>
             </div>
 
             <nav id="navbar" class="navbar">
@@ -58,8 +58,9 @@
                 <!-- Slide 1 -->
                 <div class="carousel-item active">
                     <div class="carousel-container">
-                        <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Tefa digital</span></h2>
-                        <p class="animate__animated fanimate__adeInUp">Tefa digital adalah website inovatif yang berdedikasi
+                        <h2 class="animate__animated animate__fadeInDown">Welcome to <span>{{ $websiteTitle }}</span></h2>
+                        <p class="animate__animated fanimate__adeInUp">{{ $websiteTitle }} adalah website inovatif yang
+                            berdedikasi
                             untuk meningkatkan pendidikan dan membantu siswa mencapai potensi terbaik mereka.</p>
                         <a href="#about"
                             class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
@@ -113,13 +114,14 @@
             <div class="container">
                 <div class="section-title" data-aos="zoom-out">
                     <h2>About</h2>
-                    <p>Apa itu tefa digital?</p>
+                    <p>Apa itu {{ $websiteTitle }}?</p>
                 </div>
 
                 <div class="row content" data-aos="fade-up">
                     <div class="col-lg-6">
                         <p style="text-align: justify">
-                            Tefa digital adalah website inovatif yang berdedikasi untuk meningkatkan pendidikan dan membantu
+                            {{ $websiteTitle }} adalah website inovatif yang berdedikasi untuk meningkatkan pendidikan dan
+                            membantu
                             siswa mencapai potensi terbaik mereka. Kami hadir dengan visi untuk menjadi prasarana pendidikan
                             yang relevan dan mendukung kegiatan pembelajaran siswa sesuai kurikulum yang berlaku.
                         </p>

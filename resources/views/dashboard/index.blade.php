@@ -7,7 +7,7 @@
                 <div class="col-md-12">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <h4>Tefa Digital Dashboard</h4>
+                            <h4>{{ $websiteTitle }} Dashboard</h4>
                             <div class="row mt-3">
                                 <div class="col-sm-6 col-lg-3">
                                     <div class="card bg-warning mb-4 text-white">

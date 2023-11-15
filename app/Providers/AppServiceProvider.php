@@ -2,13 +2,15 @@
 
 namespace App\Providers;
 
+use App\Models\Title;
 use App\Services\OrderService;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\View;
 use App\Repositories\OrderRepository;
 use Illuminate\Support\Facades\Schema;
 use App\Services\OrderServiceInterface;
 use Illuminate\Support\ServiceProvider;
 use App\Repositories\OrderRepositoryInterface;
-use Illuminate\Pagination\Paginator;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -27,6 +29,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Schema::defaultStringLength(125);
+        $websiteTitle = Title::value('name');
+        View::share('websiteTitle', $websiteTitle);
         Paginator::useBootstrapFive();
     }
 }

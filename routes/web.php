@@ -25,6 +25,7 @@ use App\Http\Controllers\Admin\DesignCategoryController;
 use App\Http\Controllers\Admin\PhotographyPlanController;
 use App\Http\Controllers\Admin\VideographyPlanController;
 use App\Http\Controllers\Admin\PhotographyCategoryController;
+use App\Http\Controllers\Admin\ProfileAppController;
 use App\Http\Controllers\Admin\VideographyCategoryController;
 
 /*
@@ -133,7 +134,9 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     });
 
     Route::resource('portfolio', PortfolioController::class)->except('show');
-    Route::resource('contact', ContactController::class)->except('create', 'store', 'show', 'destroy');
+    Route::get('profile-app', [ProfileAppController::class, 'index'])->name('profile-app.index');
+    Route::patch('profil-app/contact/{contact}/update', [ProfileAppController::class, 'updateContact'])->name('profile-app.contact.update');
+    Route::patch('profil-app/title/{title}/update', [ProfileAppController::class, 'updateTitle'])->name('profile-app.title.update');
 
     Route::resource('design-category', DesignCategoryController::class)->except('create', 'store', 'show', 'destroy');
     Route::resource('design-plan', DesignPlanController::class);
