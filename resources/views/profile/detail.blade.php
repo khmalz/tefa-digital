@@ -105,12 +105,6 @@
                                                         <p>{{ $order->orderable->color }}</p>
                                                     </div>
                                                 @endif
-                                                @if ($order->description)
-                                                    <div class="row row-cols-1 row-cols-sm-2">
-                                                        <h6>Description</h6>
-                                                        <p class="w-100">{{ $order->description }}</p>
-                                                    </div>
-                                                @endif
                                             </div>
                                             <div class="col-md-6 mt-md-0 order-md-2 order-1 mt-2">
                                                 @if ($orderableType !== 'printing')
@@ -129,6 +123,12 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        @if ($order->description)
+                                        <div class="row border-top px-2">
+                                            <h6 class="mt-3">Description</h6>
+                                            <p class="w-100">{{ $order->description }}</p>
+                                        </div>
+                                @endif
                                     </div>
                                 </div>
                                 @if (!empty($order->orderable->images) && count($order->orderable->images) > 0)

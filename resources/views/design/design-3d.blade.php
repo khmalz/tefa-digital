@@ -17,7 +17,7 @@
                         <p class="animate__animated fanimate__adeInUp">Hadirkan ide-ide dalam bentuk tiga dimensi yang
                             menakjubkan.</p>
                         <a href="#about"
-                            class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
+                            class="btn-get-started animate__animated animate__fadeInUp scrollto">Order</a>
                     </div>
                 </div>
             </div>

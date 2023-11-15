@@ -46,6 +46,6 @@ class OrderClientController extends Controller
             $order->orderable->load('images');
         }
 
-        return $order;
+        return view('profile.detail', compact('order'));
     }
 }

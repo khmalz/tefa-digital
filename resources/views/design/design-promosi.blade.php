@@ -18,7 +18,7 @@
                             digital.
                         </p>
                         <a href="#about"
-                            class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
+                            class="btn-get-started animate__animated animate__fadeInUp scrollto">Order</a>
                     </div>
                 </div>
             </div>

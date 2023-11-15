@@ -17,7 +17,7 @@
                         <p class="animate__animated fanimate__adeInUp">Logo adalah jantung merek Anda, wujud visual yang
                             mewakili identitas dan nilai-nilai bisnis Anda.</p>
                         <a href="#about"
-                            class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
+                            class="btn-get-started animate__animated animate__fadeInUp scrollto">Order</a>
                     </div>
                 </div>
             </div>
