@@ -12,19 +12,20 @@
                 <ul>
                     <li><a class="nav-link scrollto active" href="#profile">Profile</a></li>
                     @auth
-                        <li class="dropdown"><a href="#"><span>Welcome, {{ auth()->user()->name }}</span> <i
-                                    class="bi bi-chevron-down"></i></a>
-                            <ul>
-                                <li><a href="#">{{ auth()->user()->email }}</a></li>
-                                <li>
-                                    <form action="{{ route('logout') }}" method="post" class="d-inline">
-                                        @csrf
-                                        <a href="#"
-                                            onclick="return confirm('Yakin ? ') ? this.parentElement.submit() : null">Log
-                                            Out</a>
-                                    </form>
-                                </li>
-                            </ul>
+                        <li class="dropdown">
+                        <li><a href="{{ route('user.profile.index') }}">{{ auth()->user()->email }}</a></li>
+                        <li><a href="{{ route('user.order.list') }}">List Order</a></li>
+                        <ul>
+                            <li><a href="#">{{ auth()->user()->email }}</a></li>
+                            <li>
+                                <form action="{{ route('logout') }}" method="post" class="d-inline">
+                                    @csrf
+                                    <a href="#"
+                                        onclick="return confirm('Yakin ? ') ? this.parentElement.submit() : null">Log
+                                        Out</a>
+                                </form>
+                            </li>
+                        </ul>
                         </li>
                     @else
                         <li><a class="nav-link" href="{{ route('login.index') }}">Login</a></li>
@@ -75,7 +76,8 @@
                                             </div>
                                             <div>
                                                 <a class="btn btn-info text-light" target="_blank"
-                                                    href='{{ route("print-pdf.$orderableType", $order->ulid) }}'>Export to PDF</a>
+                                                    href='{{ route("print-pdf.$orderableType", $order->ulid) }}'>Export to
+                                                    PDF</a>
                                             </div>
                                         </div>
                                         <hr class="mt-0">
@@ -124,11 +126,11 @@
                                             </div>
                                         </div>
                                         @if ($order->description)
-                                        <div class="row border-top px-2">
-                                            <h6 class="mt-3">Description</h6>
-                                            <p class="w-100">{{ $order->description }}</p>
-                                        </div>
-                                @endif
+                                            <div class="row border-top px-2">
+                                                <h6 class="mt-3">Description</h6>
+                                                <p class="w-100">{{ $order->description }}</p>
+                                            </div>
+                                        @endif
                                     </div>
                                 </div>
                                 @if (!empty($order->orderable->images) && count($order->orderable->images) > 0)
