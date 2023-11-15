@@ -1656,7 +1656,7 @@ section {
     margin: 0 0 40px 0;
 }
 
-#footer .social-links a {
+#footer .social-links .icon {
     font-size: 18px;
     display: inline-block;
     background: #ef6603;
@@ -1671,7 +1671,7 @@ section {
     transition: 0.3s;
 }
 
-#footer .social-links a:hover {
+#footer .social-links .icon:hover {
     background: #bd5102;
     color: #fff;
     text-decoration: none;
