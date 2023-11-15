@@ -16,6 +16,13 @@
                                 <span class="text-white">Instagram</span>
                             </a>
                             <a target="_blank" class="d-flex align-items-center gap-1"
+                                href="{{ url('http://www.youtube.com/@smkn4644') }}">
+                                <div class="icon youtube">
+                                    <i class="bx bxl-youtube"></i>
+                                </div>
+                                <span class="text-white">Youtube</span>
+                            </a>
+                            <a target="_blank" class="d-flex align-items-center gap-1"
                                 href="{{ url('https://smkn46jaktim.sch.id') }}">
                                 <div class="icon website">
                                     <i class="bx bx-globe"></i>
