@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class OrderClientController extends Controller
 {
-    public function __invoke(Request $request)
+    public function list(Request $request)
     {
         // Jangan yang ada di dalam [7, 30, 100, 500]
         $defaultLength = 10;
@@ -38,5 +38,14 @@ class OrderClientController extends Controller
             ->paginate($defaultLength);
 
         return view('profile.order-list', compact('orders', 'defaultLength'));
+    }
+
+    public function show(Order $order) {
+        $order->load('orderable');
+        if ($order->orderable_type === 'App\Models\Admin\Design') {
+            $order->orderable->load('images');
+        }
+
+        return $order;
     }
 }

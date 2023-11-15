@@ -135,7 +135,7 @@
                                                 </td>
                                                 <td>
                                                     <a class="btn btn-sm btn-info d-inline-flex align-items-center justify-content-center py-0 text-white"
-                                                        style="column-gap: 4px" href="#">
+                                                        style="column-gap: 4px" href="{{ route('user.order.show', $order->ulid) }}">
                                                         <i class='bx bx-detail'></i>
                                                         Detail
                                                     </a>
