@@ -77,6 +77,14 @@
         <section id="notif" class="services px-sm-0 px-2">
             <div class="container">
                 <div class="justify-content-center d-flex flex-column gap-3">
+                    <div class="d-flex justify-content-end">
+                        <form method="POST" action="{{ route('user.order.activity.read') }}">
+                            @csrf
+                            <a onclick="this.parentElement.submit()" href="#" class="btn btn-general btn-sm">Read
+                                all</a>
+                        </form>
+                    </div>
+
                     <div class="row" style="row-gap: 18px">
                         @forelse ($activities as $activity)
                             @if ($activity->data['status'] == 'pending')
@@ -187,7 +195,7 @@
                                 data-aos-delay="100">
                                 <div class="box">
                                     <div class="d-flex justify-content-center align-items-center">
-                                        <p>Tidak Ada Activity</p>
+                                        <p>Tidak ada activity untuk minggu ini</p>
                                     </div>
                                 </div>
                             </div>

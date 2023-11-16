@@ -9,7 +9,7 @@ class ActivityController extends Controller
 {
     public function index(Request $request)
     {
-        $activities = $request->user()->notifications()->get();
+        $activities = $request->user()->notifications()->whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()])->get();
 
         return view('profile.activity', compact('activities'));
     }
