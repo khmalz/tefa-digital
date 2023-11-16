@@ -5,7 +5,7 @@
             @role('client')
                 <li><a href="{{ route('user.profile.index') }}">{{ auth()->user()->email }}</a></li>
                 <li><a href="{{ route('user.order.list') }}">List Order</a></li>
-                <li><a href="{{ route('user.order.list') }}">Transaction History</a></li>
+                <li><a href="{{ route('user.order.activity.index') }}">Order Progress History</a></li>
             @else
                 <li><a href="{{ route('dashboard') }}">{{ auth()->user()->email }}</a></li>
             @endrole
