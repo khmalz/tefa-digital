@@ -17,8 +17,7 @@
                         <p class="animate__animated fanimate__adeInUp">Taklukkan pasar yang kompetitif dengan promosi
                             digital.
                         </p>
-                        <a href="#about"
-                            class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
+                        <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Order</a>
                     </div>
                 </div>
             </div>
@@ -106,7 +105,8 @@
                                     </div>
                                     <div class="mb-2">
                                         <a href="{{ route('user.design.form.index', ['category' => 'Promosi Digital']) }}"
-                                            class="btn btn-lg btn-general rounded-5"> Konsultasikan
+                                            class="btn btn-lg btn-general rounded-5 {{ auth()->guest() ||auth()->user()->hasRole('client')? null: 'disable-btn' }}">
+                                            Konsultasikan
                                             sekarang</a>
                                     </div>
                                 </div>

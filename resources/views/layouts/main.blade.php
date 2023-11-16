@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>{{ $websiteTitle }}</title>
+    <title>{{ app('websiteTitle') }}</title>
     <meta name="description"
-        content="{{ $websiteTitle }} is a service ordering website that provides printing, design, photography, and videography services in SMKN 46 Jakarta. We offer high-quality services for teachers and students of SMKN 46 Jakarta.">
+        content="{{ app('websiteTitle') }} is a service ordering website that provides printing, design, photography, and videography services in SMKN 46 Jakarta. We offer high-quality services for teachers and students of SMKN 46 Jakarta.">
     <meta name="keywords"
-        content="{{ $websiteTitle }}, printing, design, photography, videography, SMKN 46 Jakarta, services, high-quality, teachers, students">
+        content="{{ app('websiteTitle') }}, printing, design, photography, videography, SMKN 46 Jakarta, services, high-quality, teachers, students">
 
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
@@ -29,13 +29,78 @@
     <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link href="{{ asset('assets/vendor/toastify/toastify.css') }}" rel="stylesheet">
 
     <!-- Template Main CSS File -->
     <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
 
     <style>
-        .pad-x-500 {}
+        .bottom-button {
+            position: fixed;
+            visibility: hidden;
+            opacity: 0;
+            right: 15px;
+            bottom: 15px;
+            z-index: 996;
+            row-gap: 5px;
+            transition: all 0.3s;
+        }
+
+        .bottom-button.active {
+            visibility: visible;
+            opacity: 1;
+        }
+
+        .whatsapp-button {
+            background-color: #25d366;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: all 0.4s;
+            color: #fff;
+        }
+
+        .whatsapp-button:hover {
+            background-color: #128c7e;
+            color: #fff;
+        }
+
+        .btn-profile {
+            font-family: "Poppins", sans-serif;
+            background-color: #f06404;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            color: #fff;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .btn-profile:hover {
+            background: #fff;
+            color: #f06404;
+            text-decoration: none;
+            border: 2px solid #ef6603;
+        }
+
+        #profile .box {
+            padding: 30px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 10px;
+            background: #fff;
+            width: 100%;
+            height: 100%;
+        }
+
+        #profile .profile-box {
+            box-shadow: 0 10px 55px 0 rgba(52, 62, 90, 0.12);
+            transition: all 0.4s ease-in-out;
+        }
+
+        #profile .profile-box:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 2px 35px 0 rgba(68, 88, 144, 0.2);
+        }
     </style>
     @stack('styles')
 </head>
@@ -47,43 +112,50 @@
 
     @yield('main')
 
-    <!-- ======= Footer ======= -->
-    <footer id="footer">
-        <div class="container">
-            <h3>{{ $websiteTitle }}</h3>
-            <p>Mendukung kreatifitas siswa berjiwa wirausaha.</p>
-            <div class="social-links">
-                <a target="_blank" href="{{ url('https://www.instagram.com/smknegeri46jakarta') }}"
-                    class="instagram"><i class="bx bxl-instagram"></i></a>
-                <a target="_blank"
-                    href="{{ url('https://smksedkijakarta.wordpress.com/kota/jakarta-timur/smk-negeri-46') }}"
-                    class="wordpress"><i class="bx bxl-wordpress"></i></a>
-                <a target="_blank" href="{{ url('https://smkn46jaktim.sch.id') }}" class="website"><i
-                        class="bx bx-globe"></i></a>
-            </div>
-            <div class="copyright">
-                &copy; Copyright <strong><span>SMK Negeri 46</span></strong>. All Rights Reserved
-            </div>
-        </div>
-    </footer><!-- End Footer -->
+    @include('layouts.footer')
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i>
-    </a>
+    <div class="bottom-button d-flex flex-column">
+        <a href="https://wa.me/6285936128829?text=Halo,%20saya%20tertarik%20dengan%20produk%20Anda..."
+            class="back-to-top-wa whatsapp-button d-flex align-items-center justify-content-center" target="_blank">
+            <i class="bi bi-whatsapp"></i>
+        </a>
+
+        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+                class="bi bi-arrow-up-short"></i>
+        </a>
+    </div>
 
     <!-- Vendor JS Files -->
+    <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
+
     <script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
     <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
-        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script src="{{ asset('assets/vendor/toastify/toastify.js') }}"></script>
+
+    <script>
+        function showToast(message, background) {
+            Toastify({
+                text: message,
+                duration: 1800,
+                newWindow: true,
+                close: true,
+                gravity: "top",
+                position: "right",
+                stopOnFocus: true,
+                style: {
+                    background,
+                },
+            }).showToast();
+        }
+    </script>
+
+    @stack('scripts')
 
     <!-- Template Main JS File -->
     <script src="{{ asset('assets/js/main.js') }}"></script>
-    @stack('scripts')
 </body>
 
 </html>

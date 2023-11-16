@@ -92,19 +92,19 @@
   }
 
   /**
-   * Back to top button
+   * Bottom button
    */
-  let backtotop = select('.back-to-top')
-  if (backtotop) {
-    const toggleBacktotop = () => {
+  let bottomButton = select('.bottom-button')
+  if (bottomButton) {
+    const toggleBottomButton = () => {
       if (window.scrollY > 100) {
-        backtotop.classList.add('active')
+        bottomButton.classList.add('active')
       } else {
-        backtotop.classList.remove('active')
+        bottomButton.classList.remove('active')
       }
     }
-    window.addEventListener('load', toggleBacktotop)
-    onscroll(document, toggleBacktotop)
+    window.addEventListener('load', toggleBottomButton)
+    onscroll(document, toggleBottomButton)
   }
 
   /**

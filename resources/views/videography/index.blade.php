@@ -96,7 +96,7 @@
                                 <h5 class="title mt-2">{{ $category->title }}</h5>
                                 <p class="description p-2">{{ $category->body }}</p>
                                 <a href="{{ $routeNames[$category->title] }}" class="btn btn-outline"
-                                    style="color: #f06404">Selengkapnya</a>
+                                    style="color: #f06404">Order</a>
                             </div>
                         </div>
                     @empty

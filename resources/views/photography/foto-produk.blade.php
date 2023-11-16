@@ -96,7 +96,8 @@
                                 </div>
                                 <div class="btn-wrap">
                                     <a href="{{ route('user.photography.form.index', ['category' => 'Produk', 'plan' => $plan->title]) }}"
-                                        class="btn-buy">Buy Now</a>
+                                        class="btn-buy {{ auth()->guest() ||auth()->user()->hasRole('client')? null: 'disable-btn' }}">Buy
+                                        Now</a>
                                 </div>
                             </div>
                         </div>

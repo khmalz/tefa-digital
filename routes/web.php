@@ -2,12 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PDFController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DesignFormController;
 use App\Http\Controllers\DesignUserController;
 use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\LandingPageController;
+use App\Http\Controllers\OrderClientController;
 use App\Http\Controllers\PrintingFormController;
 use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -39,9 +41,6 @@ use App\Http\Controllers\Admin\VideographyCategoryController;
 
 // Public Routes (No Authentication Required)
 Route::get('/', LandingPageController::class)->name('home');
-Route::get('/clientdashboard', function () {
-    return view('client.dashboard');
-});
 Route::post('/contact-send', [SendMailController::class, 'sendMail'])->name('contact.send');
 
 Route::middleware('guest')->group(function () {
@@ -84,6 +83,12 @@ Route::as('user.')->group(function () {
 
     // Routes for Client (Authenticated Users)
     Route::middleware(['auth', 'role:client'])->group(function () {
+        Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+        Route::get('/profile-update', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::put('/profile-update', [ProfileController::class, 'update'])->name('profile.update');
+        Route::get('/list-order', [OrderClientController::class, 'list'])->name('order.list');
+        Route::get('/detail/{order}', [OrderClientController::class, 'show'])->name('order.show');
+
         Route::prefix('photography')->as('photography.')->group(function () {
             Route::get('/form', [PhotographyFormController::class, 'index'])->name('form.index');
             Route::post('/form', [PhotographyFormController::class, 'store'])->name('form.store');
@@ -112,10 +117,11 @@ Route::as('user.')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
-    Route::get('dashboard', DashboardController::class)->name('dashboard');
 });
 
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('dashboard', DashboardController::class)->name('dashboard');
+
     Route::get('list-order', [OrderListController::class, 'all'])->name('order.all');
     Route::patch('order/{order}/update', [OrderListController::class, 'update'])->name('order.update');
     Route::get('detail/{order}', [OrderListController::class, 'show'])->name('order.show');

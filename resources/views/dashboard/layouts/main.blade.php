@@ -5,8 +5,8 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-    <meta name="description" content="{{ $websiteTitle }} - Dashboard to manage service orders" />
-    <meta name="keyword" content="{{ $websiteTitle }}, Service, Design, Printing, Videoghraphy, Fotoghraphy" />
+    <meta name="description" content="{{ app('websiteTitle') }} - Dashboard to manage service orders" />
+    <meta name="keyword" content="{{ app('websiteTitle') }}, Service, Design, Printing, Videoghraphy, Fotoghraphy" />
     <title>Dashboard | {{ config('app.name') }}</title>
     <meta name="theme-color" content="#ffffff" />
     <!-- Vendors styles-->
@@ -14,16 +14,13 @@
     <link rel="stylesheet" href="{{ asset('assets/admin/css/vendors/simplebar.css') }}" />
 
     <!-- Datatables style -->
-    <link
-        href="https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-1.13.7/af-2.6.0/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/b-print-2.4.2/r-2.5.0/rg-1.4.1/sb-1.6.0/sp-2.2.0/sr-1.3.0/datatables.min.css"
-        rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('assets/vendor/datatable/datatables.min.css') }}">
 
     <!-- Main styles for this application-->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
     <link href="{{ asset('assets/admin/css/style.min.css') }}" rel="stylesheet" />
-    {{-- <link href="{{ asset('assets/admin/css/custom.css') }}" rel="stylesheet" /> --}}
     <style>
         .navstabs {
             color: #3c4b64ac !important;
@@ -396,16 +393,13 @@
     <script src="{{ asset('assets/admin/vendors/simplebar/js/simplebar.min.js') }}"></script>
 
     <!-- Plugins and scripts required by this view-->
-    <script src="https://code.jquery.com/jquery-3.6.4.min.js"
-        integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/admin/vendors/@coreui/utils/js/coreui-utils.js') }}"></script>
 
     <!-- Datatables and necessary plugins -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
-    <script
-        src="https://cdn.datatables.net/v/bs5/jszip-3.10.1/dt-1.13.7/af-2.6.0/b-2.4.2/b-colvis-2.4.2/b-html5-2.4.2/b-print-2.4.2/r-2.5.0/rg-1.4.1/sb-1.6.0/sp-2.2.0/sr-1.3.0/datatables.min.js">
-    </script>
+    <script src="{{ asset('assets/vendor/datatable/pdfmake.min.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatable/vfs_fonts.js') }}"></script>
+    <script src="{{ asset('assets/vendor/datatable/datatables.min.js') }}"></script>
 
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
     <script>
