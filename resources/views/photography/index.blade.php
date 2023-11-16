@@ -16,8 +16,7 @@
                         <h2 class="animate__animated animate__fadeInDown">Photography</span></h2>
                         <p class="animate__animated fanimate__adeInUp">Abadikan momen berharga dengan keindahan yang abadi.
                         </p>
-                        <a href="#about"
-                            class="btn-get-started animate__animated animate__fadeInUp scrollto">Order</a>
+                        <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Order</a>
                     </div>
                 </div>
             </div>
@@ -85,18 +84,23 @@
                 <div class="row justify-content-center">
                     @forelse ($categories as $category)
                         <div class="col-lg-4 col-md-6 mt-md-0 mt-5">
-                            <div class="icon-box rounded-3 text-center" data-aos="zoom-in-left" data-aos-delay="100">
-                                @if ($category->image === 'placeholder.jpg')
-                                    <img src="https://source.unsplash.com/random/?photography-{{ $category->title }}"
-                                        class="card-image card-img-top rounded-2 mb-2 p-2" alt="haha">
-                                @else
-                                    <img src="{{ \Illuminate\Support\Facades\Storage::url($category->image) }}"
-                                        class="card-image card-img-top rounded-2 mb-2 p-2" alt="hoho">
-                                @endif
-                                <h5 class="title mt-2">{{ $category->title }}</h5>
-                                <p class="description p-2">{{ $category->body }}</p>
-                                <a href="{{ $routeNames[$category->title] }}" class="btn btn-outline"
-                                    style="color: #f06404">Order</a>
+                            <div class="icon-box rounded-3 text-center d-flex flex-column justify-content-between gap-3"
+                                data-aos="zoom-in-left" data-aos-delay="100">
+                                <div>
+                                    @if ($category->image === 'placeholder.jpg')
+                                        <img src="https://source.unsplash.com/random/?photography-{{ $category->title }}"
+                                            class="card-image card-img-top rounded-2 mb-2 p-2" alt="haha">
+                                    @else
+                                        <img src="{{ \Illuminate\Support\Facades\Storage::url($category->image) }}"
+                                            class="card-image card-img-top rounded-2 mb-2 p-2" alt="hoho">
+                                    @endif
+                                    <h5 class="title mt-2">{{ $category->title }}</h5>
+                                    <p class="description p-2">{{ $category->body }}</p>
+                                </div>
+                                <div class="">
+                                    <a href="{{ $routeNames[$category->title] }}" class="btn btn-outline"
+                                        style="background-color: #f06404; color: white;">Pilih!</a>
+                                </div>
                             </div>
                         </div>
                     @empty
