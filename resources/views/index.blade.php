@@ -5,7 +5,7 @@
     <header id="header" class="fixed-top d-flex align-items-center header-transparent">
         <div class="d-flex align-items-center justify-content-between container">
             <div class="logo">
-                <h1><a href="{{ route('home') }}">{{ $websiteTitle }}</a></h1>
+                <h1><a href="{{ route('home') }}">{{ app('websiteTitle') }}</a></h1>
             </div>
 
             <nav id="navbar" class="navbar">
@@ -37,8 +37,10 @@
                 <!-- Slide 1 -->
                 <div class="carousel-item active">
                     <div class="carousel-container">
-                        <h2 class="animate__animated animate__fadeInDown">Welcome to <span>{{ $websiteTitle }}</span></h2>
-                        <p class="animate__animated fanimate__adeInUp">{{ $websiteTitle }} adalah website inovatif yang
+                        <h2 class="animate__animated animate__fadeInDown">Welcome to <span>{{ app('websiteTitle') }}</span>
+                        </h2>
+                        <p class="animate__animated fanimate__adeInUp">{{ app('websiteTitle') }} adalah website inovatif
+                            yang
                             berdedikasi
                             untuk meningkatkan pendidikan dan membantu siswa mencapai potensi terbaik mereka.</p>
                         <a href="#about"
@@ -93,13 +95,14 @@
             <div class="container">
                 <div class="section-title" data-aos="zoom-out">
                     <h2>About</h2>
-                    <p>Apa itu {{ $websiteTitle }}?</p>
+                    <p>Apa itu {{ app('websiteTitle') }}?</p>
                 </div>
 
                 <div class="row content" data-aos="fade-up">
                     <div class="col-lg-6">
                         <p style="text-align: justify">
-                            {{ $websiteTitle }} adalah website inovatif yang berdedikasi untuk meningkatkan pendidikan dan
+                            {{ app('websiteTitle') }} adalah website inovatif yang berdedikasi untuk meningkatkan
+                            pendidikan dan
                             membantu
                             siswa mencapai potensi terbaik mereka. Kami hadir dengan visi untuk menjadi prasarana pendidikan
                             yang relevan dan mendukung kegiatan pembelajaran siswa sesuai kurikulum yang berlaku.
@@ -191,7 +194,8 @@
                                 <p>
                                     Sebuah jasa fotografi yang memiliki keahlian profesional dalam mengoperasikan kamera,
                                     sehingga dapat menghasilkan gambar - gambar yang indah dan memikat hati anda. Untuk itu,
-                                    kami hadir dengan jasa - jasa yang kami miliki, salah satunya adalah jasa fotografi.
+                                    kami hadir dengan jasa - jasa yang kami miliki, salah websiteTitlenya adalah jasa
+                                    fotografi.
                                 </p>
                                 <p>
                                     Kami memiliki 3 jenis jasa fotografi yang mungkin anda butuhkan, diantaranya yaitu:
