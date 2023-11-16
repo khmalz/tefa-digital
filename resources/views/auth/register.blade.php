@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
     <meta name="description" content="{{ app('websiteTitle') }} - Dashboard to manage service orders" />
     <meta name="keyword" content="{{ app('websiteTitle') }}, Service, Design, Printing, Videoghraphy, Fotoghraphy" />
-    <title>Register | {{ app('websiteTitle') || config('app.name') }}</title>
+    <title>Register | {{ app('websiteTitle') ?? config('app.name') }}</title>
     <!-- Main styles for this application-->
     <link href="{{ asset('assets/admin/css/style.min.css') }}" rel="stylesheet" />
 </head>
