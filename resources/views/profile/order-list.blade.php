@@ -10,7 +10,7 @@
     <header id="header" class="fixed-top d-flex align-items-center">
         <div class="d-flex align-items-center justify-content-between container">
             <div class="logo">
-                <h1><a href="{{ route('home') }}">Tefa Digital</a></h1>
+                <h1><a href="{{ route('home') }}">{{ app('websiteTitle') }}</a></h1>
             </div>
 
             <nav id="navbar" class="navbar">
