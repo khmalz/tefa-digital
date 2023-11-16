@@ -89,7 +89,8 @@ Route::as('user.')->group(function () {
         Route::put('/profile-update', [ProfileController::class, 'update'])->name('profile.update');
         Route::get('/list-order', [OrderClientController::class, 'list'])->name('order.list');
         Route::get('/detail/{order}', [OrderClientController::class, 'show'])->name('order.show');
-        Route::get('/activity', ActivityController::class)->name('order.activity');
+        Route::get('/activity', [ActivityController::class, 'index'])->name('order.activity.index');
+        Route::post('activity/read/{notifications?}', [ActivityController::class, 'read'])->name('order.activity.read');
 
         Route::prefix('photography')->as('photography.')->group(function () {
             Route::get('/form', [PhotographyFormController::class, 'index'])->name('form.index');
