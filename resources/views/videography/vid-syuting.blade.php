@@ -55,11 +55,14 @@
 
                 <div class="row content" data-aos="fade-up">
                     <div class="col-lg-6">
-                        <p style="margin-bottom: 40px;text-align: justify">
-                            Ciptakan video yang memukau dengan jasa pembuatan video syuting kami.
-                            Tim kami akan mengambil video syuting secara profesional dan menghasilkan video yang sesuai
-                            keinginan Anda.
-                            Hubungi kami sekarang untuk penawaran terbaik.
+                        <ul class="mt-5">
+                            <li><i class="ri-check-double-line"></i> Detail dan Kreativitas dalam Setiap Adegan</li>
+                            <li><i class="ri-check-double-line"></i> Hasilkan Video Sesuai Keinginan</li>
+                            <li><i class="ri-check-double-line"></i> Ciptakan Video Memukau dengan Jasa Syuting Video</li>
+                            <li><i class="ri-check-double-line"></i> Keterampilan Teknologi Terkini</li>
+                        </ul>
+                        <p class="mt-5">
+                            Hubungi Kami sekarang!
                         </p>
                     </div>
                     <div class="col-lg-6 pt-lg-0 image-about pt-4">

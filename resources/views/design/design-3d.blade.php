@@ -55,16 +55,13 @@
 
                 <div class="row content" data-aos="fade-up">
                     <div class="col-lg-6">
-                        <p style="margin-bottom: 20px;text-align: justify">
-                            Hadirkan ide-ide Anda dalam bentuk tiga dimensi yang menakjubkan dengan jasa pembuatan desain 3D
-                            kami! Kami menciptakan visualisasi nyata yang akan menghidupkan konsep Anda
-                        </p>
-                        <p style="margin-bottom: 20px;text-align: justify">
-                            Tidak hanya memberikan kepuasan visual, desain 3D kami juga membantu Anda memvisualisasikan
-                            ide-ide Anda secara lebih jelas, meminimalkan risiko kesalahan desain, dan memberikan presentasi
-                            yang mengesankan.
-                        </p>
-                        <p>
+                        <ul class="mt-5">
+                            <li><i class="ri-check-double-line"></i> Visualisasi Nyata untuk Konsep yang Hidup</li>
+                            <li><i class="ri-check-double-line"></i> Minimalkan Risiko Kesalahan Desain</li>
+                            <li><i class="ri-check-double-line"></i> Presentasi yang Mengesankan</li>
+                            <li><i class="ri-check-double-line"></i> Berikan Kehidupan pada Konsep</li>
+                        </ul>
+                        <p class="mt-5">
                             Hubungi Kami sekarang!
                         </p>
                     </div>

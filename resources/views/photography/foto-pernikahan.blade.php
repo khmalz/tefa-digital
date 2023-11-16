@@ -55,10 +55,14 @@
 
                 <div class="row content" data-aos="fade-up">
                     <div class="col-lg-6">
-                        <p style="margin-bottom: 40px;text-align: justify">
-                            Abadikan momen spesial pernikahan Anda dengan jasa foto pernikahan kami.
-                            Dapatkan kenangan pernikahan yang abadi dengan penawaran terbaik dari kami.
-                            Hubungi kami sekarang!
+                        <ul class="mt-5">
+                            <li><i class="ri-check-double-line"></i> Abadikan Momen Spesial Pernikahan</li>
+                            <li><i class="ri-check-double-line"></i> Sesi Foto yang Menyenangkan dan Berkualitas</li>
+                            <li><i class="ri-check-double-line"></i> Konsultasi Gratis</li>
+                            <li><i class="ri-check-double-line"></i> Penawaran Terbaik untuk Kenangan Tak Terlupakan</li>
+                        </ul>
+                        <p class="mt-5">
+                            Hubungi Kami sekarang!
                         </p>
                     </div>
                     <div class="col-lg-6 pt-lg-0 image-about pt-4">

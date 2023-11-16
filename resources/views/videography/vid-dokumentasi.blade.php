@@ -55,16 +55,14 @@
 
                 <div class="row content" data-aos="fade-up">
                     <div class="col-lg-6">
-                        <p style="margin-bottom: 40px;text-align: justify">
-                            Buat momen penting dan spesial Anda terabadikan dengan jasa pembuatan video dokumentasi kami.
-                            Kami menawarkan jasa pembuatan video dokumentasi untuk acara, proyek, atau keperluan bisnis
-                            Anda.
-                            Kami akan bekerja sama dengan Anda untuk memahami kebutuhan Anda dan menghasilkan video yang
-                            sesuai dengan visi Anda.
-                            Dapatkan video dokumentasi yang berkualitas tinggi untuk memenuhi kebutuhan Anda.
-                            Hubungi kami sekarang untuk mendapatkan penawaran terbaik untuk jasa pembuatan video dokumentasi
-                            kami.
-
+                        <ul class="mt-5">
+                            <li><i class="ri-check-double-line"></i> Abadikan Momen Pending dan Spesial</li>
+                            <li><i class="ri-check-double-line"></i> Hasilkan Video Sesuai dengan Visi Anda</li>
+                            <li><i class="ri-check-double-line"></i> Kolaborasi dengan Klien untuk Memahami Kebutuhan</li>
+                            <li><i class="ri-check-double-line"></i> Menghasilkan Video Dokumentasi Berkualitas Tinggi</li>
+                        </ul>
+                        <p class="mt-5">
+                            Hubungi Kami sekarang!
                         </p>
                     </div>
                     <div class="col-lg-6 pt-lg-0 image-about pt-4">

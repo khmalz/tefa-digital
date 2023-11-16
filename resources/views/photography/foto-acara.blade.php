@@ -54,11 +54,14 @@
 
                 <div class="row content" data-aos="fade-up">
                     <div class="col-lg-6">
-                        <p style="margin-bottom: 40px;text-align: justify">
-                            Jadikan acara Anda lebih bermakna dengan jasa foto acara kami.
-                            Tim kami akan mengambil gambar acara Anda dengan baik dan menghasilkan gambar yang memukau.
-                            Dapatkan gambar acara Anda yang paling berkesan dengan jasa fotografi acara kami.
-                            Hubungi kami sekarang untuk mendapatkan penawaran terbaik.
+                        <ul class="mt-5">
+                            <li><i class="ri-check-double-line"></i> Jadikan Acara Anda Lebih Bermakna</li>
+                            <li><i class="ri-check-double-line"></i> Detail yang Dicerminkan dalam Setiap Foto</li>
+                            <li><i class="ri-check-double-line"></i> Dukungan Penuh untuk Acara</li>
+                            <li><i class="ri-check-double-line"></i> Gambar yang Profesional dan Berkesan</li>
+                        </ul>
+                        <p class="mt-5">
+                            Hubungi Kami sekarang!
                         </p>
                     </div>
                     <div class="col-lg-6 pt-lg-0 image-about pt-4">

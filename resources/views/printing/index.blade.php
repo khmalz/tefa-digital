@@ -54,16 +54,13 @@
 
                 <div class="row content" data-aos="fade-up">
                     <div class="col-lg-6">
-                        <p style="margin-bottom: 20px;text-align: justify">
-                            Pada zaman modern ini, kecanggihan teknologi memudahkan kita untuk melihat sebuah objek nyata
-                            hasil dari suatu ide dan konsep. Dengan 3D Printing buat ide Anda menjadi sebuah objek nyata
-                            yang menakjubkan.
-                        </p>
-                        <p style="margin-bottom: 20px;text-align: justify">
-                            Buat prototipe design Anda menjadi objek fisik tiga dimensi yang detail dan presisi. Jadikan
-                            bisnis Anda lebih inovatif dan pekerjaan lebih efektif dan efisien menggunakan jasa Kami.
-                        </p>
-                        <p>
+                        <ul class="mt-5">
+                            <li><i class="ri-check-double-line"></i> Jadikan Bisnis Lebih Progresif</li>
+                            <li><i class="ri-check-double-line"></i> Kemajuan Dalam Pengembangan Produk</li>
+                            <li><i class="ri-check-double-line"></i> Mendorong Kreativitas dan Keunggulan Kompetitif</li>
+                            <li><i class="ri-check-double-line"></i> Detail dan Presisi dalam Objek 3D</li>
+                        </ul>
+                        <p class="mt-5">
                             Hubungi Kami sekarang!
                         </p>
                     </div>

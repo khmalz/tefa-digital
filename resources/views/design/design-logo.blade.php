@@ -55,19 +55,12 @@
 
                 <div class="row content" data-aos="fade-up">
                     <div class="col-lg-6">
-                        <p style="margin-bottom: 20px; text-align: justify">
-                            Logo adalah jantung merek Anda, wujud visual yang mewakili identitas dan nilai-nilai bisnis
-                            Anda. Maka dari itu, penting bagi Anda untuk memiliki logo yang kuat dan menarik. Apakah Anda
-                            ingin menonjol di antara pesaing, menarik perhatian pelanggan potensial, dan membangun kesan
-                            yang tak terlupakan?
-                        </p>
-                        <p style="margin-bottom: 20px; text-align: justify">
-                            Kami di sini untuk membantu! Dengan jasa pembuatan logo kami, Anda akan mendapatkan desain yang
-                            unik, kreatif, dan profesional yang mencerminkan esensi bisnis Anda. Kami memahami pentingnya
-                            logo sebagai alat pemasaran yang kuat, yang mampu mengkomunikasikan merek Anda dengan jelas dan
-                            membangun daya ingat yang tinggi.
-                        </p>
-                        <p>
+                        <ul class="mt-5">
+                            <li><i class="ri-check-double-line"></i> Logo sebagai Alat Pemasaran Kuat</li>
+                            <li><i class="ri-check-double-line"></i> Menarik Perhatian Pelanggan Potensial</li>
+                            <li><i class="ri-check-double-line"></i> Desain Unik, Kreatif, dan Profesional</li>
+                        </ul>
+                        <p class="mt-5">
                             Hubungi Kami sekarang!
                         </p>
                     </div>
