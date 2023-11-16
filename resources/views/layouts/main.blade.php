@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>{{ $websiteTitle }}</title>
+    <title>{{ app('websiteTitle') }}</title>
     <meta name="description"
-        content="{{ $websiteTitle }} is a service ordering website that provides printing, design, photography, and videography services in SMKN 46 Jakarta. We offer high-quality services for teachers and students of SMKN 46 Jakarta.">
+        content="{{ app('websiteTitle') }} is a service ordering website that provides printing, design, photography, and videography services in SMKN 46 Jakarta. We offer high-quality services for teachers and students of SMKN 46 Jakarta.">
     <meta name="keywords"
-        content="{{ $websiteTitle }}, printing, design, photography, videography, SMKN 46 Jakarta, services, high-quality, teachers, students">
+        content="{{ app('websiteTitle') }}, printing, design, photography, videography, SMKN 46 Jakarta, services, high-quality, teachers, students">
 
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">

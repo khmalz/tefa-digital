@@ -5,8 +5,8 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
-    <meta name="description" content="{{ $websiteTitle }} - Dashboard to manage service orders" />
-    <meta name="keyword" content="{{ $websiteTitle }}, Service, Design, Printing, Videoghraphy, Fotoghraphy" />
+    <meta name="description" content="{{ app('websiteTitle') }} - Dashboard to manage service orders" />
+    <meta name="keyword" content="{{ app('websiteTitle') }}, Service, Design, Printing, Videoghraphy, Fotoghraphy" />
     <title>Dashboard | {{ config('app.name') }}</title>
     <meta name="theme-color" content="#ffffff" />
     <!-- Vendors styles-->

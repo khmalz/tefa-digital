@@ -4,8 +4,8 @@ namespace App\Providers;
 
 use App\Models\Title;
 use App\Services\OrderService;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Pagination\Paginator;
-use Illuminate\Support\Facades\View;
 use App\Repositories\OrderRepository;
 use Illuminate\Support\Facades\Schema;
 use App\Services\OrderServiceInterface;
@@ -21,6 +21,12 @@ class AppServiceProvider extends ServiceProvider
     {
         $this->app->bind(OrderRepositoryInterface::class, OrderRepository::class);
         $this->app->bind(OrderServiceInterface::class, OrderService::class);
+
+        $this->app->singleton('websiteTitle', function () {
+            $title = Title::value('name');
+
+            return $title ?? config('app.name');
+        });
     }
 
     /**
@@ -29,8 +35,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Schema::defaultStringLength(125);
-        $websiteTitle = Title::value('name');
-        View::share('websiteTitle', $websiteTitle);
         Paginator::useBootstrapFive();
     }
 }
