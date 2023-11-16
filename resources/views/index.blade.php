@@ -5,7 +5,7 @@
     <header id="header" class="fixed-top d-flex align-items-center header-transparent">
         <div class="d-flex align-items-center justify-content-between container">
             <div class="logo">
-                <h1><a href="{{ route('home') }}">Tefa Digital</a></h1>
+                <h1><a href="{{ route('home') }}">{{ app('websiteTitle') }}</a></h1>
             </div>
 
             <nav id="navbar" class="navbar">
@@ -15,25 +15,8 @@
                     <li><a class="nav-link scrollto" href="#features">Services</a></li>
                     <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
                     <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                    @auth
-                        <li class="dropdown"><a href="#"><span>Welcome, {{ auth()->user()->name }}</span> <i
-                                    class="bi bi-chevron-down"></i></a>
-                            <ul>
-                                <li><a href="{{ route('user.profile.index') }}">{{ auth()->user()->email }}</a></li>
-                                <li><a href="{{ route('user.order.list') }}">List Order</a></li>
-                                <li>
-                                    <form action="{{ route('logout') }}" method="post" class="d-inline">
-                                        @csrf
-                                        <a href="#"
-                                            onclick="return confirm('Yakin ? ') ? this.parentElement.submit() : null">Log
-                                            Out</a>
-                                    </form>
-                                </li>
-                            </ul>
-                        </li>
-                    @else
-                        <li><a class="nav-link" href="{{ route('login.index') }}">Login</a></li>
-                    @endauth
+                    @include('layouts.dropdown')
+
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
@@ -54,8 +37,11 @@
                 <!-- Slide 1 -->
                 <div class="carousel-item active">
                     <div class="carousel-container">
-                        <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Tefa digital</span></h2>
-                        <p class="animate__animated fanimate__adeInUp">Tefa digital adalah website inovatif yang berdedikasi
+                        <h2 class="animate__animated animate__fadeInDown">Welcome to <span>{{ app('websiteTitle') }}</span>
+                        </h2>
+                        <p class="animate__animated fanimate__adeInUp">{{ app('websiteTitle') }} adalah website inovatif
+                            yang
+                            berdedikasi
                             untuk meningkatkan pendidikan dan membantu siswa mencapai potensi terbaik mereka.</p>
                         <a href="#about"
                             class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
@@ -109,13 +95,15 @@
             <div class="container">
                 <div class="section-title" data-aos="zoom-out">
                     <h2>About</h2>
-                    <p>Apa itu tefa digital?</p>
+                    <p>Apa itu {{ app('websiteTitle') }}?</p>
                 </div>
 
                 <div class="row content" data-aos="fade-up">
                     <div class="col-lg-6">
                         <p style="text-align: justify">
-                            Tefa digital adalah website inovatif yang berdedikasi untuk meningkatkan pendidikan dan membantu
+                            {{ app('websiteTitle') }} adalah website inovatif yang berdedikasi untuk meningkatkan
+                            pendidikan dan
+                            membantu
                             siswa mencapai potensi terbaik mereka. Kami hadir dengan visi untuk menjadi prasarana pendidikan
                             yang relevan dan mendukung kegiatan pembelajaran siswa sesuai kurikulum yang berlaku.
                         </p>
@@ -206,7 +194,8 @@
                                 <p>
                                     Sebuah jasa fotografi yang memiliki keahlian profesional dalam mengoperasikan kamera,
                                     sehingga dapat menghasilkan gambar - gambar yang indah dan memikat hati anda. Untuk itu,
-                                    kami hadir dengan jasa - jasa yang kami miliki, salah satunya adalah jasa fotografi.
+                                    kami hadir dengan jasa - jasa yang kami miliki, salah websiteTitlenya adalah jasa
+                                    fotografi.
                                 </p>
                                 <p>
                                     Kami memiliki 3 jenis jasa fotografi yang mungkin anda butuhkan, diantaranya yaitu:
@@ -216,7 +205,7 @@
                                     <li><i class="ri-check-double-line"></i> Jasa Foto Pernikahan</li>
                                     <li><i class="ri-check-double-line"></i> Jasa Foto Acara</li>
                                 </ul>
-                                <a href="{{ route('user.design.index') }}" class="btn btn-color order-button">
+                                <a href="{{ route('user.photography.index') }}" class="btn btn-color order-button">
                                     Order!
                                 </a>
                             </div>
@@ -243,7 +232,7 @@
                                     <li><i class="ri-check-double-line"></i> Jasa Video Syuting</li>
                                     <li><i class="ri-check-double-line"></i> Jasa Video Dokumentasi</li>
                                 </ul>
-                                <a href="{{ route('user.design.index') }}" class="btn btn-color order-button">
+                                <a href="{{ route('user.videography.index') }}" class="btn btn-color order-button">
                                     Order!
                                 </a>
                             </div>
@@ -264,7 +253,7 @@
                                     audiens.
                                     Jadikan kami mitra dalam mencetak keberhasilan Anda
                                 </p>
-                                <a href="{{ route('user.design.index') }}" class="btn btn-color order-button">
+                                <a href="{{ route('user.printing.index') }}" class="btn btn-color order-button">
                                     Order!
                                 </a>
                             </div>
@@ -383,13 +372,16 @@
         .order-button {
             font-family: "Raleway", sans-serif;
             background-color: #f06404;
-            width: 100px;
-            height: 50px;
-            font-size: 25px;
-            padding: 5px;
-            border-radius: 10px;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 1px;
+            display: inline-block;
+            padding: 12px 32px;
+            border-radius: 50px;
+            transition: 0.5s;
+            line-height: 1;
+            margin: 10px;
             color: #fff;
-            text-align: center;
             display: inline-block;
             text-decoration: none;
             transition: background-color 0.3s, color 0.3s;

@@ -25,6 +25,7 @@ use App\Http\Controllers\Admin\DesignCategoryController;
 use App\Http\Controllers\Admin\PhotographyPlanController;
 use App\Http\Controllers\Admin\VideographyPlanController;
 use App\Http\Controllers\Admin\PhotographyCategoryController;
+use App\Http\Controllers\Admin\ProfileAppController;
 use App\Http\Controllers\Admin\VideographyCategoryController;
 
 /*
@@ -116,10 +117,11 @@ Route::as('user.')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
-    Route::get('dashboard', DashboardController::class)->name('dashboard');
 });
 
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
+    Route::get('dashboard', DashboardController::class)->name('dashboard');
+
     Route::get('list-order', [OrderListController::class, 'all'])->name('order.all');
     Route::patch('order/{order}/update', [OrderListController::class, 'update'])->name('order.update');
     Route::get('detail/{order}', [OrderListController::class, 'show'])->name('order.show');
@@ -132,7 +134,9 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     });
 
     Route::resource('portfolio', PortfolioController::class)->except('show');
-    Route::resource('contact', ContactController::class)->except('create', 'store', 'show', 'destroy');
+    Route::get('profile-app', [ProfileAppController::class, 'index'])->name('profile-app.index');
+    Route::patch('profil-app/contact/{contact}/update', [ProfileAppController::class, 'updateContact'])->name('profile-app.contact.update');
+    Route::patch('profil-app/title/{title}/update', [ProfileAppController::class, 'updateTitle'])->name('profile-app.title.update');
 
     Route::resource('design-category', DesignCategoryController::class)->except('create', 'store', 'show', 'destroy');
     Route::resource('design-plan', DesignPlanController::class);

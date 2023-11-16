@@ -3,77 +3,16 @@
 @include('layouts.subcategory-header')
 
 @section('hero')
-    <!-- ======= Hero Section ======= -->
-    <section id="hero" class="d-flex flex-column justify-content-end align-items-center">
-        <div id="heroCarousel" data-bs-interval="5000" class="carousel carousel-fade" data-bs-ride="carousel">
-            <div class="carousel-image-container">
-                <img src="https://images.unsplash.com/photo-1603380353725-f8a4d39cc41e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                    alt="">
-
-                <!-- Slide 1 -->
-                <div class="carousel-item active">
-                    <div class="carousel-container">
-                        <h2 class="animate__animated animate__fadeInDown">Jasa Foto Produk</span></h2>
-                        <p class="animate__animated fanimate__adeInUp">Buat produk Anda terlihat lebih menarik dengan jasa
-                            foto
-                            produk kami.</p>
-                        <a href="#about"
-                            class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" style="position: absolute"
-            xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
-            <defs>
-                <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
-            </defs>
-            <g class="wave1">
-                <use xlink:href="#wave-path" x="50" y="3" style="opacity: 25%" fill="#fff">
-            </g>
-            <g class="wave2">
-                <use xlink:href="#wave-path" x="50" y="0" style="opacity: 15%" fill="#fff">
-            </g>
-            <g class="wave3">
-                <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
-            </g>
-        </svg>
-    </section>
-    <!-- End Hero -->
+    @include('layouts.carousel-category', [
+        'title' => 'Foto Produk',
+        'description' => 'Buat produk Anda terlihat lebih menarik dengan jasa foto produk kami',
+        'buttonUrl' => '#pricing',
+        'buttonText' => 'Order',
+    ])
 @endsection
 
 @section('main')
     <main id="main">
-        <!-- ======= About Section ======= -->
-        <section id="about" class="about">
-            <div class="container">
-                <div class="section-title" data-aos="zoom-out">
-                    <h2>Jasa Foto Produk</h2>
-                    <p>Mengapa menggunakan jasa Kami?</p>
-                </div>
-
-                <div class="row content" data-aos="fade-up">
-                    <div class="col-lg-6">
-                        <ul class="mt-5">
-                            <li><i class="ri-check-double-line"></i> Tingkatkan Daya Tarik Produk</li>
-                            <li><i class="ri-check-double-line"></i> Dapatkan Foto Produk yang Memukau</li>
-                            <li><i class="ri-check-double-line"></i> Sentuhan Profesional untuk Setiap Produk</li>
-                            <li><i class="ri-check-double-line"></i> Optimalkan Presentasi Produk</li>
-                        </ul>
-                        <p class="mt-5">
-                            Hubungi Kami sekarang!
-                        </p>
-                    </div>
-                    <div class="col-lg-6 pt-lg-0 pt-4">
-                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
-                            alt="" class="img-pricing">
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End About Section -->
-
         <!-- ======= Pricing Section ======= -->
         <section id="pricing" class="pricing">
             <div class="container">
@@ -98,7 +37,8 @@
                                 </div>
                                 <div class="btn-wrap">
                                     <a href="{{ route('user.photography.form.index', ['category' => 'Produk', 'plan' => $plan->title]) }}"
-                                        class="btn-buy">Buy Now</a>
+                                        class="btn-buy {{ auth()->guest() ||auth()->user()->hasRole('client')? null: 'disable-btn' }}">Buy
+                                        Now</a>
                                 </div>
                             </div>
                         </div>

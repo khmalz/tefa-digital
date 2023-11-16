@@ -1267,6 +1267,13 @@ section {
     --bs-btn-active-color: var(--bs-btn-hover-color);
 }
 
+.btn-general.disable-btn,
+.pricing .btn-buy.disable-btn {
+    background: #b35715;
+    text-decoration: line-through;
+    pointer-events: none;
+}
+
 /*--------------------------------------------------------------
 # F.A.Q
 --------------------------------------------------------------*/
@@ -1649,7 +1656,7 @@ section {
     margin: 0 0 40px 0;
 }
 
-#footer .social-links a {
+#footer .social-links .icon {
     font-size: 18px;
     display: inline-block;
     background: #ef6603;
@@ -1664,7 +1671,7 @@ section {
     transition: 0.3s;
 }
 
-#footer .social-links a:hover {
+#footer .social-links .icon:hover {
     background: #bd5102;
     color: #fff;
     text-decoration: none;

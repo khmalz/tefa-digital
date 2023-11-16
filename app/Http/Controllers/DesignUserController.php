@@ -11,9 +11,9 @@ class DesignUserController extends Controller
     {
         $categories = DesignCategory::all();
         $routeNames = [
-            'Logo' => route('user.design.design-logo'),
-            'Promosi Digital' => route('user.design.design-promosi'),
-            '3D' => route('user.design.design-3d'),
+            'Logo' => route('user.design.design-logo', '#pricing'),
+            'Promosi Digital' => route('user.design.design-promosi', '#pricing'),
+            '3D' => route('user.design.design-3d', '#pricing'),
         ];
 
         return view('design.index', compact('categories', 'routeNames'));

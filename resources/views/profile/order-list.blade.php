@@ -17,19 +17,20 @@
                 <ul>
                     <li><a class="nav-link scrollto active" href="#orderlist">List Order</a></li>
                     @auth
-                        <li class="dropdown"><a href="#"><span>Welcome, {{ auth()->user()->name }}</span> <i
-                                    class="bi bi-chevron-down"></i></a>
-                            <ul>
-                                <li><a href="#">{{ auth()->user()->email }}</a></li>
-                                <li>
-                                    <form action="{{ route('logout') }}" method="post" class="d-inline">
-                                        @csrf
-                                        <a href="#"
-                                            onclick="return confirm('Yakin ? ') ? this.parentElement.submit() : null">Log
-                                            Out</a>
-                                    </form>
-                                </li>
-                            </ul>
+                        <li class="dropdown">
+                        <li><a href="{{ route('user.profile.index') }}">{{ auth()->user()->email }}</a></li>
+                        <li><a href="{{ route('user.order.list') }}">List Order</a></li>
+                        <ul>
+                            <li><a href="#">{{ auth()->user()->email }}</a></li>
+                            <li>
+                                <form action="{{ route('logout') }}" method="post" class="d-inline">
+                                    @csrf
+                                    <a href="#"
+                                        onclick="return confirm('Yakin ? ') ? this.parentElement.submit() : null">Log
+                                        Out</a>
+                                </form>
+                            </li>
+                        </ul>
                         </li>
                     @else
                         <li><a class="nav-link" href="{{ route('login.index') }}">Login</a></li>
@@ -135,7 +136,8 @@
                                                 </td>
                                                 <td>
                                                     <a class="btn btn-sm btn-info d-inline-flex align-items-center justify-content-center py-0 text-white"
-                                                        style="column-gap: 4px" href="{{ route('user.order.show', $order->ulid) }}">
+                                                        style="column-gap: 4px"
+                                                        href="{{ route('user.order.show', $order->ulid) }}">
                                                         <i class='bx bx-detail'></i>
                                                         Detail
                                                     </a>

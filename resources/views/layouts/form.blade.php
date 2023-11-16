@@ -43,7 +43,7 @@
     <nav class="w-100 position-absolute top-0" style="z-index: 111">
         <div class="d-flex align-items-center justify-content-center" style="background-color: rgba(42, 44, 57, 0.9)">
             <div class="logo">
-                <h1><a class="fw-bold fs-3 p-3 text-white" href="{{ route('home') }}">Tefa Digital</a></h1>
+                <h1><a class="fw-bold fs-3 p-3 text-white" href="{{ route('home') }}">{{ app('websiteTitle') }}</a></h1>
             </div>
         </div>
     </nav>
