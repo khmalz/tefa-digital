@@ -372,13 +372,16 @@
         .order-button {
             font-family: "Raleway", sans-serif;
             background-color: #f06404;
-            width: 100px;
-            height: 50px;
-            font-size: 25px;
-            padding: 5px;
-            border-radius: 10px;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 1px;
+            display: inline-block;
+            padding: 12px 32px;
+            border-radius: 50px;
+            transition: 0.5s;
+            line-height: 1;
+            margin: 10px;
             color: #fff;
-            text-align: center;
             display: inline-block;
             text-decoration: none;
             transition: background-color 0.3s, color 0.3s;
