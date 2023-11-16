@@ -11,8 +11,8 @@ class VideographyUserController extends Controller
     {
         $categories = VideographyCategory::all();
         $routeNames = [
-            'Video Syuting' => route('user.videography.vid-syuting'),
-            'Video Dokumentasi' => route('user.videography.vid-dokumentasi'),
+            'Video Syuting' => route('user.videography.vid-syuting', '#pricing'),
+            'Video Dokumentasi' => route('user.videography.vid-dokumentasi', '#pricing'),
         ];
 
         return view('videography.index', compact('categories', 'routeNames'));

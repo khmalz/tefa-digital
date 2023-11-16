@@ -17,7 +17,8 @@
                         <p class="animate__animated fanimate__adeInUp">Taklukkan pasar yang kompetitif dengan promosi
                             digital.
                         </p>
-                        <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Order</a>
+                        <a href="#about"
+                            class="btn-get-started animate__animated animate__fadeInUp scrollto">Order</a>
                     </div>
                 </div>
             </div>
@@ -55,17 +56,12 @@
 
                 <div class="row content" data-aos="fade-up">
                     <div class="col-lg-6">
-                        <p style="margin-bottom: 20px;text-align: justify">
-                            Dalam era online ini, digital marketing adalah kunci sukses bisnis Anda. Jangkau pelanggan
-                            potensial di seluruh dunia, bangun kehadiran digital yang kuat, dan optimalkan konversi
-                            penjualan.
-                        </p>
-                        <p style="margin-bottom: 20px;text-align: justify">
-                            Tingkatkan kehadiran online bisnis Anda dan capai kesuksesan dengan jasa pembuatan promosi
-                            digital kami! Dengan design unik dan bahasa menarik Kami mampu membantu meningkatkan pemasaran
-                            bisnis Anda.
-                        </p>
-                        <p>
+                        <ul class="mt-5">
+                            <li><i class="ri-check-double-line"></i> Jangkau Pelanggan Potensial Global</li>
+                            <li><i class="ri-check-double-line"></i> Optimalkan Konversi Penjualan</li>
+                            <li><i class="ri-check-double-line"></i> Meningkatkan Pemasaran Bisnis</li>
+                        </ul>
+                        <p class="mt-5">
                             Hubungi Kami sekarang!
                         </p>
                     </div>
@@ -105,8 +101,7 @@
                                     </div>
                                     <div class="mb-2">
                                         <a href="{{ route('user.design.form.index', ['category' => 'Promosi Digital']) }}"
-                                            class="btn btn-lg btn-general rounded-5 {{ auth()->guest() ||auth()->user()->hasRole('client')? null: 'disable-btn' }}">
-                                            Konsultasikan
+                                            class="btn btn-lg btn-general rounded-5"> Konsultasikan
                                             sekarang</a>
                                     </div>
                                 </div>

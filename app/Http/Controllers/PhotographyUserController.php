@@ -11,9 +11,9 @@ class PhotographyUserController extends Controller
     {
         $categories = PhotographyCategory::all();
         $routeNames = [
-            'Produk' => route('user.photography.foto-produk'),
-            'Pernikahan' => route('user.photography.foto-pernikahan'),
-            'Acara' => route('user.photography.foto-acara'),
+            'Produk' => route('user.photography.foto-produk', '#pricing'),
+            'Pernikahan' => route('user.photography.foto-pernikahan', '#pricing'),
+            'Acara' => route('user.photography.foto-acara', '#pricing'),
         ];
 
         return view('photography.index', compact('categories', 'routeNames'));

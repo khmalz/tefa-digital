@@ -33,7 +33,7 @@
                                 name="videography_plan_id" id="planInput"
                                 data-select-plan="{{ old('videography_plan_id', $selectedPlan) }}"
                                 aria-label=".form-select-sm example" required>
-                                <option selected disabled>Select the plan</option>
+                                <option selected disabled>Select the category first</option>
                             </select>
                             @error('videography_plan_id')
                                 <div class="invalid-feedback">
@@ -43,31 +43,26 @@
                         </div>
                         <div class="mb-3">
                             <label class="col-form-label-sm" for="nameInput">Name</label>
-                            <input type="text"
-                                class="form-control form-control-sm @error('name_customer') is-invalid @enderror"
-                                name="name_customer" id="nameInput" placeholder="" value="{{ old('name_customer') }}">
-                            @error('name_customer')
-                                <div id="nameInvalid" class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
+                            <input type="text" class="form-control form-control-sm" name="name_customer" id="nameInput"
+                                placeholder="Name" readonly value="{{ old('name_customer', auth()->user()->name) }}">
+                            <small>
+                                <div id="nameHelp" class="form-text">Update profile jika ingin mengubah</div>
+                            </small>
                         </div>
                         <div class="mb-3">
                             <label class="col-form-label-sm" for="emailInput">Email</label>
-                            <input type="email"
-                                class="form-control form-control-sm @error('email_customer') is-invalid @enderror"
-                                name="email_customer" id="emailInput" placeholder="" value="{{ old('email_customer') }}">
-                            @error('email_customer')
-                                <div id="emailInvalid" class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
+                            <input type="email" class="form-control form-control-sm" name="email_customer" id="emailInput"
+                                placeholder="Email" readonly value="{{ old('email_customer', auth()->user()->email) }}">
+                            <small>
+                                <div id="emailHelp" class="form-text">Update profile jika ingin mengubah</div>
+                            </small>
                         </div>
                         <div class="mb-3">
-                            <label class="col-form-label-sm" for="phoneInput">Phone Number</label>
+                            <label class="col-form-label-sm" for="phoneInput">No Telepon</label>
                             <input type="text"
                                 class="form-control form-control-sm @error('number_customer') is-invalid @enderror"
-                                name="number_customer" id="phoneInput" placeholder="" value="{{ old('number_customer') }}">
+                                name="number_customer" id="phoneInput" placeholder="No Telepon"
+                                value="{{ old('number_customer') }}">
                             @error('number_customer')
                                 <div id="numberInvalid" class="invalid-feedback">
                                     {{ $message }}

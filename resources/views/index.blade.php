@@ -15,29 +15,8 @@
                     <li><a class="nav-link scrollto" href="#features">Services</a></li>
                     <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
                     <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-                    @auth
-                        <li class="dropdown"><a href="#"><span>Welcome, {{ auth()->user()->name }}</span> <i
-                                    class="bi bi-chevron-down"></i></a>
-                            <ul>
-                                @role('clent')
-                                    <li><a href="{{ route('user.profile.index') }}">{{ auth()->user()->email }}</a></li>
-                                    <li><a href="{{ route('user.order.list') }}">List Order</a></li>
-                                @else
-                                    <li><a href="{{ route('dashboard') }}">{{ auth()->user()->email }}</a></li>
-                                @endrole
-                                <li>
-                                    <form action="{{ route('logout') }}" method="post" class="d-inline">
-                                        @csrf
-                                        <a href="#"
-                                            onclick="return confirm('Yakin ? ') ? this.parentElement.submit() : null">Log
-                                            Out</a>
-                                    </form>
-                                </li>
-                            </ul>
-                        </li>
-                    @else
-                        <li><a class="nav-link" href="{{ route('login.index') }}">Login</a></li>
-                    @endauth
+                    @include('layouts.dropdown')
+
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
@@ -393,13 +372,16 @@
         .order-button {
             font-family: "Raleway", sans-serif;
             background-color: #f06404;
-            width: 100px;
-            height: 50px;
-            font-size: 25px;
-            padding: 5px;
-            border-radius: 10px;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 1px;
+            display: inline-block;
+            padding: 12px 32px;
+            border-radius: 50px;
+            transition: 0.5s;
+            line-height: 1;
+            margin: 10px;
             color: #fff;
-            text-align: center;
             display: inline-block;
             text-decoration: none;
             transition: background-color 0.3s, color 0.3s;
