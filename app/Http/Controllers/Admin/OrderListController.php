@@ -6,6 +6,7 @@ use Illuminate\View\View;
 use App\Models\Admin\Order;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Notifications\OrderNotification;
 use Illuminate\Http\RedirectResponse;
 
 class OrderListController extends Controller
@@ -71,6 +72,8 @@ class OrderListController extends Controller
         $order->update([
             'status' => $request->status
         ]);
+
+        $order->user->notify(new OrderNotification($order->ulid, $order->user_id, $order->status));
 
         return back()->with('success', "You're successfully updated status a order");
     }

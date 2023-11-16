@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
     <meta name="description" content="{{ app('websiteTitle') }} - Dashboard to manage service orders" />
     <meta name="keyword" content="{{ app('websiteTitle') }}, Service, Design, Printing, Videoghraphy, Fotoghraphy" />
-    <title>Login | {{ app('websiteTitle') || config('app.name') }}</title>
+    <title>Login | {{ app('websiteTitle') ?? config('app.name') }}</title>
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
     <!-- Main styles for this application-->
