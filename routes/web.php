@@ -88,6 +88,9 @@ Route::as('user.')->group(function () {
         Route::put('/profile-update', [ProfileController::class, 'update'])->name('profile.update');
         Route::get('/list-order', [OrderClientController::class, 'list'])->name('order.list');
         Route::get('/detail/{order}', [OrderClientController::class, 'show'])->name('order.show');
+        Route::get('/activity', function () {
+            return view('profile.history');
+        })->name('order.show');
 
         Route::prefix('photography')->as('photography.')->group(function () {
             Route::get('/form', [PhotographyFormController::class, 'index'])->name('form.index');

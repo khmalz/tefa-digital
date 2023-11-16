@@ -101,6 +101,19 @@
             transform: translateY(-10px);
             box-shadow: 0 2px 35px 0 rgba(68, 88, 144, 0.2);
         }
+
+        /* punya dipta */
+        .status-box {
+            /* background-color: blue; */
+            width: 10%;
+            border-radius: 10px 0 0 10px;
+
+            /* border-radius: 25% 0 0 25%; */
+        }
+
+        .big-icon {
+            font-size: clamp(25px, 4vw, 100px)
+        }
     </style>
     @stack('styles')
 </head>
