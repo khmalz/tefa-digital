@@ -44,40 +44,6 @@
 
 @section('main')
     <main id="main">
-        <!-- ======= About Section ======= -->
-        <section id="about" class="about">
-            <div class="container">
-
-                <div class="section-title" data-aos="zoom-out">
-                    <h2>Jasa Design Promosi</h2>
-                    <p>Mengapa menggunakan jasa Kami?</p>
-                </div>
-
-                <div class="row content" data-aos="fade-up">
-                    <div class="col-lg-6">
-                        <p style="margin-bottom: 20px;text-align: justify">
-                            Dalam era online ini, digital marketing adalah kunci sukses bisnis Anda. Jangkau pelanggan
-                            potensial di seluruh dunia, bangun kehadiran digital yang kuat, dan optimalkan konversi
-                            penjualan.
-                        </p>
-                        <p style="margin-bottom: 20px;text-align: justify">
-                            Tingkatkan kehadiran online bisnis Anda dan capai kesuksesan dengan jasa pembuatan promosi
-                            digital kami! Dengan design unik dan bahasa menarik Kami mampu membantu meningkatkan pemasaran
-                            bisnis Anda.
-                        </p>
-                        <p>
-                            Hubungi Kami sekarang!
-                        </p>
-                    </div>
-                    <div class="col-lg-6 pt-lg-0 image-about pt-4">
-                        <img src="https://source.unsplash.com/random/900×700/?digital-marketing" alt=""
-                            class="img-pricing">
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End About Section -->
-
         <!-- ======= Pricing Section ======= -->
         <section id="pricing" class="pricing">
             <div class="container">

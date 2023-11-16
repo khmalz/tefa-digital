@@ -44,31 +44,6 @@
 
 @section('main')
     <main id="main">
-        <!-- ======= About Section ======= -->
-        <section id="about" class="about">
-            <div class="container">
-                <div class="section-title" data-aos="zoom-out">
-                    <h2>Jasa Foto Acara</h2>
-                    <p>Mengapa menggunakan jasa Kami?</p>
-                </div>
-
-                <div class="row content" data-aos="fade-up">
-                    <div class="col-lg-6">
-                        <p style="margin-bottom: 40px;text-align: justify">
-                            Jadikan acara Anda lebih bermakna dengan jasa foto acara kami.
-                            Tim kami akan mengambil gambar acara Anda dengan baik dan menghasilkan gambar yang memukau.
-                            Dapatkan gambar acara Anda yang paling berkesan dengan jasa fotografi acara kami.
-                            Hubungi kami sekarang untuk mendapatkan penawaran terbaik.
-                        </p>
-                    </div>
-                    <div class="col-lg-6 pt-lg-0 image-about pt-4">
-                        <img src="https://source.unsplash.com/random/900×700/?event" alt="" class="img-pricing">
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End About Section -->
-
         <!-- ======= Pricing Section ======= -->
         <section id="pricing" class="pricing">
             <div class="container">

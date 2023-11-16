@@ -45,37 +45,6 @@
 
 @section('main')
     <main id="main">
-        <!-- ======= About Section ======= -->
-        <section id="about" class="about">
-            <div class="container">
-                <div class="section-title" data-aos="zoom-out">
-                    <h2>Jasa Video Dokumentasi</h2>
-                    <p>Mengapa menggunakan jasa Kami?</p>
-                </div>
-
-                <div class="row content" data-aos="fade-up">
-                    <div class="col-lg-6">
-                        <p style="margin-bottom: 40px;text-align: justify">
-                            Buat momen penting dan spesial Anda terabadikan dengan jasa pembuatan video dokumentasi kami.
-                            Kami menawarkan jasa pembuatan video dokumentasi untuk acara, proyek, atau keperluan bisnis
-                            Anda.
-                            Kami akan bekerja sama dengan Anda untuk memahami kebutuhan Anda dan menghasilkan video yang
-                            sesuai dengan visi Anda.
-                            Dapatkan video dokumentasi yang berkualitas tinggi untuk memenuhi kebutuhan Anda.
-                            Hubungi kami sekarang untuk mendapatkan penawaran terbaik untuk jasa pembuatan video dokumentasi
-                            kami.
-
-                        </p>
-                    </div>
-                    <div class="col-lg-6 pt-lg-0 image-about pt-4">
-                        <img src="https://source.unsplash.com/random/900×700/?videography" alt=""
-                            class="img-pricing">
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End About Section -->
-
         <!-- ======= Pricing Section ======= -->
         <section id="pricing" class="pricing">
             <div class="container">

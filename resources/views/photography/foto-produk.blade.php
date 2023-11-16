@@ -45,33 +45,6 @@
 
 @section('main')
     <main id="main">
-        <!-- ======= About Section ======= -->
-        <section id="about" class="about">
-            <div class="container">
-                <div class="section-title" data-aos="zoom-out">
-                    <h2>Jasa Foto Produk</h2>
-                    <p>Mengapa menggunakan jasa Kami?</p>
-                </div>
-
-                <div class="row content" data-aos="fade-up">
-                    <div class="col-lg-6">
-                        <p style="margin-bottom: 40px;text-align: justify">
-                            Buat produk Anda terlihat lebih menarik dengan jasa foto produk kami. Tim ahli kami akan
-                            mengambil gambar produk Anda dengan menggunakan peralatan fotografi terbaik dan mengedit foto
-                            untuk hasil yang lebih baik. Dapatkan foto produk yang memukau dengan penawaran terbaik dari
-                            kami.
-                        </p>
-                        <p>Hubungi kami sekarang!</p>
-                    </div>
-                    <div class="col-lg-6 pt-lg-0 pt-4">
-                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
-                            alt="" class="img-pricing">
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End About Section -->
-
         <!-- ======= Pricing Section ======= -->
         <section id="pricing" class="pricing">
             <div class="container">

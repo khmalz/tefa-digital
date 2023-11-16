@@ -44,37 +44,6 @@
 
 @section('main')
     <main id="main">
-        <!-- ======= About Section ======= -->
-        <section id="about" class="about">
-            <div class="container">
-                <div class="section-title" data-aos="zoom-out">
-                    <h2>Jasa Design 3D</h2>
-                    <p>Mengapa menggunakan jasa Kami?</p>
-                </div>
-
-                <div class="row content" data-aos="fade-up">
-                    <div class="col-lg-6">
-                        <p style="margin-bottom: 20px;text-align: justify">
-                            Hadirkan ide-ide Anda dalam bentuk tiga dimensi yang menakjubkan dengan jasa pembuatan desain 3D
-                            kami! Kami menciptakan visualisasi nyata yang akan menghidupkan konsep Anda
-                        </p>
-                        <p style="margin-bottom: 20px;text-align: justify">
-                            Tidak hanya memberikan kepuasan visual, desain 3D kami juga membantu Anda memvisualisasikan
-                            ide-ide Anda secara lebih jelas, meminimalkan risiko kesalahan desain, dan memberikan presentasi
-                            yang mengesankan.
-                        </p>
-                        <p>
-                            Hubungi Kami sekarang!
-                        </p>
-                    </div>
-                    <div class="col-lg-6 pt-lg-0 image-about pt-4">
-                        <img src="https://source.unsplash.com/random/900×700/?3d-design" alt="" class="img-pricing">
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End About Section -->
-
         <!-- ======= Pricing Section ======= -->
         <section id="pricing" class="pricing">
             <div class="container">

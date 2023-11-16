@@ -44,41 +44,6 @@
 
 @section('main')
     <main id="main">
-        <!-- ======= About Section ======= -->
-        <section id="about" class="about">
-            <div class="container">
-                <div class="section-title" data-aos="zoom-out">
-                    <h2>Jasa Design Logo</h2>
-                    <p>Mengapa menggunakan jasa Kami?</p>
-                </div>
-
-                <div class="row content" data-aos="fade-up">
-                    <div class="col-lg-6">
-                        <p style="margin-bottom: 20px; text-align: justify">
-                            Logo adalah jantung merek Anda, wujud visual yang mewakili identitas dan nilai-nilai bisnis
-                            Anda. Maka dari itu, penting bagi Anda untuk memiliki logo yang kuat dan menarik. Apakah Anda
-                            ingin menonjol di antara pesaing, menarik perhatian pelanggan potensial, dan membangun kesan
-                            yang tak terlupakan?
-                        </p>
-                        <p style="margin-bottom: 20px; text-align: justify">
-                            Kami di sini untuk membantu! Dengan jasa pembuatan logo kami, Anda akan mendapatkan desain yang
-                            unik, kreatif, dan profesional yang mencerminkan esensi bisnis Anda. Kami memahami pentingnya
-                            logo sebagai alat pemasaran yang kuat, yang mampu mengkomunikasikan merek Anda dengan jelas dan
-                            membangun daya ingat yang tinggi.
-                        </p>
-                        <p>
-                            Hubungi Kami sekarang!
-                        </p>
-                    </div>
-                    <div class="col-lg-6 pt-lg-0 image-about pt-4">
-                        <img src="https://source.unsplash.com/random/900×700/?illustrating" alt=""
-                            class="img-pricing">
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End About Section -->
-
         <!-- ======= Pricing Section ======= -->
         <section id="pricing" class="pricing">
             <div class="container">
