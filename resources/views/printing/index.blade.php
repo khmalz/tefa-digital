@@ -34,7 +34,7 @@
                         </p>
                     </div>
                     <div class="col-lg-6 pt-lg-0 image-about pt-4">
-                        <img src="https://source.unsplash.com/random/900×700/?3d-printing" alt=""
+                        <img src="{{ asset('assets/img/category/about-printing.jpg') }}" alt=""
                             style="width: 100%;">
                     </div>
                 </div>

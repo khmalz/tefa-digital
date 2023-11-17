@@ -13,8 +13,7 @@
                             <img class="category-img" src="{{ \Illuminate\Support\Facades\Storage::url($category->image) }}"
                                 alt="{{ $category->title }}">
                         @else
-                            <img class="category-img"
-                                src="https://source.unsplash.com/random/900×700/?videography&{{ $loop->iteration }}"
+                            <img class="category-img" src="{{ asset('assets/img/category/placeholder.jpg') }}"
                                 alt="{{ $category->title }}">
                         @endif
                         <div class="category-text-container">

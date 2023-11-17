@@ -14,34 +14,6 @@
 
 @section('main')
     <main id="main">
-        <!-- ======= About Section ======= -->
-        <section id="about" class="about">
-            <div class="container">
-                <div class="section-title" data-aos="zoom-out">
-                    <h2>Jasa Design Logo</h2>
-                    <p>Mengapa menggunakan jasa Kami?</p>
-                </div>
-
-                <div class="row content" data-aos="fade-up">
-                    <div class="col-lg-6">
-                        <ul class="mt-5">
-                            <li><i class="ri-check-double-line"></i> Logo sebagai Alat Pemasaran Kuat</li>
-                            <li><i class="ri-check-double-line"></i> Menarik Perhatian Pelanggan Potensial</li>
-                            <li><i class="ri-check-double-line"></i> Desain Unik, Kreatif, dan Profesional</li>
-                        </ul>
-                        <p class="mt-5">
-                            Hubungi Kami sekarang!
-                        </p>
-                    </div>
-                    <div class="col-lg-6 pt-lg-0 image-about pt-4">
-                        <img src="https://source.unsplash.com/random/900×700/?illustrating" alt=""
-                            class="img-pricing">
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End About Section -->
-
         <!-- ======= Pricing Section ======= -->
         <section id="pricing" class="pricing">
             <div class="container">
