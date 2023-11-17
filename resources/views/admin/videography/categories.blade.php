@@ -9,13 +9,18 @@
                                     href="{{ route('videography-category.edit', $category->id) }}"
                                     class="text-decoration-none edit-text">EDIT</a></span>
                         </div>
-                        @if ($category->image !== 'placeholder.jpg')
-                            <img class="category-img" src="{{ \Illuminate\Support\Facades\Storage::url($category->image) }}"
-                                alt="{{ $category->title }}">
-                        @else
-                            <img class="category-img" src="{{ asset('assets/img/category/placeholder.jpg') }}"
-                                alt="{{ $category->title }}">
-                        @endif
+                        @php
+                            $imagePath = $category->image !== 'placeholder.jpg' ? \Illuminate\Support\Facades\Storage::url($category->image) : null;
+                            $defaultImages = [
+                                'Video Dokumentasi' => 'documentation.jpg',
+                                'Video Syuting' => 'shooting.jpg',
+                            ];
+                            $defaultImage = $defaultImages[$category->title] ?? 'documentation.jpg';
+                        @endphp
+
+                        <img class="category-img"
+                            src="{{ $imagePath ?? asset("assets/img/sub-category/videography/$defaultImage") }}"
+                            alt="{{ $category->title }}">
                         <div class="category-text-container">
                             <span class="category-title text-center">{{ $category->title }}</span><br>
                             <span
