@@ -102,7 +102,7 @@
                                     @foreach ($order->orderable->images as $image)
                                         <div class="col-md-6 col-lg-4">
                                             <div style="width: 100%; height: 250px;">
-                                                <img src="{{ $image->path === 'placeholder.jpg' ? "https://source.unsplash.com/random/900×700/?design&$loop->iteration" : \Illuminate\Support\Facades\Storage::url($image->image) }}"
+                                                <img src="{{ $image->path === 'placeholder.jpg' ? asset('assets/img/category/placeholder.jpg') : \Illuminate\Support\Facades\Storage::url($image->image) }}"
                                                     class="img-fluid img-thumbnail w-100 h-100 border border-2"
                                                     style="object-fit:  cover" alt="...">
                                             </div>

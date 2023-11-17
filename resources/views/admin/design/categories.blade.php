@@ -14,7 +14,7 @@
                                 alt="{{ $category->title }}">
                         @else
                             <img class="category-img"
-                                src="https://source.unsplash.com/random/900×700/?design&{{ $loop->iteration }}"
+                                src="{{ asset('assets/img/category/placeholder.jpg') }}"
                                 alt="{{ $category->title }}">
                         @endif
                         <div class="category-text-container">

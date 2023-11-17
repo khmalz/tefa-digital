@@ -64,7 +64,7 @@
                                                             @else
                                                                 <td>
                                                                     <img class="portfolio-img"
-                                                                        src="https://source.unsplash.com/random/500×500/?{{ $category . '&' . $loop->iteration }}"
+                                                                        src="{{ asset('assets/img/category/placeholder.jpg') }}"
                                                                         alt="{{ $portfolio->title }}">
                                                                 </td>
                                                             @endif
