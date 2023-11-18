@@ -7,8 +7,7 @@
     <section id="hero" class="d-flex flex-column justify-content-end align-items-center">
         <div id="heroCarousel" data-bs-interval="5000" class="carousel carousel-fade" data-bs-ride="carousel">
             <div class="carousel-image-container">
-                <img src="{{ asset('assets/img/category/carousel.jpg') }}"
-                    alt="">
+                <img src="{{ asset('assets/img/category/carousel.jpg') }}" alt="">
 
                 <!-- Slide 1 -->
                 <div class="carousel-item active">
@@ -17,8 +16,7 @@
                         <p class="animate__animated fanimate__adeInUp">Taklukkan pasar yang kompetitif dengan promosi
                             digital.
                         </p>
-                        <a href="#about"
-                            class="btn-get-started animate__animated animate__fadeInUp scrollto">Order</a>
+                        <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Order</a>
                     </div>
                 </div>
             </div>
@@ -72,7 +70,8 @@
                                     </div>
                                     <div class="mb-2">
                                         <a href="{{ route('user.design.form.index', ['category' => 'Promosi Digital']) }}"
-                                            class="btn btn-lg btn-general rounded-5"> Konsultasikan
+                                            class="btn btn-lg btn-general {{ auth()->guest() ||auth()->user()->hasRole('client')? null: 'disable-btn' }} rounded-5">
+                                            Konsultasikan
                                             sekarang</a>
                                     </div>
                                 </div>

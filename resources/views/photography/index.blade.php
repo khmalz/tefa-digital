@@ -61,7 +61,7 @@
                                         <img src="{{ asset('assets/img/category/placeholder.jpg') }}"
                                             class="card-image card-img-top rounded-2 mb-2 p-2" alt="haha">
                                     @else
-                                        <img src="{{ \Illuminate\Support\Facades\Storage::url($category->image) }}"
+                                        <img src="{{ asset('assets/img/' . $category->image) }}"
                                             class="card-image card-img-top rounded-2 mb-2 p-2" alt="hoho">
                                     @endif
                                     <h5 class="title mt-2">{{ $category->title }}</h5>
