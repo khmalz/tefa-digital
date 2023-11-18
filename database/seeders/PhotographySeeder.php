@@ -19,14 +19,17 @@ class PhotographySeeder extends Seeder
             [
                 'title' => 'Produk',
                 'body' => 'Buat produk Anda terlihat lebih menarik dengan jasa foto produk kami. Tim ahli kami akan mengambil gambar produk Anda dengan menggunakan peralatan fotografi terbaik dan mengedit foto untuk hasil yang lebih baik. Dapatkan foto produk yang memukau dengan penawaran terbaik dari kami. Hubungi kami sekarang!',
+                'image' => 'sub-category/photography/product.jpg',
             ],
             [
                 'title' => 'Pernikahan',
                 'body' => 'Abadikan momen spesial pernikahan Anda dengan jasa foto pernikahan kami. Dapatkan kenangan pernikahan yang abadi dengan penawaran terbaik dari kami. Hubungi kami sekarang!',
+                'image' => 'sub-category/photography/wedding.jpg',
             ],
             [
                 'title' => 'Acara',
                 'body' => 'Kami menawarkan jasa fotografi acara untuk mengabadikan momen penting Anda. Tim kami akan mengambil gambar acara Anda dengan baik dan menghasilkan gambar yang memukau. Dapatkan gambar acara Anda yang paling berkesan dengan jasa fotografi acara kami. Hubungi kami sekarang untuk mendapatkan penawaran terbaik.',
+                'image' => 'sub-category/photography/event.jpg',
             ],
         ];
 

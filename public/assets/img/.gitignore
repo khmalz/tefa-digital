@@ -1,0 +1,3 @@
+sub-category/*
+portfolios/*
+!.gitignore

@@ -27,7 +27,7 @@
             <div class="mt-3">
                 <label for="category-image-input" class="form-label">Image</label>
                 @if ($designCategory->image !== 'placeholder.jpg')
-                    <img src="{{ \Illuminate\Support\Facades\Storage::url($designCategory->image) }}"
+                    <img src="{{ asset('assets/img/' . $designCategory->image) }}"
                         class="img-preview d-block img-fluid col-md-8 col-lg-4 mb-3 rounded"
                         alt="{{ $designCategory->title }}">
                 @else
