@@ -11,25 +11,7 @@
             <nav id="navbar" class="navbar">
                 <ul>
                     <li><a class="nav-link scrollto active" href="#profile">Profile</a></li>
-                    @auth
-                        <li class="dropdown">
-                        <li><a href="{{ route('user.profile.index') }}">{{ auth()->user()->email }}</a></li>
-                        <li><a href="{{ route('user.order.list') }}">List Order</a></li>
-                        <ul>
-                            <li><a href="#">{{ auth()->user()->email }}</a></li>
-                            <li>
-                                <form action="{{ route('logout') }}" method="post" class="d-inline">
-                                    @csrf
-                                    <a href="#"
-                                        onclick="return confirm('Yakin ? ') ? this.parentElement.submit() : null">Log
-                                        Out</a>
-                                </form>
-                            </li>
-                        </ul>
-                        </li>
-                    @else
-                        <li><a class="nav-link" href="{{ route('login.index') }}">Login</a></li>
-                    @endauth
+                    @include('layouts.dropdown')
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
@@ -141,7 +123,7 @@
                                                 @foreach ($order->orderable->images as $image)
                                                     <div class="col-md-6 col-lg-4">
                                                         <div style="width: 100%; height: 250px;">
-                                                            <img src="{{ $image->path === 'placeholder.jpg' ? "https://source.unsplash.com/random/900×700/?design&$loop->iteration" : \Illuminate\Support\Facades\Storage::url($image->image) }}"
+                                                            <img src="{{ $image->path === 'placeholder.jpg' ? asset('assets/img/category/about-videography.jpg') : \Illuminate\Support\Facades\Storage::url($image->image) }}"
                                                                 class="img-fluid img-thumbnail w-100 h-100 border border-2"
                                                                 style="object-fit:  cover" alt="...">
                                                         </div>

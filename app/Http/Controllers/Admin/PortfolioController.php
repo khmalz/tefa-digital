@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Models\Admin\Portfolio;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Storage;
 
 class PortfolioController extends Controller
@@ -35,7 +36,7 @@ class PortfolioController extends Controller
      */
     public function store(Request $request)
     {
-        $image = $request->file('image')->store('portfolios/' . $request->category, ['disk' => 'public-dir']);
+        $image = $request->file('image')->store("portfolios/$request->category", ['disk' => 'public-dir']);
 
         $datas = [
             'title' => $request->title,
@@ -64,9 +65,9 @@ class PortfolioController extends Controller
     public function update(Request $request, Portfolio $portfolio)
     {
         if ($request->has('image')) {
-            Storage::delete($portfolio->image);
+            File::delete(public_path("assets/img/$portfolio->image"));
 
-            $image = $request->file('image')->store('portfolios/' . $request->category, ['disk' => 'public-dir']);
+            $image = $request->file('image')->store("portfolios/$request->category", ['disk' => 'public-dir']);
         }
 
         $datas = [
@@ -85,6 +86,10 @@ class PortfolioController extends Controller
      */
     public function destroy(Portfolio $portfolio)
     {
+        if ($portfolio->image) {
+            File::delete(public_path("assets/img/$portfolio->image"));
+        }
+
         $portfolio->delete();
 
         return to_route('portfolio.index')->with('success', 'Data have been deleted');

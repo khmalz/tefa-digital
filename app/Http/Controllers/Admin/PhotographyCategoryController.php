@@ -4,9 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\CategoryRequest;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use App\Models\Admin\PhotographyCategory;
+use App\Http\Requests\Admin\CategoryRequest;
 
 class PhotographyCategoryController extends Controller
 {
@@ -35,9 +35,9 @@ class PhotographyCategoryController extends Controller
         $data = $request->validated();
 
         if ($request->has('image')) {
-            Storage::delete($photographyCategory->image);
+            File::delete(public_path("assets/img/$photographyCategory->image"));
 
-            $image = $request->file('image')->store('photographyCategories');
+            $image = $request->file('image')->store("sub-category/photography", ['disk' => 'public-dir']);
         }
 
         $data['image'] = $image ?? $photographyCategory->image;

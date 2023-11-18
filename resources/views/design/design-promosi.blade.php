@@ -7,8 +7,7 @@
     <section id="hero" class="d-flex flex-column justify-content-end align-items-center">
         <div id="heroCarousel" data-bs-interval="5000" class="carousel carousel-fade" data-bs-ride="carousel">
             <div class="carousel-image-container">
-                <img src="https://images.unsplash.com/photo-1603380353725-f8a4d39cc41e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                    alt="">
+                <img src="{{ asset('assets/img/category/carousel.jpg') }}" alt="">
 
                 <!-- Slide 1 -->
                 <div class="carousel-item active">
@@ -17,8 +16,7 @@
                         <p class="animate__animated fanimate__adeInUp">Taklukkan pasar yang kompetitif dengan promosi
                             digital.
                         </p>
-                        <a href="#about"
-                            class="btn-get-started animate__animated animate__fadeInUp scrollto">Order</a>
+                        <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Order</a>
                     </div>
                 </div>
             </div>
@@ -45,35 +43,6 @@
 
 @section('main')
     <main id="main">
-        <!-- ======= About Section ======= -->
-        <section id="about" class="about">
-            <div class="container">
-
-                <div class="section-title" data-aos="zoom-out">
-                    <h2>Jasa Design Promosi</h2>
-                    <p>Mengapa menggunakan jasa Kami?</p>
-                </div>
-
-                <div class="row content" data-aos="fade-up">
-                    <div class="col-lg-6">
-                        <ul class="mt-5">
-                            <li><i class="ri-check-double-line"></i> Jangkau Pelanggan Potensial Global</li>
-                            <li><i class="ri-check-double-line"></i> Optimalkan Konversi Penjualan</li>
-                            <li><i class="ri-check-double-line"></i> Meningkatkan Pemasaran Bisnis</li>
-                        </ul>
-                        <p class="mt-5">
-                            Hubungi Kami sekarang!
-                        </p>
-                    </div>
-                    <div class="col-lg-6 pt-lg-0 image-about pt-4">
-                        <img src="https://source.unsplash.com/random/900×700/?digital-marketing" alt=""
-                            class="img-pricing">
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- End About Section -->
-
         <!-- ======= Pricing Section ======= -->
         <section id="pricing" class="pricing">
             <div class="container">
@@ -101,7 +70,8 @@
                                     </div>
                                     <div class="mb-2">
                                         <a href="{{ route('user.design.form.index', ['category' => 'Promosi Digital']) }}"
-                                            class="btn btn-lg btn-general rounded-5"> Konsultasikan
+                                            class="btn btn-lg btn-general {{ auth()->guest() ||auth()->user()->hasRole('client')? null: 'disable-btn' }} rounded-5">
+                                            Konsultasikan
                                             sekarang</a>
                                     </div>
                                 </div>

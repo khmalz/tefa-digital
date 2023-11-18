@@ -33,8 +33,8 @@
                         </ul>
                     </div>
                     <div class="col-lg-6 pt-lg-0 image-about pt-4">
-                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
-                            alt="" class="img-pricing">
+                        <img src="{{ asset('assets/img/category/about-photography.jpg') }}" alt=""
+                            class="img-pricing">
                     </div>
                 </div>
             </div>
@@ -58,10 +58,10 @@
                                 data-aos="zoom-in-left" data-aos-delay="100">
                                 <div>
                                     @if ($category->image === 'placeholder.jpg')
-                                        <img src="https://source.unsplash.com/random/?photography-{{ $category->title }}"
+                                        <img src="{{ asset('assets/img/category/placeholder.jpg') }}"
                                             class="card-image card-img-top rounded-2 mb-2 p-2" alt="haha">
                                     @else
-                                        <img src="{{ \Illuminate\Support\Facades\Storage::url($category->image) }}"
+                                        <img src="{{ asset('assets/img/' . $category->image) }}"
                                             class="card-image card-img-top rounded-2 mb-2 p-2" alt="hoho">
                                     @endif
                                     <h5 class="title mt-2">{{ $category->title }}</h5>

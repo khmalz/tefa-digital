@@ -19,10 +19,12 @@ class VideographySeeder extends Seeder
             [
                 'title' => 'Video Syuting',
                 'body' => 'Ciptakan video yang memukau dengan jasa pembuatan video syuting kami. Tim kami akan mengambil video syuting secara profesional dan menghasilkan video yang sesuai keinginan Anda. Hubungi kami sekarang untuk penawaran terbaik.',
+                'image' => 'sub-category/videography/shooting.jpg',
             ],
             [
                 'title' => 'Video Dokumentasi',
                 'body' => 'Buat momen penting dan spesial Anda terabadikan dengan jasa pembuatan video dokumentasi kami. Kami menawarkan jasa pembuatan video dokumentasi untuk acara, proyek, atau keperluan bisnis Anda. Kami akan bekerja sama dengan Anda untuk memahami kebutuhan Anda dan menghasilkan video yang sesuai dengan visi Anda. Dapatkan video dokumentasi yang berkualitas tinggi untuk memenuhi kebutuhan Anda. Hubungi kami sekarang untuk mendapatkan penawaran terbaik untuk jasa pembuatan video dokumentasi kami.',
+                'image' => 'sub-category/videography/documentation.jpg',
             ],
         ];
 

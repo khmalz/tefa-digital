@@ -19,14 +19,17 @@ class DesignSeeder extends Seeder
             [
                 'title' => 'Logo',
                 'body' => 'Buat merek Anda terlihat profesional dan menonjol dengan jasa desain logo kami. Tim ahli kami akan menciptakan logo yang sesuai dengan keinginan Anda. Kami menawarkan revisi logo dan format file logo yang sesuai dengan kebutuhan Anda. Dapatkan logo merek yang kuat dengan penawaran terbaik dari kami. Hubungi kami sekarang!',
+                'image' => 'sub-category/design/logo.jpg',
             ],
             [
                 'title' => 'Promosi Digital',
                 'body' => 'Yuk, promosikan bisnismu dengan desain promosi digital yang menarik dan profesional! Kami menawarkan jasa desain promosi digital dengan harga mulai dari Rp 100 ribu saja.',
+                'image' => 'sub-category/design/promotion.jpg',
             ],
             [
                 'title' => '3D',
                 'body' => 'Anda mencari jasa desain 3D yang terjangkau dan berkualitas? Kami menawarkan jasa desain 3D dengan harga mulai dari Rp 150 ribu saja.',
+                'image' => 'sub-category/design/3d-design.jpg',
             ],
         ];
 

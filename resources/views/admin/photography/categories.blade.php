@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.main')
 @section('content')
-    <div class="container" style="height: 100%">
+    <div class="container">
         <div class="row">
             @forelse ($categories as $category)
                 <div class="col-md-6">
@@ -10,13 +10,13 @@
                                     class="text-decoration-none edit-text">EDIT</a></span>
                         </div>
                         @if ($category->image !== 'placeholder.jpg')
-                            <img class="category-img" src="{{ \Illuminate\Support\Facades\Storage::url($category->image) }}"
+                            <img class="category-img" src="{{ asset('assets/img/' . $category->image) }}"
                                 alt="{{ $category->title }}">
                         @else
-                            <img class="category-img"
-                                src="https://source.unsplash.com/random/900×700/?photography&{{ $loop->iteration }}"
+                            <img class="category-img" src="{{ asset('assets/img/category/placeholder.jpg') }}"
                                 alt="{{ $category->title }}">
                         @endif
+
                         <div class="category-text-container">
                             <span class="category-title text-center">{{ $category->title }}</span><br>
                             <span
