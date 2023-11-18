@@ -1,16 +1,7 @@
 @extends('admin.dashboard.layouts.main')
 
-@push('styles')
-    <style>
-        input.deleted,
-        textarea.deleted {
-            background-color: #fac2c2;
-        }
-    </style>
-@endpush
-
 @section('content')
-    <div class="container">
+    <div class="container" id="plan">
         @if (session('success'))
             <div class="alert alert-success" role="alert">
                 {{ session('success') }}

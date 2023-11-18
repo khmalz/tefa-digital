@@ -83,6 +83,31 @@
             border: 2px solid #ef6603;
         }
 
+        .order-button {
+            font-family: "Raleway", sans-serif;
+            background-color: #f06404;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 1px;
+            display: inline-block;
+            padding: 12px 32px;
+            border-radius: 50px;
+            transition: 0.5s;
+            line-height: 1;
+            margin: 10px;
+            color: #fff;
+            display: inline-block;
+            text-decoration: none;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .order-button:hover {
+            background: #fff;
+            color: #f06404;
+            text-decoration: none;
+            border: 2px solid #ef6603;
+        }
+
         #profile .box {
             padding: 30px;
             position: relative;
@@ -103,16 +128,39 @@
             box-shadow: 0 2px 35px 0 rgba(68, 88, 144, 0.2);
         }
 
-        /* punya dipta */
-        /* .status-box {
-            background-color: blue;
-            width: 10%;
-            border-radius:  0 0 ;
-            border-radius: 25% 0 0 25%;
-        } */
-        /* .big-icon {
-            font-size: clamp(25px, 3vw, 50px)
-        } */
+        #notif .notif-box {
+            width: 100%;
+            background-color: #fffff;
+            box-shadow: 0 10px 55px 0 rgba(52, 62, 90, 0.12);
+            transition: all 0.4s ease-in-out;
+        }
+
+        #notif .notif-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 2px 35px 0 rgba(68, 88, 144, 0.2);
+        }
+
+        #notif .box {
+            background-color: #ffffff;
+            width: 100%;
+            height: 100%;
+        }
+
+        #hero .carousel-image-container {
+            position: relative;
+            width: 100vw;
+            overflow: hidden;
+        }
+
+        #hero .carousel-image-container img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(45%);
+        }
     </style>
     @stack('styles')
 </head>

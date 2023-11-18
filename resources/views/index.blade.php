@@ -349,51 +349,6 @@
     <!-- End #main -->
 @endsection
 
-@push('styles')
-    <style>
-        .carousel-image-container {
-            position: relative;
-            width: 100vw;
-            overflow: hidden;
-        }
-
-        .carousel-image-container img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(45%);
-        }
-
-        .order-button {
-            font-family: "Raleway", sans-serif;
-            background-color: #f06404;
-            font-weight: 500;
-            font-size: 14px;
-            letter-spacing: 1px;
-            display: inline-block;
-            padding: 12px 32px;
-            border-radius: 50px;
-            transition: 0.5s;
-            line-height: 1;
-            margin: 10px;
-            color: #fff;
-            display: inline-block;
-            text-decoration: none;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .order-button:hover {
-            background: #fff;
-            color: #f06404;
-            text-decoration: none;
-            border: 2px solid #ef6603;
-        }
-    </style>
-@endpush
-
 @push('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function() {

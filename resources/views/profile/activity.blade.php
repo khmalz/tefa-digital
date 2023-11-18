@@ -1,27 +1,5 @@
 @extends('layouts.main')
 
-@push('styles')
-    <style>
-        #notif .notif-box {
-            width: 100%;
-            background-color: #fffff;
-            box-shadow: 0 10px 55px 0 rgba(52, 62, 90, 0.12);
-            transition: all 0.4s ease-in-out;
-        }
-
-        #notif .notif-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 2px 35px 0 rgba(68, 88, 144, 0.2);
-        }
-
-        #notif .box {
-            background-color: #ffffff;
-            width: 100%;
-            height: 100%;
-        }
-    </style>
-@endpush
-
 @section('header')
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top d-flex align-items-center">

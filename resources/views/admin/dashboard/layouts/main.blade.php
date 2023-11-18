@@ -36,13 +36,6 @@
             font-weight: 600 !important;
         }
 
-        /* .category-text-container {
-            width: 67%;
-            height: 95%;
-            float: right;
-            padding: 15px;
-            overflow: hidden;
-        } */
         .category-text {
             text-align: justify !important;
             font-size: clamp(12px, 2vw, 15px);
@@ -83,23 +76,6 @@
             position: relative;
         }
 
-        /* .category-img {
-            height: 100%;
-            width: 33%;
-            object-fit: cover;
-        }
-
-        .card-mantap {
-            margin-top: 20px;
-            width: 100%;
-            height: 45vh;
-            background-color: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 10px 10px 10px #a7a7a7;
-            transition: 200ms ease;
-            position: relative;
-        } */
         .darken {
             height: 100%;
             background-color: rgb(0, 0, 0, 0.9);
@@ -235,6 +211,11 @@
             color: white;
         }
 
+        #plan input.deleted,
+        #plan textarea.deleted {
+            background-color: #fac2c2;
+        }
+
         .show-more,
         .show-less {
             display: none;
@@ -250,33 +231,6 @@
             padding-bottom: 50px !important;
         }
 
-        /* @media only screen and (max-width: 1920px) {
-            .category-text-container {
-                width: 100%;
-                height: 95%;
-                padding: 15px;
-                overflow: hidden;
-            }
-
-            .category-img {
-                height: 50%;
-                width: 100%;
-                object-fit: cover;
-
-            }
-
-            .card-mantap {
-                margin-top: 20px;
-                width: 100%;
-                height: 45vh;
-                background-color: white;
-                border-radius: 15px;
-                overflow: hidden;
-                box-shadow: 10px 10px 10px #a7a7a7;
-                transition: 200ms ease;
-                position: relative;
-            }
-        } */
         .delete-tombol {
             background-color: rgb(255, 0, 0, 0.5);
             padding-left: 12%;

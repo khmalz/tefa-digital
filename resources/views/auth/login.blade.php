@@ -8,7 +8,7 @@
     <meta name="description" content="{{ app('websiteTitle') }} - Dashboard to manage service orders" />
     <meta name="keyword" content="{{ app('websiteTitle') }}, Service, Design, Printing, Videoghraphy, Fotoghraphy" />
     <title>Login | {{ app('websiteTitle') ?? config('app.name') }}</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link href="{{ asset('assets/vendor/toastify/toastify.css') }}" rel="stylesheet">
 
     <!-- Main styles for this application-->
     <link href="{{ asset('assets/admin/css/style.min.css') }}" rel="stylesheet" />
@@ -78,7 +78,7 @@
             </div>
         </div>
     </main>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="{{ asset('assets/vendor/toastify/toastify.js') }}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             let failureMessage = document.querySelector('main').dataset.loginFailure;
