@@ -6,19 +6,19 @@ use Illuminate\Http\Request;
 use App\Models\Admin\Portfolio;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Storage;
 
 class PortfolioController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Portfolio::getSortedCategories();
-        $portfolios = Portfolio::all();
+        $portfolios = Portfolio::when($request->has('category') && in_array($request->category, ['design', 'photography', 'videography', 'printing']), function ($query) use ($request) {
+            return $query->where('category', $request->category);
+        })->get();
 
-        return view('admin.portfolio.index', compact('categories', 'portfolios'));
+        return view('admin.portfolio.index', compact('portfolios'));
     }
 
     /**
