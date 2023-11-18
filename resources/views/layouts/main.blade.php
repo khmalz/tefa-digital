@@ -170,7 +170,9 @@
 
     @yield('hero')
 
-    @yield('main')
+    <main id="main-content" data-mail-success="{{ session('success') }}" data-mail-failure="{{ session('failure') }}">
+        @yield('main')
+    </main>
 
     @include('layouts.footer')
 
@@ -196,6 +198,19 @@
     <script src="{{ asset('assets/vendor/toastify/toastify.js') }}"></script>
 
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            let successMessage = document.querySelector('#main-content').dataset.mailSuccess;
+            let failureMessage = document.querySelector('#main-content').dataset.mailFailure;
+
+            if (successMessage) {
+                showToast(successMessage, "#28a745");
+            }
+
+            if (failureMessage) {
+                showToast(failureMessage, "#dc3545");
+            }
+        })
+
         function showToast(message, background) {
             Toastify({
                 text: message,
@@ -210,6 +225,31 @@
                 },
             }).showToast();
         }
+
+        const showPortfolios = (element, dataName, limit) => {
+            const portfolioContainer = document.querySelector(element);
+            const portfolios = JSON.parse(portfolioContainer.dataset[dataName]);
+
+            portfolioContainer.innerHTML = portfolios
+                .slice(0, limit)
+                .map((portfolio) => {
+                    return `
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-${portfolio.category}">
+                            <div class="portfolio-img">
+                                <img src="{{ asset('assets/img/${portfolio.image}') }}" class="img-fluid" alt="${portfolio.title}">
+                            </div>
+                            <div class="portfolio-info">
+                                <h4>${portfolio.title}</h4>
+                                <p>${portfolio.category}</p>
+                                <a href="{{ asset('assets/img/${portfolio.image}') }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="${portfolio.title}">
+                                    <i class="bx bx-zoom-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                })
+                .join('');
+        };
     </script>
 
     @stack('scripts')

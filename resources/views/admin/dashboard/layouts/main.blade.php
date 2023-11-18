@@ -135,7 +135,6 @@
             border: 0.1px thin rgb(86, 86, 86);
             border-radius: 200px;
             width: 6vw;
-            /* float: left; */
             margin-right: 8px;
         }
 
@@ -143,13 +142,11 @@
             border: 0.1px thin rgb(86, 86, 86);
             border-radius: 200px;
             width: 66vw;
-            /* float: left; */
             margin-left: 8px;
         }
 
         .header-cat {
             width: 100%;
-            /* background-color: red; */
         }
 
         .header-cat hr,
@@ -359,7 +356,110 @@
 
     <script src="{{ asset('assets/admin/js/main.js') }}"></script>
     <script>
-        $(document).ready(function() {
+        function previewImage(input) {
+            const image = input;
+            const imgPreview = document.querySelector(".img-preview");
+            imgPreview.classList.remove("d-none");
+            imgPreview.classList.add("d-block");
+            imgPreview.classList.add("mb-3");
+
+            const [file] = image.files;
+            if (file) {
+                const blob = URL.createObjectURL(file);
+                imgPreview.src = blob;
+            }
+        }
+
+        function createFeature() {
+            let newFormGroup = `
+                    <div class="form-group d-md-flex align-items-center gap-3">
+                        <div class="d-flex flex-column w-100 mt-3 flex-wrap gap-3">
+                            <div class="row gap-3">
+                                <label for="text" class="col-sm-2 col-form-label">Text</label>
+                                <div class="col">
+                                    <input type="text" name="text[]" class="form-control @error('text.*') is-invalid @enderror" id="text">
+                                    @error('text.*')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+                            <div class="row gap-3">
+                                <label for="description" class="col-sm-2 col-form-label">Description</label>
+                                <div class="col">
+                                    <textarea class="form-control @error('description.*') is-invalid @enderror" name="description[]" rows="3"></textarea>
+                                    @error('description.*')
+                                        <div class="invalid-feedback">
+                                            {{ $message }}
+                                        </div>
+                                    @enderror
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-3 mt-md-0">
+                            <button type="button" class="btn btn-danger text-white delete-feature-new" onclick="deleteFeatureNew(this)">Delete</button>
+                        </div>
+                    </div>
+                `;
+
+            $(newFormGroup).insertBefore('#button-bottom');
+
+            // Set focus to the newly created text input
+            $(newFormGroup).find('input[name="text[]"]').focus();
+
+            // Unset the readonly attribute and clear the value of the input and textarea
+            $(newFormGroup).find('input[name="text[]"], textarea[name="description[]"]').prop(
+                'readonly', false).val('');
+        }
+
+        function deleteFeatureNew(button) {
+            $(button).closest('.form-group').remove();
+        }
+
+        function deleteFeatureOld(checkbox) {
+            var parent = $(checkbox).closest('.form-group');
+            var id = parent.data('feature-id');
+            var deletedInput = $(`#deletedID-${id}`);
+
+            if (!checkbox.checked) { // checkbox is unchecked
+                if (deletedInput.length) {
+                    deletedInput.remove();
+                    parent.find('input[type="text"], textarea').removeClass('border-danger text-muted deleted');
+                }
+            } else { // checkbox is checked
+                if (!deletedInput.length) {
+                    var input =
+                        `<input type="text" name="delete[]" id="deletedID-${id}" class="deleted-id" value="${id}" readonly>`;
+                    $('#deleted-id-input').append(input);
+                    parent.find('input[type="text"], textarea').addClass('border-danger text-muted deleted');
+                }
+            }
+        }
+
+        function editFeature(button) {
+            var parent = $(button).closest('.form-group');
+            var textInput = parent.find('input[type="text"]');
+            var descTextarea = parent.find('textarea');
+            var category = parent.data('category');
+
+            textInput.prop('readonly', false).focus().attr('name', 'edit[' + parent.data('feature-id') +
+                '][text]');
+            descTextarea.prop('readonly', false).attr('name', 'edit[' + parent.data('feature-id') +
+                '][description]');
+        }
+
+        function updateUiByCount(plansCount) {
+            $('#maks-alert-plan').toggle(plansCount >= 4);
+            $('.save-changes-plan').prop('disabled', plansCount >= 4);
+        }
+
+        function handleCategorySelectChange(selectElement) {
+            let selectedPlansCount = $(selectElement).find(':selected').data('plans-count');
+            updateUiByCount(selectedPlansCount);
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
             $('.plan-card').each(function() {
                 let planCard = $(this);
                 let showMoreDiv = planCard.find('.show-more');

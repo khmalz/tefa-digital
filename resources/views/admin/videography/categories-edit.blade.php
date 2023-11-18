@@ -1,4 +1,5 @@
 @extends('admin.dashboard.layouts.main')
+
 @section('content')
     <div class="container">
         <form action="{{ route('videography-category.update', $videographyCategory->id) }}" method="POST"
@@ -35,7 +36,7 @@
                     <img class="img-preview img-fluid col-md-8 col-lg-4 d-none rounded" alt="preview-image">
                 @endif
                 <input class="form-control @error('image') is-invalid @enderror" type="file" id="category-image-input"
-                    name="image" onchange="previewImage()">
+                    name="image" onchange="previewImage(this)">
                 @error('image')
                     <div class="invalid-feedback">
                         {{ $message }}
@@ -48,20 +49,3 @@
         </form>
     </div>
 @endsection
-
-@push('scripts')
-    <script>
-        function previewImage() {
-            const image = document.querySelector("#category-image-input")
-            const imgPreview = document.querySelector(".img-preview")
-            imgPreview.classList.remove("d-none");
-            imgPreview.classList.add("d-block");
-            imgPreview.classList.add("mb-3");
-            const [file] = image.files
-            if (file) {
-                const blob = URL.createObjectURL(file)
-                imgPreview.src = blob
-            }
-        }
-    </script>
-@endpush

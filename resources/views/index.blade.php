@@ -88,7 +88,7 @@
 @endsection
 
 @section('main')
-    <main id="main" data-mail-success="{{ session('success') }}" data-mail-failure="{{ session('failure') }}">
+    <main>
         <!-- ======= About Section ======= -->
         <section id="about" class="about">
             <div class="container">
@@ -352,17 +352,6 @@
 @push('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            let successMessage = document.querySelector('main').dataset.mailSuccess;
-            let failureMessage = document.querySelector('main').dataset.mailFailure;
-
-            if (successMessage) {
-                showToast(successMessage, "#28a745");
-            }
-
-            if (failureMessage) {
-                showToast(failureMessage, "#dc3545");
-            }
-
             const screenWidth = window.innerWidth;
             let limit = (screenWidth >= 992) ? 14 : (screenWidth >= 576) ? 10 : 6;
 
@@ -372,30 +361,5 @@
                 selector: '.portfolio-lightbox'
             });
         });
-
-        const showPortfolios = (element, dataName, limit) => {
-            const portfolioContainer = document.querySelector(element);
-            const portfolios = JSON.parse(portfolioContainer.dataset[dataName]);
-
-            portfolioContainer.innerHTML = portfolios
-                .slice(0, limit)
-                .map((portfolio) => {
-                    return `
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-${portfolio.category}">
-                            <div class="portfolio-img">
-                                <img src="{{ asset('assets/img/${portfolio.image}') }}" class="img-fluid" alt="${portfolio.title}">
-                            </div>
-                            <div class="portfolio-info">
-                                <h4>${portfolio.title}</h4>
-                                <p>${portfolio.category}</p>
-                                <a href="{{ asset('assets/img/${portfolio.image}') }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="${portfolio.title}">
-                                    <i class="bx bx-zoom-in"></i>
-                                </a>
-                            </div>
-                        </div>
-                    `;
-                })
-                .join('');
-        };
     </script>
 @endpush

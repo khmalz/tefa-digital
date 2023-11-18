@@ -250,8 +250,6 @@
                     ["Today", "This Week", "This Month", "This Year", "All"]
                 ],
                 pageLength: length,
-                // stateSave: true,
-                // stateDuration: 60 * 5,
                 order: [
                     [4, "asc"],
                     [3, 'asc']

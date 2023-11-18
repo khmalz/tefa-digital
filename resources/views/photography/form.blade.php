@@ -5,16 +5,14 @@
         <div class="card-form position-relative m-auto mb-3 overflow-hidden rounded">
             <h4 class="fw-semibold my-3 text-center text-white">Form Pemesanan Photography</h4>
             <div class="card-input position-relative mb-4 overflow-hidden rounded bg-white">
-                <form action="{{ route('user.photography.form.store') }}" method="POST"
-                    onsubmit="validationSelectPhotography(event)">
+                <form action="{{ route('user.photography.form.store') }}" method="POST" onsubmit="validationSelect(event)">
                     @csrf
                     <div class="p-5">
                         <div class="mb-3">
                             <label class="col-form-label-sm" for="categoryInput">Category</label>
                             <select class="form-select form-select-sm @error('category') is-invalid @enderror"
                                 id="categoryInput" data-select-category="{{ old('category', $selectedCategory) }}"
-                                aria-label=".form-select-sm example" onchange="selectPlanPhotography(this)" name="category"
-                                required>
+                                aria-label=".form-select-sm example" onchange="selectPlan(this)" name="category" required>
                                 <option selected disabled>Select the category</option>
                                 @foreach ($categories as $category)
                                     <option value="{{ $category->id }}" data-plans='@json($category->plans)'>
@@ -97,13 +95,5 @@
 
             selectCategoryAndPlan('#categoryInput', '#planInput', selectedCategory, selectedPlan);
         });
-
-        const selectPlanPhotography = (select) => {
-            selectPlan(select)
-        }
-
-        const validationSelectPhotography = (e) => {
-            validationSelect(e, '#categoryInput')
-        };
     </script>
 @endpush

@@ -90,7 +90,7 @@
                                 <div class="row gap-3">
                                     <label for="description" class="col-sm-2 col-form-label">Description</label>
                                     <div class="col">
-                                        <textarea class="form-control @error('edit.*.description') is-invalid @enderror" rows="3">{{ $feature->description }}</textarea>
+                                        <textarea class="form-control @error('edit.*.description') is-invalid @enderror" rows="3" readonly>{{ $feature->description }}</textarea>
                                         @error('edit.*.description')
                                             is-invalid
                                         @enderror
@@ -99,11 +99,12 @@
                             </div>
                             <div class="d-flex align-items-md-center flex-column mt-md-0 mt-3 gap-2">
                                 <div>
-                                    <input type="checkbox" hidden id="deleted-{{ $feature->id }}" class="delete-feature">
+                                    <input type="checkbox" hidden id="deleted-{{ $feature->id }}" class="delete-feature"
+                                        onchange="deleteFeatureOld(this)">
                                     <label for="deleted-{{ $feature->id }}"
                                         class="btn btn-danger text-white">Delete</label>
                                 </div>
-                                <div><button type="button" class="btn btn-primary edit-feature"
+                                <div><button type="button" class="btn btn-primary edit-feature" onclick="editFeature(this)"
                                         data-feature-id="{{ $feature->id }}">Edit</button>
                                 </div>
                             </div>
@@ -111,7 +112,8 @@
                     @endforeach
 
                     <div class="d-flex align-items-center justify-content-between mt-3" id="button-bottom">
-                        <button type="button" class="btn btn-success create-feature text-white">Add</button>
+                        <button type="button" class="btn btn-success create-feature text-white"
+                            onclick="createFeature()">Add</button>
                         <button type="submit" class="btn btn-info save-changes text-white">Save Changes</button>
                     </div>
                 </div>
@@ -119,90 +121,3 @@
         </form>
     </div>
 @endsection
-
-@push('scripts')
-    <script>
-        $(document).ready(function() {
-            $('.delete-feature').on('change', function() {
-                var parent = $(this).closest('.form-group');
-                var id = parent.data('feature-id');
-                var deletedInput = $(`#deletedID-${id}`);
-
-                if (!this.checked) { // checkbox is unchecked
-                    if (deletedInput.length) {
-                        deletedInput.remove();
-                        parent.find('input[type="text"], textarea').removeClass(
-                            'border-danger text-muted deleted');
-                    }
-                } else { // checkbox is checked
-                    if (!deletedInput.length) {
-                        var input =
-                            `<input type="text" name="delete[]" id="deletedID-${id}" class="deleted-id" value="${id}" readonly>`;
-                        $('#deleted-id-input').append(input);
-                        parent.find('input[type="text"], textarea').addClass(
-                            'border-danger text-muted deleted');
-                    }
-                }
-            });
-
-            $('.edit-feature').on('click', function() {
-                var parent = $(this).closest('.form-group');
-                var textInput = parent.find('input[type="text"]');
-                var descTextarea = parent.find('textarea');
-
-                textInput.prop('readonly', false).focus().attr('name', 'edit[' + parent.data('feature-id') +
-                    '][text]');
-                descTextarea.prop('readonly', false).attr('name', 'edit[' + parent.data('feature-id') +
-                    '][description]');
-            });
-
-            $('.create-feature').click(function() {
-                var newFormGroup = `
-                    <div class="form-group d-md-flex align-items-center gap-3" data-feature-id="{{ $feature->id }}">
-                        <div class="d-flex flex-column w-100 mt-3 flex-wrap gap-3">
-                            <input type="hidden" name="id[]" class="form-control" value="{{ $plan->id }}">
-                            <div class="row gap-3">
-                                <label for="text" class="col-sm-2 col-form-label">Text</label>
-                                <div class="col">
-                                    <input type="text" name="text[]" class="form-control @error('text.*') is-invalid @enderror" id="text">
-                                    @error('text.*')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                            <div class="row gap-3">
-                                <label for="description" class="col-sm-2 col-form-label">Description</label>
-                                <div class="col">
-                                    <textarea class="form-control @error('description.*') is-invalid @enderror" name="description[]" rows="3"></textarea>
-                                    @error('description.*')
-                                        <div class="invalid-feedback">
-                                            {{ $message }}
-                                        </div>
-                                    @enderror
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-3 mt-md-0">
-                            <button type="button" class="btn btn-danger text-white delete-feature-new">Delete</button>
-                        </div>
-                    </div>
-                `;
-                $(newFormGroup).insertBefore('#button-bottom');
-
-                // Set focus to the newly created text input
-                $(newFormGroup).find('input[name="text[]"]').focus();
-
-                // Unset the readonly attribute and clear the value of the input and textarea
-                $(newFormGroup).find('input[name="text[]"], textarea[name="description[]"]').prop(
-                    'readonly', false).val('');
-            });
-
-            // Fungsi untuk menghapus form-group baru
-            $(document).on('click', '.delete-feature-new', function() {
-                $(this).closest('.form-group').remove();
-            });
-        });
-    </script>
-@endpush
