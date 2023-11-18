@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.main')
 @section('content')
-    <div class="container" style="height: 100%">
+    <div class="container">
         <form action="{{ route('videography-category.update', $videographyCategory->id) }}" method="POST"
             enctype="multipart/form-data">
             @csrf

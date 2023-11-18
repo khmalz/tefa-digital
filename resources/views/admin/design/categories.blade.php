@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.main')
 @section('content')
-    <div class="container" style="height: 100%">
+    <div class="container">
         <div class="row">
             @forelse ($categories as $category)
                 <div class="col-md-6">
