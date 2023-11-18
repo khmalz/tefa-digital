@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.main')
+@extends('admin.dashboard.layouts.main')
 @section('content')
     <div class="container" style="height: auto">
         @foreach ($categoriesOutput as $category)

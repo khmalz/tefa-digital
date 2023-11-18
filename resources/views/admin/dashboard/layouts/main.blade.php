@@ -379,15 +379,15 @@
 </head>
 
 <body>
-    @include('dashboard.layouts.sidebar')
+    @include('admin.dashboard.layouts.sidebar')
     <div class="wrapper d-flex flex-column bg-light">
-        @include('dashboard.layouts.header')
+        @include('admin.dashboard.layouts.header')
 
         <div class="min-vh-100">
             @yield('content')
         </div>
 
-        @include('dashboard.layouts.footer')
+        @include('admin.dashboard.layouts.footer')
     </div>
 
     <!-- CoreUI and necessary plugins-->

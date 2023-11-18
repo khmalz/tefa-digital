@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.main')
+@extends('admin.dashboard.layouts.main')
 
 @section('content')
     <div class="body flex-grow-1 px-3">

@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.main')
+@extends('admin.dashboard.layouts.main')
 @section('content')
     <div class="container">
         <form action="{{ route('videography-category.update', $videographyCategory->id) }}" method="POST"
