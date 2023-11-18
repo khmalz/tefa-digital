@@ -10,6 +10,7 @@
         content="{{ app('websiteTitle') }} is a service ordering website that provides printing, design, photography, and videography services in SMKN 46 Jakarta. We offer high-quality services for teachers and students of SMKN 46 Jakarta.">
     <meta name="keywords"
         content="{{ app('websiteTitle') }}, printing, design, photography, videography, SMKN 46 Jakarta, services, high-quality, teachers, students">
+    <meta name="theme-color" content="#ef6603">
 
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
