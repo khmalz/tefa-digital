@@ -114,7 +114,7 @@
                         </p>
                     </div>
                     <div class="col-lg-6 pt-lg-0 pt-4">
-                        <img src="{{ asset('assets/img/category/about-home.jpg') }}" alt="About Home" style="width: 75%;">
+                        <img src="{{ asset('assets/img/category/about-home.jpg') }}" alt="About Home" style="width: 100%;">
                     </div>
                 </div>
             </div>

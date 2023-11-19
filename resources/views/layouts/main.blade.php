@@ -30,8 +30,7 @@
 
     @yield('hero')
 
-    <main id="main-content" data-mail-success="{{ session('success', 'success') }}"
-        data-mail-failure="{{ session('failure') }}">
+    <main id="main-content" data-mail-success="{{ session('success') }}" data-mail-failure="{{ session('failure') }}">
         @yield('main')
     </main>
 
