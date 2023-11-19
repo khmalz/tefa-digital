@@ -10,6 +10,8 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
+        "@coreui/coreui": "^4.3.2",
+        "@popperjs/core": "^2.11.8",
         "aos": "^2.3.4",
         "datatables.net-autofill-bs5": "^2.6.0",
         "datatables.net-bs5": "^1.13.8",

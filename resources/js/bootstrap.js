@@ -16,7 +16,7 @@ window.AOS = AOS;
 window.Toastify = Toastify;
 window.GLightbox = GLightbox;
 window.Isotope = Isotope;
-window.jQuery = window.$ = $;
+window.jquery = window.jQuery = window.$ = $;
 
 window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
