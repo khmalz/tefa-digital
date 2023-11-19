@@ -149,6 +149,7 @@
                     [length, 7, 30, 100, 500],
                     ["Today", "This Week", "This Month", "This Year", "All"]
                 ],
+                responsive: true,
                 pageLength: length,
                 order: [
                     [2, "asc"],
