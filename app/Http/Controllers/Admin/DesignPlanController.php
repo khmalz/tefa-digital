@@ -73,14 +73,6 @@ class DesignPlanController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(DesignPlan $designPlan)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(DesignPlan $designPlan)

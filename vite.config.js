@@ -8,6 +8,7 @@ export default defineConfig({
                 "resources/js/client.js",
                 "resources/js/datatable.js",
                 "resources/js/auth.js",
+                "resources/js/admin.js",
             ],
             refresh: true,
         }),

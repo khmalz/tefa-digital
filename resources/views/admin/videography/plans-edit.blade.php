@@ -21,7 +21,7 @@
                 <div class="col-md-10">
                     <div class="form-group mb-5">
                         <div class="row">
-                            <label for="category" class="col-sm-2 col-form-label">Category</label>
+                            <label for="design-category-select" class="col-sm-2 col-form-label">Category</label>
                             <div class="col-sm-10">
                                 <select class="form-select" aria-label="Default select example" id="design-category-select"
                                     required>
@@ -32,10 +32,11 @@
                     </div>
                     <div class="form-group d-flex flex-column mt-3 w-full gap-3">
                         <div class="row">
-                            <label for="title" class="col-sm-2 col-form-label">Title</label>
+                            <label for="titleInput" class="col-sm-2 col-form-label">Title</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control @error('title_plan') is-invalid @enderror"
-                                    name="title_plan" value="{{ old('title_plan', $plan->title) }}">
+                                <input id="titleInput" type="text"
+                                    class="form-control @error('title_plan') is-invalid @enderror" name="title_plan"
+                                    value="{{ old('title_plan', $plan->title) }}">
                                 @error('title_plan')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -44,10 +45,11 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label for="price" class="col-sm-2 col-form-label">Price</label>
+                            <label for="priceInput" class="col-sm-2 col-form-label">Price</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control @error('price') is-invalid @enderror"
-                                    name="price" value="{{ $plan->price }}">
+                                <input id="priceInput" type="text"
+                                    class="form-control @error('price') is-invalid @enderror" name="price"
+                                    value="{{ $plan->price }}">
                                 @error('price')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -56,9 +58,10 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label for="description" class="col-sm-2 col-form-label">Description</label>
+                            <label for="descriptionInput" class="col-sm-2 col-form-label">Description</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control @error('description_plan') is-invalid @enderror" name="description_plan" rows="3">{{ $plan->description }}</textarea>
+                                <textarea id="descriptionInput" class="form-control @error('description_plan') is-invalid @enderror"
+                                    name="description_plan" rows="3">{{ $plan->description }}</textarea>
                                 @error('description_plan')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -77,20 +80,22 @@
                         <div class="form-group d-md-flex align-items-center gap-3" data-feature-id="{{ $feature->id }}">
                             <div class="d-flex flex-column w-100 mt-3 flex-wrap gap-3">
                                 <div class="row gap-3">
-                                    <label for="text" class="col-sm-2 col-form-label">Text</label>
+                                    <label for="text{{ $feature->id }}" class="col-sm-2 col-form-label">Text</label>
                                     <div class="col">
                                         <input type="text"
-                                            class="form-control @error('edit.*.text') is-invalid @enderror" id="text"
-                                            value="{{ $feature->text }}" readonly>
+                                            class="form-control @error('edit.*.text') is-invalid @enderror"
+                                            id="text{{ $feature->id }}" value="{{ $feature->text }}" readonly>
                                         @error('edit.*.text')
                                             is-invalid
                                         @enderror
                                     </div>
                                 </div>
                                 <div class="row gap-3">
-                                    <label for="description" class="col-sm-2 col-form-label">Description</label>
+                                    <label for="description{{ $feature->id }}"
+                                        class="col-sm-2 col-form-label">Description</label>
                                     <div class="col">
-                                        <textarea class="form-control @error('edit.*.description') is-invalid @enderror" rows="3" readonly>{{ $feature->description }}</textarea>
+                                        <textarea id="description{{ $feature->id }}" class="form-control @error('edit.*.description') is-invalid @enderror"
+                                            rows="3" readonly>{{ $feature->description }}</textarea>
                                         @error('edit.*.description')
                                             is-invalid
                                         @enderror

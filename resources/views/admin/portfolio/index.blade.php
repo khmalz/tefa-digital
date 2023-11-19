@@ -1,5 +1,9 @@
 @extends('admin.dashboard.layouts.main')
 
+@push('styles')
+    @vite('resources/js/datatable.js')
+@endpush
+
 @section('content')
     <div class="body flex-grow-1 px-3">
         <div class="container-lg">

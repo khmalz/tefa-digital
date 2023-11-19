@@ -23,7 +23,7 @@
                 <div class="col-md-10">
                     <div class="form-group mb-5">
                         <div class="row">
-                            <label for="category" class="col-sm-2 col-form-label">Category</label>
+                            <label for="videography-category-select" class="col-sm-2 col-form-label">Category</label>
                             <div class="col-sm-10">
                                 <select class="form-select @error('videography_category_id') is-invalid @enderror"
                                     aria-label="Default select example" id="videography-category-select"
@@ -45,10 +45,10 @@
                     </div>
                     <div class="form-group d-flex flex-column mt-3 w-full gap-3">
                         <div class="row">
-                            <label for="title" class="col-sm-2 col-form-label">Title</label>
+                            <label for="titleInput" class="col-sm-2 col-form-label">Title</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control @error('title_plan') is-invalid @enderror"
-                                    name="title_plan">
+                                <input type="text" id="titleInput"
+                                    class="form-control @error('title_plan') is-invalid @enderror" name="title_plan">
                                 @error('title_plan')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -57,10 +57,10 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label for="price" class="col-sm-2 col-form-label">Price</label>
+                            <label for="priceInput" class="col-sm-2 col-form-label">Price</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control @error('price') is-invalid @enderror"
-                                    name="price">
+                                <input type="text" id="priceInput"
+                                    class="form-control @error('price') is-invalid @enderror" name="price">
                                 @error('price')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -69,9 +69,10 @@
                             </div>
                         </div>
                         <div class="row">
-                            <label for="description" class="col-sm-2 col-form-label">Description</label>
+                            <label for="descriptionInput" class="col-sm-2 col-form-label">Description</label>
                             <div class="col-sm-10">
-                                <textarea class="form-control @error('description_plan') is-invalid @enderror" name="description_plan" rows="3"></textarea>
+                                <textarea id="descriptionInput" class="form-control @error('description_plan') is-invalid @enderror"
+                                    name="description_plan" rows="3"></textarea>
                                 @error('description_plan')
                                     <div class="invalid-feedback">
                                         {{ $message }}
@@ -90,8 +91,9 @@
                             <div class="row">
                                 <label for="text" class="col-sm-2 col-form-label">Text</label>
                                 <div class="col">
-                                    <input type="text" class="form-control @error('text.*') is-invalid @enderror"
-                                        name="text[]" id="text">
+                                    <input id="text" type="text"
+                                        class="form-control @error('text.*') is-invalid @enderror" name="text[]"
+                                        id="text">
                                     @error('text.*')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -102,8 +104,8 @@
                             <div class="row">
                                 <label for="description" class="col-sm-2 col-form-label">Description</label>
                                 <div class="col">
-                                    <textarea class="form-control @error('description.*') is-invalid @enderror" rows="3" id="description"
-                                        name="description[]"></textarea>
+                                    <textarea id="description" class="form-control @error('description.*') is-invalid @enderror" rows="3"
+                                        id="description" name="description[]"></textarea>
                                     @error('description.*')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -128,7 +130,7 @@
 
 @push('scripts')
     <script>
-        $(document).ready(function() {
+        document.addEventListener('DOMContentLoaded', function() {
             let initialPlansCount = $('#videography-category-select :selected').data('plans-count');
             updateUiByCount(initialPlansCount);
         });

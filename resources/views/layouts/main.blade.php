@@ -50,8 +50,8 @@
     <!-- Vendor JS Files -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            let successMessage = document.querySelector('#main-content').dataset.mailSuccess;
-            let failureMessage = document.querySelector('#main-content').dataset.mailFailure;
+            const successMessage = document.querySelector('#main-content').dataset.mailSuccess;
+            const failureMessage = document.querySelector('#main-content').dataset.mailFailure;
 
             if (successMessage) {
                 showToast(successMessage, "#28a745");

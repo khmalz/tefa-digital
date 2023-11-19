@@ -142,11 +142,11 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::patch('profil-app/title/{title}/update', [ProfileAppController::class, 'updateTitle'])->name('profile-app.title.update');
 
     Route::resource('design-category', DesignCategoryController::class)->except('create', 'store', 'show', 'destroy');
-    Route::resource('design-plan', DesignPlanController::class);
+    Route::resource('design-plan', DesignPlanController::class)->except('show');
 
     Route::resource('photography-category', PhotographyCategoryController::class)->except('create', 'store', 'show', 'destroy');
-    Route::resource('photography-plan', PhotographyPlanController::class);
+    Route::resource('photography-plan', PhotographyPlanController::class)->except('show');
 
     Route::resource('videography-category', VideographyCategoryController::class)->except('create', 'store', 'show', 'destroy');
-    Route::resource('videography-plan', VideographyPlanController::class);
+    Route::resource('videography-plan', VideographyPlanController::class)->except('show');
 });
