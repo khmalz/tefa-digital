@@ -89,7 +89,7 @@
 
 @push('scripts')
     <script>
-        $(document).ready(function() {
+        document.addEventListener('DOMContentLoaded', function() {
             const selectedCategory = $('#categoryInput').data('select-category');
             const selectedPlan = $('#planInput').data('select-plan');
 

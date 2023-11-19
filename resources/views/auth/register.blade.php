@@ -8,8 +8,8 @@
     <meta name="description" content="{{ app('websiteTitle') }} - Dashboard to manage service orders" />
     <meta name="keyword" content="{{ app('websiteTitle') }}, Service, Design, Printing, Videoghraphy, Fotoghraphy" />
     <title>Register | {{ app('websiteTitle') ?? config('app.name') }}</title>
-    <!-- Main styles for this application-->
-    <link href="{{ asset('assets/admin/css/style.min.css') }}" rel="stylesheet" />
+
+    @vite('resources/js/auth.js')
 </head>
 
 <body>
@@ -47,7 +47,8 @@
                                             </use>
                                         </svg></span>
                                     <input class="form-control @error('name') is-invalid @enderror" name="name"
-                                        type="text" placeholder="Name" value="{{ old('name') }}" />
+                                        type="text" placeholder="Name" value="{{ old('name') }}"
+                                        autocomplete="name" />
                                     @error('name')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -62,7 +63,8 @@
                                             </use>
                                         </svg></span>
                                     <input class="form-control @error('email') is-invalid @enderror" name="email"
-                                        type="email" placeholder="Email" value="{{ old('email') }}" />
+                                        type="email" placeholder="Email" value="{{ old('email') }}"
+                                        autocomplete="email" />
                                     @error('email')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -77,7 +79,7 @@
                                             </use>
                                         </svg></span>
                                     <input class="form-control @error('password') is-invalid @enderror" name="password"
-                                        type="password" placeholder="Password" />
+                                        type="password" placeholder="Password" autocomplete="new-password" />
                                     @error('password')
                                         <div class="invalid-feedback">
                                             {{ $message }}

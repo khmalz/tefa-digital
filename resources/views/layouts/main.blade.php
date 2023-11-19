@@ -21,147 +21,7 @@
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
         rel="stylesheet">
 
-    <!-- Vendor CSS Files -->
-    <link href="{{ asset('assets/vendor/animate.css/animate.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/toastify/toastify.css') }}" rel="stylesheet">
-
-    <!-- Template Main CSS File -->
-    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
-
-    <style>
-        .bottom-button {
-            position: fixed;
-            visibility: hidden;
-            opacity: 0;
-            right: 15px;
-            bottom: 15px;
-            z-index: 996;
-            row-gap: 5px;
-            transition: all 0.3s;
-        }
-
-        .bottom-button.active {
-            visibility: visible;
-            opacity: 1;
-        }
-
-        .whatsapp-button {
-            background-color: #25d366;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            text-decoration: none;
-            transition: all 0.4s;
-            color: #fff;
-        }
-
-        .whatsapp-button:hover {
-            background-color: #128c7e;
-            color: #fff;
-        }
-
-        .btn-profile {
-            font-family: "Poppins", sans-serif;
-            background-color: #f06404;
-            border-radius: 10px;
-            font-size: 0.9rem;
-            color: #fff;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .btn-profile:hover {
-            background: #fff;
-            color: #f06404;
-            text-decoration: none;
-            border: 2px solid #ef6603;
-        }
-
-        .order-button {
-            font-family: "Raleway", sans-serif;
-            background-color: #f06404;
-            font-weight: 500;
-            font-size: 14px;
-            letter-spacing: 1px;
-            display: inline-block;
-            padding: 12px 32px;
-            border-radius: 50px;
-            transition: 0.5s;
-            line-height: 1;
-            margin: 10px;
-            color: #fff;
-            display: inline-block;
-            text-decoration: none;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .order-button:hover {
-            background: #fff;
-            color: #f06404;
-            text-decoration: none;
-            border: 2px solid #ef6603;
-        }
-
-        #profile .box {
-            padding: 30px;
-            position: relative;
-            overflow: hidden;
-            border-radius: 10px;
-            background: #fff;
-            width: 100%;
-            height: 100%;
-        }
-
-        #profile .profile-box {
-            box-shadow: 0 10px 55px 0 rgba(52, 62, 90, 0.12);
-            transition: all 0.4s ease-in-out;
-        }
-
-        #profile .profile-box:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 2px 35px 0 rgba(68, 88, 144, 0.2);
-        }
-
-        #notif .notif-box {
-            width: 100%;
-            background-color: #fffff;
-            box-shadow: 0 10px 55px 0 rgba(52, 62, 90, 0.12);
-            transition: all 0.4s ease-in-out;
-        }
-
-        #notif .notif-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 2px 35px 0 rgba(68, 88, 144, 0.2);
-        }
-
-        #notif .box {
-            background-color: #ffffff;
-            width: 100%;
-            height: 100%;
-        }
-
-        #hero .carousel-image-container {
-            position: relative;
-            width: 100vw;
-            overflow: hidden;
-        }
-
-        #hero .carousel-image-container img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(45%);
-        }
-    </style>
+    @vite('resources/js/client.js')
     @stack('styles')
 </head>
 
@@ -170,7 +30,8 @@
 
     @yield('hero')
 
-    <main id="main-content" data-mail-success="{{ session('success') }}" data-mail-failure="{{ session('failure') }}">
+    <main id="main-content" data-mail-success="{{ session('success', 'success') }}"
+        data-mail-failure="{{ session('failure') }}">
         @yield('main')
     </main>
 
@@ -188,15 +49,6 @@
     </div>
 
     <!-- Vendor JS Files -->
-    <script src="{{ asset('assets/vendor/jquery/jquery.min.js') }}"></script>
-
-    <script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
-    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/toastify/toastify.js') }}"></script>
-
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             let successMessage = document.querySelector('#main-content').dataset.mailSuccess;
@@ -253,9 +105,6 @@
     </script>
 
     @stack('scripts')
-
-    <!-- Template Main JS File -->
-    <script src="{{ asset('assets/js/main.js') }}"></script>
 </body>
 
 </html>

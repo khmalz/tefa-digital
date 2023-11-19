@@ -120,6 +120,13 @@ Route::as('user.')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+    Route::prefix('export-to-pdf')->as('print-pdf.')->group(function () {
+        Route::get('design/{order}', [PDFController::class, 'createInvoiceDesign'])->name('design');
+        Route::get('photography/{order}', [PDFController::class, 'createInvoicePhotography'])->name('photography');
+        Route::get('videography/{order}', [PDFController::class, 'createInvoiceVideography'])->name('videography');
+        Route::get('printing/{order}', [PDFController::class, 'createInvoicePrinting'])->name('printing');
+    });
 });
 
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
@@ -128,13 +135,6 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('list-order', [OrderListController::class, 'all'])->name('order.all');
     Route::patch('order/{order}/update', [OrderListController::class, 'update'])->name('order.update');
     Route::get('detail/{order}', [OrderListController::class, 'show'])->name('order.show');
-
-    Route::prefix('export-to-pdf')->as('print-pdf.')->group(function () {
-        Route::get('design/{order}', [PDFController::class, 'createInvoiceDesign'])->name('design');
-        Route::get('photography/{order}', [PDFController::class, 'createInvoicePhotography'])->name('photography');
-        Route::get('videography/{order}', [PDFController::class, 'createInvoiceVideography'])->name('videography');
-        Route::get('printing/{order}', [PDFController::class, 'createInvoicePrinting'])->name('printing');
-    });
 
     Route::resource('portfolio', PortfolioController::class)->except('show');
     Route::get('profile-app', [ProfileAppController::class, 'index'])->name('profile-app.index');

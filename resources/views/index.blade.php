@@ -324,11 +324,11 @@
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <input type="text" name="name" class="form-control" id="name"
-                                        placeholder="Your Name" required>
+                                        placeholder="Your Name" required autocomplete="name">
                                 </div>
                                 <div class="col-md-6 form-group mt-md-0 mt-3">
                                     <input type="email" class="form-control" name="email" id="email"
-                                        placeholder="Your Email" pattern=".+@gmail\.com" required>
+                                        placeholder="Your Email" pattern=".+@gmail\.com" required autocomplete="email">
                                 </div>
                             </div>
                             <div class="form-group mt-3">
