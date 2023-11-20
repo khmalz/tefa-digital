@@ -22,8 +22,8 @@
     </nav>
 
     <div class="bg position-fixed">
-        <img class="bg-img position-absolute m-auto" src="{{ asset('assets/img/background/front.jpg') }}"
-            alt="background">
+        <img class="bg-img position-absolute m-auto"
+            src="{{ Vite::asset('resources/assets/img/background/front.jpg') }}" alt="background">
     </div>
 
     <div class="row justify-content-center">

@@ -21,7 +21,7 @@
                     <p>Seberapa penting photography?</p>
                 </div>
 
-                <div class="row content" data-aos="fade-up">
+                <div class="row content justify-content-between" data-aos="fade-up">
                     <div class="col-lg-6">
                         <p style="margin-bottom: 40px;text-align: justify">
                             Photography merupakan salah satu layanan yang kami sediakan untuk membantu menemukan fotografer
@@ -33,7 +33,7 @@
                         </ul>
                     </div>
                     <div class="col-lg-6 pt-lg-0 image-about pt-4">
-                        <img src="{{ asset('assets/img/category/about-photography.jpg') }}" alt=""
+                        <img src="{{ Vite::asset('resources/assets/img/category/about-photography.jpg') }}" alt=""
                             class="img-pricing">
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                                 data-aos="zoom-in-left" data-aos-delay="100">
                                 <div>
                                     @if ($category->image === 'placeholder.jpg')
-                                        <img src="{{ asset('assets/img/category/placeholder.jpg') }}"
+                                        <img src="{{ Vite::asset('resources/assets/img/category/placeholder.jpg') }}"
                                             class="card-image card-img-top rounded-2 mb-2 p-2" alt="haha">
                                     @else
                                         <img src="{{ asset('assets/img/' . $category->image) }}"

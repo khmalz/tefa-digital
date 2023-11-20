@@ -114,7 +114,8 @@
                         </p>
                     </div>
                     <div class="col-lg-6 pt-lg-0 pt-4">
-                        <img src="{{ asset('assets/img/category/about-home.jpg') }}" alt="About Home" style="width: 100%;">
+                        <img src="{{ Vite::asset('resources/assets/img/category/about-home.jpg') }}" alt="About Home"
+                            style="width: 100%;">
                     </div>
                 </div>
             </div>
@@ -175,7 +176,8 @@
                                 </a>
                             </div>
                             <div class="col-lg-6 order-lg-2 order-1 text-center">
-                                <img src="{{ asset('assets/img/design.jpg') }}" alt="Design" class="img-fluid">
+                                <img src="{{ Vite::asset('resources/assets/img/design.jpg') }}" alt="Design"
+                                    class="img-fluid">
                             </div>
                         </div>
                     </div>
@@ -208,7 +210,8 @@
                                 </a>
                             </div>
                             <div class="col-lg-6 order-lg-2 order-1 text-center">
-                                <img src="{{ asset('assets/img/photo.jpg') }}" alt="" class="img-fluid">
+                                <img src="{{ Vite::asset('resources/assets/img/photo.jpg') }}" alt=""
+                                    class="img-fluid">
                             </div>
                         </div>
                     </div>
@@ -235,7 +238,8 @@
                                 </a>
                             </div>
                             <div class="col-lg-6 order-lg-2 order-1 text-center">
-                                <img src="{{ asset('assets/img/video.jpg') }}" alt="" class="img-fluid">
+                                <img src="{{ Vite::asset('resources/assets/img/video.jpg') }}" alt=""
+                                    class="img-fluid">
                             </div>
                         </div>
                     </div>
@@ -256,7 +260,8 @@
                                 </a>
                             </div>
                             <div class="col-lg-6 order-lg-2 order-1 text-center">
-                                <img src="{{ asset('assets/img/print.jpg') }}" alt="" class="img-fluid">
+                                <img src="{{ Vite::asset('resources/assets/img/print.jpg') }}" alt=""
+                                    class="img-fluid">
                             </div>
                         </div>
                     </div>
