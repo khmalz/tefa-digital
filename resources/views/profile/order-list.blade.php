@@ -1,8 +1,7 @@
 @extends('layouts.main')
 
 @push('styles')
-    <!-- Datatables style -->
-    <link rel="stylesheet" href="{{ asset('assets/vendor/datatable/datatables.min.css') }}">
+    @vite('resources/js/datatable.js')
 @endpush
 
 @section('header')
@@ -141,11 +140,70 @@
 @endsection
 
 @push('scripts')
-    <script src="{{ asset('assets/vendor/datatable/pdfmake.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/datatable/vfs_fonts.js') }}"></script>
-    <script src="{{ asset('assets/vendor/datatable/datatables.min.js') }}"></script>
-
     <script>
+        function createDataTable(id, length) {
+            $(`#${id}`).DataTable({
+                dom: '<"d-flex"l><frBt>',
+                paging: true,
+                lengthMenu: [
+                    [length, 7, 30, 100, 500],
+                    ["Today", "This Week", "This Month", "This Year", "All"]
+                ],
+                responsive: true,
+                pageLength: length,
+                order: [
+                    [2, "asc"],
+                ],
+                buttons: [{
+                        extend: "copy",
+                        exportOptions: {
+                            columns: ":not(:last-child)" // Mengabaikan kolom terakhir
+                        }
+                    },
+                    {
+                        extend: "excel",
+                        exportOptions: {
+                            columns: ":not(:last-child)" // Mengabaikan kolom terakhir
+                        }
+                    },
+                    {
+                        extend: "pdf",
+                        exportOptions: {
+                            columns: ":not(:last-child)" // Mengabaikan kolom terakhir
+                        },
+                        customize: function(doc) {
+                            // Mengatur properti alignment menjadi center untuk seluruh teks dalam tabel
+                            doc.content[1].table.body.forEach(function(row) {
+                                row.forEach(function(cell) {
+                                    cell.alignment = 'center';
+                                });
+                            });
+
+                            // Mengatur lebar kolom agar semua kolom terlihat dalam satu halaman PDF
+                            let colWidth = 100 / doc.content[1].table.body[0].length + '%';
+
+                            doc.content[1].table.widths = Array(doc.content[1].table.body[0]
+                                    .length)
+                                .fill(colWidth);
+
+                            // Menambahkan margin ke sisi kiri dan kanan
+                            doc.pageMargins = [10, 10, 10, 10];
+                        },
+                    },
+                ],
+                language: {
+                    infoEmpty: "No entries to show",
+                    search: "_INPUT_",
+                    searchPlaceholder: "Search...",
+                },
+                columnDefs: [{
+                    "searchable": false,
+                    "orderable": false,
+                    "targets": -1,
+                }]
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', function() {
             const defaultLength = $("#table-order").data('default-length');
 
@@ -201,66 +259,5 @@
                 }
             })
         })
-
-        function createDataTable(id, length) {
-            $(`#${id}`).DataTable({
-                dom: '<"mt-2"l><frBt>',
-                paging: true,
-                lengthMenu: [
-                    [length, 7, 30, 100, 500],
-                    ["Today", "This Week", "This Month", "This Year", "All"]
-                ],
-                pageLength: length,
-                order: [
-                    [2, "asc"],
-                ],
-                buttons: [{
-                        extend: "copy",
-                        exportOptions: {
-                            columns: ":not(:last-child)" // Mengabaikan kolom terakhir
-                        }
-                    },
-                    {
-                        extend: "excel",
-                        exportOptions: {
-                            columns: ":not(:last-child)" // Mengabaikan kolom terakhir
-                        }
-                    },
-                    {
-                        extend: "pdf",
-                        exportOptions: {
-                            columns: ":not(:last-child)" // Mengabaikan kolom terakhir
-                        },
-                        customize: function(doc) {
-                            // Mengatur properti alignment menjadi center untuk seluruh teks dalam tabel
-                            doc.content[1].table.body.forEach(function(row) {
-                                row.forEach(function(cell) {
-                                    cell.alignment = 'center';
-                                });
-                            });
-
-                            // Mengatur lebar kolom agar semua kolom terlihat dalam satu halaman PDF
-                            let colWidth = 100 / doc.content[1].table.body[0].length + '%';
-
-                            doc.content[1].table.widths = Array(doc.content[1].table.body[0].length)
-                                .fill(colWidth);
-
-                            // Menambahkan margin ke sisi kiri dan kanan
-                            doc.pageMargins = [10, 10, 10, 10];
-                        },
-                    },
-                ],
-                language: {
-                    infoEmpty: "No entries to show",
-                    search: "_INPUT_",
-                    searchPlaceholder: "Search...",
-                },
-                columnDefs: [{
-                    "searchable": false,
-                    "orderable": false,
-                    "targets": -1,
-                }]
-            });
-        }
     </script>
 @endpush

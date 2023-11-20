@@ -1,4 +1,8 @@
-@extends('dashboard.layouts.main')
+@extends('admin.dashboard.layouts.main')
+
+@push('styles')
+    @vite('resources/js/datatable.js')
+@endpush
 
 @section('content')
     <div class="body flex-grow-1 px-3">
@@ -12,8 +16,9 @@
                                 <form method="GET" id="orderForm">
                                     <input type="hidden" name="date" value="{{ request('date', 1) }}">
 
-                                    <div class="d-flex align-items-center flex-nowrap" style="column-gap: 10px">
-                                        <div class="col-md-11">
+                                    <div class="d-flex justify-content-between flex-wrap"
+                                        style="column-gap: 10px; row-gap: 5px">
+                                        <div class="col-xl-11 col-8">
                                             <select class="form-select" name="category" aria-label="Select Category Order">
                                                 <option value="all"
                                                     {{ request('category') == 'all' ? 'selected' : null }}>All
@@ -34,7 +39,7 @@
                                                 </option>
                                             </select>
                                         </div>
-                                        <div class="col">
+                                        <div class="text-end">
                                             <button type="submit" class="btn btn-primary btn-sm px-3 py-2">Filter</button>
                                         </div>
                                     </div>
@@ -245,13 +250,12 @@
             $(`#${id}`).DataTable({
                 dom: '<"mt-2"l><frBt>',
                 paging: true,
+                responsive: true,
                 lengthMenu: [
                     [length, 7, 30, 100, 500],
                     ["Today", "This Week", "This Month", "This Year", "All"]
                 ],
                 pageLength: length,
-                // stateSave: true,
-                // stateDuration: 60 * 5,
                 order: [
                     [4, "asc"],
                     [3, 'asc']

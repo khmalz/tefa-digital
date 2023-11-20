@@ -73,14 +73,6 @@ class PhotographyPlanController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(PhotographyPlan $photographyPlan)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(PhotographyPlan $photographyPlan)

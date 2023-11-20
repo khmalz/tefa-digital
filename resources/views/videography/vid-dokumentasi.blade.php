@@ -50,23 +50,3 @@
         <!-- End Pricing Section -->
     </main>
 @endsection
-
-@push('styles')
-    <style>
-        .carousel-image-container {
-            position: relative;
-            width: 100vw;
-            overflow: hidden;
-        }
-
-        .carousel-image-container img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(45%);
-        }
-    </style>
-@endpush

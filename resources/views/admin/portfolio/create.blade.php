@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.main')
+@extends('admin.dashboard.layouts.main')
 
 @section('content')
     <div class="body flex-grow-1 px-3">
@@ -41,7 +41,8 @@
                                     <label for="Image" class="form-label">Image</label>
                                     <img class="img-preview img-fluid col-md-8 col-lg-4 d-none rounded" alt="preview-image">
                                     <input type="file" class="form-control @error('image') is-invalid @enderror"
-                                        id="image" name="image" aria-describedby="image" onchange="previewImage()">
+                                        id="image" name="image" aria-describedby="image"
+                                        onchange="previewImage(this)">
                                     @error('image')
                                         <div class="invalid-feedback">
                                             {{ $message }}
@@ -57,20 +58,3 @@
         </div>
     </div>
 @endsection
-
-@push('scripts')
-    <script>
-        function previewImage() {
-            const image = document.querySelector("#image")
-            const imgPreview = document.querySelector(".img-preview")
-            imgPreview.classList.remove("d-none");
-            imgPreview.classList.add("d-block");
-            imgPreview.classList.add("mb-3");
-            const [file] = image.files
-            if (file) {
-                const blob = URL.createObjectURL(file)
-                imgPreview.src = blob
-            }
-        }
-    </script>
-@endpush

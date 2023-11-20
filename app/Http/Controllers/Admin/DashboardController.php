@@ -24,6 +24,6 @@ class DashboardController extends Controller
         $progress = $this->orderService->getInProgressOrderCount();
         $completed = $this->orderService->getCompletedOrderCount();
 
-        return view('dashboard.index', compact('pending', 'progress', 'completed'));
+        return view('admin.dashboard.index', compact('pending', 'progress', 'completed'));
     }
 }

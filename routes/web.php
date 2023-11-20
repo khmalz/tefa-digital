@@ -120,6 +120,13 @@ Route::as('user.')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
+
+    Route::prefix('export-to-pdf')->as('print-pdf.')->group(function () {
+        Route::get('design/{order}', [PDFController::class, 'createInvoiceDesign'])->name('design');
+        Route::get('photography/{order}', [PDFController::class, 'createInvoicePhotography'])->name('photography');
+        Route::get('videography/{order}', [PDFController::class, 'createInvoiceVideography'])->name('videography');
+        Route::get('printing/{order}', [PDFController::class, 'createInvoicePrinting'])->name('printing');
+    });
 });
 
 Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
@@ -129,24 +136,17 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::patch('order/{order}/update', [OrderListController::class, 'update'])->name('order.update');
     Route::get('detail/{order}', [OrderListController::class, 'show'])->name('order.show');
 
-    Route::prefix('export-to-pdf')->as('print-pdf.')->group(function () {
-        Route::get('design/{order}', [PDFController::class, 'createInvoiceDesign'])->name('design');
-        Route::get('photography/{order}', [PDFController::class, 'createInvoicePhotography'])->name('photography');
-        Route::get('videography/{order}', [PDFController::class, 'createInvoiceVideography'])->name('videography');
-        Route::get('printing/{order}', [PDFController::class, 'createInvoicePrinting'])->name('printing');
-    });
-
     Route::resource('portfolio', PortfolioController::class)->except('show');
     Route::get('profile-app', [ProfileAppController::class, 'index'])->name('profile-app.index');
     Route::patch('profil-app/contact/{contact}/update', [ProfileAppController::class, 'updateContact'])->name('profile-app.contact.update');
     Route::patch('profil-app/title/{title}/update', [ProfileAppController::class, 'updateTitle'])->name('profile-app.title.update');
 
     Route::resource('design-category', DesignCategoryController::class)->except('create', 'store', 'show', 'destroy');
-    Route::resource('design-plan', DesignPlanController::class);
+    Route::resource('design-plan', DesignPlanController::class)->except('show');
 
     Route::resource('photography-category', PhotographyCategoryController::class)->except('create', 'store', 'show', 'destroy');
-    Route::resource('photography-plan', PhotographyPlanController::class);
+    Route::resource('photography-plan', PhotographyPlanController::class)->except('show');
 
     Route::resource('videography-category', VideographyCategoryController::class)->except('create', 'store', 'show', 'destroy');
-    Route::resource('videography-plan', VideographyPlanController::class);
+    Route::resource('videography-plan', VideographyPlanController::class)->except('show');
 });

@@ -88,7 +88,7 @@
 @endsection
 
 @section('main')
-    <main id="main" data-mail-success="{{ session('success') }}" data-mail-failure="{{ session('failure') }}">
+    <main>
         <!-- ======= About Section ======= -->
         <section id="about" class="about">
             <div class="container">
@@ -114,7 +114,8 @@
                         </p>
                     </div>
                     <div class="col-lg-6 pt-lg-0 pt-4">
-                        <img src="{{ asset('assets/img/category/about-home.jpg') }}" alt="About Home" style="width: 75%;">
+                        <img src="{{ Vite::asset('resources/assets/img/category/about-home.jpg') }}" alt="About Home"
+                            style="width: 100%;">
                     </div>
                 </div>
             </div>
@@ -324,11 +325,11 @@
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <input type="text" name="name" class="form-control" id="name"
-                                        placeholder="Your Name" required>
+                                        placeholder="Your Name" required autocomplete="name">
                                 </div>
                                 <div class="col-md-6 form-group mt-md-0 mt-3">
                                     <input type="email" class="form-control" name="email" id="email"
-                                        placeholder="Your Email" pattern=".+@gmail\.com" required>
+                                        placeholder="Your Email" pattern=".+@gmail\.com" required autocomplete="email">
                                 </div>
                             </div>
                             <div class="form-group mt-3">
@@ -349,65 +350,9 @@
     <!-- End #main -->
 @endsection
 
-@push('styles')
-    <style>
-        .carousel-image-container {
-            position: relative;
-            width: 100vw;
-            overflow: hidden;
-        }
-
-        .carousel-image-container img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(45%);
-        }
-
-        .order-button {
-            font-family: "Raleway", sans-serif;
-            background-color: #f06404;
-            font-weight: 500;
-            font-size: 14px;
-            letter-spacing: 1px;
-            display: inline-block;
-            padding: 12px 32px;
-            border-radius: 50px;
-            transition: 0.5s;
-            line-height: 1;
-            margin: 10px;
-            color: #fff;
-            display: inline-block;
-            text-decoration: none;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        .order-button:hover {
-            background: #fff;
-            color: #f06404;
-            text-decoration: none;
-            border: 2px solid #ef6603;
-        }
-    </style>
-@endpush
-
 @push('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            let successMessage = document.querySelector('main').dataset.mailSuccess;
-            let failureMessage = document.querySelector('main').dataset.mailFailure;
-
-            if (successMessage) {
-                showToast(successMessage, "#28a745");
-            }
-
-            if (failureMessage) {
-                showToast(failureMessage, "#dc3545");
-            }
-
             const screenWidth = window.innerWidth;
             let limit = (screenWidth >= 992) ? 14 : (screenWidth >= 576) ? 10 : 6;
 
@@ -417,30 +362,5 @@
                 selector: '.portfolio-lightbox'
             });
         });
-
-        const showPortfolios = (element, dataName, limit) => {
-            const portfolioContainer = document.querySelector(element);
-            const portfolios = JSON.parse(portfolioContainer.dataset[dataName]);
-
-            portfolioContainer.innerHTML = portfolios
-                .slice(0, limit)
-                .map((portfolio) => {
-                    return `
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-${portfolio.category}">
-                            <div class="portfolio-img">
-                                <img src="{{ asset('assets/img/${portfolio.image}') }}" class="img-fluid" alt="${portfolio.title}">
-                            </div>
-                            <div class="portfolio-info">
-                                <h4>${portfolio.title}</h4>
-                                <p>${portfolio.category}</p>
-                                <a href="{{ asset('assets/img/${portfolio.image}') }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="${portfolio.title}">
-                                    <i class="bx bx-zoom-in"></i>
-                                </a>
-                            </div>
-                        </div>
-                    `;
-                })
-                .join('');
-        };
     </script>
 @endpush

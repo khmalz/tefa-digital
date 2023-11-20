@@ -8,10 +8,8 @@
     <meta name="description" content="{{ app('websiteTitle') }} - Dashboard to manage service orders" />
     <meta name="keyword" content="{{ app('websiteTitle') }}, Service, Design, Printing, Videoghraphy, Fotoghraphy" />
     <title>Login | {{ app('websiteTitle') ?? config('app.name') }}</title>
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
 
-    <!-- Main styles for this application-->
-    <link href="{{ asset('assets/admin/css/style.min.css') }}" rel="stylesheet" />
+    @vite('resources/js/auth.js')
 </head>
 
 <body>
@@ -53,7 +51,8 @@
                                                 xlink:href="{{ asset('assets/admin/vendors/@coreui/icons/svg/free.svg#cil-envelope-open') }}">
                                             </use>
                                         </svg></span>
-                                    <input class="form-control" name="email" type="email" placeholder="Email" />
+                                    <input class="form-control" name="email" type="email" placeholder="Email"
+                                        autocomplete="email" />
                                 </div>
                                 <div class="input-group mb-3">
                                     <span class="input-group-text">
@@ -62,8 +61,8 @@
                                                 xlink:href="{{ asset('assets/admin/vendors/@coreui/icons/svg/free.svg#cil-lock-locked') }}">
                                             </use>
                                         </svg></span>
-                                    <input class="form-control" name="password" type="password"
-                                        placeholder="Password" />
+                                    <input class="form-control" name="password" type="password" placeholder="Password"
+                                        autocomplete="current-password" />
                                 </div>
                                 <div class="mb-3">
                                     <p>Haven't an account? <a href="{{ route('register.index') }}">Register</a></p>
@@ -78,7 +77,6 @@
             </div>
         </div>
     </main>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             let failureMessage = document.querySelector('main').dataset.loginFailure;
