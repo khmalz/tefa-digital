@@ -67,7 +67,7 @@
                                                 @else
                                                     <td>
                                                         <img class="portfolio-img"
-                                                            src="{{ asset('assets/img/category/placeholder.jpg') }}"
+                                                            src="{{ Vite::asset('resources/assets/img/category/placeholder.jpg') }}"
                                                             alt="{{ $portfolio->title }}">
                                                     </td>
                                                 @endif
