@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.main')
+@extends('admin.dashboard.layouts.main')
 @section('content')
     <div class="container">
         <div class="row">
@@ -14,7 +14,8 @@
                             <img class="category-img" src="{{ asset('assets/img/' . $category->image) }}"
                                 alt="{{ $category->title }}">
                         @else
-                            <img class="category-img" src="{{ asset('assets/img/category/placeholder.jpg') }}"
+                            <img class="category-img"
+                                src="{{ Vite::asset('resources/assets/img/category/placeholder.jpg') }}"
                                 alt="{{ $category->title }}">
                         @endif
 

@@ -21,7 +21,7 @@
                     <p>Mengapa menggunakan jasa Kami?</p>
                 </div>
 
-                <div class="row content" data-aos="fade-up">
+                <div class="row content justify-content-between" data-aos="fade-up">
                     <div class="col-lg-6">
                         <ul class="mt-5">
                             <li><i class="ri-check-double-line"></i> Jadikan Bisnis Lebih Progresif</li>
@@ -34,8 +34,8 @@
                         </p>
                     </div>
                     <div class="col-lg-6 pt-lg-0 image-about pt-4">
-                        <img src="{{ asset('assets/img/category/about-printing.jpg') }}" alt=""
-                            style="width: 100%;">
+                        <img src="{{ Vite::asset('resources/assets/img/category/about-printing.jpg') }}" alt=""
+                            class="img-pricing">
                     </div>
                 </div>
             </div>
@@ -129,23 +129,3 @@
         <!-- End Pricing Section -->
     </main>
 @endsection
-
-@push('styles')
-    <style>
-        .carousel-image-container {
-            position: relative;
-            width: 100vw;
-            overflow: hidden;
-        }
-
-        .carousel-image-container img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(45%);
-        }
-    </style>
-@endpush

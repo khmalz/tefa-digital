@@ -1,4 +1,8 @@
-@extends('dashboard.layouts.main')
+@extends('admin.dashboard.layouts.main')
+
+@push('styles')
+    @vite('resources/js/datatable.js')
+@endpush
 
 @section('content')
     <div class="body flex-grow-1 px-3">
@@ -63,7 +67,7 @@
                                                 @else
                                                     <td>
                                                         <img class="portfolio-img"
-                                                            src="{{ asset('assets/img/category/placeholder.jpg') }}"
+                                                            src="{{ Vite::asset('resources/assets/img/category/placeholder.jpg') }}"
                                                             alt="{{ $portfolio->title }}">
                                                     </td>
                                                 @endif

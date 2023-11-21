@@ -39,7 +39,7 @@
                         <div class="mb-3">
                             <label class="col-form-label-sm" for="materialInput">Material</label>
                             <select class="form-select form-select-sm @error('material') is-invalid @enderror"
-                                name="material" aria-label="Default select example">
+                                name="material" aria-label="Default select example" id="materialInput">
                                 <option selected disabled>Select the material</option>
                                 <option value="Metal Stainless Steel">Metal Stainless Steel</option>
                                 <option value="Strong Nylon Plastic">Strong Nylon Plastic</option>
@@ -51,10 +51,10 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label class="col-form-label-sm" for="scaleInput">Scale (cm)</label>
+                            <label class="col-form-label-sm" for="scaleX">Scale (cm)</label>
                             <div class="row input-scale-section">
                                 <div class="col">
-                                    <input type="text" value="0" class="form-control form-control-sm"
+                                    <input type="text" value="0" id="scaleX" class="form-control form-control-sm"
                                         placeholder="0 cm" pattern="[+0-9]+" oninput="onlyNumbers(this)"
                                         onblur="notAllowedEmpty(this)">
                                 </div>
@@ -62,7 +62,7 @@
                                     <span>x</span>
                                 </div>
                                 <div class="col">
-                                    <input type="text" value="0" class="form-control form-control-sm"
+                                    <input type="text" value="0" id="scaleY" class="form-control form-control-sm"
                                         placeholder="0 cm" pattern="[+0-9]+" oninput="onlyNumbers(this)"
                                         onblur="notAllowedEmpty(this)">
                                 </div>
@@ -70,7 +70,7 @@
                                     <span>x</span>
                                 </div>
                                 <div class="col">
-                                    <input type="text" value="0" class="form-control form-control-sm"
+                                    <input type="text" value="0" id="scaleZ" class="form-control form-control-sm"
                                         placeholder="0 cm" pattern="[+0-9]+" oninput="onlyNumbers(this)"
                                         onblur="notAllowedEmpty(this)">
                                 </div>
@@ -78,7 +78,7 @@
                             <input type="hidden" name="scale" id="scaleInput">
                         </div>
                         <div class="mb-3">
-                            <label class="col-form-label-sm" for="fileInput">File</label>
+                            <label class="col-form-label-sm" for="fileUpload">File</label>
                             <input
                                 class="form-control form-control-sm form-control-file @error('file') is-invalid @enderror"
                                 name="file" type="file" id="fileUpload" accept=".stl, .obj, .zip"
@@ -108,36 +108,3 @@
         </div>
     </div>
 @endsection
-
-@push('scripts')
-    <script>
-        const updateScaleInput = () => {
-            const inputs = $('.input-scale-section input');
-            // values adalah array
-            const values = inputs
-                .map(function() {
-                    // Mengambil nilai dari setiap input dan menghapus whitespace di awal dan akhir nilai
-                    return $(this).val().trim();
-                })
-                .get() // Mengubah hasil map menjadi array
-                .filter(inputValue => inputValue !== ''); // Membuang nilai yang kosong dari array
-
-            $('#scaleInput').val(values.join('x'));
-        }
-
-        const notAllowedEmpty = (el) => {
-            (el.value === '') && (el.value = '0');
-            updateScaleInput();
-        }
-
-        const onlyNumbers = (el) => {
-            el.value = el.value.replace(/[^+0-9]/g, '');
-            updateScaleInput();
-        }
-
-        const allowedExtensions = ['stl', 'obj', 'zip'];
-        const validatePrintingFile = (input) => {
-            validateFile(input, allowedExtensions);
-        }
-    </script>
-@endpush

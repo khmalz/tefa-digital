@@ -73,14 +73,6 @@ class VideographyPlanController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(VideographyPlan $videographyPlan)
-    {
-        //
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(VideographyPlan $videographyPlan)

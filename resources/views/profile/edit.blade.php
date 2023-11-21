@@ -51,7 +51,7 @@
                                                 <input type="text"
                                                     class="form-control form-control-sm @error('name') is-invalid @enderror"
                                                     name="name" id="nameInput" placeholder="Your Name"
-                                                    value="{{ old('name', $user->name) }}">
+                                                    value="{{ old('name', $user->name) }}" autocomplete="name">
                                                 @error('name')
                                                     <div id="nameInvalid" class="invalid-feedback">
                                                         {{ $message }}
@@ -63,7 +63,7 @@
                                                 <input type="email"
                                                     class="form-control form-control-sm @error('email') is-invalid @enderror"
                                                     name="email" id="emailInput" placeholder="Your Email"
-                                                    value="{{ old('email', $user->email) }}">
+                                                    value="{{ old('email', $user->email) }}" autocomplete="email">
                                                 @error('email')
                                                     <div id="emailInvalid" class="invalid-feedback">
                                                         {{ $message }}
@@ -76,7 +76,7 @@
                                                 <input type="password"
                                                     class="form-control form-control-sm @error('password') is-invalid @enderror"
                                                     name="password" id="passwordInput" placeholder="Your Password"
-                                                    value="{{ old('password') }}">
+                                                    value="{{ old('password') }}" autocomplete="new-password">
                                                 @error('password')
                                                     <div id="passwordInvalid" class="invalid-feedback">
                                                         {{ $message }}

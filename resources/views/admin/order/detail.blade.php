@@ -1,4 +1,4 @@
-@extends('dashboard.layouts.main')
+@extends('admin.dashboard.layouts.main')
 
 @section('content')
     <div class="body flex-grow-1 px-3">
@@ -102,7 +102,7 @@
                                     @foreach ($order->orderable->images as $image)
                                         <div class="col-md-6 col-lg-4">
                                             <div style="width: 100%; height: 250px;">
-                                                <img src="{{ $image->path === 'placeholder.jpg' ? asset('assets/img/category/placeholder.jpg') : \Illuminate\Support\Facades\Storage::url($image->image) }}"
+                                                <img src="{{ $image->path === 'placeholder.jpg' ? Vite::asset('resources/assets/img/category/placeholder.jpg') : \Illuminate\Support\Facades\Storage::url($image->image) }}"
                                                     class="img-fluid img-thumbnail w-100 h-100 border border-2"
                                                     style="object-fit:  cover" alt="...">
                                             </div>
