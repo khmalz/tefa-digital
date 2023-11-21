@@ -95,6 +95,9 @@ Route::as('user.')->group(function () {
         Route::get('/edit/{order}/photography', [OrderClientController::class, 'editPhotography'])->name('order.photography.edit');
         Route::patch('/update/{order}/photography', [OrderClientController::class, 'updatePhotography'])->name('order.photography.update');
 
+        Route::get('/edit/{order}/videography', [OrderClientController::class, 'editVideography'])->name('order.videography.edit');
+        Route::patch('/update/{order}/videography', [OrderClientController::class, 'updateVideography'])->name('order.videography.update');
+
         Route::get('/activity', [ActivityController::class, 'index'])->name('order.activity.index');
         Route::post('activity/read/{notifications?}', [ActivityController::class, 'read'])->name('order.activity.read');
 

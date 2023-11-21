@@ -7,9 +7,11 @@ use Illuminate\Http\Request;
 use App\Models\Admin\DesignImage;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\DesignRequest;
+use App\Models\Admin\PhotographyPlan;
+use App\Models\Admin\VideographyPlan;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\PhotographyRequest;
-use App\Models\Admin\PhotographyPlan;
+use App\Http\Requests\VideographyRequest;
 
 class OrderClientController extends Controller
 {
@@ -122,6 +124,28 @@ class OrderClientController extends Controller
         $photography = $order->orderable;
         $photography->update([
             'photography_plan_id' => $datas['photography_plan_id'],
+        ]);
+        $order->update($datas);
+
+        return redirect()->route('user.order.list')->with('Success', 'Data has been updated!');
+    }
+
+    public function editVideography(Order $order)
+    {
+        $order->load('orderable');
+        $plans = VideographyPlan::where('videography_category_id', $order->orderable->category->id)->get();
+        // return $order;
+
+        return view('profile.order-edit.videography', compact('order', 'plans'));
+    }
+
+    public function updateVideography(VideographyRequest $request, Order $order)
+    {
+        $datas = $request->validated();
+        // return $datas;
+        $videography = $order->orderable;
+        $videography->update([
+            'videography_plan_id' => $datas['videography_plan_id'],
         ]);
         $order->update($datas);
 
