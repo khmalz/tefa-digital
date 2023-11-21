@@ -13,6 +13,24 @@
                 </select>
             </div>
             <div class="mb-3">
+                <label class="col-form-label-sm" for="planInput">Plan</label>
+                <select class="form-select form-select-sm @error('design_plan_id') is-invalid @enderror"
+                    name="design_plan_id" id="planInput" aria-label=".form-select-sm example" required>
+                    <option selected disabled>Select the plan</option>
+                    @foreach ($plans as $plan)
+                        <option
+                            {{ old('design_plan_id', $order->orderable->plan->id) == $plan->id ? 'selected' : null }}
+                            value="{{ $plan->id }}">
+                            {{ $plan->title }}</option>
+                    @endforeach
+                </select>
+                @error('design_plan_id')
+                    <div class="invalid-feedback">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+            <div class="mb-3">
                 <label class="col-form-label-sm" for="nameInput">Name</label>
                 <input type="text" class="form-control form-control-sm" name="name_customer" id="nameInput"
                     placeholder="Name" readonly value="{{ old('name_customer', auth()->user()->name) }}">

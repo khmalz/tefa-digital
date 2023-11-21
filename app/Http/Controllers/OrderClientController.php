@@ -15,6 +15,7 @@ use App\Models\Admin\PhotographyPlan;
 use App\Models\Admin\VideographyPlan;
 use App\Http\Requests\PhotographyRequest;
 use App\Http\Requests\VideographyRequest;
+use App\Models\Admin\DesignPlan;
 
 class OrderClientController extends Controller
 {
@@ -64,7 +65,9 @@ class OrderClientController extends Controller
     public function editDesign(Order $order)
     {
         $order->load('orderable.images');
-        return view('profile.order-edit.design', compact('order'));
+        $plans = DesignPlan::where('design_category_id', $order->orderable->category->id)->get();
+
+        return view('profile.order-edit.design', compact('order', 'plans'));
     }
 
     public function updateDesign(DesignRequest $request, Order $order)
@@ -76,8 +79,9 @@ class OrderClientController extends Controller
         try {
             $design = $order->orderable;
             $design->update([
-                'slogan' => $request->slogan,
-                'color' => $request->color,
+                'design_plan_id' => $datas['design_plan_id'],
+                'slogan' => $datas['slogan'],
+                'color' => $datas['color'],
             ]);
 
             $order->update($datas);
@@ -96,7 +100,7 @@ class OrderClientController extends Controller
             if ($request->hasFile('gambar.*')) {
                 foreach ($request->file('gambar') as $picture) {
                     $image = $picture->store('order/design');
-                    DesignImage::create(['design_id' => $design->id, 'path' => $image]);
+                    $design->images()->create(['path' => $image]);
                 }
             }
 
@@ -157,6 +161,7 @@ class OrderClientController extends Controller
     public function editPrinting(Order $order)
     {
         $order->load('orderable');
+
         return view('profile.order-edit.printing', compact('order'));
     }
 

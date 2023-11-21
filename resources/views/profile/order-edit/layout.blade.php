@@ -27,10 +27,10 @@
         <section id="breadcrumbs" class="breadcrumbs">
             <div class="container">
                 <div class="align-items-center justify-content-between d-flex">
-                    <h2>Profile</h2>
+                    <h2>Order</h2>
                     <ol>
                         <li><a href="{{ route('home') }}">Home</a></li>
-                        <li>Profile</li>
+                        <li>Order</li>
                     </ol>
                 </div>
             </div>

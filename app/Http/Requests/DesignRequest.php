@@ -2,7 +2,6 @@
 
 namespace App\Http\Requests;
 
-use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class DesignRequest extends FormRequest
@@ -23,7 +22,7 @@ class DesignRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'design_plan_id' => [Rule::requiredIf(!empty($this->ulid))],
+            'design_plan_id' => ['required'],
             'name_customer' => ['required', 'string', 'max:191'],
             'number_customer' => ['required', 'numeric', 'regex:/^(\+62|62|0*)[2-9]{1}[0-9]{5,20}$/'],
             'email_customer' => ['required', 'email'],
