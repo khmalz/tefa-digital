@@ -8,6 +8,8 @@ use App\Models\Admin\DesignImage;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\DesignRequest;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\PhotographyRequest;
+use App\Models\Admin\PhotographyPlan;
 
 class OrderClientController extends Controller
 {
@@ -102,5 +104,19 @@ class OrderClientController extends Controller
 
             return back()->with('error', 'Failed to save changes: ' . $e->getMessage());
         }
+    }
+
+    public function editPhotography(Order $order)
+    {
+        $order->load('orderable');
+        $plans = PhotographyPlan::where('photography_category_id', $order->orderable->category->id)->get();
+        // return $order;
+
+        return view('profile.order-edit.photography', compact('order', 'plans'));
+    }
+
+    public function updatePhotography(PhotographyRequest $request, Order $order)
+    {
+        $datas = $request->validated();
     }
 }
