@@ -55,42 +55,7 @@
 @endsection
 
 @push('scripts')
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
-        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
     <script>
-        const selectCategoryAndPlan = (categoryInput, planInput, selectedCategory, selectedPlan) => {
-            $(`${categoryInput} option`)
-                .filter((index, element) =>
-                    !isNaN(selectedCategory) ? $(element).val() === selectedCategory.toString() :
-                    $(element).text().trim() === selectedCategory
-                )
-                .prop('selected', true)
-                .trigger('change');
-
-            $(`${planInput} option`)
-                .filter((index, element) =>
-                    !isNaN(selectedPlan) ? $(element).val() === selectedPlan.toString() :
-                    $(element).text().trim().startsWith(selectedPlan)
-                )
-                .prop('selected', true);
-        };
-
-        const selectPlan = (select) => {
-            let plans = $(select).find('option:selected').data('plans');
-            $('#planInput').html(plans.map(plan =>
-                        `<option value="${plan.id}">${plan.title} - ${plan.price.toLocaleString('id-ID')}</option>`)
-                    .join(''))
-                .focus();
-        }
-
-        const validationSelect = (e, categoryInput) => {
-            e.preventDefault(); // Mencegah pengiriman formulir
-
-            const selectedCategoryId = $(`${categoryInput}`).val();
-            (selectedCategoryId && selectedCategoryId !== 'disabled') ? e.target.submit(): $(`${categoryInput}`)
-                .focus();
-        };
-
         const validateFile = (input, allowedExtensions, index) => {
             const [file] = input.files;
 

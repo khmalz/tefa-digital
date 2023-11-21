@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin\Order;
 use Illuminate\Http\Request;
+use App\Models\Admin\DesignImage;
+use Illuminate\Support\Facades\DB;
+use App\Http\Requests\DesignRequest;
+use Illuminate\Support\Facades\Storage;
 
 class OrderClientController extends Controller
 {
@@ -40,12 +44,63 @@ class OrderClientController extends Controller
         return view('profile.order-list', compact('orders', 'defaultLength'));
     }
 
-    public function show(Order $order) {
+    public function show(Order $order)
+    {
         $order->load('orderable');
         if ($order->orderable_type === 'App\Models\Admin\Design') {
             $order->orderable->load('images');
         }
 
         return view('profile.detail', compact('order'));
+    }
+
+    public function editDesign(Order $order)
+    {
+        $order->load('orderable.images');
+
+        return view('profile.order-edit.design', compact('order'));
+    }
+
+    public function updateDesign(DesignRequest $request, Order $order)
+    {
+        $datas = $request->validated();
+
+        DB::beginTransaction();
+
+        try {
+            $design = $order->orderable;
+            $design->update([
+                'slogan' => $request->slogan,
+                'color' => $request->color,
+            ]);
+
+            $order->update($datas);
+
+            $deleted = $request->img_deleted;
+            if ($deleted) {
+                $designImages = DesignImage::whereIn('id', $deleted)->get();
+
+                $designImages->each(function ($image) {
+                    Storage::delete($image->path);
+                });
+
+                DesignImage::destroy($deleted);
+            }
+
+            if ($request->hasFile('gambar.*')) {
+                foreach ($request->file('gambar') as $picture) {
+                    $image = $picture->store('order/design');
+                    DesignImage::create(['design_id' => $design->id, 'path' => $image]);
+                }
+            }
+
+            DB::commit();
+
+            return to_route('user.order.list')->with('success', 'Successfully updated a order');
+        } catch (\Exception $e) {
+            DB::rollback();
+
+            return back()->with('error', 'Failed to save changes: ' . $e->getMessage());
+        }
     }
 }
