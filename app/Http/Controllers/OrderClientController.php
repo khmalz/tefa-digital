@@ -64,7 +64,6 @@ class OrderClientController extends Controller
     public function editDesign(Order $order)
     {
         $order->load('orderable.images');
-
         return view('profile.order-edit.design', compact('order'));
     }
 
@@ -127,6 +126,7 @@ class OrderClientController extends Controller
         $photography->update([
             'photography_plan_id' => $datas['photography_plan_id'],
         ]);
+
         $order->update($datas);
 
         return redirect()->route('user.order.list')->with('Success', 'Data has been updated!');
@@ -148,6 +148,7 @@ class OrderClientController extends Controller
         $videography->update([
             'videography_plan_id' => $datas['videography_plan_id'],
         ]);
+
         $order->update($datas);
 
         return redirect()->route('user.order.list')->with('Success', 'Data has been updated!');
@@ -156,7 +157,6 @@ class OrderClientController extends Controller
     public function editPrinting(Order $order)
     {
         $order->load('orderable');
-
         return view('profile.order-edit.printing', compact('order'));
     }
 
@@ -164,36 +164,44 @@ class OrderClientController extends Controller
     {
         $datas = $request->validated();
 
-        $order->update([
-            'number_customer' => $datas['number_customer'],
-            'description' => $datas['description'],
-        ]);
+        DB::beginTransaction();
 
-        if ($request->hasFile('file')) {
-            $fileReq = $request->file('file');
-            $fileName = $fileReq->getClientOriginalName();
+        try {
+            $order->update([
+                'number_customer' => $datas['number_customer'],
+                'description' => $datas['description'],
+            ]);
 
-            Storage::delete($order->orderable->file_content);
+            if ($request->hasFile('file')) {
+                $fileReq = $request->file('file');
+                $fileName = $fileReq->getClientOriginalName();
 
-            $file = $fileReq->store('order/printing');
-            $datas['file'] = $file;
+                Storage::delete($order->orderable->file_content);
+
+                $file = $fileReq->store('order/printing');
+                $datas['file'] = $file;
+            }
+
+            $printing = $order->orderable;
+            $printing->update([
+                'material' => $datas['material'],
+                'scale' => $datas['scale'],
+                'file_name' => $fileName ?? $order->orderable->file_name,
+                'file_content' => $datas['file'] ?? $order->orderable->file_content,
+            ]);
+
+            DB::commit();
+
+            return to_route('user.order.list')->with('success', 'Successfully updated a order');
+        } catch (\Exception $e) {
+            DB::rollback();
+
+            return back()->with('error', 'Failed to save changes: ' . $e->getMessage());
         }
-
-        $printing = $order->orderable;
-        $printing->update([
-            'material' => $datas['material'],
-            'scale' => $datas['scale'],
-            'file_name' => $fileName ?? $order->orderable->file_name,
-            'file_content' => $datas['file'] ?? $order->orderable->file_content,
-        ]);
-
-        return to_route('user.order.list')->with('success', 'Successfully updated a order');
     }
 
     public function downloadFile(Printing $printing): StreamedResponse
     {
-        abort_if(Storage::exists($printing->file_content), 404, 'File not found');
-
         $filename = $printing->file_name;
 
         return Storage::download(
