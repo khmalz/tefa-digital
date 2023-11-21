@@ -19,13 +19,17 @@ class PrintingFormController extends Controller
         $datas = $request->validated();
         $datas['user_id'] = $request->user()->id;
 
-        $file = $request->file('file')->store('order/printing');
+        $fileReq = $request->file('file');
+        $fileName = $fileReq->getClientOriginalName();
+
+        $file = $fileReq->store('order/printing');
         $datas['file'] = $file;
 
         $printing = Printing::create([
             'material' => $datas['material'],
             'scale' => $datas['scale'],
-            'file' => $datas['file'],
+            'file_name' => $fileName,
+            'file_content' => $datas['file'],
         ]);
 
         $order = $printing->order()->create($datas);

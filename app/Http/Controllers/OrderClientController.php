@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin\Order;
 use Illuminate\Http\Request;
+use App\Models\Admin\Printing;
 use App\Models\Admin\DesignImage;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\DesignRequest;
+use App\Http\Requests\PrintingRequest;
 use Illuminate\Support\Facades\Storage;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class OrderClientController extends Controller
 {
@@ -102,5 +105,54 @@ class OrderClientController extends Controller
 
             return back()->with('error', 'Failed to save changes: ' . $e->getMessage());
         }
+    }
+
+    public function editPrinting(Order $order)
+    {
+        $order->load('orderable');
+
+        return view('profile.order-edit.printing', compact('order'));
+    }
+
+    public function updatePrinting(PrintingRequest $request, Order $order)
+    {
+        $datas = $request->validated();
+
+        $order->update([
+            'number_customer' => $datas['number_customer'],
+            'description' => $datas['description'],
+        ]);
+
+        if ($request->hasFile('file')) {
+            $fileReq = $request->file('file');
+            $fileName = $fileReq->getClientOriginalName();
+
+            Storage::delete($order->orderable->file_content);
+
+            $file = $fileReq->store('order/printing');
+            $datas['file'] = $file;
+        }
+
+        $printing = $order->orderable;
+        $printing->update([
+            'material' => $datas['material'],
+            'scale' => $datas['scale'],
+            'file_name' => $fileName ?? $order->orderable->file_name,
+            'file_content' => $datas['file'] ?? $order->orderable->file_content,
+        ]);
+
+        return to_route('user.order.list')->with('success', 'Successfully updated a order');
+    }
+
+    public function downloadFile(Printing $printing): StreamedResponse
+    {
+        abort_if(Storage::exists($printing->file_content), 404, 'File not found');
+
+        $filename = $printing->file_name;
+
+        return Storage::download(
+            $printing->file_content,
+            $filename
+        );
     }
 }

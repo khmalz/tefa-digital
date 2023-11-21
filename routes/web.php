@@ -93,6 +93,10 @@ Route::as('user.')->group(function () {
         Route::get('/edit/{order}/design', [OrderClientController::class, 'editDesign'])->name('order.design.edit');
         Route::patch('/update/{order}/design', [OrderClientController::class, 'updateDesign'])->name('order.design.update');
 
+        Route::get('/edit/{order}/printing', [OrderClientController::class, 'editPrinting'])->name('order.printing.edit');
+        Route::patch('/update/{order}/printing', [OrderClientController::class, 'updatePrinting'])->name('order.printing.update');
+        Route::get('/download-file/{printing}', [OrderClientController::class, 'downloadFile'])->name('download.file');
+
         Route::get('/activity', [ActivityController::class, 'index'])->name('order.activity.index');
         Route::post('activity/read/{notifications?}', [ActivityController::class, 'read'])->name('order.activity.read');
 
