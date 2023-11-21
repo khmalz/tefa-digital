@@ -36,7 +36,7 @@ class DesignFormController extends Controller
         if ($request->hasFile('gambar.*')) {
             foreach ($request->file('gambar') as $picture) {
                 $image = $picture->store('order/design');
-                $design->images()->create(['image' => $image]);
+                $design->images()->create(['path' => $image]);
             }
         }
 

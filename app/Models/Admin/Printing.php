@@ -13,11 +13,11 @@ class Printing extends Model
     protected $fillable = [
         'material',
         'scale',
-        'file',
+        'file_name',
+        'file_content',
     ];
 
     protected $appends = ['order_title'];
-
 
     public function order(): MorphOne
     {

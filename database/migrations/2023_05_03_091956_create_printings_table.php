@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('material');
             $table->string('scale');
-            $table->string('file');
+            $table->string('file_name');
+            $table->string('file_content');
             $table->timestamps();
         });
     }

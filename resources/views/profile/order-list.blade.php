@@ -122,6 +122,18 @@
                                                         <i class='bx bx-detail'></i>
                                                         Detail
                                                     </a>
+                                                    @if ($order->status == 'pending')
+                                                        @php
+                                                            $orderableType = strtolower(class_basename($order->orderable_type));
+                                                        @endphp
+
+                                                        <a class="btn btn-sm btn-primary d-inline-flex align-items-center justify-content-center py-0 text-white"
+                                                            style="column-gap: 4px"
+                                                            href="{{ route("user.order.$orderableType.edit", $order->ulid) }}">
+                                                            <i class='bx bx-pencil'></i>
+                                                            Edit
+                                                        </a>
+                                                    @endif
                                                 </td>
                                             </tr>
                                         @endforeach
