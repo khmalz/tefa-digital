@@ -15,6 +15,10 @@
                 <a class="nav-link" href="{{ route('order.all') }}">
                     List</a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('order.notification.index') }}">
+                    Notification</a>
+            </li>
         @else
             <li class="nav-title">Your Order</li>
             <li class="nav-group">

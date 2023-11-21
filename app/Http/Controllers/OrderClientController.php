@@ -3,19 +3,21 @@
 namespace App\Http\Controllers;
 
 use App\Models\Admin\Order;
+use App\Notifications\UpdateOrderNotification;
 use Illuminate\Http\Request;
 use App\Models\Admin\Printing;
+use App\Models\Admin\DesignPlan;
 use App\Models\Admin\DesignImage;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\DesignRequest;
-use App\Http\Requests\PrintingRequest;
-use Illuminate\Support\Facades\Storage;
-use Symfony\Component\HttpFoundation\StreamedResponse;
 use App\Models\Admin\PhotographyPlan;
 use App\Models\Admin\VideographyPlan;
+use App\Http\Requests\PrintingRequest;
+use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\PhotographyRequest;
 use App\Http\Requests\VideographyRequest;
-use App\Models\Admin\DesignPlan;
+use Illuminate\Support\Facades\Notification;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class OrderClientController extends Controller
 {
@@ -105,6 +107,7 @@ class OrderClientController extends Controller
             }
 
             DB::commit();
+            Notification::send($order->user, new UpdateOrderNotification('design', $order->name_customer, $order->ulid, $order->status));
 
             return to_route('user.order.list')->with('success', 'Successfully updated a order');
         } catch (\Exception $e) {
@@ -132,6 +135,7 @@ class OrderClientController extends Controller
         ]);
 
         $order->update($datas);
+        Notification::send($order->user, new UpdateOrderNotification('photography', $order->name_customer, $order->ulid, $order->status));
 
         return redirect()->route('user.order.list')->with('Success', 'Data has been updated!');
     }
@@ -154,6 +158,7 @@ class OrderClientController extends Controller
         ]);
 
         $order->update($datas);
+        Notification::send($order->user, new UpdateOrderNotification('videography', $order->name_customer, $order->ulid, $order->status));
 
         return redirect()->route('user.order.list')->with('Success', 'Data has been updated!');
     }
@@ -196,6 +201,7 @@ class OrderClientController extends Controller
             ]);
 
             DB::commit();
+            Notification::send($order->user, new UpdateOrderNotification('printing', $order->name_customer, $order->ulid, $order->status));
 
             return to_route('user.order.list')->with('success', 'Successfully updated a order');
         } catch (\Exception $e) {

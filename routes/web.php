@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\ActivityController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PDFController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\DesignFormController;
@@ -12,7 +12,6 @@ use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\OrderClientController;
 use App\Http\Controllers\PrintingFormController;
-use App\Http\Controllers\Admin\ContactController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\OrderListController;
@@ -22,11 +21,12 @@ use App\Http\Controllers\PhotographyUserController;
 use App\Http\Controllers\VideographyFormController;
 use App\Http\Controllers\VideographyUserController;
 use App\Http\Controllers\Admin\DesignPlanController;
+use App\Http\Controllers\Admin\ProfileAppController;
+use App\Http\Controllers\Admin\NotificationController;
 use App\Http\Controllers\Admin\DesignCategoryController;
 use App\Http\Controllers\Admin\PhotographyPlanController;
 use App\Http\Controllers\Admin\VideographyPlanController;
 use App\Http\Controllers\Admin\PhotographyCategoryController;
-use App\Http\Controllers\Admin\ProfileAppController;
 use App\Http\Controllers\Admin\VideographyCategoryController;
 
 /*
@@ -148,6 +148,8 @@ Route::prefix('admin')->middleware(['auth', 'role:admin'])->group(function () {
     Route::get('list-order', [OrderListController::class, 'all'])->name('order.all');
     Route::patch('order/{order}/update', [OrderListController::class, 'update'])->name('order.update');
     Route::get('detail/{order}', [OrderListController::class, 'show'])->name('order.show');
+    Route::get('/notification', [NotificationController::class, 'index'])->name('order.notification.index');
+    Route::post('notification/read/{notifications?}', [NotificationController::class, 'read'])->name('order.notification.read');
 
     Route::resource('portfolio', PortfolioController::class)->except('show');
     Route::get('profile-app', [ProfileAppController::class, 'index'])->name('profile-app.index');
