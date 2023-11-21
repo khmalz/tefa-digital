@@ -92,6 +92,11 @@ Route::as('user.')->group(function () {
 
         Route::get('/edit/{order}/design', [OrderClientController::class, 'editDesign'])->name('order.design.edit');
         Route::patch('/update/{order}/design', [OrderClientController::class, 'updateDesign'])->name('order.design.update');
+        Route::get('/edit/{order}/photography', [OrderClientController::class, 'editPhotography'])->name('order.photography.edit');
+        Route::patch('/update/{order}/photography', [OrderClientController::class, 'updatePhotography'])->name('order.photography.update');
+
+        Route::get('/edit/{order}/videography', [OrderClientController::class, 'editVideography'])->name('order.videography.edit');
+        Route::patch('/update/{order}/videography', [OrderClientController::class, 'updateVideography'])->name('order.videography.update');
 
         Route::get('/edit/{order}/printing', [OrderClientController::class, 'editPrinting'])->name('order.printing.edit');
         Route::patch('/update/{order}/printing', [OrderClientController::class, 'updatePrinting'])->name('order.printing.update');
