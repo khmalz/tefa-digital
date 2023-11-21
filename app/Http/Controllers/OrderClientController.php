@@ -220,4 +220,15 @@ class OrderClientController extends Controller
             $filename
         );
     }
+
+    public function cancel(Order $order)
+    {
+        abort_if($order->status !== 'pending', 403, 'Only pending order can be canceled');
+
+        $order->update([
+            'status' => 'cancel',
+        ]);
+
+        return to_route('user.order.list')->with('success', 'Successfully canceled a order');
+    }
 }
