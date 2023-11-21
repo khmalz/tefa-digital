@@ -118,7 +118,13 @@ class OrderClientController extends Controller
     public function updatePhotography(PhotographyRequest $request, Order $order)
     {
         $datas = $request->validated();
+        // return $datas;
+        $photography = $order->orderable;
+        $photography->update([
+            'photography_plan_id' => $datas['photography_plan_id'],
+        ]);
         $order->update($datas);
+
         return redirect()->route('user.order.list')->with('Success', 'Data has been updated!');
     }
 }
