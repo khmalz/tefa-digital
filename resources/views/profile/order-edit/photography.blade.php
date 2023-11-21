@@ -1,7 +1,9 @@
 @extends('profile.order-edit.layout')
 
 @section('input')
-    <form action="{{ route('user.photography.form.store') }}" method="POST" onsubmit="validationSelect(event)">
+    <form action="{{ route('user.order.photography.update', $order->ulid) }}" method="POST"
+        onsubmit="validationSelect(event)">
+        @method('patch')
         @csrf
         <div class="p-5">
             <div class="mb-3">
@@ -17,7 +19,8 @@
                     <option selected disabled>Select the plan</option>
                     @foreach ($plans as $plan)
                         <option
-                            {{ old('photography_plan_id', $order->orderable->plan->id) == $plan->id ? 'selected' : null }}>
+                            {{ old('photography_plan_id', $order->orderable->plan->id) == $plan->id ? 'selected' : null }}
+                            value="{{ $plan->id }}">
                             {{ $plan->title }}</option>
                     @endforeach
                 </select>
