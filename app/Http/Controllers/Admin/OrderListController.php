@@ -22,10 +22,8 @@ class OrderListController extends Controller
         $defaultLength = 10;
 
         $orders = Order::with('orderable')
-            ->when($request->has('category') && in_array($request->category, ['all', 'design', 'photography', 'videography', 'printing']), function ($query) use ($request) {
-                if ($request->category !== 'all') {
-                    return $query->whereHasMorph('orderable', ['App\Models\Admin\\' . $request->category], null);
-                }
+            ->when($request->has('category') && in_array($request->category, ['design', 'photography', 'videography', 'printing']), function ($query) use ($request) {
+                return $query->whereHasMorph('orderable', ['App\Models\Admin\\' . $request->category], null);
             })
             ->when($request->has('date'), function ($query) use ($request) {
                 switch ($request->date) {
@@ -43,6 +41,10 @@ class OrderListController extends Controller
             }, function ($query) {
                 // Query default jika parameter date tidak ada
                 return $query->whereDate('created_at', now());
+            })->when($request->has('type'), function ($query) {
+                $query->where('status', 'cancel');
+            }, function ($query) {
+                $query->where('status', '!=', 'cancel');
             })
             ->paginate($defaultLength);
 

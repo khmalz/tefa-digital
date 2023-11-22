@@ -11,9 +11,25 @@
                 <div class="col-md-12">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <h4>Order's List</h4>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <h4>Order's List</h4>
+                                <form method="get">
+                                    @if (request('type') != 'cancel')
+                                        <input type="hidden" name="type" value="cancel">
+                                        <button type="submit" class="btn btn-danger btn-sm px-3 py-2 text-white">Cancel
+                                            Order</button>
+                                    @else
+                                        <a href="{{ route('order.all') }}" class="btn btn-info btn-sm px-3 py-2 text-white">
+                                            Reset</a>
+                                    @endif
+                                </form>
+                            </div>
                             <div class="mt-4">
                                 <form method="GET" id="orderForm">
+                                    @if (request('type') == 'cancel')
+                                        <input type="hidden" name="type" value="cancel">
+                                    @endif
+
                                     <input type="hidden" name="date" value="{{ request('date', 1) }}">
 
                                     <div class="d-flex justify-content-between flex-wrap"
