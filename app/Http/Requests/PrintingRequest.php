@@ -24,7 +24,7 @@ class PrintingRequest extends FormRequest
     {
         return [
             'name_customer' => ['required', 'string', 'max:191'],
-            'number_customer' => ['required', 'numeric', 'regex:/^(\+628|628|08*)[2-9]{1}[0-9]{5,20}$/'],
+            'number_customer' => ['required', 'numeric', 'regex:/^(\+62|62|0*)[2-9]{1}[0-9]{5,20}$/'],
             'email_customer' => ['required', 'email'],
             'material' => ['required', 'string', 'max:191'],
             'scale' => ['required', 'string', 'max:191'],

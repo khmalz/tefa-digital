@@ -62,7 +62,7 @@
                                 name="number_customer" id="phoneInput" placeholder="No Telepon"
                                 value="{{ old('number_customer') }}">
                             <small>
-                                <div id="phoneHelp" class="form-text">Contoh: 08/+628/628</div>
+                                <div id="phoneHelp" class="form-text">Contoh: 0**/+62**/62**</div>
                             </small>
                             @error('number_customer')
                                 <div id="numberInvalid" class="invalid-feedback">
