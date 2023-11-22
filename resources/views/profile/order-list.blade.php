@@ -45,8 +45,26 @@
                         <div class="box profile-box rounded-3">
                             <div class="container mt-3">
                                 <div class="row">
+                                    <div class="col-md-12 mb-2">
+                                        <form method="get">
+                                            @if (request('type') != 'cancel')
+                                                <input type="hidden" name="type" value="cancel">
+                                                <button type="submit"
+                                                    class="btn btn-danger btn-sm px-3 py-2 text-white">Cancel
+                                                    Order</button>
+                                            @else
+                                                <a href="{{ route('user.order.list') }}"
+                                                    class="btn btn-info btn-sm px-3 py-2 text-white">
+                                                    Reset</a>
+                                            @endif
+                                        </form>
+                                    </div>
                                     <div class="col-md-12">
                                         <form method="GET" id="filterForm">
+                                            @if (request('type') == 'cancel')
+                                                <input type="hidden" name="type" value="cancel">
+                                            @endif
+
                                             <input type="hidden" name="date" value="{{ request('date', 1) }}">
 
                                             <div class="d-flex align-items-center flex-nowrap" style="column-gap: 10px">

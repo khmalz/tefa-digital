@@ -27,10 +27,8 @@ class OrderClientController extends Controller
         $defaultLength = 10;
 
         $orders = Order::with('orderable')->whereBelongsTo($request->user())
-            ->when($request->has('category') && in_array($request->category, ['all', 'design', 'photography', 'videography', 'printing']), function ($query) use ($request) {
-                if ($request->category !== 'all') {
-                    return $query->whereHasMorph('orderable', ['App\Models\Admin\\' . $request->category], null);
-                }
+            ->when($request->has('category') && in_array($request->category, ['design', 'photography', 'videography', 'printing']), function ($query) use ($request) {
+                return $query->whereHasMorph('orderable', ['App\Models\Admin\\' . $request->category], null);
             })
             ->when($request->has('date'), function ($query) use ($request) {
                 switch ($request->date) {
@@ -48,6 +46,10 @@ class OrderClientController extends Controller
             }, function ($query) {
                 // Query default jika parameter date tidak ada
                 return $query->whereDate('created_at', now());
+            })->when($request->has('type'), function ($query) {
+                $query->where('status', 'cancel');
+            }, function ($query) {
+                $query->where('status', '!=', 'cancel');
             })
             ->paginate($defaultLength);
 
@@ -219,5 +221,16 @@ class OrderClientController extends Controller
             $printing->file_content,
             $filename
         );
+    }
+
+    public function cancel(Order $order)
+    {
+        abort_if($order->status !== 'pending', 403, 'Only pending order can be canceled');
+
+        $order->update([
+            'status' => 'cancel',
+        ]);
+
+        return to_route('user.order.list')->with('success', 'Successfully canceled a order');
     }
 }
