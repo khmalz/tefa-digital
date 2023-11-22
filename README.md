@@ -49,7 +49,7 @@ Berikut adalah langkah-langkah untuk menginstall Tefa Digital:
 git clone https://github.com/khmalz/tefa-digital.git
 ```
 
-**Pergi ke Direktori Proyek**
+**Masuk ke Direktori Proyek**
 
 ```shell
 cd tefa-digital
@@ -93,6 +93,12 @@ DB_PASSWORD=
 php artisan migrate --seed
 ```
 
+**Build Assets**
+
+```shell
+npm run build
+```
+
 **Link Storage**
 
 ```shell
@@ -113,14 +119,6 @@ Untuk menjalankan fitur Contact Us pada situs web kami, Anda perlu mengubah konf
 MAIL_USERNAME
 MAIL_PASSWORD
 ```
-
-## Login Dashboard
-
-Untuk ke halaman login, silahkan ke url ini `/login/secret/4pw` dan login menggunakan akun dibawah ini:
-
-`email: admin@gmail.com`
-
-`password: password`
 
 ## Kontak
 
