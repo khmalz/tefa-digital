@@ -24,7 +24,7 @@ class ContactRequest extends FormRequest
         return [
             'location' => ['required', 'max:191'],
             'email' => ['required', 'email'],
-            'phone_number' => ['required', 'numeric', 'regex:/^(\+62|62|0*)[2-9]{1}[0-9]{5,20}$/'],
+            'phone_number' => ['required', 'numeric', 'regex:/^(\+628|628|08*)[2-9]{1}[0-9]{5,20}$/'],
         ];
     }
 }
