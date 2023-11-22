@@ -4,3 +4,4 @@ fix: "fix/*"
 refactor: "refactor/*"
 chore: "chore/*"
 dev-main: "development"
+documentation: ["docs/*", "doc/*", "readme/*"]
