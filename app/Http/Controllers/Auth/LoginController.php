@@ -10,7 +10,9 @@ class LoginController extends Controller
 {
     public function index()
     {
-        return view('auth.login');
+        $canGoogleLogin = config('services.google.client_id') && config('services.google.client_secret');
+
+        return view('auth.login', compact('canGoogleLogin'));
     }
 
     public function login(Request $request)

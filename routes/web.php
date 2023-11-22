@@ -50,7 +50,7 @@ Route::middleware('guest')->group(function () {
     Route::get('/register', [RegisterController::class, 'index'])->name('register.index');
     Route::post('/register', [RegisterController::class, 'store'])->name('register.store');
 
-    Route::controller(GoogleController::class)->group(function () {
+    Route::controller(GoogleController::class)->middleware('google.config.check')->group(function () {
         Route::get('auth/google', 'handleRedirect')->name('auth.google');
         Route::get('auth/google/callback', 'handleCallback');
     });

@@ -12,7 +12,9 @@ class RegisterController extends Controller
 {
     public function index()
     {
-        return view('auth.register');
+        $canGoogleLogin = config('services.google.client_id') && config('services.google.client_secret');
+
+        return view('auth.register', compact('canGoogleLogin'));
     }
 
     public function store(Request $request)
