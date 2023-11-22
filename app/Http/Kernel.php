@@ -63,6 +63,7 @@ class Kernel extends HttpKernel
         'signed' => \App\Http\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'google.config.check' => \App\Http\Middleware\GoogleConfigCheckMiddleware::class,
         'role' => \Spatie\Permission\Middleware\RoleMiddleware::class,
         'permission' => \Spatie\Permission\Middleware\PermissionMiddleware::class,
         'role_or_permission' => \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
@@ -88,6 +89,7 @@ class Kernel extends HttpKernel
         \Spatie\Permission\Middleware\PermissionMiddleware::class,
         \Spatie\Permission\Middleware\RoleOrPermissionMiddleware::class,
         \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        \App\Http\Middleware\GoogleConfigCheckMiddleware::class,
         \Illuminate\Auth\Middleware\Authorize::class,
     ];
 }
