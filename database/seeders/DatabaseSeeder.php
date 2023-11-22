@@ -23,13 +23,6 @@ class DatabaseSeeder extends Seeder
         ]);
         $admin->assignRole('admin');
 
-        $client = User::factory()->create([
-            'name' => 'Client',
-            'email' => 'client@gmail.com',
-        ]);
-
-        $client->assignRole('client');
-
         $this->call([
             DesignSeeder::class,
             PhotographySeeder::class,
