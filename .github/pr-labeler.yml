@@ -1,5 +1,6 @@
-add: 'add/*'
-feature: ['feature/*', 'feat/*']
-fix: 'fix/*'
-refactor: 'refactor/*'
-chore: 'chore/*'
+add: "add/*"
+feature: ["feature/*", "feat/*"]
+fix: "fix/*"
+refactor: "refactor/*"
+chore: "chore/*"
+dev-main: "development"
