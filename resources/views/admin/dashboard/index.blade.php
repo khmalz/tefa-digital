@@ -1,4 +1,4 @@
-@extends('admin.layouts.main')
+@extends('admin.dashboard.layouts.main')
 
 @section('content')
     <div class="body flex-grow-1 px-3">
@@ -7,9 +7,9 @@
                 <div class="col-md-12">
                     <div class="card mb-4">
                         <div class="card-body">
-                            <h4>Tefa Digital Dashboard</h4>
+                            <h4>{{ app('websiteTitle') }} Dashboard</h4>
                             <div class="row mt-3">
-                                <div class="col-sm-6 col-lg-3">
+                                <div class="col-md-6 col-xl-4">
                                     <div class="card bg-warning mb-4 text-white">
                                         <div class="card-body d-flex align-items-center gap-3">
                                             <div>
@@ -28,7 +28,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6 col-lg-3">
+                                <div class="col-md-6 col-xl-4">
                                     <div class="card bg-info mb-4 text-white">
                                         <div class="card-body d-flex align-items-center gap-3">
                                             <div>
@@ -47,7 +47,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6 col-lg-3">
+                                <div class="col-md-6 col-xl-4">
                                     <div class="card bg-success mb-4 text-white">
                                         <div class="card-body d-flex align-items-center gap-3">
                                             <div>

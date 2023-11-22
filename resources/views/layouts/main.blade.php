@@ -5,11 +5,12 @@
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-    <title>Tefa Digital</title>
+    <title>{{ app('websiteTitle') }}</title>
     <meta name="description"
-        content="Tefa Digital is a service ordering website that provides printing, design, photography, and videography services in SMKN 46 Jakarta. We offer high-quality services for teachers and students of SMKN 46 Jakarta.">
+        content="{{ app('websiteTitle') }} is a service ordering website that provides printing, design, photography, and videography services in SMKN 46 Jakarta. We offer high-quality services for teachers and students of SMKN 46 Jakarta.">
     <meta name="keywords"
-        content="Tefa Digital, printing, design, photography, videography, SMKN 46 Jakarta, services, high-quality, teachers, students">
+        content="{{ app('websiteTitle') }}, printing, design, photography, videography, SMKN 46 Jakarta, services, high-quality, teachers, students">
+    <meta name="theme-color" content="#ef6603">
 
     <!-- Favicons -->
     <link href="assets/img/favicon.png" rel="icon">
@@ -20,23 +21,7 @@
         href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
         rel="stylesheet">
 
-    <!-- Vendor CSS Files -->
-    <link href="{{ asset('assets/vendor/animate.css/animate.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
-    <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
-
-    <!-- Template Main CSS File -->
-    <link href="{{ asset('assets/css/style.css') }}" rel="stylesheet">
-
-    <style>
-        .pad-x-500 {}
-    </style>
+    @vite('resources/js/client.js')
     @stack('styles')
 </head>
 
@@ -45,44 +30,79 @@
 
     @yield('hero')
 
-    @yield('main')
+    <main id="main-content" data-mail-success="{{ session('success') }}" data-mail-failure="{{ session('failure') }}">
+        @yield('main')
+    </main>
 
-    <!-- ======= Footer ======= -->
-    <footer id="footer">
-        <div class="container">
-            <h3>Tefa Digital</h3>
-            <p>Mendukung kreatifitas siswa berjiwa wirausaha.</p>
-            <div class="social-links">
-                <a target="_blank" href="{{ url('https://www.instagram.com/smknegeri46jakarta') }}" class="instagram"><i
-                        class="bx bxl-instagram"></i></a>
-                <a target="_blank"
-                    href="{{ url('https://smksedkijakarta.wordpress.com/kota/jakarta-timur/smk-negeri-46') }}"
-                    class="wordpress"><i class="bx bxl-wordpress"></i></a>
-                <a target="_blank" href="{{ url('https://smkn46jaktim.sch.id') }}" class="website"><i
-                        class="bx bx-globe"></i></a>
-            </div>
-            <div class="copyright">
-                &copy; Copyright <strong><span>SMK Negeri 46</span></strong>. All Rights Reserved
-            </div>
-        </div>
-    </footer><!-- End Footer -->
+    @include('layouts.footer')
 
-    <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
-            class="bi bi-arrow-up-short"></i>
-    </a>
+    <div class="bottom-button d-flex flex-column">
+        <a href="https://wa.me/6285936128829?text=Halo,%20saya%20tertarik%20dengan%20produk%20Anda..."
+            class="back-to-top-wa whatsapp-button d-flex align-items-center justify-content-center" target="_blank">
+            <i class="bi bi-whatsapp"></i>
+        </a>
+
+        <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i
+                class="bi bi-arrow-up-short"></i>
+        </a>
+    </div>
 
     <!-- Vendor JS Files -->
-    <script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
-    <script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/isotope-layout/isotope.pkgd.min.js') }}"></script>
-    <script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
-        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const successMessage = document.querySelector('#main-content').dataset.mailSuccess;
+            const failureMessage = document.querySelector('#main-content').dataset.mailFailure;
 
-    <!-- Template Main JS File -->
-    <script src="{{ asset('assets/js/main.js') }}"></script>
+            if (successMessage) {
+                showToast(successMessage, "#28a745");
+            }
+
+            if (failureMessage) {
+                showToast(failureMessage, "#dc3545");
+            }
+        })
+
+        function showToast(message, background) {
+            Toastify({
+                text: message,
+                duration: 1800,
+                newWindow: true,
+                close: true,
+                gravity: "top",
+                position: "right",
+                stopOnFocus: true,
+                style: {
+                    background,
+                },
+            }).showToast();
+        }
+
+        const showPortfolios = (element, dataName, limit) => {
+            const portfolioContainer = document.querySelector(element);
+            const portfolios = JSON.parse(portfolioContainer.dataset[dataName]);
+
+            portfolioContainer.innerHTML = portfolios
+                .slice(0, limit)
+                .map((portfolio) => {
+                    return `
+                        <div class="col-lg-4 col-md-6 portfolio-item filter-${portfolio.category}">
+                            <div class="portfolio-img">
+                                <img src="{{ asset('assets/img/${portfolio.image}') }}" class="img-fluid" alt="${portfolio.title}">
+                            </div>
+                            <div class="portfolio-info">
+                                <h4>${portfolio.title}</h4>
+                                <p>${portfolio.category}</p>
+                                <a href="{{ asset('assets/img/${portfolio.image}') }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="${portfolio.title}">
+                                    <i class="bx bx-zoom-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                })
+                .join('');
+        };
+    </script>
+
     @stack('scripts')
 </body>
 

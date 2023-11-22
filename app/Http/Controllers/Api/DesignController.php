@@ -14,7 +14,7 @@ class DesignController extends Controller
      */
     public function index(): DesignCollection
     {
-        return new DesignCollection(Design::all());
+        return new DesignCollection(Design::get());
     }
 
     /**

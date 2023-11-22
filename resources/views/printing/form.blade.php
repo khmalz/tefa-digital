@@ -10,20 +10,29 @@
                     <div class="p-5">
                         <div class="mb-3">
                             <label class="col-form-label-sm" for="nameInput">Name</label>
-                            <input type="text"
-                                class="form-control form-control-sm @error('name_customer') is-invalid @enderror"
-                                name="name_customer" id="nameInput" placeholder="" value="{{ old('name_customer') }}">
-                            @error('name_customer')
-                                <div id="nameInvalid" class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
+                            <input type="text" class="form-control form-control-sm" name="name_customer" id="nameInput"
+                                placeholder="Name" readonly value="{{ old('name_customer', auth()->user()->name) }}">
+                            <small>
+                                <div id="nameHelp" class="form-text">Update profile jika ingin mengubah</div>
+                            </small>
                         </div>
                         <div class="mb-3">
-                            <label class="col-form-label-sm" for="phoneInput">Phone Number</label>
+                            <label class="col-form-label-sm" for="emailInput">Email</label>
+                            <input type="email" class="form-control form-control-sm" name="email_customer" id="emailInput"
+                                placeholder="Email" readonly value="{{ old('email_customer', auth()->user()->email) }}">
+                            <small>
+                                <div id="emailHelp" class="form-text">Update profile jika ingin mengubah</div>
+                            </small>
+                        </div>
+                        <div class="mb-3">
+                            <label class="col-form-label-sm" for="phoneInput">No Telepon</label>
                             <input type="text"
                                 class="form-control form-control-sm @error('number_customer') is-invalid @enderror"
-                                name="number_customer" id="phoneInput" placeholder="" value="{{ old('number_customer') }}">
+                                name="number_customer" id="phoneInput" placeholder="No Telepon"
+                                value="{{ old('number_customer') }}">
+                            <small>
+                                <div id="phoneHelp" class="form-text">Contoh: 0**/+62**/62**</div>
+                            </small>
                             @error('number_customer')
                                 <div id="numberInvalid" class="invalid-feedback">
                                     {{ $message }}
@@ -31,20 +40,9 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label class="col-form-label-sm" for="emailInput">Email</label>
-                            <input type="email"
-                                class="form-control form-control-sm @error('email_customer') is-invalid @enderror"
-                                name="email_customer" id="emailInput" placeholder="" value="{{ old('email_customer') }}">
-                            @error('email_customer')
-                                <div id="emailInvalid" class="invalid-feedback">
-                                    {{ $message }}
-                                </div>
-                            @enderror
-                        </div>
-                        <div class="mb-3">
                             <label class="col-form-label-sm" for="materialInput">Material</label>
                             <select class="form-select form-select-sm @error('material') is-invalid @enderror"
-                                name="material" aria-label="Default select example">
+                                name="material" aria-label="Default select example" id="materialInput">
                                 <option selected disabled>Select the material</option>
                                 <option value="Metal Stainless Steel">Metal Stainless Steel</option>
                                 <option value="Strong Nylon Plastic">Strong Nylon Plastic</option>
@@ -56,10 +54,10 @@
                             @enderror
                         </div>
                         <div class="mb-3">
-                            <label class="col-form-label-sm" for="scaleInput">Scale (cm)</label>
+                            <label class="col-form-label-sm" for="scaleX">Scale (cm)</label>
                             <div class="row input-scale-section">
                                 <div class="col">
-                                    <input type="text" value="0" class="form-control form-control-sm"
+                                    <input type="text" value="0" id="scaleX" class="form-control form-control-sm"
                                         placeholder="0 cm" pattern="[+0-9]+" oninput="onlyNumbers(this)"
                                         onblur="notAllowedEmpty(this)">
                                 </div>
@@ -67,7 +65,7 @@
                                     <span>x</span>
                                 </div>
                                 <div class="col">
-                                    <input type="text" value="0" class="form-control form-control-sm"
+                                    <input type="text" value="0" id="scaleY" class="form-control form-control-sm"
                                         placeholder="0 cm" pattern="[+0-9]+" oninput="onlyNumbers(this)"
                                         onblur="notAllowedEmpty(this)">
                                 </div>
@@ -75,7 +73,7 @@
                                     <span>x</span>
                                 </div>
                                 <div class="col">
-                                    <input type="text" value="0" class="form-control form-control-sm"
+                                    <input type="text" value="0" id="scaleZ" class="form-control form-control-sm"
                                         placeholder="0 cm" pattern="[+0-9]+" oninput="onlyNumbers(this)"
                                         onblur="notAllowedEmpty(this)">
                                 </div>
@@ -83,7 +81,7 @@
                             <input type="hidden" name="scale" id="scaleInput">
                         </div>
                         <div class="mb-3">
-                            <label class="col-form-label-sm" for="fileInput">File</label>
+                            <label class="col-form-label-sm" for="fileUpload">File</label>
                             <input
                                 class="form-control form-control-sm form-control-file @error('file') is-invalid @enderror"
                                 name="file" type="file" id="fileUpload" accept=".stl, .obj, .zip"
@@ -113,36 +111,3 @@
         </div>
     </div>
 @endsection
-
-@push('scripts')
-    <script>
-        const updateScaleInput = () => {
-            const inputs = $('.input-scale-section input');
-            // values adalah array
-            const values = inputs
-                .map(function() {
-                    // Mengambil nilai dari setiap input dan menghapus whitespace di awal dan akhir nilai
-                    return $(this).val().trim();
-                })
-                .get() // Mengubah hasil map menjadi array
-                .filter(inputValue => inputValue !== ''); // Membuang nilai yang kosong dari array
-
-            $('#scaleInput').val(values.join('x'));
-        }
-
-        const notAllowedEmpty = (el) => {
-            (el.value === '') && (el.value = '0');
-            updateScaleInput();
-        }
-
-        const onlyNumbers = (el) => {
-            el.value = el.value.replace(/[^+0-9]/g, '');
-            updateScaleInput();
-        }
-
-        const allowedExtensions = ['stl', 'obj', 'zip'];
-        const validatePrintingFile = (input) => {
-            validateFile(input, allowedExtensions);
-        }
-    </script>
-@endpush

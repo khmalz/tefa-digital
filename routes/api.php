@@ -16,8 +16,3 @@ use App\Http\Controllers\Api\VideographyController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-
-Route::resource('design', DesignController::class);
-Route::resource('photography', PhotographyController::class);
-Route::resource('videography', VideographyController::class);
-Route::resource('printing', PrintingController::class);

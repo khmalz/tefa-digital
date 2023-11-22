@@ -17,15 +17,26 @@ class PrintingFormController extends Controller
     public function store(PrintingRequest $request): RedirectResponse
     {
         $datas = $request->validated();
+        $datas['user_id'] = $request->user()->id;
 
-        $file = $request->file('file')->store('order/printing');
+        $fileReq = $request->file('file');
+        $fileName = $fileReq->getClientOriginalName();
+
+        $file = $fileReq->store('order/printing');
         $datas['file'] = $file;
 
-        $printing = Printing::create($datas);
+        $printing = Printing::create([
+            'material' => $datas['material'],
+            'scale' => $datas['scale'],
+            'file_name' => $fileName,
+            'file_content' => $datas['file'],
+        ]);
+
+        $order = $printing->order()->create($datas);
 
         return to_route('user.printing.form.success', [
-            'nama' => $printing->name_customer,
-            'orderId' => $printing->ulid
+            'nama' => $order->name_customer,
+            'orderId' => $order->ulid
         ]);
     }
 

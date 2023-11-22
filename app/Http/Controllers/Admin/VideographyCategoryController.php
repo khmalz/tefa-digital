@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\CategoryRequest;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 use App\Models\Admin\VideographyCategory;
+use App\Http\Requests\Admin\CategoryRequest;
 
 class VideographyCategoryController extends Controller
 {
@@ -35,9 +34,9 @@ class VideographyCategoryController extends Controller
         $data = $request->validated();
 
         if ($request->has('image')) {
-            Storage::delete($videographyCategory->image);
+            File::delete(public_path("assets/img/$videographyCategory->image"));
 
-            $image = $request->file('image')->store('videographyCategories');
+            $image = $request->file('image')->store("sub-category/videography", ['disk' => 'public-dir']);
         }
 
         $data['image'] = $image ?? $videographyCategory->image;

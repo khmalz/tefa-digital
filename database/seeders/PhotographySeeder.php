@@ -19,14 +19,17 @@ class PhotographySeeder extends Seeder
             [
                 'title' => 'Produk',
                 'body' => 'Buat produk Anda terlihat lebih menarik dengan jasa foto produk kami. Tim ahli kami akan mengambil gambar produk Anda dengan menggunakan peralatan fotografi terbaik dan mengedit foto untuk hasil yang lebih baik. Dapatkan foto produk yang memukau dengan penawaran terbaik dari kami. Hubungi kami sekarang!',
+                'image' => 'sub-category/photography/product.jpg',
             ],
             [
                 'title' => 'Pernikahan',
                 'body' => 'Abadikan momen spesial pernikahan Anda dengan jasa foto pernikahan kami. Dapatkan kenangan pernikahan yang abadi dengan penawaran terbaik dari kami. Hubungi kami sekarang!',
+                'image' => 'sub-category/photography/wedding.jpg',
             ],
             [
                 'title' => 'Acara',
                 'body' => 'Kami menawarkan jasa fotografi acara untuk mengabadikan momen penting Anda. Tim kami akan mengambil gambar acara Anda dengan baik dan menghasilkan gambar yang memukau. Dapatkan gambar acara Anda yang paling berkesan dengan jasa fotografi acara kami. Hubungi kami sekarang untuk mendapatkan penawaran terbaik.',
+                'image' => 'sub-category/photography/event.jpg',
             ],
         ];
 
@@ -73,88 +76,88 @@ class PhotographySeeder extends Seeder
 
         $photo_feature = [
             [
-                'text' => 'Camera DSLR Canon 600D',
-                'photography_plan_id' => 1
+                'photography_plan_id' => 1,
+                'text' => 'Camera DSLR Canon 600D'
             ],
             [
-                'text' => 'Lensa Standar',
-                'photography_plan_id' => 1
+                'photography_plan_id' => 1,
+                'text' => 'Lensa Standar'
             ],
             [
-                'text' => 'Lighting Standar',
-                'photography_plan_id' => 1
+                'photography_plan_id' => 1,
+                'text' => 'Lighting Standar'
             ],
             [
-                'text' => 'Kualitas Foto HD',
-                'photography_plan_id' => 1
+                'photography_plan_id' => 1,
+                'text' => 'Kualitas Foto HD'
             ],
             [
-                'text' => 'Camera Canon EOS 4000D',
-                'photography_plan_id' => 2
+                'photography_plan_id' => 2,
+                'text' => 'Camera Canon EOS 4000D'
             ],
             [
-                'text' => 'Lighting Fullset',
-                'photography_plan_id' => 2
+                'photography_plan_id' => 2,
+                'text' => 'Lighting Fullset'
             ],
             [
-                'text' => 'Kualitas Foto Full HD',
-                'photography_plan_id' => 2
+                'photography_plan_id' => 2,
+                'text' => 'Kualitas Foto Full HD'
             ],
             [
-                'text' => 'Camera DSLR Canon 600D',
-                'photography_plan_id' => 3
+                'photography_plan_id' => 3,
+                'text' => 'Camera DSLR Canon 600D'
             ],
             [
-                'text' => 'Lensa Standar',
-                'photography_plan_id' => 3
+                'photography_plan_id' => 3,
+                'text' => 'Lensa Standar'
             ],
             [
-                'text' => 'Lighting Standar',
-                'photography_plan_id' => 3
+                'photography_plan_id' => 3,
+                'text' => 'Lighting Standar'
             ],
             [
-                'text' => 'Kualitas Foto HD',
-                'photography_plan_id' => 3
+                'photography_plan_id' => 3,
+                'text' => 'Kualitas Foto HD'
             ],
             [
-                'text' => 'Camera Canon EOS 4000D',
-                'photography_plan_id' => 4
+                'photography_plan_id' => 4,
+                'text' => 'Camera Canon EOS 4000D'
             ],
             [
-                'text' => 'Lighting Fullset',
-                'photography_plan_id' => 4
+                'photography_plan_id' => 4,
+                'text' => 'Lighting Fullset'
             ],
             [
-                'text' => 'Kualitas Foto Full HD',
-                'photography_plan_id' => 4
+                'photography_plan_id' => 4,
+                'text' => 'Kualitas Foto Full HD'
             ],
             [
-                'text' => 'Camera DSLR Canon 600D',
-                'photography_plan_id' => 5
+                'photography_plan_id' => 5,
+                'text' => 'Camera DSLR Canon 600D'
             ],
             [
-                'text' => 'Lensa Standar',
-                'photography_plan_id' => 5
+                'photography_plan_id' => 5,
+                'text' => 'Lensa Standar'
             ],
             [
-                'text' => 'Lighting Standar',
-                'photography_plan_id' => 5
+                'photography_plan_id' => 5,
+                'text' => 'Lighting Standar'
             ],
             [
-                'text' => 'Kualitas Foto HD',
-                'photography_plan_id' => 5
+                'photography_plan_id' => 5,
+                'text' => 'Kualitas Foto HD'
             ],
             [
-                'text' => 'Camera Canon EOS 4000D',
-                'photography_plan_id' => 6
+                'photography_plan_id' => 6,
+                'text' => 'Camera Canon EOS 4000D'
             ],
             [
-                'text' => 'Lighting Fullset',
-                'photography_plan_id' => 6
+                'photography_plan_id' => 6,
+                'text' => 'Lighting Fullset'
             ],
             [
-                'text' => 'Kualitas Foto Full HD',
-                'photography_plan_id' => 6
+                'photography_plan_id' => 6,
+                'text' => 'Kualitas Foto Full HD'
             ],
         ];
 

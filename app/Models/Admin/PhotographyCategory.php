@@ -13,6 +13,8 @@ class PhotographyCategory extends Model
 {
     use HasFactory;
 
+    protected $table = 'photography_categories';
+
     protected $fillable = [
         'title',
         'body',

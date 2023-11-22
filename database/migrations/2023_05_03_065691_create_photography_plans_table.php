@@ -4,7 +4,8 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
+return new class extends Migration
+{
     /**
      * Run the migrations.
      */
@@ -12,7 +13,7 @@ return new class extends Migration {
     {
         Schema::create('photography_plans', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('photography_category_id')->constrained('photography_categories')->onDelete('cascade');
+            $table->foreignId('photography_category_id')->constrained('photography_categories')->cascadeOnDelete();
             $table->string('title');
             $table->integer('price');
             $table->text('description')->nullable();

@@ -4,11 +4,23 @@
  * CSRF token as a header based on the value of the "XSRF" token cookie.
  */
 
-import axios from 'axios';
+import axios from "axios";
+import $ from "jquery";
+import Toastify from "toastify-js";
+import GLightbox from "glightbox";
+import Isotope from "isotope-layout";
+import AOS from "aos";
+
 window.axios = axios;
+window.AOS = AOS;
+window.Toastify = Toastify;
+window.GLightbox = GLightbox;
+window.Isotope = Isotope;
+window.jquery = window.jQuery = window.$ = $;
 
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios.defaults.headers.common["X-Requested-With"] = "XMLHttpRequest";
 
+import.meta.glob("../assets/img/**");
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting

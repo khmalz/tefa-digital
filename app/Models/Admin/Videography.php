@@ -2,11 +2,10 @@
 
 namespace App\Models\Admin;
 
-use App\Helpers\MixCaseULID;
 use App\Models\Admin\VideographyPlan;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Contracts\Database\Eloquent\Builder;
 use Znck\Eloquent\Traits\BelongsToThrough;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
@@ -14,40 +13,24 @@ class Videography extends Model
 {
     use HasFactory, BelongsToThrough;
 
-    /**
-     *  Setup model event hooks
-     */
-    public static function boot()
-    {
-        parent::boot();
-
-        self::creating(function ($model) {
-            $model->ulid = MixCaseULID::generate();
-        });
-    }
-
     protected $fillable = [
         'videography_plan_id',
-        'name_customer',
-        'number_customer',
-        'email_customer',
-        'status',
-        'description'
     ];
 
-    protected $with = ['plan', 'category'];
-    protected $appends = ['price', 'order'];
+    protected $with = ['plan:id,title,price', 'category'];
+    protected $appends = ['price', 'order_title'];
 
-    public function getRouteKeyName()
-    {
-        return 'ulid';
-    }
     public function plan(): BelongsTo
     {
         return $this->belongsTo(VideographyPlan::class, 'videography_plan_id');
     }
 
-    public function category()
+    public function order(): MorphOne
+    {
+        return $this->morphOne(Order::class, 'orderable');
+    }
+
+    public function category(): \Znck\Eloquent\Relations\BelongsToThrough
     {
         return $this->belongsToThrough(
             VideographyCategory::class,
@@ -63,13 +46,8 @@ class Videography extends Model
         return $this->plan->price;
     }
 
-    public function getOrderAttribute()
+    public function getOrderTitleAttribute()
     {
         return $this->category->title;
-    }
-
-    public function scopeByStatus($query, $status): Builder
-    {
-        return $query->where('status', $status);
     }
 }

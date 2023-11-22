@@ -22,19 +22,28 @@ class DesignFormController extends Controller
 
     public function store(DesignRequest $request): RedirectResponse
     {
-        $design = Design::create($request->validated());
+        $datas = $request->validated();
+        $datas['user_id'] = $request->user()->id;
+
+        $design = Design::create([
+            'design_plan_id' => $request->design_plan_id,
+            'slogan' => $request->slogan,
+            'color' => $request->color,
+        ]);
+
+        $order = $design->order()->create($datas);
 
         if ($request->hasFile('gambar.*')) {
             foreach ($request->file('gambar') as $picture) {
                 $image = $picture->store('order/design');
-                $design->images()->create(['image' => $image]);
+                $design->images()->create(['path' => $image]);
             }
         }
 
         return to_route('user.design.form.success', [
-            'nama' => $design->name_customer,
-            'order' => $design->order,
-            'orderId' => $design->ulid
+            'nama' => $order->name_customer,
+            'order' => $design->category->title,
+            'orderId' => $order->ulid
         ]);
     }
 

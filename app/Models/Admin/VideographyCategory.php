@@ -13,6 +13,8 @@ class VideographyCategory extends Model
 {
     use HasFactory;
 
+    protected $table = 'videography_categories';
+
     protected $fillable = [
         'title',
         'body',

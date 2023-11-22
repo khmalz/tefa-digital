@@ -2,101 +2,72 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin\Design;
-use Illuminate\Http\Response;
-use App\Models\Admin\Printing;
-use App\Models\Admin\Photography;
-use App\Models\Admin\Videography;
+use App\Models\Admin\Order;
 use App\Services\GenerateInvoice;
 use LaravelDaily\Invoices\Classes\InvoiceItem;
+use Illuminate\Http\Response;
 
 class PDFController extends Controller
 {
-    public function createInvoiceDesign(Design $design): Response
+    public function createInvoice(Order $order, $title, $customFields): Response
     {
+        $item = (new InvoiceItem())
+            ->title($order->orderable->category->title ?? $title)
+            ->pricePerUnit($title === 'Printing' ? 0 : $order->orderable->price);
+
+        if ($title != "Printing") {
+            $customFields['Order'] = $order->orderable->category->title;
+            $customFields['Plan'] = $order->orderable->plan->title;
+        }
+        $customFields['Receipt number'] = $order->ulid;
+
+        $generateInvoice = new GenerateInvoice(
+            model: $order,
+            item: $item
+        );
+
+        $invoice = $generateInvoice->execute($title, $customFields);
+
+        return $invoice->stream();
+    }
+
+    public function createInvoiceDesign(Order $order): Response
+    {
+        $order->load('orderable');
+
         $customFields = array_filter(
             [
-                'Order' => $design->order,
-                'Plan' => $design->plan->title,
-                'Receipt number' => $design->ulid,
-                'Color' => $design->color,
-                $design->slogan ? 'Slogan' : null => $design->slogan ?? null,
+                'Color' => $order->orderable->color,
+                $order->orderable->slogan ? 'Slogan' : null => $order->orderable->slogan ?? null,
             ]
         );
 
-        $item = (new InvoiceItem())->title($design->order)->pricePerUnit($design->price);
-
-        $generateInvoice = new GenerateInvoice(
-            model: $design,
-            item: $item
-        );
-
-        $invoice = $generateInvoice->execute('Design', $customFields);
-
-        // And return invoice itself to browser or have a different view
-        return $invoice->stream();
+        return $this->createInvoice($order, 'Design', $customFields);
     }
 
-    public function createInvoicePhotography(Photography $photography): Response
+    public function createInvoicePhotography(Order $order): Response
     {
-        $customFields = [
-            'Order' => $photography->order,
-            'Plan' => $photography->plan->title,
-            'Receipt number' => $photography->ulid,
-        ];
+        $order->load('orderable');
 
-        $item = (new InvoiceItem())->title($photography->order)->pricePerUnit($photography->price);
-
-        $generateInvoice = new GenerateInvoice(
-            model: $photography,
-            item: $item
-        );
-
-        $invoice = $generateInvoice->execute('Photography', $customFields);
-
-        // And return invoice itself to browser or have a different view
-        return $invoice->stream();
+        return $this->createInvoice($order, 'Photography', []);
     }
 
-    public function createInvoiceVideography(Videography $videography): Response
+    public function createInvoiceVideography(Order $order): Response
     {
-        $customFields = [
-            'Order' => $videography->order,
-            'Plan' => $videography->plan->title,
-            'Receipt number' => $videography->ulid,
-        ];
+        $order->load('orderable');
 
-        $item = (new InvoiceItem())->title($videography->order)->pricePerUnit($videography->price);
-
-        $generateInvoice = new GenerateInvoice(
-            model: $videography,
-            item: $item
-        );
-
-        $invoice = $generateInvoice->execute('Videography', $customFields);
-
-        // Return the invoice as a response
-        return $invoice->stream();
+        return $this->createInvoice($order, 'Videography', []);
     }
 
-    public function createInvoicePrinting(Printing $printing): Response
+    public function createInvoicePrinting(Order $order): Response
     {
+        $order->load('orderable');
+
         $customFields = [
-            'Material' => $printing->material,
-            'Scale' => $printing->scale,
-            'Receipt number' => $printing->ulid,
+            'Material' => $order->orderable->material,
+            'Scale' => $order->orderable->scale,
         ];
 
-        $item = (new InvoiceItem())->title("Printing")->pricePerUnit(0);
-
-        $generateInvoice = new GenerateInvoice(
-            model: $printing,
-            item: $item
-        );
-
-        $invoice = $generateInvoice->execute('Printing', $customFields);
-
-        // And return invoice itself to browser or have a different view
-        return $invoice->stream();
+        return $this->createInvoice($order, 'Printing', $customFields);
     }
 }

@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Title;
 use LaravelDaily\Invoices\Invoice;
 use Illuminate\Database\Eloquent\Model;
 use LaravelDaily\Invoices\Classes\Party;
@@ -20,6 +21,8 @@ class GenerateInvoice
 
    public function execute(string $type, array $customFields): Invoice
    {
+      $websiteTitle = Title::value('name');
+
       $client = new Party([
          'name'          => $this->model->name_customer,
          'phone'         => $this->model->number_customer,
@@ -30,7 +33,7 @@ class GenerateInvoice
          'custom_fields' => $customFields,
       ]);
 
-      return Invoice::make('Tefa Digital SMKN 46')
+      return Invoice::make("$websiteTitle SMKN 46")
          ->seller($client)
          ->buyer($customer)
          ->date($this->model->created_at)

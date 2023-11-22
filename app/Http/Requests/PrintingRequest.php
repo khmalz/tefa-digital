@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
 class PrintingRequest extends FormRequest
@@ -27,7 +28,7 @@ class PrintingRequest extends FormRequest
             'email_customer' => ['required', 'email'],
             'material' => ['required', 'string', 'max:191'],
             'scale' => ['required', 'string', 'max:191'],
-            'file' => ['required', 'file', 'mimes:stl,obj,zip'],
+            'file' => [Rule::requiredIf(!empty($this->ulid)), 'file', 'mimes:stl,obj,zip'],
             'description' => ['nullable', 'string', 'max:191'],
         ];
     }

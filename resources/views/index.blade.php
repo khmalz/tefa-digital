@@ -5,7 +5,7 @@
     <header id="header" class="fixed-top d-flex align-items-center header-transparent">
         <div class="d-flex align-items-center justify-content-between container">
             <div class="logo">
-                <h1><a href="/">Tefa Digital</a></h1>
+                <h1><a href="{{ route('home') }}">{{ app('websiteTitle') }}</a></h1>
             </div>
 
             <nav id="navbar" class="navbar">
@@ -15,6 +15,8 @@
                     <li><a class="nav-link scrollto" href="#features">Services</a></li>
                     <li><a class="nav-link scrollto" href="#portfolio">Portfolio</a></li>
                     <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+                    @include('layouts.dropdown')
+
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
             </nav>
@@ -29,14 +31,16 @@
     <section id="hero" class="d-flex flex-column justify-content-end align-items-center">
         <div id="heroCarousel" data-bs-interval="5000" class="carousel carousel-fade" data-bs-ride="carousel">
             <div class="carousel-image-container">
-                <img src="https://images.unsplash.com/photo-1603380353725-f8a4d39cc41e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-                    alt="">
+                <img src="{{ asset('assets/img/category/carousel.jpg') }}" alt="">
 
                 <!-- Slide 1 -->
                 <div class="carousel-item active">
                     <div class="carousel-container">
-                        <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Tefa digital</span></h2>
-                        <p class="animate__animated fanimate__adeInUp">Tefa digital adalah website inovatif yang berdedikasi
+                        <h2 class="animate__animated animate__fadeInDown">Welcome to <span>{{ app('websiteTitle') }}</span>
+                        </h2>
+                        <p class="animate__animated fanimate__adeInUp">{{ app('websiteTitle') }} adalah website inovatif
+                            yang
+                            berdedikasi
                             untuk meningkatkan pendidikan dan membantu siswa mencapai potensi terbaik mereka.</p>
                         <a href="#about"
                             class="btn-get-started animate__animated animate__fadeInUp scrollto">Selengkapnya</a>
@@ -84,19 +88,21 @@
 @endsection
 
 @section('main')
-    <main id="main" data-mail-success="{{ session('success') }}" data-mail-failure="{{ session('failure') }}">
+    <main>
         <!-- ======= About Section ======= -->
         <section id="about" class="about">
             <div class="container">
                 <div class="section-title" data-aos="zoom-out">
                     <h2>About</h2>
-                    <p>Apa itu tefa digital?</p>
+                    <p>Apa itu {{ app('websiteTitle') }}?</p>
                 </div>
 
                 <div class="row content" data-aos="fade-up">
                     <div class="col-lg-6">
                         <p style="text-align: justify">
-                            Tefa digital adalah website inovatif yang berdedikasi untuk meningkatkan pendidikan dan membantu
+                            {{ app('websiteTitle') }} adalah website inovatif yang berdedikasi untuk meningkatkan
+                            pendidikan dan
+                            membantu
                             siswa mencapai potensi terbaik mereka. Kami hadir dengan visi untuk menjadi prasarana pendidikan
                             yang relevan dan mendukung kegiatan pembelajaran siswa sesuai kurikulum yang berlaku.
                         </p>
@@ -108,8 +114,8 @@
                         </p>
                     </div>
                     <div class="col-lg-6 pt-lg-0 pt-4">
-                        <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
-                            alt="" style="width: 75%;">
+                        <img src="{{ Vite::asset('resources/assets/img/category/about-home.jpg') }}" alt="About Home"
+                            style="width: 100%;">
                     </div>
                 </div>
             </div>
@@ -165,11 +171,9 @@
                                     <li><i class="ri-check-double-line"></i> Jasa 3D Design</li>
                                     <li><i class="ri-check-double-line"></i> Jasa Digital Marketing</li>
                                 </ul>
-                                <button type="button"
-                                    class="btn btn-get-started animate__animated animate__fadeInUp scrollto"
-                                    style="color: #f06404">
-                                    <a href="{{ route('user.design.index') }}">Selengkapnya</a>
-                                </button>
+                                <a href="{{ route('user.design.index') }}" class="btn btn-color order-button">
+                                    Order!
+                                </a>
                             </div>
                             <div class="col-lg-6 order-lg-2 order-1 text-center">
                                 <img src="{{ asset('assets/img/design.jpg') }}" alt="Design" class="img-fluid">
@@ -189,7 +193,8 @@
                                 <p>
                                     Sebuah jasa fotografi yang memiliki keahlian profesional dalam mengoperasikan kamera,
                                     sehingga dapat menghasilkan gambar - gambar yang indah dan memikat hati anda. Untuk itu,
-                                    kami hadir dengan jasa - jasa yang kami miliki, salah satunya adalah jasa fotografi.
+                                    kami hadir dengan jasa - jasa yang kami miliki, salah websiteTitlenya adalah jasa
+                                    fotografi.
                                 </p>
                                 <p>
                                     Kami memiliki 3 jenis jasa fotografi yang mungkin anda butuhkan, diantaranya yaitu:
@@ -199,9 +204,9 @@
                                     <li><i class="ri-check-double-line"></i> Jasa Foto Pernikahan</li>
                                     <li><i class="ri-check-double-line"></i> Jasa Foto Acara</li>
                                 </ul>
-                                <button type="button" class="btn btn-color" style="color: #f06404">
-                                    <a href="{{ route('user.photography.index') }}">Selengkapnya</a>
-                                </button>
+                                <a href="{{ route('user.photography.index') }}" class="btn btn-color order-button">
+                                    Order!
+                                </a>
                             </div>
                             <div class="col-lg-6 order-lg-2 order-1 text-center">
                                 <img src="{{ asset('assets/img/photo.jpg') }}" alt="" class="img-fluid">
@@ -226,9 +231,9 @@
                                     <li><i class="ri-check-double-line"></i> Jasa Video Syuting</li>
                                     <li><i class="ri-check-double-line"></i> Jasa Video Dokumentasi</li>
                                 </ul>
-                                <button type="button" class="btn btn-color" style="color: #f06404">
-                                    <a href="{{ route('user.videography.index') }}">Selengkapnya</a>
-                                </button>
+                                <a href="{{ route('user.videography.index') }}" class="btn btn-color order-button">
+                                    Order!
+                                </a>
                             </div>
                             <div class="col-lg-6 order-lg-2 order-1 text-center">
                                 <img src="{{ asset('assets/img/video.jpg') }}" alt="" class="img-fluid">
@@ -247,9 +252,9 @@
                                     audiens.
                                     Jadikan kami mitra dalam mencetak keberhasilan Anda
                                 </p>
-                                <button type="button" class="btn btn-color" style="color: #f06404">
-                                    <a href="{{ route('user.printing.index') }}">Selengkapnya</a>
-                                </button>
+                                <a href="{{ route('user.printing.index') }}" class="btn btn-color order-button">
+                                    Order!
+                                </a>
                             </div>
                             <div class="col-lg-6 order-lg-2 order-1 text-center">
                                 <img src="{{ asset('assets/img/print.jpg') }}" alt="" class="img-fluid">
@@ -320,11 +325,11 @@
                             <div class="row">
                                 <div class="col-md-6 form-group">
                                     <input type="text" name="name" class="form-control" id="name"
-                                        placeholder="Your Name" required>
+                                        placeholder="Your Name" required autocomplete="name">
                                 </div>
                                 <div class="col-md-6 form-group mt-md-0 mt-3">
                                     <input type="email" class="form-control" name="email" id="email"
-                                        placeholder="Your Email" pattern=".+@gmail\.com" required>
+                                        placeholder="Your Email" pattern=".+@gmail\.com" required autocomplete="email">
                                 </div>
                             </div>
                             <div class="form-group mt-3">
@@ -345,26 +350,6 @@
     <!-- End #main -->
 @endsection
 
-@push('styles')
-    <style>
-        .carousel-image-container {
-            position: relative;
-            width: 100vw;
-            overflow: hidden;
-        }
-
-        .carousel-image-container img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            filter: brightness(45%);
-        }
-    </style>
-@endpush
-
 @push('scripts')
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -377,56 +362,5 @@
                 selector: '.portfolio-lightbox'
             });
         });
-
-        const showPortfolios = (element, dataName, limit) => {
-            const portfolioContainer = document.querySelector(element);
-            const portfolios = JSON.parse(portfolioContainer.dataset[dataName]);
-
-            portfolioContainer.innerHTML = portfolios
-                .slice(0, limit)
-                .map((portfolio) => {
-                    return `
-                        <div class="col-lg-4 col-md-6 portfolio-item filter-${portfolio.category}">
-                            <div class="portfolio-img">
-                                <img src="{{ asset('assets/img/${portfolio.image}') }}" class="img-fluid" alt="${portfolio.title}">
-                            </div>
-                            <div class="portfolio-info">
-                                <h4>${portfolio.title}</h4>
-                                <p>${portfolio.category}</p>
-                                <a href="{{ asset('assets/img/${portfolio.image}') }}" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="${portfolio.title}">
-                                    <i class="bx bx-plus"></i>
-                                </a>
-                            </div>
-                        </div>
-                    `;
-                })
-                .join('');
-        };
-
-        function showToast(message, background) {
-            Toastify({
-                text: message,
-                duration: 1800,
-                newWindow: true,
-                close: true,
-                gravity: "top",
-                position: "right",
-                stopOnFocus: true,
-                style: {
-                    background,
-                },
-            }).showToast();
-        }
-
-        let successMessage = document.querySelector('main').dataset.mailSuccess;
-        let failureMessage = document.querySelector('main').dataset.mailFailure;
-
-        if (successMessage) {
-            showToast(successMessage, "#28a745");
-        }
-
-        if (failureMessage) {
-            showToast(failureMessage, "#dc3545");
-        }
     </script>
 @endpush
