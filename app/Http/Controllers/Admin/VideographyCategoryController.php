@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Services\CategoryService;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use App\Models\Admin\VideographyCategory;
@@ -29,14 +30,12 @@ class VideographyCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(CategoryRequest $request, VideographyCategory $videographyCategory)
+    public function update(CategoryRequest $request, VideographyCategory $videographyCategory, CategoryService $categoryService)
     {
         $data = $request->validated();
 
         if ($request->has('image')) {
-            File::delete(public_path("assets/img/$videographyCategory->image"));
-
-            $image = $request->file('image')->store("sub-category/videography", ['disk' => 'public-dir']);
+            $image = $categoryService->updateCategoryImage($videographyCategory, $request->file('image'), 'videography');
         }
 
         $data['image'] = $image ?? $videographyCategory->image;

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
+use App\Services\CategoryService;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\File;
 use App\Models\Admin\PhotographyCategory;
@@ -30,14 +31,12 @@ class PhotographyCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(CategoryRequest $request, PhotographyCategory $photographyCategory)
+    public function update(CategoryRequest $request, PhotographyCategory $photographyCategory, CategoryService $categoryService)
     {
         $data = $request->validated();
 
         if ($request->has('image')) {
-            File::delete(public_path("assets/img/$photographyCategory->image"));
-
-            $image = $request->file('image')->store("sub-category/photography", ['disk' => 'public-dir']);
+            $image = $categoryService->updateCategoryImage($photographyCategory, $request->file('image'), 'photography');
         }
 
         $data['image'] = $image ?? $photographyCategory->image;
