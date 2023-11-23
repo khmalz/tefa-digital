@@ -18,10 +18,10 @@ class PhotographyPlanController extends Controller
     {
         $categories = PhotographyCategory::with('plans', 'plans.features')->get();
 
-        $categoriesOutput = $categories->map(function ($cat) {
+        $categoriesOutput = $categories->map(function ($category) {
             return [
-                'title' => $cat->title,
-                'plans' => $cat->plans,
+                'title' => $category->title,
+                'plans' => $category->plans,
             ];
         });
 
@@ -44,32 +44,42 @@ class PhotographyPlanController extends Controller
      */
     public function store(Request $request)
     {
-        $planData = [
-            'photography_category_id' => $request->photography_category_id,
-            'title' => $request->title_plan,
-            'price' => $request->price,
-            'description' => $request->description_plan
-        ];
+        DB::beginTransaction();
 
-        // create new plan and associate features
-        $plan = PhotographyPlan::create($planData);
-
-        $featuresData = [];
-
-        // loop through the text inputs
-        foreach ($request->text as $key => $value) {
-            $featuresData[] = [
-                'plan_id' => $plan->id,
-                'text' => $value,
-                'description' => $request->description[$key] ?? null
+        try {
+            $planData = [
+                'photography_category_id' => $request->photography_category_id,
+                'title' => $request->title_plan,
+                'price' => $request->price,
+                'description' => $request->description_plan
             ];
+
+            // create new plan and associate features
+            $plan = PhotographyPlan::create($planData);
+
+            $featuresData = [];
+
+            // loop through the text inputs
+            foreach ($request->text as $key => $value) {
+                $featuresData[] = [
+                    'plan_id' => $plan->id,
+                    'text' => $value,
+                    'description' => $request->description[$key] ?? null
+                ];
+            }
+
+            // create features associated with the plan
+            $plan->features()->createMany($featuresData);
+
+            DB::commit();
+
+            return to_route('photography-plan.index')->with('success', 'Plan and features have been created successfully.');
+        } catch (\Exception $e) {
+            // Rollback database transaksi jika terjadi error
+            DB::rollback();
+
+            return back()->with('error', 'Failed to save changes: ' . $e->getMessage());
         }
-
-        // create features associated with the plan
-        $plan->features()->createMany($featuresData);
-
-        // redirect back with success message
-        return to_route('photography-plan.index')->with('success', 'Plan and features have been created successfully.');
     }
 
     /**
