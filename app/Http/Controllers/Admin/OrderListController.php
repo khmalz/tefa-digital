@@ -23,28 +23,16 @@ class OrderListController extends Controller
 
         $orders = Order::with('orderable')
             ->when($request->has('category') && in_array($request->category, ['design', 'photography', 'videography', 'printing']), function ($query) use ($request) {
-                return $query->whereHasMorph('orderable', ['App\Models\Admin\\' . $request->category], null);
+                return $query->whereCategory($request->category);
             })
-            ->when($request->has('date'), function ($query) use ($request) {
-                switch ($request->date) {
-                    case 'week':
-                        return $query->whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()]);
-                    case 'month':
-                        return $query->whereMonth('created_at', now()->month);
-                    case 'year':
-                        return $query->whereYear('created_at', now()->year);
-                    case 'all':
-                        return $query;
-                    default:
-                        return $query->whereDate('created_at', now());
-                }
+            ->when($request->has('period'), function ($query) use ($request) {
+                return $query->whereFilterByTimePeriod($request->period);
             }, function ($query) {
-                // Query default jika parameter date tidak ada
                 return $query->whereDate('created_at', now());
             })->when($request->has('type'), function ($query) {
-                $query->where('status', 'cancel');
+                $query->whereCanceledOrders();
             }, function ($query) {
-                $query->where('status', '!=', 'cancel');
+                $query->whereNotCanceledOrders();
             })
             ->paginate($defaultLength);
 

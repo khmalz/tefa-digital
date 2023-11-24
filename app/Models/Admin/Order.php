@@ -56,4 +56,35 @@ class Order extends Model
     {
         return $query->where('status', $status);
     }
+
+    public function scopeWhereCategory($query, $category)
+    {
+        return $query->whereHasMorph('orderable', ['App\Models\Admin\\' . $category], null);
+    }
+
+    public function scopeWhereFilterByTimePeriod($query, $timePeriod)
+    {
+        switch ($timePeriod) {
+            case 'week':
+                return $query->whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()]);
+            case 'month':
+                return $query->whereMonth('created_at', now()->month);
+            case 'year':
+                return $query->whereYear('created_at', now()->year);
+            case 'all':
+                return $query;
+            default:
+                return $query->whereDate('created_at', now());
+        }
+    }
+
+    public function scopeWhereCanceledOrders($query)
+    {
+        return $query->where('status', 'cancel');
+    }
+
+    public function scopeWhereNotCanceledOrders($query)
+    {
+        return $query->where('status', '!=', 'cancel');
+    }
 }
