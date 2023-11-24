@@ -52,17 +52,17 @@ class Order extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function scopeByStatus($query, $status): Builder
+    public function scopeByStatus(Builder $query, string $status): Builder
     {
         return $query->where('status', $status);
     }
 
-    public function scopeWhereCategory($query, $category)
+    public function scopeWhereCategory(Builder $query, string $category): Builder
     {
         return $query->whereHasMorph('orderable', ['App\Models\Admin\\' . $category], null);
     }
 
-    public function scopeWhereFilterByTimePeriod($query, $timePeriod)
+    public function scopeWhereFilterByTimePeriod(Builder $query, string $timePeriod): Builder
     {
         switch ($timePeriod) {
             case 'week':
@@ -78,12 +78,12 @@ class Order extends Model
         }
     }
 
-    public function scopeWhereCanceledOrders($query)
+    public function scopeWhereCanceledOrders(Builder $query): Builder
     {
         return $query->where('status', 'cancel');
     }
 
-    public function scopeWhereNotCanceledOrders($query)
+    public function scopeWhereNotCanceledOrders(Builder $query): Builder
     {
         return $query->where('status', '!=', 'cancel');
     }
