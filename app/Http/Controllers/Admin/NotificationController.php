@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Notifications\DatabaseNotification;
 
 class NotificationController extends Controller
@@ -25,7 +25,7 @@ class NotificationController extends Controller
     /**
      * Read all or specified notification
      */
-    public function read(Request $request, ?string $id = null)
+    public function read(Request $request, string $id = null)
     {
         DatabaseNotification::whereJsonContains('data->role', 'admin')->when($id, function ($query) use ($id) {
             $query->find($id);

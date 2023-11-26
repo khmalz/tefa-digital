@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\File;
-use App\Models\Admin\VideographyCategory;
 use App\Http\Requests\Admin\CategoryRequest;
+use App\Models\Admin\VideographyCategory;
+use Illuminate\Support\Facades\File;
 
 class VideographyCategoryController extends Controller
 {
@@ -15,6 +15,7 @@ class VideographyCategoryController extends Controller
     public function index()
     {
         $categories = VideographyCategory::all();
+
         return view('admin.videography.categories', compact('categories'));
     }
 
@@ -36,7 +37,7 @@ class VideographyCategoryController extends Controller
         if ($request->has('image')) {
             File::delete(public_path("assets/img/$videographyCategory->image"));
 
-            $image = $request->file('image')->store("sub-category/videography", ['disk' => 'public-dir']);
+            $image = $request->file('image')->store('sub-category/videography', ['disk' => 'public-dir']);
         }
 
         $data['image'] = $image ?? $videographyCategory->image;

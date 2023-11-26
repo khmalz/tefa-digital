@@ -3,9 +3,9 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use App\Models\User;
-use App\Models\Title;
 use App\Models\Admin\Contact;
+use App\Models\Title;
+use App\Models\User;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -27,13 +27,13 @@ class DatabaseSeeder extends Seeder
             DesignSeeder::class,
             PhotographySeeder::class,
             VideographySeeder::class,
-            PortfolioSeeder::class
+            PortfolioSeeder::class,
         ]);
 
         Contact::create([
             'location' => 'Jl. B7 Cipinang Pulo No.19',
             'email' => 'tefadigital.smk46@gmail.com',
-            'phone_number' => '+628679732129'
+            'phone_number' => '+628679732129',
         ]);
 
         Title::create([

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Admin\Design;
-use Illuminate\Http\Request;
 use App\Http\Requests\DesignRequest;
+use App\Models\Admin\Design;
 use App\Models\Admin\DesignCategory;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class DesignFormController extends Controller
@@ -43,7 +43,7 @@ class DesignFormController extends Controller
         return to_route('user.design.form.success', [
             'nama' => $order->name_customer,
             'order' => $design->category->title,
-            'orderId' => $order->ulid
+            'orderId' => $order->ulid,
         ]);
     }
 
@@ -52,7 +52,7 @@ class DesignFormController extends Controller
         $no_phone = config('app.no_phone');
 
         $message = "Halo, saya $nama, yang memesan orderan $order dengan no receipt *$orderId*.\n\nSaya ingin mendiskusikan lebih lanjut terkait pemesanan saya";
-        $url = "https://api.whatsapp.com/send?phone=$no_phone&text=" . urlencode($message);
+        $url = "https://api.whatsapp.com/send?phone=$no_phone&text=".urlencode($message);
 
         // Redirect to the WhatsApp URL
         return redirect($url);

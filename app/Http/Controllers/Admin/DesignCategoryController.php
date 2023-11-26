@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Admin\CategoryRequest;
 use App\Models\Admin\DesignCategory;
 use Illuminate\Support\Facades\File;
-use App\Http\Requests\Admin\CategoryRequest;
 
 class DesignCategoryController extends Controller
 {
@@ -15,6 +15,7 @@ class DesignCategoryController extends Controller
     public function index()
     {
         $categories = DesignCategory::all();
+
         return view('admin.design.categories', compact('categories'));
     }
 
@@ -36,7 +37,7 @@ class DesignCategoryController extends Controller
         if ($request->has('image')) {
             File::delete(public_path("assets/img/$designCategory->image"));
 
-            $image = $request->file('image')->store("sub-category/design", ['disk' => 'public-dir']);
+            $image = $request->file('image')->store('sub-category/design', ['disk' => 'public-dir']);
         }
 
         $data['image'] = $image ?? $designCategory->image;

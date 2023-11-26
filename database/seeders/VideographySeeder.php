@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-use App\Models\Admin\VideographyPlan;
-use App\Models\Admin\VideographyFeature;
 use App\Models\Admin\VideographyCategory;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Admin\VideographyFeature;
+use App\Models\Admin\VideographyPlan;
+use Illuminate\Database\Seeder;
 
 class VideographySeeder extends Seeder
 {
@@ -62,99 +61,99 @@ class VideographySeeder extends Seeder
         $video_feature = [
             [
                 'videography_plan_id' => 1,
-                'text' => 'Camera Cinema Mirorless'
+                'text' => 'Camera Cinema Mirorless',
             ],
             [
                 'videography_plan_id' => 1,
-                'text' => 'Lensa Cinema'
+                'text' => 'Lensa Cinema',
             ],
             [
                 'videography_plan_id' => 1,
-                'text' => 'Lighting Standar'
+                'text' => 'Lighting Standar',
             ],
             [
                 'videography_plan_id' => 1,
-                'text' => 'Clip On'
+                'text' => 'Clip On',
             ],
             [
                 'videography_plan_id' => 1,
-                'text' => 'Editing'
+                'text' => 'Editing',
             ],
             [
                 'videography_plan_id' => 1,
-                'text' => 'Kualitas Video HD'
+                'text' => 'Kualitas Video HD',
             ],
             [
                 'videography_plan_id' => 2,
-                'text' => 'Camera 4K Cinema'
+                'text' => 'Camera 4K Cinema',
             ],
             [
                 'videography_plan_id' => 2,
-                'text' => 'Lensa Cinema'
+                'text' => 'Lensa Cinema',
             ],
             [
                 'videography_plan_id' => 2,
-                'text' => 'Lighting Fullset'
+                'text' => 'Lighting Fullset',
             ],
             [
                 'videography_plan_id' => 2,
-                'text' => 'Clip On'
+                'text' => 'Clip On',
             ],
             [
                 'videography_plan_id' => 2,
-                'text' => 'Editing'
+                'text' => 'Editing',
             ],
             [
                 'videography_plan_id' => 2,
-                'text' => 'Kualitas Video 4K'
+                'text' => 'Kualitas Video 4K',
             ],
             [
                 'videography_plan_id' => 3,
-                'text' => 'Camera Cinema Mirorless'
+                'text' => 'Camera Cinema Mirorless',
             ],
             [
                 'videography_plan_id' => 3,
-                'text' => 'Lensa Cinema'
+                'text' => 'Lensa Cinema',
             ],
             [
                 'videography_plan_id' => 3,
-                'text' => 'Lighting Standar'
+                'text' => 'Lighting Standar',
             ],
             [
                 'videography_plan_id' => 3,
-                'text' => 'Clip On'
+                'text' => 'Clip On',
             ],
             [
                 'videography_plan_id' => 3,
-                'text' => 'Editing'
+                'text' => 'Editing',
             ],
             [
                 'videography_plan_id' => 3,
-                'text' => 'Kualitas Video HD'
+                'text' => 'Kualitas Video HD',
             ],
             [
                 'videography_plan_id' => 4,
-                'text' => 'Camera 4K Cinema'
+                'text' => 'Camera 4K Cinema',
             ],
             [
                 'videography_plan_id' => 4,
-                'text' => 'Lensa Cinema'
+                'text' => 'Lensa Cinema',
             ],
             [
                 'videography_plan_id' => 4,
-                'text' => 'Lighting Fullset'
+                'text' => 'Lighting Fullset',
             ],
             [
                 'videography_plan_id' => 4,
-                'text' => 'Clip On'
+                'text' => 'Clip On',
             ],
             [
                 'videography_plan_id' => 4,
-                'text' => 'Editing'
+                'text' => 'Editing',
             ],
             [
                 'videography_plan_id' => 4,
-                'text' => 'Kualitas Video 4K'
+                'text' => 'Kualitas Video 4K',
             ],
         ];
 

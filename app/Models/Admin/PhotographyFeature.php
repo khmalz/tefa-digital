@@ -2,9 +2,8 @@
 
 namespace App\Models\Admin;
 
-use App\Models\Admin\PhotographyPlan;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class PhotographyFeature extends Model
@@ -16,7 +15,7 @@ class PhotographyFeature extends Model
     protected $fillable = [
         'photography_plan_id',
         'text',
-        'description'
+        'description',
     ];
 
     public function plan(): BelongsTo

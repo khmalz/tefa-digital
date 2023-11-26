@@ -2,21 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\DesignRequest;
+use App\Http\Requests\PhotographyRequest;
+use App\Http\Requests\PrintingRequest;
+use App\Http\Requests\VideographyRequest;
+use App\Models\Admin\DesignImage;
+use App\Models\Admin\DesignPlan;
 use App\Models\Admin\Order;
+use App\Models\Admin\PhotographyPlan;
+use App\Models\Admin\Printing;
+use App\Models\Admin\VideographyPlan;
 use App\Notifications\UpdateOrderNotification;
 use Illuminate\Http\Request;
-use App\Models\Admin\Printing;
-use App\Models\Admin\DesignPlan;
-use App\Models\Admin\DesignImage;
 use Illuminate\Support\Facades\DB;
-use App\Http\Requests\DesignRequest;
-use App\Models\Admin\PhotographyPlan;
-use App\Models\Admin\VideographyPlan;
-use App\Http\Requests\PrintingRequest;
-use Illuminate\Support\Facades\Storage;
-use App\Http\Requests\PhotographyRequest;
-use App\Http\Requests\VideographyRequest;
 use Illuminate\Support\Facades\Notification;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class OrderClientController extends Controller
@@ -28,7 +28,7 @@ class OrderClientController extends Controller
 
         $orders = Order::with('orderable')->whereBelongsTo($request->user())
             ->when($request->has('category') && in_array($request->category, ['design', 'photography', 'videography', 'printing']), function ($query) use ($request) {
-                return $query->whereHasMorph('orderable', ['App\Models\Admin\\' . $request->category], null);
+                return $query->whereHasMorph('orderable', ['App\Models\Admin\\'.$request->category], null);
             })
             ->when($request->has('date'), function ($query) use ($request) {
                 switch ($request->date) {
@@ -115,7 +115,7 @@ class OrderClientController extends Controller
         } catch (\Exception $e) {
             DB::rollback();
 
-            return back()->with('error', 'Failed to save changes: ' . $e->getMessage());
+            return back()->with('error', 'Failed to save changes: '.$e->getMessage());
         }
     }
 
@@ -209,7 +209,7 @@ class OrderClientController extends Controller
         } catch (\Exception $e) {
             DB::rollback();
 
-            return back()->with('error', 'Failed to save changes: ' . $e->getMessage());
+            return back()->with('error', 'Failed to save changes: '.$e->getMessage());
         }
     }
 

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Title;
-use Illuminate\Http\Request;
-use App\Models\Admin\Contact;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\ContactRequest;
+use App\Models\Admin\Contact;
+use App\Models\Title;
+use Illuminate\Http\Request;
 
 class ProfileAppController extends Controller
 {
@@ -17,6 +17,7 @@ class ProfileAppController extends Controller
     {
         $title = Title::first();
         $contact = Contact::first();
+
         return view('admin.contact.index', compact('title', 'contact'));
     }
 

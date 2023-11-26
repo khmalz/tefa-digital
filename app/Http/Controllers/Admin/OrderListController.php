@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\View\View;
-use App\Models\Admin\Order;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Order;
 use App\Notifications\OrderNotification;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class OrderListController extends Controller
 {
-
     /**
      * Retrieves all orders based on the given request.
-     *
      */
     public function all(Request $request): View
     {
@@ -23,7 +21,7 @@ class OrderListController extends Controller
 
         $orders = Order::with('orderable')
             ->when($request->has('category') && in_array($request->category, ['design', 'photography', 'videography', 'printing']), function ($query) use ($request) {
-                return $query->whereHasMorph('orderable', ['App\Models\Admin\\' . $request->category], null);
+                return $query->whereHasMorph('orderable', ['App\Models\Admin\\'.$request->category], null);
             })
             ->when($request->has('date'), function ($query) use ($request) {
                 switch ($request->date) {
@@ -53,7 +51,6 @@ class OrderListController extends Controller
 
     /**
      * Show the order details.
-     *
      */
     public function show(Order $order): View
     {
@@ -67,12 +64,11 @@ class OrderListController extends Controller
 
     /**
      * Updates the status of an order.
-     *
      */
     public function update(Request $request, Order $order): RedirectResponse
     {
         $order->update([
-            'status' => $request->status
+            'status' => $request->status,
         ]);
 
         $order->user->notify(new OrderNotification($order->ulid, $order->user_id, $order->status));

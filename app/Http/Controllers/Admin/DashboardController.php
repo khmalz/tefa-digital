@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Contracts\View\View;
 use App\Services\OrderServiceInterface;
+use Illuminate\Contracts\View\View;
 
 class DashboardController extends Controller
 {

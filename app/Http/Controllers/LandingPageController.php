@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Admin\Contact;
 use App\Models\Admin\Portfolio;
+use Illuminate\Http\Request;
 
 class LandingPageController extends Controller
 {

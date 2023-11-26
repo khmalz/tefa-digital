@@ -3,7 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\Admin\Portfolio;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class PortfolioSeeder extends Seeder
@@ -171,7 +170,6 @@ class PortfolioSeeder extends Seeder
                 'image' => 'portfolios/videography/6.jpeg',
             ],
         ];
-
 
         $printings = [
             [

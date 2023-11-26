@@ -3,14 +3,13 @@
 namespace App\Providers;
 
 use App\Models\Title;
-use App\Services\OrderService;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Pagination\Paginator;
 use App\Repositories\OrderRepository;
-use Illuminate\Support\Facades\Schema;
-use App\Services\OrderServiceInterface;
-use Illuminate\Support\ServiceProvider;
 use App\Repositories\OrderRepositoryInterface;
+use App\Services\OrderService;
+use App\Services\OrderServiceInterface;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
 {

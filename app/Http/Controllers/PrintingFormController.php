@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
+use App\Http\Requests\PrintingRequest;
 use App\Models\Admin\Printing;
 use Illuminate\Http\RedirectResponse;
-use App\Http\Requests\PrintingRequest;
+use Illuminate\View\View;
 
 class PrintingFormController extends Controller
 {
@@ -36,7 +36,7 @@ class PrintingFormController extends Controller
 
         return to_route('user.printing.form.success', [
             'nama' => $order->name_customer,
-            'orderId' => $order->ulid
+            'orderId' => $order->ulid,
         ]);
     }
 
@@ -45,7 +45,7 @@ class PrintingFormController extends Controller
         $no_phone = config('app.no_phone');
 
         $message = "Halo, saya $nama, yang memesan orderan 3D Printing dengan no receipt *$orderId*.\n\nSaya ingin mendiskusikan lebih lanjut terkait pemesanan saya";
-        $url = "https://api.whatsapp.com/send?phone=$no_phone&text=" . urlencode($message);
+        $url = "https://api.whatsapp.com/send?phone=$no_phone&text=".urlencode($message);
 
         // Redirect to the WhatsApp URL
         return redirect($url);

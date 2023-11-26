@@ -2,9 +2,8 @@
 
 namespace App\Models\Admin;
 
-use App\Models\Admin\DesignPlan;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class DesignCategory extends Model
@@ -16,7 +15,7 @@ class DesignCategory extends Model
     protected $fillable = [
         'title',
         'body',
-        'image'
+        'image',
     ];
 
     public function plans(): HasMany
