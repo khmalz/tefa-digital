@@ -2,13 +2,12 @@
 
 namespace Database\Seeders;
 
-use App\Models\User;
-use App\Models\Title;
 use App\Models\Admin\Contact;
 use App\Models\Title;
+use App\Models\Title;
+use App\Models\User;
 use App\Models\User;
 use Illuminate\Database\Seeder;
-use Database\Seeders\OrderSeeder;
 
 class DatabaseSeeder extends Seeder
 {
