@@ -3,6 +3,7 @@
 namespace App\Services;
 
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Storage;
 
 class FormService
 {
@@ -14,5 +15,12 @@ class FormService
       $filePath = $file->store("order/{$category}");
 
       return $filePath;
+   }
+
+   public function deletedUploadedFile(string $filePath): void
+   {
+      if (Storage::exists($filePath)) {
+         Storage::delete($filePath);
+      }
    }
 }
