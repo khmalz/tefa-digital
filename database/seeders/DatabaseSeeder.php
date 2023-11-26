@@ -4,8 +4,6 @@ namespace Database\Seeders;
 
 use App\Models\Admin\Contact;
 use App\Models\Title;
-use App\Models\Title;
-use App\Models\User;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
