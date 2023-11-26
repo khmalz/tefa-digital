@@ -2,9 +2,10 @@
 
 namespace Database\Seeders;
 
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use App\Models\Admin\Contact;
 use App\Models\Title;
+use App\Models\Title;
+use App\Models\User;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 
@@ -22,6 +23,12 @@ class DatabaseSeeder extends Seeder
             'email' => 'admin@gmail.com',
         ]);
         $admin->assignRole('admin');
+
+        $client = User::factory()->create([
+            'name' => 'Client',
+            'email' => 'client@gmail.com',
+        ]);
+        $client->assignRole('client');
 
         $this->call([
             DesignSeeder::class,

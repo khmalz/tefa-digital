@@ -38,7 +38,7 @@ class PhotographyFormController extends Controller
         ]);
     }
 
-    public function success($nama, $order, $orderId): RedirectResponse
+    public function success(string $nama, string $order, string $orderId): RedirectResponse
     {
         $no_phone = config('app.no_phone');
         $message = "Halo, saya $nama, yang memesan orderan $order dengan no receipt *$orderId*.\n\nSaya ingin mendiskusikan lebih lanjut terkait pemesanan saya";

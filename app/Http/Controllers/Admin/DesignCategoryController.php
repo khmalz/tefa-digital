@@ -5,7 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Admin\CategoryRequest;
 use App\Models\Admin\DesignCategory;
-use Illuminate\Support\Facades\File;
+use App\Services\CategoryService;
 
 class DesignCategoryController extends Controller
 {
@@ -30,14 +30,12 @@ class DesignCategoryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(CategoryRequest $request, DesignCategory $designCategory)
+    public function update(CategoryRequest $request, DesignCategory $designCategory, CategoryService $categoryService)
     {
         $data = $request->validated();
 
         if ($request->has('image')) {
-            File::delete(public_path("assets/img/$designCategory->image"));
-
-            $image = $request->file('image')->store('sub-category/design', ['disk' => 'public-dir']);
+            $image = $categoryService->updateCategoryImage($designCategory, $request->file('image'), 'design');
         }
 
         $data['image'] = $image ?? $designCategory->image;

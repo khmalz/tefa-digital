@@ -15,7 +15,7 @@ class PDFController extends Controller
             ->title($order->orderable->category->title ?? $title)
             ->pricePerUnit($title === 'Printing' ? 0 : $order->orderable->price);
 
-        if ($title != 'Printing') {
+        if ($title !== 'Printing') {
             $customFields['Order'] = $order->orderable->category->title;
             $customFields['Plan'] = $order->orderable->plan->title;
         }

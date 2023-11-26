@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PrintingRequest;
 use App\Models\Admin\Printing;
+use App\Services\FormService;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\View\View;
 
@@ -14,23 +15,16 @@ class PrintingFormController extends Controller
         return view('printing.form');
     }
 
-    public function store(PrintingRequest $request): RedirectResponse
+    public function store(PrintingRequest $request, FormService $formService): RedirectResponse
     {
         $datas = $request->validated();
-        $datas['user_id'] = $request->user()->id;
-
         $fileReq = $request->file('file');
-        $fileName = $fileReq->getClientOriginalName();
 
-        $file = $fileReq->store('order/printing');
-        $datas['file'] = $file;
+        $datas['user_id'] = $request->user()->id;
+        $datas['file_content'] = $formService->uploadedFile($fileReq, 'printing');
+        $datas['file_name'] = $fileReq->getClientOriginalName();
 
-        $printing = Printing::create([
-            'material' => $datas['material'],
-            'scale' => $datas['scale'],
-            'file_name' => $fileName,
-            'file_content' => $datas['file'],
-        ]);
+        $printing = Printing::create($datas);
 
         $order = $printing->order()->create($datas);
 
@@ -40,7 +34,7 @@ class PrintingFormController extends Controller
         ]);
     }
 
-    public function success($nama, $orderId): RedirectResponse
+    public function success(string $nama, string $orderId): RedirectResponse
     {
         $no_phone = config('app.no_phone');
 
