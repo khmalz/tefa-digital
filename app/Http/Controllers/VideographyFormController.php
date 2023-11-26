@@ -38,7 +38,7 @@ class VideographyFormController extends Controller
         ]);
     }
 
-    public function success($nama, $order, $orderId): RedirectResponse
+    public function success(string $nama, string $order, string $orderId): RedirectResponse
     {
         $no_phone = config('app.no_phone');
 
