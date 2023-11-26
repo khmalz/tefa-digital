@@ -3,11 +3,11 @@
 namespace App\Providers;
 
 use App\Events\UpdateOrderEvent;
-use Illuminate\Support\Facades\Event;
-use Illuminate\Auth\Events\Registered;
 use App\Listeners\SendUpdateOrderNotification;
+use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Event;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -21,8 +21,8 @@ class EventServiceProvider extends ServiceProvider
             SendEmailVerificationNotification::class,
         ],
         UpdateOrderEvent::class => [
-            SendUpdateOrderNotification::class
-        ]
+            SendUpdateOrderNotification::class,
+        ],
     ];
 
     /**

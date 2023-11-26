@@ -2,11 +2,9 @@
 
 namespace App\Models\Admin;
 
-use App\Models\Admin\Videography;
-use App\Models\Admin\VideographyPlan;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
 class VideographyCategory extends Model
@@ -18,7 +16,7 @@ class VideographyCategory extends Model
     protected $fillable = [
         'title',
         'body',
-        'image'
+        'image',
     ];
 
     public function plans(): HasMany

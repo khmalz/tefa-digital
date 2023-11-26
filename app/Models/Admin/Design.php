@@ -2,18 +2,16 @@
 
 namespace App\Models\Admin;
 
-use App\Models\Admin\DesignPlan;
-use App\Models\Admin\DesignImage;
-use Illuminate\Database\Eloquent\Model;
-use Znck\Eloquent\Traits\BelongsToThrough;
-use Illuminate\Database\Eloquent\Relations\HasMany;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Znck\Eloquent\Traits\BelongsToThrough;
 
 class Design extends Model
 {
-    use HasFactory, BelongsToThrough;
+    use BelongsToThrough, HasFactory;
 
     protected $fillable = [
         'design_plan_id',
@@ -22,6 +20,7 @@ class Design extends Model
     ];
 
     protected $with = ['plan:id,title,price', 'category'];
+
     protected $appends = ['price', 'order_title'];
 
     public function order(): MorphOne

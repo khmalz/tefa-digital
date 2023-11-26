@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Services\CategoryService;
 use App\Http\Controllers\Controller;
-use App\Models\Admin\DesignCategory;
 use App\Http\Requests\Admin\CategoryRequest;
+use App\Models\Admin\DesignCategory;
+use App\Services\CategoryService;
 
 class DesignCategoryController extends Controller
 {
@@ -15,6 +15,7 @@ class DesignCategoryController extends Controller
     public function index()
     {
         $categories = DesignCategory::all();
+
         return view('admin.design.categories', compact('categories'));
     }
 

@@ -5,7 +5,6 @@ namespace Database\Seeders;
 use App\Models\Admin\PhotographyCategory;
 use App\Models\Admin\PhotographyFeature;
 use App\Models\Admin\PhotographyPlan;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class PhotographySeeder extends Seeder
@@ -77,87 +76,87 @@ class PhotographySeeder extends Seeder
         $photo_feature = [
             [
                 'photography_plan_id' => 1,
-                'text' => 'Camera DSLR Canon 600D'
+                'text' => 'Camera DSLR Canon 600D',
             ],
             [
                 'photography_plan_id' => 1,
-                'text' => 'Lensa Standar'
+                'text' => 'Lensa Standar',
             ],
             [
                 'photography_plan_id' => 1,
-                'text' => 'Lighting Standar'
+                'text' => 'Lighting Standar',
             ],
             [
                 'photography_plan_id' => 1,
-                'text' => 'Kualitas Foto HD'
+                'text' => 'Kualitas Foto HD',
             ],
             [
                 'photography_plan_id' => 2,
-                'text' => 'Camera Canon EOS 4000D'
+                'text' => 'Camera Canon EOS 4000D',
             ],
             [
                 'photography_plan_id' => 2,
-                'text' => 'Lighting Fullset'
+                'text' => 'Lighting Fullset',
             ],
             [
                 'photography_plan_id' => 2,
-                'text' => 'Kualitas Foto Full HD'
+                'text' => 'Kualitas Foto Full HD',
             ],
             [
                 'photography_plan_id' => 3,
-                'text' => 'Camera DSLR Canon 600D'
+                'text' => 'Camera DSLR Canon 600D',
             ],
             [
                 'photography_plan_id' => 3,
-                'text' => 'Lensa Standar'
+                'text' => 'Lensa Standar',
             ],
             [
                 'photography_plan_id' => 3,
-                'text' => 'Lighting Standar'
+                'text' => 'Lighting Standar',
             ],
             [
                 'photography_plan_id' => 3,
-                'text' => 'Kualitas Foto HD'
+                'text' => 'Kualitas Foto HD',
             ],
             [
                 'photography_plan_id' => 4,
-                'text' => 'Camera Canon EOS 4000D'
+                'text' => 'Camera Canon EOS 4000D',
             ],
             [
                 'photography_plan_id' => 4,
-                'text' => 'Lighting Fullset'
+                'text' => 'Lighting Fullset',
             ],
             [
                 'photography_plan_id' => 4,
-                'text' => 'Kualitas Foto Full HD'
+                'text' => 'Kualitas Foto Full HD',
             ],
             [
                 'photography_plan_id' => 5,
-                'text' => 'Camera DSLR Canon 600D'
+                'text' => 'Camera DSLR Canon 600D',
             ],
             [
                 'photography_plan_id' => 5,
-                'text' => 'Lensa Standar'
+                'text' => 'Lensa Standar',
             ],
             [
                 'photography_plan_id' => 5,
-                'text' => 'Lighting Standar'
+                'text' => 'Lighting Standar',
             ],
             [
                 'photography_plan_id' => 5,
-                'text' => 'Kualitas Foto HD'
+                'text' => 'Kualitas Foto HD',
             ],
             [
                 'photography_plan_id' => 6,
-                'text' => 'Camera Canon EOS 4000D'
+                'text' => 'Camera Canon EOS 4000D',
             ],
             [
                 'photography_plan_id' => 6,
-                'text' => 'Lighting Fullset'
+                'text' => 'Lighting Fullset',
             ],
             [
                 'photography_plan_id' => 6,
-                'text' => 'Kualitas Foto Full HD'
+                'text' => 'Kualitas Foto Full HD',
             ],
         ];
 

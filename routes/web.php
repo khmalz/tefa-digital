@@ -1,34 +1,34 @@
 <?php
 
-use App\Http\Controllers\OrderClientSystemController;
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PDFController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ActivityController;
-use App\Http\Controllers\SendMailController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DesignCategoryController;
+use App\Http\Controllers\Admin\DesignPlanController;
+use App\Http\Controllers\Admin\NotificationController;
+use App\Http\Controllers\Admin\OrderListController;
+use App\Http\Controllers\Admin\PhotographyCategoryController;
+use App\Http\Controllers\Admin\PhotographyPlanController;
+use App\Http\Controllers\Admin\PortfolioController;
+use App\Http\Controllers\Admin\ProfileAppController;
+use App\Http\Controllers\Admin\VideographyCategoryController;
+use App\Http\Controllers\Admin\VideographyPlanController;
+use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DesignFormController;
 use App\Http\Controllers\DesignUserController;
-use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\OrderClientController;
-use App\Http\Controllers\PrintingFormController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\OrderListController;
-use App\Http\Controllers\Admin\PortfolioController;
+use App\Http\Controllers\OrderClientSystemController;
+use App\Http\Controllers\PDFController;
 use App\Http\Controllers\PhotographyFormController;
 use App\Http\Controllers\PhotographyUserController;
+use App\Http\Controllers\PrintingFormController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\VideographyFormController;
 use App\Http\Controllers\VideographyUserController;
-use App\Http\Controllers\Admin\DesignPlanController;
-use App\Http\Controllers\Admin\ProfileAppController;
-use App\Http\Controllers\Admin\NotificationController;
-use App\Http\Controllers\Admin\DesignCategoryController;
-use App\Http\Controllers\Admin\PhotographyPlanController;
-use App\Http\Controllers\Admin\VideographyPlanController;
-use App\Http\Controllers\Admin\PhotographyCategoryController;
-use App\Http\Controllers\Admin\VideographyCategoryController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------

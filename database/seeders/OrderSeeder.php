@@ -2,13 +2,11 @@
 
 namespace Database\Seeders;
 
-use App\Models\Admin\Order;
 use App\Models\Admin\Design;
-use App\Models\Admin\Printing;
-use Illuminate\Database\Seeder;
 use App\Models\Admin\Photography;
+use App\Models\Admin\Printing;
 use App\Models\Admin\Videography;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Seeder;
 
 class OrderSeeder extends Seeder
 {
@@ -41,7 +39,7 @@ class OrderSeeder extends Seeder
                 return Design::create([
                     'design_plan_id' => rand(1, 5),
                     'slogan' => fake()->word(),
-                    'color' => fake()->hexColor()
+                    'color' => fake()->hexColor(),
                 ]);
             case 'Photography':
                 return Photography::create([
@@ -54,7 +52,7 @@ class OrderSeeder extends Seeder
             case 'Printing':
                 return Printing::create([
                     'material' => fake()->sentence(),
-                    'scale' => "12x15x18",
+                    'scale' => '12x15x18',
                     'file_name' => fake()->fileExtension(),
                     'file_content' => fake()->filePath(),
                 ]);

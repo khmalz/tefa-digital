@@ -10,7 +10,6 @@ use Illuminate\Database\Eloquent\Factories\Factory;
  */
 class DesignFactory extends Factory
 {
-
     /**
      * Define the model's default state.
      *

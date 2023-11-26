@@ -3,11 +3,9 @@
 namespace App\Listeners;
 
 use App\Events\UpdateOrderEvent;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Queue\InteractsWithQueue;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Support\Facades\Notification;
 use App\Notifications\UpdateOrderNotification;
+use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Notification;
 
 class SendUpdateOrderNotification
 {

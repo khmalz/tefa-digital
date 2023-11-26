@@ -2,13 +2,13 @@
 
 namespace App\Models\Admin;
 
-use App\Models\User;
 use App\Helpers\MixCaseULID;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Order extends Model
 {
@@ -22,7 +22,7 @@ class Order extends Model
         'number_customer',
         'email_customer',
         'description',
-        'status'
+        'status',
     ];
 
     /**
@@ -59,7 +59,7 @@ class Order extends Model
 
     public function scopeWhereCategory(Builder $query, string $category): Builder
     {
-        return $query->whereHasMorph('orderable', ['App\Models\Admin\\' . $category], null);
+        return $query->whereHasMorph('orderable', ['App\Models\Admin\\'.$category], null);
     }
 
     public function scopeWhereFilterByTimePeriod(Builder $query, string $timePeriod): Builder

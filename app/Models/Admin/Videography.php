@@ -2,22 +2,22 @@
 
 namespace App\Models\Admin;
 
-use App\Models\Admin\VideographyPlan;
-use Illuminate\Database\Eloquent\Model;
-use Znck\Eloquent\Traits\BelongsToThrough;
-use Illuminate\Database\Eloquent\Relations\MorphOne;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphOne;
+use Znck\Eloquent\Traits\BelongsToThrough;
 
 class Videography extends Model
 {
-    use HasFactory, BelongsToThrough;
+    use BelongsToThrough, HasFactory;
 
     protected $fillable = [
         'videography_plan_id',
     ];
 
     protected $with = ['plan:id,title,price', 'category'];
+
     protected $appends = ['price', 'order_title'];
 
     public function plan(): BelongsTo

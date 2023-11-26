@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\View\View;
-use App\Models\Admin\Order;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Order;
 use App\Notifications\OrderNotification;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class OrderListController extends Controller
 {
-
     /**
      * Retrieves all orders based on the given request.
-     *
      */
     public function all(Request $request): View
     {
@@ -41,7 +39,6 @@ class OrderListController extends Controller
 
     /**
      * Show the order details.
-     *
      */
     public function show(Order $order): View
     {
@@ -55,12 +52,11 @@ class OrderListController extends Controller
 
     /**
      * Updates the status of an order.
-     *
      */
     public function update(Request $request, Order $order): RedirectResponse
     {
         $order->update([
-            'status' => $request->status
+            'status' => $request->status,
         ]);
 
         $order->user->notify(new OrderNotification($order->ulid, $order->user_id, $order->status));

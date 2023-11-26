@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Illuminate\Validation\Rule;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\Rule;
 
 class RegisterController extends Controller
 {
@@ -25,7 +25,7 @@ class RegisterController extends Controller
                 'required', 'string', 'email', 'max:255',
                 Rule::unique('users', 'email')->where(function ($query) {
                     $query->where('social_type', 'credentials');
-                })
+                }),
             ],
             'password' => ['required', 'string', 'min:8'],
         ]);

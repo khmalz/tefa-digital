@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Api;
 
-use App\Models\Admin\Videography;
 use App\Http\Controllers\Controller;
-use App\Http\Resources\VideographyResource;
 use App\Http\Resources\VideographyCollection;
+use App\Http\Resources\VideographyResource;
+use App\Models\Admin\Videography;
 
 class VideographyController extends Controller
 {

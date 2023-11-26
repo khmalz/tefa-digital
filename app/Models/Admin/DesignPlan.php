@@ -2,10 +2,8 @@
 
 namespace App\Models\Admin;
 
-use App\Models\Admin\DesignFeature;
-use App\Models\Admin\DesignCategory;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -19,7 +17,7 @@ class DesignPlan extends Model
         'design_category_id',
         'title',
         'price',
-        'description'
+        'description',
     ];
 
     public function designs(): HasMany

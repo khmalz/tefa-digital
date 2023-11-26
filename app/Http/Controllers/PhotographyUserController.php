@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Admin\PhotographyCategory;
 
 class PhotographyUserController extends Controller

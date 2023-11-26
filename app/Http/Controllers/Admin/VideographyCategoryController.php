@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Services\CategoryService;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\File;
-use App\Models\Admin\VideographyCategory;
 use App\Http\Requests\Admin\CategoryRequest;
+use App\Models\Admin\VideographyCategory;
+use App\Services\CategoryService;
 
 class VideographyCategoryController extends Controller
 {
@@ -16,6 +15,7 @@ class VideographyCategoryController extends Controller
     public function index()
     {
         $categories = VideographyCategory::all();
+
         return view('admin.videography.categories', compact('categories'));
     }
 

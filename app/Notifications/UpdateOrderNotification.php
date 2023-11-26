@@ -3,8 +3,6 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
 class UpdateOrderNotification extends Notification
@@ -44,7 +42,7 @@ class UpdateOrderNotification extends Notification
             'category' => $this->category,
             'client_name' => $this->client_name,
             'order_id' => $this->order_id,
-            'status' => $this->status
+            'status' => $this->status,
         ];
     }
 }

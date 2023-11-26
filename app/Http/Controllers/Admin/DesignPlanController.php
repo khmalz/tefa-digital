@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use App\Models\Admin\DesignPlan;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
 use App\Models\Admin\DesignCategory;
 use App\Models\Admin\DesignFeature;
+use App\Models\Admin\DesignPlan;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class DesignPlanController extends Controller
 {
@@ -51,7 +51,7 @@ class DesignPlanController extends Controller
                 'design_category_id' => $request->design_category_id,
                 'title' => $request->title_plan,
                 'price' => $request->price,
-                'description' => $request->description_plan
+                'description' => $request->description_plan,
             ];
 
             // create new plan and associate features
@@ -64,7 +64,7 @@ class DesignPlanController extends Controller
                 $featuresData[] = [
                     'plan_id' => $plan->id,
                     'text' => $value,
-                    'description' => $request->description[$key] ?? null
+                    'description' => $request->description[$key] ?? null,
                 ];
             }
 
@@ -78,7 +78,7 @@ class DesignPlanController extends Controller
             // Rollback database transaksi jika terjadi error
             DB::rollback();
 
-            return back()->with('error', 'Failed to save changes: ' . $e->getMessage());
+            return back()->with('error', 'Failed to save changes: '.$e->getMessage());
         }
     }
 
@@ -88,6 +88,7 @@ class DesignPlanController extends Controller
     public function edit(DesignPlan $designPlan)
     {
         $plan = $designPlan->load('features');
+
         return view('admin.design.plans-edit', compact('plan'));
     }
 
@@ -119,7 +120,7 @@ class DesignPlanController extends Controller
             // Proses operasi update
             foreach ($edits ?? [] as $id => $data) {
                 DesignFeature::where('id', $id)->update(['text' => $data['text'], 'description' => $data['description']]);
-            };
+            }
 
             // Proses operasi create
             if ($texts) {
@@ -127,7 +128,7 @@ class DesignPlanController extends Controller
                     return [
                         'design_plan_id' => $plan_id,
                         'text' => $text,
-                        'description' => $description ?? null
+                        'description' => $description ?? null,
                     ];
                 }, $plan_ids, $texts, $descriptions);
 
@@ -147,7 +148,7 @@ class DesignPlanController extends Controller
             // Rollback database transaksi jika terjadi error
             DB::rollback();
 
-            return back()->with('error', 'Failed to save changes: ' . $e->getMessage());
+            return back()->with('error', 'Failed to save changes: '.$e->getMessage());
         }
     }
 

@@ -3,18 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Events\UpdateOrderEvent;
-use App\Models\Admin\Order;
-use App\Services\FormService;
-use App\Models\Admin\Printing;
-use App\Models\Admin\DesignImage;
-use Illuminate\Support\Facades\DB;
 use App\Http\Requests\DesignRequest;
-use App\Http\Requests\PrintingRequest;
-use Illuminate\Support\Facades\Storage;
 use App\Http\Requests\PhotographyRequest;
+use App\Http\Requests\PrintingRequest;
 use App\Http\Requests\VideographyRequest;
-use Illuminate\Support\Facades\Notification;
-use App\Notifications\UpdateOrderNotification;
+use App\Models\Admin\DesignImage;
+use App\Models\Admin\Order;
+use App\Models\Admin\Printing;
+use App\Services\FormService;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class OrderClientSystemController extends Controller
@@ -57,7 +55,7 @@ class OrderClientSystemController extends Controller
         } catch (\Exception $e) {
             DB::rollback();
 
-            return back()->with('error', 'Failed to save changes: ' . $e->getMessage());
+            return back()->with('error', 'Failed to save changes: '.$e->getMessage());
         }
     }
 
@@ -112,7 +110,7 @@ class OrderClientSystemController extends Controller
             }
 
             $datas['file_content'] = $filePath ?? $order->orderable->file_content;
-            $datas['file_name'] = $fileName  ?? $order->orderable->file_name;
+            $datas['file_name'] = $fileName ?? $order->orderable->file_name;
 
             $printing = $order->orderable;
             $printing->update($datas);
@@ -125,7 +123,7 @@ class OrderClientSystemController extends Controller
         } catch (\Exception $e) {
             DB::rollback();
 
-            return back()->with('error', 'Failed to save changes: ' . $e->getMessage());
+            return back()->with('error', 'Failed to save changes: '.$e->getMessage());
         }
     }
 

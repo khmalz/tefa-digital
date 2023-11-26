@@ -2,9 +2,8 @@
 
 namespace App\Models\Admin;
 
-use App\Models\Admin\DesignPlan;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class DesignFeature extends Model
@@ -16,7 +15,7 @@ class DesignFeature extends Model
     protected $fillable = [
         'design_plan_id',
         'text',
-        'description'
+        'description',
     ];
 
     public function plan(): BelongsTo
