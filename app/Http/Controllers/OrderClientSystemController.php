@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Events\UpdateOrderEvent;
 use App\Models\Admin\Order;
 use App\Services\FormService;
 use App\Models\Admin\Printing;
@@ -49,7 +50,8 @@ class OrderClientSystemController extends Controller
             }
 
             DB::commit();
-            Notification::send($order->user, new UpdateOrderNotification('design', $order->name_customer, $order->ulid, $order->status));
+
+            event(new UpdateOrderEvent($order, 'design'));
 
             return to_route('user.order.list')->with('success', 'Successfully updated a order');
         } catch (\Exception $e) {
@@ -69,7 +71,8 @@ class OrderClientSystemController extends Controller
         ]);
 
         $order->update($datas);
-        Notification::send($order->user, new UpdateOrderNotification('photography', $order->name_customer, $order->ulid, $order->status));
+
+        event(new UpdateOrderEvent($order, 'photography'));
 
         return redirect()->route('user.order.list')->with('success', 'Successfully updated a order');
     }
@@ -84,7 +87,8 @@ class OrderClientSystemController extends Controller
         ]);
 
         $order->update($datas);
-        Notification::send($order->user, new UpdateOrderNotification('videography', $order->name_customer, $order->ulid, $order->status));
+
+        event(new UpdateOrderEvent($order, 'videography'));
 
         return redirect()->route('user.order.list')->with('success', 'Successfully updated a order');
     }
@@ -114,7 +118,8 @@ class OrderClientSystemController extends Controller
             $printing->update($datas);
 
             DB::commit();
-            Notification::send($order->user, new UpdateOrderNotification('printing', $order->name_customer, $order->ulid, $order->status));
+
+            event(new UpdateOrderEvent($order, 'printing'));
 
             return to_route('user.order.list')->with('success', 'Successfully updated a order');
         } catch (\Exception $e) {
