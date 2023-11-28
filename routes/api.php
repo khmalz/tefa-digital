@@ -1,11 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Api\DesignController;
-use App\Http\Controllers\Api\PrintingController;
-use App\Http\Controllers\Api\PhotographyController;
-use App\Http\Controllers\Api\VideographyController;
-
 /*
 |--------------------------------------------------------------------------
 | API Routes

@@ -3,42 +3,43 @@
 namespace App\Services;
 
 use App\Models\Title;
-use LaravelDaily\Invoices\Invoice;
 use Illuminate\Database\Eloquent\Model;
-use LaravelDaily\Invoices\Classes\Party;
 use LaravelDaily\Invoices\Classes\InvoiceItem;
+use LaravelDaily\Invoices\Classes\Party;
+use LaravelDaily\Invoices\Invoice;
 
 class GenerateInvoice
 {
-   protected Model $model;
-   protected InvoiceItem $item;
+    protected Model $model;
 
-   public function __construct(Model $model, InvoiceItem $item)
-   {
-      $this->model = $model;
-      $this->item = $item;
-   }
+    protected InvoiceItem $item;
 
-   public function execute(string $type, array $customFields): Invoice
-   {
-      $websiteTitle = Title::value('name');
+    public function __construct(Model $model, InvoiceItem $item)
+    {
+        $this->model = $model;
+        $this->item = $item;
+    }
 
-      $client = new Party([
-         'name'          => $this->model->name_customer,
-         'phone'         => $this->model->number_customer,
-      ]);
+    public function execute(string $type, array $customFields): Invoice
+    {
+        $websiteTitle = Title::value('name');
 
-      $customer = new Party([
-         'name' => $type,
-         'custom_fields' => $customFields,
-      ]);
+        $client = new Party([
+            'name' => $this->model->name_customer,
+            'phone' => $this->model->number_customer,
+        ]);
 
-      return Invoice::make("$websiteTitle SMKN 46")
-         ->seller($client)
-         ->buyer($customer)
-         ->date($this->model->created_at)
-         ->dateFormat('d/m/Y h:i:s')
-         ->filename("$customer->name - {$this->model->ulid}")
-         ->addItem($this->item);
-   }
+        $customer = new Party([
+            'name' => $type,
+            'custom_fields' => $customFields,
+        ]);
+
+        return Invoice::make("$websiteTitle SMKN 46")
+            ->seller($client)
+            ->buyer($customer)
+            ->date($this->model->created_at)
+            ->dateFormat('d/m/Y h:i:s')
+            ->filename("$customer->name - {$this->model->ulid}")
+            ->addItem($this->item);
+    }
 }

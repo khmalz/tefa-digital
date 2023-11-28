@@ -2,19 +2,17 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\View\View;
-use App\Models\Admin\Order;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Admin\Order;
 use App\Notifications\OrderNotification;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class OrderListController extends Controller
 {
-
     /**
      * Retrieves all orders based on the given request.
-     *
      */
     public function all(Request $request): View
     {
@@ -23,28 +21,16 @@ class OrderListController extends Controller
 
         $orders = Order::with('orderable')
             ->when($request->has('category') && in_array($request->category, ['design', 'photography', 'videography', 'printing']), function ($query) use ($request) {
-                return $query->whereHasMorph('orderable', ['App\Models\Admin\\' . $request->category], null);
+                return $query->whereCategory($request->category);
             })
-            ->when($request->has('date'), function ($query) use ($request) {
-                switch ($request->date) {
-                    case 'week':
-                        return $query->whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()]);
-                    case 'month':
-                        return $query->whereMonth('created_at', now()->month);
-                    case 'year':
-                        return $query->whereYear('created_at', now()->year);
-                    case 'all':
-                        return $query;
-                    default:
-                        return $query->whereDate('created_at', now());
-                }
+            ->when($request->has('period'), function ($query) use ($request) {
+                return $query->whereFilterByTimePeriod($request->period);
             }, function ($query) {
-                // Query default jika parameter date tidak ada
                 return $query->whereDate('created_at', now());
             })->when($request->has('type'), function ($query) {
-                $query->where('status', 'cancel');
+                $query->whereCanceledOrders();
             }, function ($query) {
-                $query->where('status', '!=', 'cancel');
+                $query->whereNotCanceledOrders();
             })
             ->paginate($defaultLength);
 
@@ -53,7 +39,6 @@ class OrderListController extends Controller
 
     /**
      * Show the order details.
-     *
      */
     public function show(Order $order): View
     {
@@ -67,12 +52,11 @@ class OrderListController extends Controller
 
     /**
      * Updates the status of an order.
-     *
      */
     public function update(Request $request, Order $order): RedirectResponse
     {
         $order->update([
-            'status' => $request->status
+            'status' => $request->status,
         ]);
 
         $order->user->notify(new OrderNotification($order->ulid, $order->user_id, $order->status));

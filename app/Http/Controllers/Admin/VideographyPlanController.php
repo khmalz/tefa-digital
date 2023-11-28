@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
+use App\Models\Admin\VideographyCategory;
+use App\Models\Admin\VideographyFeature;
+use App\Models\Admin\VideographyPlan;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use App\Http\Controllers\Controller;
-use App\Models\Admin\VideographyPlan;
-use App\Models\Admin\VideographyFeature;
-use App\Models\Admin\VideographyCategory;
 
 class VideographyPlanController extends Controller
 {
@@ -18,10 +18,10 @@ class VideographyPlanController extends Controller
     {
         $categories = VideographyCategory::with('plans', 'plans.features')->get();
 
-        $categoriesOutput = $categories->map(function ($cat) {
+        $categoriesOutput = $categories->map(function ($category) {
             return [
-                'title' => $cat->title,
-                'plans' => $cat->plans,
+                'title' => $category->title,
+                'plans' => $category->plans,
             ];
         });
 
@@ -44,32 +44,42 @@ class VideographyPlanController extends Controller
      */
     public function store(Request $request)
     {
-        $planData = [
-            'videography_category_id' => $request->videography_category_id,
-            'title' => $request->title_plan,
-            'price' => $request->price,
-            'description' => $request->description_plan
-        ];
+        DB::beginTransaction();
 
-        // create new plan and associate features
-        $plan = VideographyPlan::create($planData);
-
-        $featuresData = [];
-
-        // loop through the text inputs
-        foreach ($request->text as $key => $value) {
-            $featuresData[] = [
-                'plan_id' => $plan->id,
-                'text' => $value,
-                'description' => $request->description[$key] ?? null
+        try {
+            $planData = [
+                'videography_category_id' => $request->videography_category_id,
+                'title' => $request->title_plan,
+                'price' => $request->price,
+                'description' => $request->description_plan,
             ];
+
+            // create new plan and associate features
+            $plan = VideographyPlan::create($planData);
+
+            $featuresData = [];
+
+            // loop through the text inputs
+            foreach ($request->text as $key => $value) {
+                $featuresData[] = [
+                    'plan_id' => $plan->id,
+                    'text' => $value,
+                    'description' => $request->description[$key] ?? null,
+                ];
+            }
+
+            // create features associated with the plan
+            $plan->features()->createMany($featuresData);
+
+            DB::commit();
+
+            return to_route('videography-plan.index')->with('success', 'Plan and features have been created successfully.');
+        } catch (\Exception $e) {
+            // Rollback database transaksi jika terjadi error
+            DB::rollback();
+
+            return back()->with('error', 'Failed to save changes: '.$e->getMessage());
         }
-
-        // create features associated with the plan
-        $plan->features()->createMany($featuresData);
-
-        // redirect back with success message
-        return to_route('videography-plan.index')->with('success', 'Plan and features have been created successfully.');
     }
 
     /**
@@ -78,6 +88,7 @@ class VideographyPlanController extends Controller
     public function edit(VideographyPlan $videographyPlan)
     {
         $plan = $videographyPlan->load('features');
+
         return view('admin.videography.plans-edit', compact('plan'));
     }
 
@@ -109,7 +120,7 @@ class VideographyPlanController extends Controller
             // Proses operasi update
             foreach ($edits ?? [] as $id => $data) {
                 VideographyFeature::where('id', $id)->update(['text' => $data['text'], 'description' => $data['description']]);
-            };
+            }
 
             // Proses operasi create
             if ($texts) {
@@ -117,7 +128,7 @@ class VideographyPlanController extends Controller
                     return [
                         'videography_plan_id' => $plan_id,
                         'text' => $text,
-                        'description' => $description ?? null
+                        'description' => $description ?? null,
                     ];
                 }, $plan_ids, $texts, $descriptions);
 
@@ -137,7 +148,7 @@ class VideographyPlanController extends Controller
             // Rollback database transaksi jika terjadi error
             DB::rollback();
 
-            return back()->with('error', 'Failed to save changes: ' . $e->getMessage());
+            return back()->with('error', 'Failed to save changes: '.$e->getMessage());
         }
     }
 

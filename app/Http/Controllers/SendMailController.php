@@ -18,7 +18,7 @@ class SendMailController extends Controller
         $configUsername = config('mail.mailers.smtp.username');
         $configPassword = config('mail.mailers.smtp.password');
 
-        if (!$configUsername && !$configPassword) {
+        if (! $configUsername && ! $configPassword) {
             return back()->with('failure', 'Gagal mengirim pesan. Konfigurasi email tidak lengkap.');
         }
 

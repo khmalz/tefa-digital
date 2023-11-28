@@ -9,8 +9,12 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <h4>Notification</h4>
-                                <a href="{{ route('order.notification.read') }}" class="btn btn-success text-light">Read
-                                    all</a>
+                                <form method="POST" action="{{ route('order.notification.read') }}">
+                                    @csrf
+                                    <a onclick="this.parentElement.submit()" href="#"
+                                        class="btn btn-success text-light">Read
+                                        all</a>
+                                </form>
                             </div>
 
                             @forelse ($notifications as $notification)

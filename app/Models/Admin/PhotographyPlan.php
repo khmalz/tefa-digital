@@ -2,10 +2,8 @@
 
 namespace App\Models\Admin;
 
-use Illuminate\Database\Eloquent\Model;
-use App\Models\Admin\PhotographyFeature;
-use App\Models\Admin\PhotographyCategory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
@@ -19,7 +17,7 @@ class PhotographyPlan extends Model
         'photography_category_id',
         'title',
         'price',
-        'description'
+        'description',
     ];
 
     public function photographies(): HasMany

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-use App\Models\Admin\Photography;
 use App\Http\Requests\PhotographyRequest;
+use App\Models\Admin\Photography;
 use App\Models\Admin\PhotographyCategory;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 class PhotographyFormController extends Controller
@@ -34,16 +34,16 @@ class PhotographyFormController extends Controller
         return to_route('user.photography.form.success', [
             'nama' => $order->name_customer,
             'order' => $photography->category->title,
-            'orderId' => $order->ulid
+            'orderId' => $order->ulid,
         ]);
     }
 
-    public function success($nama, $order, $orderId): RedirectResponse
+    public function success(string $nama, string $order, string $orderId): RedirectResponse
     {
         $no_phone = config('app.no_phone');
         $message = "Halo, saya $nama, yang memesan orderan $order dengan no receipt *$orderId*.\n\nSaya ingin mendiskusikan lebih lanjut terkait pemesanan saya";
 
-        $url = "https://api.whatsapp.com/send?phone=$no_phone&text=" . urlencode($message);
+        $url = "https://api.whatsapp.com/send?phone=$no_phone&text=".urlencode($message);
 
         // Redirect to the WhatsApp URL
         return redirect($url);

@@ -3,7 +3,6 @@
 namespace App\Notifications;
 
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Notification;
 
 class OrderNotification extends Notification
@@ -40,7 +39,7 @@ class OrderNotification extends Notification
         return [
             'order_id' => $this->order_id,
             'client_id' => $this->client_id,
-            'status' => $this->status
+            'status' => $this->status,
         ];
     }
 }

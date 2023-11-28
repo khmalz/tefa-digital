@@ -1,33 +1,34 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\PDFController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ActivityController;
-use App\Http\Controllers\SendMailController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\DesignCategoryController;
+use App\Http\Controllers\Admin\DesignPlanController;
+use App\Http\Controllers\Admin\NotificationController;
+use App\Http\Controllers\Admin\OrderListController;
+use App\Http\Controllers\Admin\PhotographyCategoryController;
+use App\Http\Controllers\Admin\PhotographyPlanController;
+use App\Http\Controllers\Admin\PortfolioController;
+use App\Http\Controllers\Admin\ProfileAppController;
+use App\Http\Controllers\Admin\VideographyCategoryController;
+use App\Http\Controllers\Admin\VideographyPlanController;
+use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\DesignFormController;
 use App\Http\Controllers\DesignUserController;
-use App\Http\Controllers\Auth\GoogleController;
 use App\Http\Controllers\LandingPageController;
 use App\Http\Controllers\OrderClientController;
-use App\Http\Controllers\PrintingFormController;
-use App\Http\Controllers\Auth\RegisterController;
-use App\Http\Controllers\Admin\DashboardController;
-use App\Http\Controllers\Admin\OrderListController;
-use App\Http\Controllers\Admin\PortfolioController;
+use App\Http\Controllers\OrderClientSystemController;
+use App\Http\Controllers\PDFController;
 use App\Http\Controllers\PhotographyFormController;
 use App\Http\Controllers\PhotographyUserController;
+use App\Http\Controllers\PrintingFormController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SendMailController;
 use App\Http\Controllers\VideographyFormController;
 use App\Http\Controllers\VideographyUserController;
-use App\Http\Controllers\Admin\DesignPlanController;
-use App\Http\Controllers\Admin\ProfileAppController;
-use App\Http\Controllers\Admin\NotificationController;
-use App\Http\Controllers\Admin\DesignCategoryController;
-use App\Http\Controllers\Admin\PhotographyPlanController;
-use App\Http\Controllers\Admin\VideographyPlanController;
-use App\Http\Controllers\Admin\PhotographyCategoryController;
-use App\Http\Controllers\Admin\VideographyCategoryController;
+use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -89,17 +90,18 @@ Route::as('user.')->group(function () {
         Route::put('/profile-update', [ProfileController::class, 'update'])->name('profile.update');
         Route::get('/list-order', [OrderClientController::class, 'list'])->name('order.list');
         Route::get('/detail/{order}', [OrderClientController::class, 'show'])->name('order.show');
+        Route::patch('/cancel/{order}', [OrderClientSystemController::class, 'cancel'])->name('order.cancel');
 
-        Route::patch('/cancel/{order}', [OrderClientController::class, 'cancel'])->name('order.cancel');
         Route::get('/edit/{order}/design', [OrderClientController::class, 'editDesign'])->name('order.design.edit');
-        Route::patch('/update/{order}/design', [OrderClientController::class, 'updateDesign'])->name('order.design.update');
+        Route::patch('/update/{order}/design', [OrderClientSystemController::class, 'updateDesign'])->name('order.design.update');
         Route::get('/edit/{order}/photography', [OrderClientController::class, 'editPhotography'])->name('order.photography.edit');
-        Route::patch('/update/{order}/photography', [OrderClientController::class, 'updatePhotography'])->name('order.photography.update');
+        Route::patch('/update/{order}/photography', [OrderClientSystemController::class, 'updatePhotography'])->name('order.photography.update');
         Route::get('/edit/{order}/videography', [OrderClientController::class, 'editVideography'])->name('order.videography.edit');
-        Route::patch('/update/{order}/videography', [OrderClientController::class, 'updateVideography'])->name('order.videography.update');
+        Route::patch('/update/{order}/videography', [OrderClientSystemController::class, 'updateVideography'])->name('order.videography.update');
         Route::get('/edit/{order}/printing', [OrderClientController::class, 'editPrinting'])->name('order.printing.edit');
-        Route::patch('/update/{order}/printing', [OrderClientController::class, 'updatePrinting'])->name('order.printing.update');
-        Route::get('/download-file/{printing}', [OrderClientController::class, 'downloadFile'])->name('download.file');
+        Route::patch('/update/{order}/printing', [OrderClientSystemController::class, 'updatePrinting'])->name('order.printing.update');
+
+        Route::get('/download-file/{printing}', [OrderClientSystemController::class, 'downloadFile'])->name('download.file');
 
         Route::get('/activity', [ActivityController::class, 'index'])->name('order.activity.index');
         Route::post('activity/read/{notifications?}', [ActivityController::class, 'read'])->name('order.activity.read');

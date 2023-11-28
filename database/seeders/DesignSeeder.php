@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use Illuminate\Database\Seeder;
-use App\Models\Admin\DesignPlan;
-use App\Models\Admin\DesignFeature;
 use App\Models\Admin\DesignCategory;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\Admin\DesignFeature;
+use App\Models\Admin\DesignPlan;
+use Illuminate\Database\Seeder;
 
 class DesignSeeder extends Seeder
 {
@@ -72,108 +71,108 @@ class DesignSeeder extends Seeder
         $des_feature = [
             [
                 'design_plan_id' => 1,
-                'text' => 'Mendapat 1 alternatif design'
+                'text' => 'Mendapat 1 alternatif design',
             ],
             [
                 'design_plan_id' => 1,
-                'text' => '3-4 hari'
+                'text' => '3-4 hari',
             ],
             [
                 'design_plan_id' => 1,
-                'text' => 'Revisi 1x'
+                'text' => 'Revisi 1x',
             ],
             [
                 'design_plan_id' => 1,
-                'text' => 'Color Guidelines'
+                'text' => 'Color Guidelines',
             ],
             [
                 'design_plan_id' => 1,
-                'text' => 'File Master CDR/AI/EPS'
+                'text' => 'File Master CDR/AI/EPS',
             ],
             [
                 'design_plan_id' => 1,
-                'text' => 'Export JPG / PNG / PDF'
+                'text' => 'Export JPG / PNG / PDF',
             ],
             [
                 'design_plan_id' => 2,
-                'text' => 'Mendapat 2 alternatif design'
+                'text' => 'Mendapat 2 alternatif design',
             ],
             [
                 'design_plan_id' => 2,
-                'text' => '4-5 hari'
+                'text' => '4-5 hari',
             ],
             [
                 'design_plan_id' => 2,
-                'text' => 'Revisi 3x'
+                'text' => 'Revisi 3x',
             ],
             [
                 'design_plan_id' => 2,
-                'text' => 'Color Guidelines'
+                'text' => 'Color Guidelines',
             ],
             [
                 'design_plan_id' => 2,
-                'text' => 'File Master CDR/AI/EPS'
+                'text' => 'File Master CDR/AI/EPS',
             ],
             [
                 'design_plan_id' => 2,
-                'text' => 'Export JPG / PNG / PDF'
+                'text' => 'Export JPG / PNG / PDF',
             ],
             [
                 'design_plan_id' => 2,
-                'text' => 'Filosofi Logo'
+                'text' => 'Filosofi Logo',
             ],
             [
                 'design_plan_id' => 3,
-                'text' => 'Mendapat 3 alternatif design'
+                'text' => 'Mendapat 3 alternatif design',
             ],
             [
                 'design_plan_id' => 3,
-                'text' => '6-7 hari'
+                'text' => '6-7 hari',
             ],
             [
                 'design_plan_id' => 3,
-                'text' => 'Revisi 3x'
+                'text' => 'Revisi 3x',
             ],
             [
                 'design_plan_id' => 3,
-                'text' => 'Color Guidelines'
+                'text' => 'Color Guidelines',
             ],
             [
                 'design_plan_id' => 3,
-                'text' => 'File Master CDR/AI/EPS'
+                'text' => 'File Master CDR/AI/EPS',
             ],
             [
                 'design_plan_id' => 3,
-                'text' => 'Export JPG / PNG / PDF'
+                'text' => 'Export JPG / PNG / PDF',
             ],
             [
                 'design_plan_id' => 3,
-                'text' => 'Filosofi Logo'
+                'text' => 'Filosofi Logo',
             ],
             [
                 'design_plan_id' => 4,
                 'text' => 'Design Unik',
-                'description' => 'Kami menawarkan desain yang unik dan kreatif yang akan membantu bisnis para klien tampil berbeda dari pesaing. Kami memahami bahwa desain yang menarik dan berbeda adalah kunci untuk menarik perhatian pelanggan potensial dan meningkatkan penjualan.'
+                'description' => 'Kami menawarkan desain yang unik dan kreatif yang akan membantu bisnis para klien tampil berbeda dari pesaing. Kami memahami bahwa desain yang menarik dan berbeda adalah kunci untuk menarik perhatian pelanggan potensial dan meningkatkan penjualan.',
             ],
             [
                 'design_plan_id' => 4,
                 'text' => 'Konsultasi Gratis',
-                'description' => 'Kami juga menawarkan konsultasi gratis untuk membantu klien memilih desain yang paling sesuai dengan bisnis dan visi mereka untuk kampanye promosi. Kami akan membantu mengidentifikasi kebutuhan dan tujuan bisnis, serta menyampaikan ide dan saran untuk mendapatkan hasil yang terbaik.'
+                'description' => 'Kami juga menawarkan konsultasi gratis untuk membantu klien memilih desain yang paling sesuai dengan bisnis dan visi mereka untuk kampanye promosi. Kami akan membantu mengidentifikasi kebutuhan dan tujuan bisnis, serta menyampaikan ide dan saran untuk mendapatkan hasil yang terbaik.',
             ],
             [
                 'design_plan_id' => 4,
                 'text' => 'Pengerjaan Profesional',
-                'description' => 'Kami juga menawarkan pengerjaan profesional dengan kualitas terbaik. Tim kami mengutamakan sebuah kualitas dan kami akan memastikan desain yang akurat, rapi, dan sesuai dengan kebutuhan klien.'
+                'description' => 'Kami juga menawarkan pengerjaan profesional dengan kualitas terbaik. Tim kami mengutamakan sebuah kualitas dan kami akan memastikan desain yang akurat, rapi, dan sesuai dengan kebutuhan klien.',
             ],
             [
                 'design_plan_id' => 5,
                 'text' => 'Konsultasi Gratis',
-                'description' => 'Kami menawarkan konsultasi gratis untuk membantu Anda memahami bagaimana desain 3D dapat membantu meningkatkan proyek Anda. Tim kami siap memberikan saran dan ide kreatif tentang desain 3D yang dapat membuat proyek Anda terlihat lebih realistis dan memukau. Hubungi kami sekarang untuk menjadwalkan konsultasi gratis dengan tim kami!'
+                'description' => 'Kami menawarkan konsultasi gratis untuk membantu Anda memahami bagaimana desain 3D dapat membantu meningkatkan proyek Anda. Tim kami siap memberikan saran dan ide kreatif tentang desain 3D yang dapat membuat proyek Anda terlihat lebih realistis dan memukau. Hubungi kami sekarang untuk menjadwalkan konsultasi gratis dengan tim kami!',
             ],
             [
                 'design_plan_id' => 5,
                 'text' => 'Harga yang Sesuai',
-                'description' => 'Kami memberikan penawaran harga yang sesuai dengan tingkat kerumitan dari detail pemesanan design dan tentunya berdasarkan hasil diskusi dengan klien. Juga, kami berkomitmen untuk memberikan hasil yang memuaskan bagi klien kami dengan harga yang sesuai dengan anggaran proyek.'
+                'description' => 'Kami memberikan penawaran harga yang sesuai dengan tingkat kerumitan dari detail pemesanan design dan tentunya berdasarkan hasil diskusi dengan klien. Juga, kami berkomitmen untuk memberikan hasil yang memuaskan bagi klien kami dengan harga yang sesuai dengan anggaran proyek.',
             ],
         ];
 

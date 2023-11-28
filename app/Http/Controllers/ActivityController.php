@@ -17,8 +17,7 @@ class ActivityController extends Controller
     /**
      * Read all or specified notification
      */
-
-    public function read(Request $request, ?string $id = null)
+    public function read(Request $request, string $id = null)
     {
         DatabaseNotification::whereJsonContains('data->client_id', $request->user()->id)->when($id, function ($query) use ($id) {
             $query->find($id);

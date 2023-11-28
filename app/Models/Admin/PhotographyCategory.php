@@ -2,10 +2,8 @@
 
 namespace App\Models\Admin;
 
-use App\Models\Admin\Photography;
-use App\Models\Admin\PhotographyPlan;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasManyThrough;
 
@@ -18,7 +16,7 @@ class PhotographyCategory extends Model
     protected $fillable = [
         'title',
         'body',
-        'image'
+        'image',
     ];
 
     public function plans(): HasMany

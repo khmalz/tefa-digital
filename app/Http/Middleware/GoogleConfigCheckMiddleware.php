@@ -17,7 +17,7 @@ class GoogleConfigCheckMiddleware
     {
         $canGoogleLogin = config('services.google.client_id') && config('services.google.client_secret');
 
-        abort_if(!$canGoogleLogin, 403, 'Google configuration is missing.');
+        abort_if(! $canGoogleLogin, 403, 'Google configuration is missing.');
 
         return $next($request);
     }

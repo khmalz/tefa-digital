@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\View\View;
-use Illuminate\Http\Request;
-use App\Models\Admin\Videography;
-use Illuminate\Http\RedirectResponse;
 use App\Http\Requests\VideographyRequest;
+use App\Models\Admin\Videography;
 use App\Models\Admin\VideographyCategory;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class VideographyFormController extends Controller
 {
@@ -34,16 +34,16 @@ class VideographyFormController extends Controller
         return to_route('user.videography.form.success', [
             'nama' => $order->name_customer,
             'order' => $videography->category->title,
-            'orderId' => $order->ulid
+            'orderId' => $order->ulid,
         ]);
     }
 
-    public function success($nama, $order, $orderId): RedirectResponse
+    public function success(string $nama, string $order, string $orderId): RedirectResponse
     {
         $no_phone = config('app.no_phone');
 
         $message = "Halo, saya $nama, yang memesan orderan $order dengan no receipt *$orderId*.\n\nSaya ingin mendiskusikan lebih lanjut terkait pemesanan saya";
-        $url = "https://api.whatsapp.com/send?phone=$no_phone&text=" . urlencode($message);
+        $url = "https://api.whatsapp.com/send?phone=$no_phone&text=".urlencode($message);
 
         // Redirect to the WhatsApp URL
         return redirect($url);

@@ -10,7 +10,7 @@
 
             <nav id="navbar" class="navbar">
                 <ul>
-                    <li><a class="nav-link scrollto active" href="#profile">Profile</a></li>
+                    <li><a class="nav-link scrollto active" href="#profile">Order</a></li>
                     @include('layouts.dropdown')
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
@@ -27,10 +27,10 @@
         <section id="breadcrumbs" class="breadcrumbs">
             <div class="container">
                 <div class="align-items-center justify-content-between d-flex">
-                    <h2>Profile</h2>
+                    <h2>Detail Order</h2>
                     <ol>
                         <li><a href="{{ route('home') }}">Home</a></li>
-                        <li>Profile</li>
+                        <li>Detail Order</li>
                     </ol>
                 </div>
             </div>

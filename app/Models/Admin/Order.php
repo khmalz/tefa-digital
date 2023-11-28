@@ -2,13 +2,13 @@
 
 namespace App\Models\Admin;
 
-use App\Models\User;
 use App\Helpers\MixCaseULID;
-use Illuminate\Database\Eloquent\Model;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Relations\MorphTo;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\MorphTo;
 
 class Order extends Model
 {
@@ -22,7 +22,7 @@ class Order extends Model
         'number_customer',
         'email_customer',
         'description',
-        'status'
+        'status',
     ];
 
     /**
@@ -52,8 +52,39 @@ class Order extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function scopeByStatus($query, $status): Builder
+    public function scopeByStatus(Builder $query, string $status): Builder
     {
         return $query->where('status', $status);
+    }
+
+    public function scopeWhereCategory(Builder $query, string $category): Builder
+    {
+        return $query->whereHasMorph('orderable', ['App\Models\Admin\\'.$category], null);
+    }
+
+    public function scopeWhereFilterByTimePeriod(Builder $query, string $timePeriod): Builder
+    {
+        switch ($timePeriod) {
+            case 'week':
+                return $query->whereBetween('created_at', [now()->startOfWeek(), now()->endOfWeek()]);
+            case 'month':
+                return $query->whereMonth('created_at', now()->month);
+            case 'year':
+                return $query->whereYear('created_at', now()->year);
+            case 'all':
+                return $query;
+            default:
+                return $query->whereDate('created_at', now());
+        }
+    }
+
+    public function scopeWhereCanceledOrders(Builder $query): Builder
+    {
+        return $query->where('status', 'cancel');
+    }
+
+    public function scopeWhereNotCanceledOrders(Builder $query): Builder
+    {
+        return $query->where('status', '!=', 'cancel');
     }
 }

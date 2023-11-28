@@ -29,11 +29,9 @@ class PrintingFactory extends Factory
 
     /**
      * Metode kustom untuk menghasilkan data acak dengan format "30x40x60".
-     *
-     * @return string
      */
     public function randomDimensions(): string
     {
-        return sprintf("%dx%dx%d", fake()->numberBetween(10, 100), fake()->numberBetween(10, 100), fake()->numberBetween(10, 100));
+        return sprintf('%dx%dx%d', fake()->numberBetween(10, 100), fake()->numberBetween(10, 100), fake()->numberBetween(10, 100));
     }
 }

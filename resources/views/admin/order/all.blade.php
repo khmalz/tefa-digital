@@ -30,7 +30,7 @@
                                         <input type="hidden" name="type" value="cancel">
                                     @endif
 
-                                    <input type="hidden" name="date" value="{{ request('date', 1) }}">
+                                    <input type="hidden" name="period" value="{{ request('period', 1) }}">
 
                                     <div class="d-flex justify-content-between flex-wrap"
                                         style="column-gap: 10px; row-gap: 5px">
@@ -152,7 +152,7 @@
                                     </tbody>
                                 </table>
                                 <div>
-                                    {{ $orders->appends(['date' => request('date'), 'category' => request('category')])->links() }}
+                                    {{ $orders->appends(['period' => request('period'), 'category' => request('category')])->links() }}
                                 </div>
                             </div>
                         </div>
@@ -212,11 +212,11 @@
             const urlParams = new URLSearchParams(window.location.search);
             generateDataTable('data-table-all', defaultLength);
 
-            const dateParam = urlParams.get('date');
+            const periodParam = urlParams.get('period');
 
             const selectElement = $('#data-table-all_length select');
 
-            switch (dateParam) {
+            switch (periodParam) {
                 case "week":
                     selectElement.val('7');
                     break;
@@ -244,19 +244,19 @@
 
                 switch (selectedValue) {
                     case 7:
-                        formDate.find('input[name="date"]').val("week");
+                        formDate.find('input[name="period"]').val("week");
                         break;
                     case 30:
-                        formDate.find('input[name="date"]').val("month");
+                        formDate.find('input[name="period"]').val("month");
                         break;
                     case 100:
-                        formDate.find('input[name="date"]').val("year");
+                        formDate.find('input[name="period"]').val("year");
                         break;
                     case 500:
-                        formDate.find('input[name="date"]').val("all");
+                        formDate.find('input[name="period"]').val("all");
                         break;
                     default:
-                        formDate.find('input[name="date"]').val("today");
+                        formDate.find('input[name="period"]').val("today");
                         break;
                 }
             })
